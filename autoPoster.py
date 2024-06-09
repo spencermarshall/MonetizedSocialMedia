@@ -4,26 +4,25 @@ import self
 import tweepy
 from urllib3 import response
 from subpackage.CloneWarsQuotes import getCloneWarsQuote
+from dotenv import load_dotenv
+import os
 
 
 class TwitterPoster:
     def __init__(self):
-        # My Credentials
+        load_dotenv()
+        bearer_token = os.getenv('bearer_token')
+        API_KEY = os.getenv('API_KEY')
+        API_SECRET_KEY = os.getenv('API_SECRET_KEY')
+        access_token = os.getenv('access_token')
+        access_token_secret = os.getenv('access_token_secret')
 
-
-        # Initialize the tweepy.Client with the necessary credentials
-
-
-        self.client = tweepy.Client(bearer_token=self.bearer_token,
-                                        consumer_key=self.API_KEY, consumer_secret=self.API_SECRET_KEY,
-                                        access_token=self.access_token, access_token_secret=self.access_token_secret)
+        self.client = tweepy.Client(bearer_token = bearer_token,
+                                        consumer_key = API_KEY, consumer_secret = API_SECRET_KEY,
+                                        access_token = access_token, access_token_secret = access_token_secret)
 
     def postCWQuote(self):
-        tweet_text = "May the force be with you, always. #StarWars #StarWarsQuotes #StarWarsMemes"
-        ans = getCloneWarsQuote(self)
-        finalTweet = ans + " #StarWars #TheCloneWars #StarWarsQuotes"
-
-        # Create a tweet
+        finalTweet = getCloneWarsQuote(self) + " #StarWars #TheCloneWars #StarWarsQuotes"
         try:
             # Post the tweet using the Client
             response = self.client.create_tweet(text=finalTweet)
