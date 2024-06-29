@@ -26,6 +26,12 @@ class TwitterPoster:
         try:
             # Post the tweet using the Client
             response = self.client.create_tweet(text=finalTweet)
+            tweets = self.client.search_recent_tweets(query="Python", max_results=2)
+            if tweets.data:
+                for tweet in tweets.data:
+                    print(f"Tweet ID: {tweet.id} - Tweet Text: {tweet.text}")
+            else:
+                print("No tweets found")
         except Exception as e:
             print(f"An error occurred: {e}")
 

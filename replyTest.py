@@ -1,36 +1,25 @@
-import random
 import tweepy
-from subpackage.CloneWarsQuotes import getCloneWarsQuote
 from dotenv import load_dotenv
 import os
 
 class Reply:
     def __init__(self):
         load_dotenv()
-        api_key = os.getenv('API_KEY')
-        api_secret_key = os.getenv('API_SECRET_KEY')
-        access_token = os.getenv('access_token')
-        access_token_secret = os.getenv('access_token_secret')
-
-        auth = tweepy.OAuth1UserHandler(api_key, api_secret_key, access_token, access_token_secret)
+        bearer_token = os.getenv('BEARER_TOKEN')
         self.client = tweepy.Client(bearer_token=bearer_token)
 
-        self.api = tweepy.API(auth)
-        try:
-            self.api.verify_credentials()
-            print("Authentication OK")
-        except Exception as e:
-            print(f"Error during authentication: {e}")
-
-    def keyWord(self, query, max_results=10):
+    def search_tweets_by_username(self, username, max_results=10):
+        query = f"from:{username}"
         try:
             tweets = self.client.search_recent_tweets(query=query, max_results=max_results)
-            for tweet in tweets.data:
-                print(f"Tweet ID: {tweet.id} - Tweet Text: {tweet.text}")
-        except Exception as e:
+            if tweets.data:
+                for tweet in tweets.data:
+                    print(f"Tweet ID: {tweet.id} - Tweet Text: {tweet.text}")
+            else:
+                print("No tweets found")
+        except tweepy.TweepyException as e:
             print(f"Error: {e}")
 
-# Example usage
 if __name__ == "__main__":
     poster = Reply()
-    poster.keyWord("test")
+    poster.search_tweets_by_username("TwitterUsername")
