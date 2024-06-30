@@ -1,7 +1,7 @@
 import requests
 import os
 # Replace with your own credentials obtained from your Twitter developer account
-bearer_token = 'AAAAAAAAAAAAAAAAAAAAADGfuAEAAAAAiKXhRiJILcmDv54r2LVG8PpizMU%3DOveJUzcf8xrH2G1uL32SFFG1WAj0s1He8Wf75y4lYUX0jcOj1K'
+bearer_token = os.getenv('BEARER_TOKEN')
 
 def create_headers(bearer_token):
     headers = {"Authorization": f"Bearer {bearer_token}"}
