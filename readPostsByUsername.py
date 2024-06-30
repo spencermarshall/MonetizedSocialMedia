@@ -1,26 +1,24 @@
-import requests
-import json
 
-username = "starwars"
-url = f"https://syndication.twitter.com/srv/timeline-profile/screen-name/{username}"
+from apify_client import ApifyClient
 
-r = requests.get(url)
+# Initialize the ApifyClient with your Apify API token
+client = ApifyClient("apify_api_knYA2rQ4ShCsxomYWWHqwfxizBDga11oF9IY")
 
-html = r.text
+# Prepare the Actor input
+run_input = {
+    "handles": ["realswtheory"],
+    "tweetsDesired": 3,  # Specify the number of tweets you want
+    "proxyConfig": { "useApifyProxy": True },
+}
 
-start_str = '<script id="__NEXT_DATA__" type="application/json">'
-end_str = '</script></body></html>'
+# Run the Actor and wait for it to finish
+run = client.actor("quacker/twitter-scraper").call(run_input=run_input)
 
-start_index = html.index(start_str) + len(start_str)
-end_index = html.index(end_str, start_index)
+# Fetch and print Actor results from the run's dataset (if there are any)
+print("💾 Check your data here: https://console.apify.com/storage/datasets/" + run["defaultDatasetId"])
+for item in client.dataset(run["defaultDatasetId"]).iterate_items():
+    print("NEXT POST:")
+    print(item['full_text'])
+    print("\n\n")
 
-json_str = html[start_index: end_index]
-data = json.loads(json_str)
-
-# Extracting the first tweet's ID and full text
-tweet_id = data["props"]["pageProps"]["timeline"]["entries"][0]["content"]["tweet"]["id"]
-tweet_full_text = data["props"]["pageProps"]["timeline"]["entries"][0]["content"]["tweet"]["full_text"]
-print(f"id found manually:{data["props"]["pageProps"]["latest_tweet_id"]}")
-
-print(f"Tweet ID: {tweet_id}")
-print(f"Tweet Full Text: {tweet_full_text}")
+# 📚 Want to learn more 📖? Go to → https://docs.apify.com/api/client/python/docs/quick-start
