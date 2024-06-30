@@ -17,4 +17,10 @@ end_index = html.index(end_str, start_index)
 json_str = html[start_index: end_index]
 data = json.loads(json_str)
 
-print(data["props"]["pageProps"]["timeline"]["entries"][0]["content"]["tweet"]["full_text"])
+# Extracting the first tweet's ID and full text
+tweet_id = data["props"]["pageProps"]["timeline"]["entries"][0]["content"]["tweet"]["id"]
+tweet_full_text = data["props"]["pageProps"]["timeline"]["entries"][0]["content"]["tweet"]["full_text"]
+print(f"id found manually:{data["props"]["pageProps"]["latest_tweet_id"]}")
+
+print(f"Tweet ID: {tweet_id}")
+print(f"Tweet Full Text: {tweet_full_text}")
