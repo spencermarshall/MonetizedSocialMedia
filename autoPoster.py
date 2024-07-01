@@ -30,7 +30,7 @@ class TwitterPoster:
         finalTweet = getCloneWarsQuote(self) + " #StarWars #TheCloneWars #StarWarsQuotes"
         finalTweet = self.randomAddSpace(finalTweet)
         try:
-            # Post the tweet using the Client
+            # Post the tweet usin g the Client
             response = self.client.create_tweet(text=finalTweet)
 
         except Exception as e:
