@@ -20,9 +20,15 @@ class TwitterPoster:
         self.client = tweepy.Client(bearer_token = bearer_token,
                                         consumer_key = API_KEY, consumer_secret = API_SECRET_KEY,
                                         access_token = access_token, access_token_secret = access_token_secret)
+    def randomAddSpace(self, text):
+        if random.random() < 0.5:
+            return " " + text
+        else:
+            return text
 
     def postCWQuote(self):
         finalTweet = getCloneWarsQuote(self) + " #StarWars #TheCloneWars #StarWarsQuotes"
+        finalTweet = self.randomAddSpace(finalTweet)
         try:
             # Post the tweet using the Client
             response = self.client.create_tweet(text=finalTweet)
@@ -30,9 +36,6 @@ class TwitterPoster:
         except Exception as e:
             print(f"An error occurred: {e}")
 
-    def getCloneWarsQuote(self):
-        # Placeholder for your method that gets a Clone Wars quote
-        return "The strongest defense is a swift and decisive offense."
 
 
 # Example usage
