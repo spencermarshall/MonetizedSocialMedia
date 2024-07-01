@@ -6,7 +6,7 @@ class TwitterClient:
     def __init__(self):
         load_dotenv()
 
-        # Load and print environment variables to verify they are loaded correctly
+        # Load and print environment variables to verify they  are loaded correctly
         self.bearer_token = os.getenv('BEARER_TOKEN')
         self.api_key = os.getenv('API_KEY')
         self.api_secret_key = os.getenv('API_SECRET_KEY')
