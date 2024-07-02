@@ -1,88 +1,123 @@
-#Note, this file should be fully functional including updaing the count/countDailyHelloThere.txt and reading from that file
-#incrementing, and then reading out to that file, i just need to make sure to run this .py code once a day (automate on computer)
-
 import tweepy
 import os
+import logging
+import sys
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
 
-# Your Twitter API credentials
-BEARER_TOKEN = os.getenv('BEARER_TOKEN')
-API_KEY = os.getenv('API_KEY')
-API_SECRET_KEY = os.getenv('API_SECRET_KEY')
-ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
-ACCESS_TOKEN_SECRET = os.getenv('ACCESS_TOKEN_SECRET')
+class DailyHelloTherePoster:
+    def __init__(self):
+        # Set up logging
+        logging.basicConfig(filename='daily_hello_there.log', level=logging.DEBUG,
+                            format='%(asctime)s %(levelname)s:%(message)s')
 
-# Check if environment variables are loaded correctly
-if not all([API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET, BEARER_TOKEN]):
-    raise ValueError("Some environment variables are missing. Please check your .env file.")
+        logging.debug(f"Running script with Python version: {sys.version}")
 
-# Function to read the count from a file
-def read_count(file_path):
-    if os.path.exists(file_path):
-        with open(file_path, 'r') as file:
-            return int(file.read().strip())
-    return 0
+        # Load environment variables
+        env_path = os.path.abspath('.env')
+        logging.debug(f"Loading environment variables from: {env_path}")
+        load_dotenv(env_path)
 
-# Function to write the count to a file
-def write_count(file_path, count):
-    with open(file_path, 'w') as file:
-        file.write(str(count))
+        # Your Twitter API credentials
+        self.BEARER_TOKEN = os.getenv('BEARER_TOKEN')
+        self.API_KEY = os.getenv('API_KEY')
+        self.API_SECRET_KEY = os.getenv('API_SECRET_KEY')
+        self.ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+        self.ACCESS_TOKEN_SECRET = os.getenv('ACCESS_TOKEN_SECRET')
 
-try:
-    # Authenticate to Twitter using Client for v2 API
-    client = tweepy.Client(bearer_token=BEARER_TOKEN,
-                           consumer_key=API_KEY,
-                           consumer_secret=API_SECRET_KEY,
-                           access_token=ACCESS_TOKEN,
-                           access_token_secret=ACCESS_TOKEN_SECRET)
+        # Check if environment variables are loaded correctly
+        if not all([self.API_KEY, self.API_SECRET_KEY, self.ACCESS_TOKEN, self.ACCESS_TOKEN_SECRET, self.BEARER_TOKEN]):
+            logging.error("Some environment variables are missing. Please check your .env file.")
+            raise ValueError("Some environment variables are missing. Please check your .env file.")
 
-    # Path to your GIF file
-    gif_path = 'images/helloThere.gif'
-    count_file = 'count/countDailyHelloThere.txt'  # File to store the count
+        # Paths to your GIF file and count file
+        self.gif_path = os.path.abspath('images/helloThere.gif')
+        self.count_file = os.path.abspath('count/countDailyHelloThere.txt')
 
-    # Debugging: Print the current working directory
-    print("Current working directory:", os.getcwd())
+        # Authenticate to Twitter using Client for v2 API
+        self.client = tweepy.Client(
+            bearer_token=self.BEARER_TOKEN,
+            consumer_key=self.API_KEY,
+            consumer_secret=self.API_SECRET_KEY,
+            access_token=self.ACCESS_TOKEN,
+            access_token_secret=self.ACCESS_TOKEN_SECRET
+        )
 
-    # Debugging: Print the absolute path to the GIF file
-    absolute_gif_path = os.path.abspath(gif_path)
-    print("Absolute path to GIF:", absolute_gif_path)
+        # Authenticate to Twitter using OAuth1UserHandler for media upload (v1.1)
+        self.auth = tweepy.OAuth1UserHandler(self.API_KEY, self.API_SECRET_KEY, self.ACCESS_TOKEN,
+                                             self.ACCESS_TOKEN_SECRET)
+        self.api = tweepy.API(self.auth)
 
-    # Check if the GIF file exists
-    if not os.path.isfile(absolute_gif_path):
-        raise FileNotFoundError(f"The file at path {absolute_gif_path} was not found.")
+    def read_count(self):
+        try:
+            if os.path.exists(self.count_file):
+                with open(self.count_file, 'r') as file:
+                    return int(file.read().strip())
+            return 0
+        except Exception as e:
+            logging.error(f"Error reading count file: {e}")
+            raise
 
-    # Authenticate to Twitter using OAuth1UserHandler for media upload (v1.1)
-    auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-    api = tweepy.API(auth)
+    def write_count(self, count):
+        try:
+            with open(self.count_file, 'w') as file:
+                file.write(str(count))
+        except Exception as e:
+            logging.error(f"Error writing count file: {e}")
+            raise
 
-    # Upload GIF using media_upload (v1.1)
-    media = api.media_upload(absolute_gif_path)
+    def post_tweet(self):
+        try:
+            # Debugging: Print the current working directory
+            logging.debug(f"Current working directory: {os.getcwd()}")
 
-    # Print the media ID and other information
-    print(f"Media uploaded successfully! Media ID: {media.media_id}")
-    print(f"Media details: {media}")
+            # Debugging: Print the absolute path to the GIF file
+            logging.debug(f"Absolute path to GIF: {self.gif_path}")
 
-    # Read the current count from the file
-    count = read_count(count_file)
+            # Check if the GIF file exists
+            if not os.path.isfile(self.gif_path):
+                raise FileNotFoundError(f"The file at path {self.gif_path} was not found.")
 
-    # Increment the count
-    count += 1
+            # Upload GIF using media_upload (v1.1)
+            media = self.api.media_upload(self.gif_path)
 
-    # Post tweet with the uploaded GIF using create_tweet (v2)
-    tweet_text = f"Day {count} of me posting Obi-Wan Kenobi's \"Hello there\" from Star Wars Episode 3: Revenge of the Sith #StarWars #TheAcolyte #Kenobi #Obiwan #hellothere"
-    response = client.create_tweet(text=tweet_text, media_ids=[media.media_id])
-    print("Tweet posted successfully! Response:", response)
+            # Print the media ID and other information
+            logging.debug(f"Media uploaded successfully! Media ID: {media.media_id}")
+            logging.debug(f"Media details: {media}")
 
-    # Write the updated count back to the file
-    write_count(count_file, count)
+            # Read the current count from the file
+            count = self.read_count()
 
-except tweepy.TweepyException as e:
-    print(f"An error occurred with Tweepy: {e}")
-    if hasattr(e, 'api_codes') and 453 in e.api_codes:
-        print("It seems your API credentials do not have the necessary permissions to upload media. Please check your access level on the Twitter Developer Portal.")
+            # Increment the count
+            count += 1
 
-except Exception as e:
-    print(f"An error occurred: {e}")
+            # Post tweet with the uploaded GIF using create_tweet (v2)
+            tweet_text = f"Day {count} of me posting Obi-Wan Kenobi's \"Hello there\" from Star Wars Episode 3: Revenge of the Sith #StarWars #TheAcolyte #Kenobi #Obiwan #hellothere"
+            response = self.client.create_tweet(text=tweet_text, media_ids=[media.media_id])
+            logging.debug(f"Tweet posted successfully! Response: {response}")
+
+            # Write the updated count back to the file
+            self.write_count(count)
+
+        except tweepy.TweepyException as e:
+            logging.error(f"An error occurred with Tweepy: {e}")
+            if hasattr(e, 'api_codes') and 453 in e.api_codes:
+                logging.error(
+                    "It seems your API credentials do not have the necessary permissions to upload media. Please check your access level on the Twitter Developer Portal.")
+            raise
+
+        except Exception as e:
+            logging.error(f"An error occurred: {e}")
+            raise
+
+
+def main():
+    try:
+        poster = DailyHelloTherePoster()
+        poster.post_tweet()
+    except Exception as e:
+        logging.error(f"Failed to post tweet: {e}")
+
+
+if __name__ == "__main__":
+    main()
