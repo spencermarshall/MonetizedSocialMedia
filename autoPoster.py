@@ -1,11 +1,10 @@
+import os
 import random
 
-import self
 import tweepy
-from urllib3 import response
-from subpackage.CloneWarsQuotes import getCloneWarsQuote
 from dotenv import load_dotenv
-import os
+
+from subpackage.CloneWarsQuotes import getCloneWarsQuote
 
 
 class TwitterPoster:
