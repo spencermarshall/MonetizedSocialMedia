@@ -45,7 +45,7 @@ class RandomGIFPoster:
         recent_paths = self.read_recent_paths()
 
         # Ensure the randomly selected GIF is not in the recent paths
-        available_gifs = [gif for gif in gifs if str(gif) not in recent_paths]
+        available_gifs = [gif for gif in gifs if gif.name not in recent_paths]
 
         if available_gifs:
             return random.choice(available_gifs)
@@ -58,23 +58,27 @@ class RandomGIFPoster:
     def post_gif(self, random_gif: Path):
         recent_paths = self.read_recent_paths()
 
+        while random_gif.name in recent_paths:
+            random_gif = self.get_random_gif(quote=True)
+
+
         # Upload GIF using media_upload (v1.1)
         media = self.api.media_upload(str(random_gif))
 
         # Prepare tweet text
         additional_text = ""
-        text_dict = {
+        text_dict = {        # todo, i can edit this dictionary to add any caption i want for any specific gif
             "don't-like-sand.gif": "I don't like sand. It's coarse, and rough, and irritating. And it gets everywhere..."
         }
         if random_gif.name in text_dict:
             additional_text = text_dict[random_gif.name]
 
-        tags = "#StarWars #swtwt"
+        tags = "#StarWars #TheAcolyte #swtwt"
         tweet_text = f"{additional_text} {tags}"
         self.client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
         # Update the recent paths with the new path
-        recent_paths.append(str(random_gif))
+        recent_paths.append(random_gif.name)
         if len(recent_paths) > 3:
             recent_paths.pop(0)  # Keep only the last 3 paths
 
