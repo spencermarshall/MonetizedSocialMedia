@@ -68,7 +68,8 @@ class RandomGIFPoster:
         # Prepare tweet text
         additional_text = ""
         text_dict = {        # todo, i can edit this dictionary to add any caption i want for any specific gif
-            "don't-like-sand.gif": "I don't like sand. It's coarse, and rough, and irritating. And it gets everywhere..."
+            "don't-like-sand.gif": "I don't like sand. It's coarse, and rough, and irritating. And it gets everywhere...",
+            "execute-order-66.gif": "Execute Order 66"
         }
         if random_gif.name in text_dict:
             additional_text = text_dict[random_gif.name]

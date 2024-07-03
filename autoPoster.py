@@ -26,7 +26,7 @@ class TwitterPoster:
             return text
 
     def postCWQuote(self):
-        finalTweet = getCloneWarsQuote(self) + " #StarWars #TheCloneWars #StarWarsQuotes #swtwt"
+        finalTweet = getCloneWarsQuote(self) + " #StarWars #TheCloneWars #TheAcolyte #StarWarsQuotes #swtwt"
         finalTweet = self.randomAddSpace(finalTweet)
         try:
             # Post the tweet usin g the Client
