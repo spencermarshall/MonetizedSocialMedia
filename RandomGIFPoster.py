@@ -1,3 +1,5 @@
+import random
+
 import tweepy
 import os
 import sys
@@ -7,11 +9,13 @@ from pathlib import Path
 
 # it reads the file, increments by 1, makes tweet (With new number), then puts new number into file
 # line 65 to change text of tweet
-class DailyHelloTherePoster:
+class RandomGIFPoster:
     def __init__(self):
 
         # Load environment variables
         load_dotenv()
+        self.count_file = Path('count/countRandomGIFPoster.txt').resolve()
+
 
         # Your Twitter API credentials
         self.BEARER_TOKEN = os.getenv('BEARER_TOKEN')
@@ -20,9 +24,6 @@ class DailyHelloTherePoster:
         self.ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
         self.ACCESS_TOKEN_SECRET = os.getenv('ACCESS_TOKEN_SECRET')
 
-        # Paths to your GIF file and count file
-        self.gif_path = Path('images/helloThere.gif').resolve()
-        self.count_file = Path('count/countDailyHelloThere.txt').resolve()
 
         # Authenticate to Twitter using Client for v2 API
         self.client = tweepy.Client(
@@ -48,7 +49,16 @@ class DailyHelloTherePoster:
         with self.count_file.open('w') as file:
             file.write(str(count))
 
-    def post_tweet(self):
+    def post_gif(self):
+        # Paths to your GIF files and count file
+        allGifs = ['images/good-soldiers-starwars.gif']
+        length = len(allGifs)
+        lastNumber = self.read_count()
+        randomNumber = random.Random(0, length - 1)
+        #we don't want to use last used, so if it's the same while loop will go until we get a different
+        while (randomNumber != lastNumber):
+            randomNumber = random.Random(0, length - 1)
+
         if not self.gif_path.is_file():
             raise FileNotFoundError(f"The file at path {self.gif_path} was not found.")
 
@@ -62,7 +72,7 @@ class DailyHelloTherePoster:
         count += 1
 
         # Post tweet with the uploaded GIF using create_tweet (v2)
-        tweet_text = f"Day {count} of posting Obi-Wan Kenobi's \"Hello there\" from Star Wars Episode 3: Revenge of the Sith #StarWars #TheAcolyte #Kenobi #Obiwan #hellothere #swtwt"
+        tweet_text = f"Day {count} of posting Obi-Wan Kenobi's \"Hello there\" from Star Wars Episode 3: Revenge of the Sith #StarWars #TheAcolyte #Kenobi #Obiwan #hellothere"
         self.client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
         # Write the updated count back to the file
