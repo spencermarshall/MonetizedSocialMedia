@@ -1,6 +1,6 @@
 import os
 import random
-
+import time
 import tweepy
 from dotenv import load_dotenv
 
@@ -40,4 +40,6 @@ class TwitterPoster:
 # Example usage
 if __name__ == "__main__":
     poster = TwitterPoster()
+    # random wait time, 0-24 minutes
+    time.sleep(random.randint(0, 60 * 124))
     poster.postCWQuote()

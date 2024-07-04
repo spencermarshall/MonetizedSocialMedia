@@ -3,6 +3,8 @@ import os
 import sys
 from dotenv import load_dotenv
 from pathlib import Path
+import time
+import random
 
 
 # it reads the file, increments by 1, makes tweet (With new number), then puts new number into file
@@ -70,4 +72,8 @@ class DailyHelloTherePoster:
 
 if __name__ == "__main__":
     poster = DailyHelloTherePoster()
+
+    #random wait time, 0-18 minutes
+    time.sleep(random.randint(0,60*18))
+
     poster.post_tweet()
