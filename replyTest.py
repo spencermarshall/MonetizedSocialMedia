@@ -51,7 +51,13 @@ class TwitterClient:
         except tweepy.TweepyException as e:
             print(f"Error replying to tweet: {e}")
 
+    #this returns a string that would be a good generic response to (hopefully) any post regardless of context. So hopefully it'll be good.
+    def get_generic_response(self):
+        phrases = {"test": 0.5, "Random": 0.3, "never": 0.1, "ok": 0.1}
+        return random.choices(list(phrases.keys()), weights=list(phrases.values()), k=1)[0]
+
+
 if __name__ == "__main__":
     client = TwitterClient()
     client.check_access_level()
-    client.reply_to_tweet("hello there", 1797674957826306248)
+    # client.reply_to_tweet("hello there", 1808953953092292785) #this will actualyl reply to it, full functional
