@@ -55,20 +55,24 @@ class TwitterClient:
 
     #this returns a string that would be a good generic response to (hopefully) any post regardless of context. So hopefully it'll be good.
     def get_generic_response(self):
-        phrases = {"test": 0.5, "Random": 0.3, "never": 0.1, "ok": 0.1} #key-value pairs, "comment":weight. doesn't have to sum to 1, but it auto-converts to scale of 1
+        #todo, at any time edit this dictionary below this line,
+        phrases = {"hello there": 0.2, " hello there": 0.2, "...": 0.3, ":|": 0.2} #key-value pairs, "comment":weight. doesn't have to sum to 1, but it auto-converts to scale of 1
         return random.choices(list(phrases.keys()), weights=list(phrases.values()), k=1)[0] #this line came from chat gpt, it uses values as weights to output a key
 
+    def getTweetIDs(self):
+        output = []
+
+        return output
 
 if __name__ == "__main__":
     client = TwitterClient()
     client.check_access_level()
     count = 0
-    numStop = random.randInt(1,3) #only reply to 1-3 tweets (assuming we even have that many)
-    listOfID = [1808999229349605559] #call function
+    numStop = random.randint(1,3) #only reply to 1-3 tweets (assuming we even have that many)
+    listOfID = client.getTweetIDs() #call function to pull recent tweet ID from key user's
     for i in range(len(listOfID)):
         client.reply_to_tweet("hello there", listOfID[i]) #this will actualyl reply to it, full functional
-        waitTime = random.randint(60,120)
-        time.sleep(waitTime) #random time between 60 and 120 seconds
+        time.sleep(random.randint(60,120)) #random wait time between 60 and 120 seconds between replies
         count += 1
         if count >= numStop: #reply to num of tweets then stop
             exit() #stops execution

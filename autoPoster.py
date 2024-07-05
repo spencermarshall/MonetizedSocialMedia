@@ -39,7 +39,7 @@ class TwitterPoster:
 
 # Example usage
 if __name__ == "__main__":
-    poster = TwitterPoster()
     # random wait time, 0-24 minutes
-    time.sleep(random.randint(0, 60 * 124))
+    time.sleep(random.randint(0, 60 * 24))
+    poster = TwitterPoster()
     poster.postCWQuote()

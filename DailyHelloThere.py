@@ -71,9 +71,7 @@ class DailyHelloTherePoster:
         self.write_count(count)
 
 if __name__ == "__main__":
+    # random wait time, 0-18 minutes
+    time.sleep(random.randint(0, 60 * 18))
     poster = DailyHelloTherePoster()
-
-    #random wait time, 0-18 minutes
-    time.sleep(random.randint(0,60*18))
-
     poster.post_tweet()
