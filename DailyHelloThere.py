@@ -63,8 +63,29 @@ class DailyHelloTherePoster:
         # Increment the count
         count += 1
 
-        # Post tweet with the uploaded GIF using create_tweet (v2)
-        tweet_text = f"Day {count} of posting Obi-Wan Kenobi's \"Hello there\" from Star Wars Episode 3: Revenge of the Sith #StarWars #TheAcolyte #Kenobi #Obiwan #hellothere #swtwt"
+
+        #adds randomness of first name or random space at beginning
+        name = "Kenobi"
+        space = ""
+        probFirstName = random.random()
+        probRandomSpace = random.random()
+        if probFirstName > 0.5:
+            name = "Obi-Wan Kenobi"
+        if probRandomSpace > 0.5:
+            space = " "
+        tweet_text = f"{space}Day {count} of posting {name}'s \"Hello there\" from Star Wars Episode 3: Revenge of the Sith "
+
+        percDict = {"#StarWars ": 0.9, "#swtwt ": 0.7} #todo i can add more if i want to change probability of including a specific tag
+        tagsString = f""
+        tags = ["#StarWars ", "#TheAcolyte ", "#Kenobi ", "#Obiwan ", "#hellothere ", "#swtwt "] #todo i can add more possible tags if desired
+        for tag in tags:
+            randomProb = 0.4 #each tag has 40% chance of being included unless otherwise specified
+            if tag in percDict: #pulls pre-destined probability
+                randomProb = percDict[tag]
+            if random.random() < randomProb:
+                tagsString += tag
+        tweet_text += tagsString
+
         self.client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
         # Write the updated count back to the file

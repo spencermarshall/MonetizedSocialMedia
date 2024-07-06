@@ -30,8 +30,8 @@ class TwitterPoster:
         finalTweet = self.randomAddSpace(finalTweet)
         try:
             # Post the tweet usin g the Client
-            response = self.client.create_tweet(text=finalTweet)
-
+            # response = self.client.create_tweet(text=finalTweet)
+            ok = 3
         except Exception as e:
             print(f"An error occurred: {e}")
 
