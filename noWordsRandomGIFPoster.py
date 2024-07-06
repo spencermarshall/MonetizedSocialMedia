@@ -3,6 +3,7 @@ import tweepy
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+import time
 
 class RandomGIFPoster:
     def __init__(self):

@@ -60,21 +60,19 @@ class TwitterClient:
         return random.choices(list(phrases.keys()), weights=list(phrases.values()), k=1)[0] #this line came from chat gpt, it uses values as weights to output a key
 
     def getTweetIDs(self):
-        output = []
+        output = ["1809379239575081221"]
 
         return output
 
 if __name__ == "__main__":
     client = TwitterClient()
     client.check_access_level()
-    count = 0
     numStop = random.randint(1,3) #only reply to 1-3 tweets (assuming we even have that many)
     listOfID = client.getTweetIDs() #call function to pull recent tweet ID from key user's
     for i in range(len(listOfID)):
         client.reply_to_tweet("hello there", listOfID[i]) #this will actualyl reply to it, full functional
         time.sleep(random.randint(60,120)) #random wait time between 60 and 120 seconds between replies
-        count += 1
-        if count >= numStop: #reply to num of tweets then stop
+        if i + 1 >= numStop: #reply to num of tweets then stop
             exit() #stops execution
 
 
