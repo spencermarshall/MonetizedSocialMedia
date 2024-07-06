@@ -75,9 +75,23 @@ class RandomGIFPoster:
         }
         if random_gif.name in text_dict:
             additional_text = text_dict[random_gif.name]
+        tweet_text = f"{additional_text} "
 
-        tags = "#StarWars #TheAcolyte #swtwt"
-        tweet_text = f"{additional_text} {tags}"
+
+        percDict = {"#StarWars ": 0.7,
+                    "#swtwt ": 0.5,
+                    "#TheAcolyte ": 0.2}  # todo i can add more if i want to change probability of including a specific tag
+        tagsString = f""
+        tags = ["#StarWars ", "#TheAcolyte ", "#swtwt "]  # todo i can add more possible tags if desired
+        for tag in tags:
+            randomProb = 0.35  # each tag has 30% chance of being included unless otherwise specified
+            if tag in percDict:  # pulls pre-destined probability
+                randomProb = percDict[tag]
+            if random.random() < randomProb:
+                tagsString += tag
+        tweet_text += tagsString
+
+
         self.client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
         # Update the recent paths with the new path
