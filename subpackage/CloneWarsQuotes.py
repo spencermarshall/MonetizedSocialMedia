@@ -139,5 +139,5 @@ def getCloneWarsQuote(self):
         127: 'You can change who you are, but you cannot run from yourself. -The Clone Wars s7e8'
     }
 
-    quote = quotes[random.randint(1, len(quotes))]
+    quote = quotes[random.randint(1, len(quotes))] + " "
     return quote

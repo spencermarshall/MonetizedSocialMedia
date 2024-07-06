@@ -68,12 +68,12 @@ class DailyHelloTherePoster:
         name = "Kenobi"
         space = ""
         probFirstName = random.random()
-        probRandomSpace = random.random()
+        probRandomSpace = random.random() #todo maybe add more random spaces lol
         if probFirstName > 0.5:
             name = "Obi-Wan Kenobi"
         if probRandomSpace > 0.5:
             space = " "
-        tweet_text = f"{space}Day {count} of posting {name}'s \"Hello there\" from Star Wars Episode 3: Revenge of the Sith "
+        tweet_text = f"Day {count} of posting {name}'s \"Hello there\" from Star Wars{space} Episode 3: Revenge of the Sith "
 
         percDict = {"#StarWars ": 0.9, "#swtwt ": 0.7} #todo i can add more if i want to change probability of including a specific tag
         tagsString = f""

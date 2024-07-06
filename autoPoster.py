@@ -26,11 +26,30 @@ class TwitterPoster:
             return text
 
     def postCWQuote(self):
-        finalTweet = getCloneWarsQuote(self) + " #StarWars #TheCloneWars #TheAcolyte #StarWarsQuotes #swtwt"
-        finalTweet = self.randomAddSpace(finalTweet)
+
+        space = ""
+        probRandomSpace = random.random()
+        if probRandomSpace > 0.5:
+            space = " "
+        tweet_text = getCloneWarsQuote(self)
+
+        percDict = {"#StarWars ": 0.7,
+                    "#swtwt ": 0.5}  # todo i can add more if i want to change probability of including a specific tag
+        tagsString = f""
+        tags = ["#StarWars ", "#TheCloneWars ", "#TheAcolyte ", "#StarWarsQuotes ", "#swtwt "]  # todo i can add more possible tags if desired
+        for tag in tags:
+            randomProb = 0.3  # each tag has 30% chance of being included unless otherwise specified
+            if tag in percDict:  # pulls pre-destined probability
+                randomProb = percDict[tag]
+            if random.random() < randomProb:
+                tagsString += tag
+        tweet_text += tagsString
+
+
+
         try:
             # Post the tweet usin g the Client
-            # response = self.client.create_tweet(text=finalTweet)
+            response = self.client.create_tweet(text=tweet_text)
             ok = 3
         except Exception as e:
             print(f"An error occurred: {e}")
