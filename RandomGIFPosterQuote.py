@@ -108,5 +108,5 @@ if __name__ == "__main__":
     poster = RandomGIFPoster()
     random_gif = poster.get_random_gif(quote=True)
     if random_gif:
-        # poster.post_gif(random_gif)
+        poster.post_gif(random_gif)
         do_nothing = 3
