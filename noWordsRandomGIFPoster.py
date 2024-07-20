@@ -84,7 +84,7 @@ class RandomGIFPoster:
         tagsString = f""
         tags = ["#StarWars ", "#TheAcolyte ", "#swtwt "]  # todo i can add more possible tags if desired
         for tag in tags:
-            randomProb = 0.35  # each tag has 30% chance of being included unless otherwise specifi ed
+            randomProb = 0.35  # each tag has 30% chance of being included unless otherwise specified
             if tag in percDict:  # pulls pre-destined probability
                 randomProb = percDict[tag]
             if random.random() < randomProb:
