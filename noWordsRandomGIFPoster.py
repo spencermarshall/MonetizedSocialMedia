@@ -80,7 +80,7 @@ class RandomGIFPoster:
 
         percDict = {"#StarWars ": 0.7,
                     "#swtwt ": 0.5,
-                    "#TheAcolyte ": 0.2}  # todo i can add more if i want to change probability of including a specific tag
+                    "#TheAcolyte ": 0.2}   # todo i can add more if i want to change probability of including a specific tag
         tagsString = f""
         tags = ["#StarWars ", "#TheAcolyte ", "#swtwt "]  # todo i can add more possible tags if desired
         for tag in tags:
