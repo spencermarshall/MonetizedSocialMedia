@@ -427,6 +427,6 @@ class TextQuote:
 # Example usage
 if __name__ == "__main__":
     # random wait time, 0-46 minutes
-    time.sleep(random.randint(0, 60 * 46))
+    # time.sleep(random.randint(0, 60 * 46))
     poster = TextQuote()
     poster.postQuote()
