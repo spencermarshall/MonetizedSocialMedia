@@ -410,7 +410,7 @@ class TextQuote:
         tags = ["#StarWars ", "#StarWarsQuotes ",
                 "#swtwt "]  # todo i can add more possible tags if desired
         for tag in tags:
-            randomProb = 0.5  # each tag has 50% chance of being included unless otherwise specified
+            randomProb = 0.5  #each tag has 50% chance of being included unless otherwise specified
             if tag in percDict:  # pulls pre-destined probability
                 randomProb = percDict[tag]
             if random.random() < randomProb:
