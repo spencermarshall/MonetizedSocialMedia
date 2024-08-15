@@ -88,7 +88,7 @@ class DailyHelloTherePoster:
 
         self.client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
-        # Write the updated count back to the file
+        # Write the updated count back to the  file
         self.write_count(count)
 
 if __name__ == "__main__":
