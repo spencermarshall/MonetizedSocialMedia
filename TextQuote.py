@@ -417,7 +417,7 @@ class TextQuote:
                 tagsString += tag
         tweet_text += tagsString
         try:
-            # Post the tweet usin g the Client
+            # Post the tweet using the Client
             response = self.client.create_tweet(text=tweet_text)
         except Exception as e:
             print(f"An error occurred: {e}")
