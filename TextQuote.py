@@ -402,7 +402,7 @@ class TextQuote:
         probRandomSpace = random.random()
         if probRandomSpace > 0.5:
             space = " "
-        tweet_text = "\"" + self.getQuote() + "\""
+        tweet_text = "\"" + self.getQuote()
 
         percDict = {"#StarWars ": 0.7,
                     "#swtwt ": 0.5}  # todo i can add more if i want to change probability of including a specific tag
