@@ -18,7 +18,7 @@ def get_user_info(username):
         return None
 
 if __name__ == "__main__":
-    username = 'elonmusk'
+    username = 'starwars'
     user_info = get_user_info(username)
     if user_info:
         print(user_info)
