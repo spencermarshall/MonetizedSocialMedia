@@ -50,7 +50,6 @@ class TwitterPoster:
         try:
             # Post the tweet usin g the Client
             response = self.client.create_tweet(text=tweet_text)
-            ok = 3
         except Exception as e:
             print(f"An error occurred: {e}")
 
@@ -58,7 +57,7 @@ class TwitterPoster:
 
 # Example usage
 if __name__ == "__main__":
-    # random wait time, 0-24 minutes
-    time.sleep(random.randint(0, 60 * 24))
+    # random wait time, 0-6 minutes
+    time.sleep(random.randint(0, 60 * 6))
     poster = TwitterPoster()
     poster.postCWQuote()
