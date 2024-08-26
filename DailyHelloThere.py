@@ -79,7 +79,7 @@ class DailyHelloTherePoster:
         tagsString = f""
         tags = ["#StarWars ", "#TheAcolyte ", "#Kenobi ", "#Obiwan ", "#hellothere ", "#swtwt "] #todo i can add more possible tags if desired
         for tag in tags:
-            randomProb = 0.4 #each tag has 40% chance of being included unless otherwise specified
+            randomProb = 0.15 #each tag has 15% chance of being included unless otherwise specified
             if tag in percDict: #pulls pre-destined probability
                 randomProb = percDict[tag]
             if random.random() < randomProb:
