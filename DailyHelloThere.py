@@ -68,7 +68,7 @@ class DailyHelloTherePoster:
         name = "Kenobi"
         space = ""
         probFirstName = random.random()
-        probRandomSpace = random.random() #todo maybe add more random spaces lol
+        probRandomSpace = random.random()  #todo maybe add more random spaces lol
         if probFirstName > 0.5:
             name = "Obi-Wan Kenobi"
         if probRandomSpace > 0.5:
