@@ -404,8 +404,9 @@ class TextQuote:
             space = " "
         tweet_text = "\"" + self.getQuote()
 
-        percDict = {"#StarWars ": 0.7,
-                    "#swtwt ": 0.5}  # todo i can add more if i want to change probability of including a specific tag
+        percDict = {"#StarWars ": 0.6,
+                    "#swtwt ": 0.4,
+                    "#StarWarsQuotes ": 0.1}  # todo i can add more if i want to change probability of including a specific tag
         tagsString = f""
         tags = ["#StarWars ", "#StarWarsQuotes ",
                 "#swtwt "]  # todo i can add more possible tags if desired
