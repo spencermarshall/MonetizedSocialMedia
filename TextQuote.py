@@ -423,8 +423,6 @@ class TextQuote:
         except Exception as e:
             print(f"An error occurred: {e}")
 
-
-
 # Example usage
 if __name__ == "__main__":
     poster = TextQuote()
