@@ -404,7 +404,7 @@ class TextQuote:
             space = " "
         tweet_text = "\"" + self.getQuote()
 
-        percDict = {"#StarWars ": 0.6,
+        percDict = {"#StarWars ": 0.5,
                     "#swtwt ": 0.4,
                     "#StarWarsQuotes ": 0.05}  # todo i can add more if i want to change probability of including a specific tag
         tagsString = f""
@@ -427,7 +427,5 @@ class TextQuote:
 
 # Example usage
 if __name__ == "__main__":
-    # random wait time, 0-6 minutes
-    time.sleep(random.randint(0, 60 * 6))
     poster = TextQuote()
     poster.postQuote()

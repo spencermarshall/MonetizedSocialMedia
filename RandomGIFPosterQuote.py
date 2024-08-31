@@ -103,8 +103,6 @@ class RandomGIFPoster:
         self.write_recent_paths(recent_paths)
 
 if __name__ == "__main__":
-    # random wait time, 0-36 minutes
-    time.sleep(random.randint(0, 60 * 36))
     poster = RandomGIFPoster()
     random_gif = poster.get_random_gif(quote=True)
     if random_gif:
