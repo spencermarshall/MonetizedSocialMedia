@@ -34,7 +34,8 @@ class TwitterPoster:
         tweet_text = getCloneWarsQuote(self)
 
         percDict = {"#StarWars ": 0.7,
-                    "#swtwt ": 0.5}  # todo i can add more if i want to change probability of including a specific tag
+                    "#swtwt ": 0.5,
+                    "#StarWarsQuotes ": 0.1}  # todo i can add more if i want to change probability of including a specific tag
         tagsString = f""
         tags = ["#StarWars ", "#TheCloneWars ", "#StarWarsQuotes ", "#swtwt "]  # todo i can add more possible tags if desired
         for tag in tags:
