@@ -1,10 +1,10 @@
 import tweepy
 import os
-import sys
+import random
+
 from dotenv import load_dotenv
 from pathlib import Path
-import time
-import random
+from datetime import date
 
 
 # it reads the file, increments by 1, makes tweet (With new number), then puts new number into file
@@ -56,6 +56,7 @@ class DailyHelloTherePoster:
 
         # Upload GIF using media_upload (v1.1)
         media = self.api.media_upload(self.gif_path)
+        # media = self.api.media_upload(https://github.com/spencermarshall/StarWarsTwitterPost/blob/main/images/helloThere.gif)
 
         # Read the current count from the file
         count = self.read_count()
@@ -94,3 +95,7 @@ class DailyHelloTherePoster:
 if __name__ == "__main__":
     poster = DailyHelloTherePoster()
     poster.post_tweet()
+    # start_date = date(2024, 7, 1)
+    # today_date = date.today()
+    # days_since_target = (today_date - start_date).days
+
