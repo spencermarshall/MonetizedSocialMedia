@@ -36,7 +36,7 @@ class TwitterPoster:
         percDict = {"#StarWars ": 0.7,
                     "#swtwt ": 0.5}  # todo i can add more if i want to change probability of including a specific tag
         tagsString = f""
-        tags = ["#StarWars ", "#TheCloneWars ", "#TheAcolyte ", "#StarWarsQuotes ", "#swtwt "]  # todo i can add more possible tags if desired
+        tags = ["#StarWars ", "#TheCloneWars ", "#StarWarsQuotes ", "#swtwt "]  # todo i can add more possible tags if desired
         for tag in tags:
             randomProb = 0.3  # each tag has 30% chance of being included unless otherwise specified
             if tag in percDict:  # pulls pre-destined probability
