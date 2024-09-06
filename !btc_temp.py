@@ -67,7 +67,8 @@ def get_btc_data():
             sign = "+" if percent_change > 0 else "-"
 
             # Format USD and percentage change with sign
-            return f"{sign}${abs(usd_change):,.2f} or {sign}{abs(percent_change):.2f}%"
+            # return f"{sign}${abs(usd_change):,.2f} or {sign}{abs(percent_change):.2f}%"
+            return f"{sign}{abs(percent_change):.2f}% or {sign}${abs(usd_change):,.2f}"
 
         # Append the results to the output string
         output += f"Current Bitcoin Price: ${current_price:,.2f}\n\n"
