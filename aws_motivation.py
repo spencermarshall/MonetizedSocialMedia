@@ -14,6 +14,5 @@ def get_motivational_quote():
     print(f"'{quote_data[0]['q']}' -{quote_data[0]['a']}")
 
 
-
 # Call the function to fetch and print a random motivational quote
 get_motivational_quote()
