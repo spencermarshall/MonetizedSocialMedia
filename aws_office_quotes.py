@@ -1,34 +1,35 @@
-import random
+#this code is working on AWS lambda and schedule for 8am, 2pm, 8pm everyday
+# posts to the account at https://x.com/_TheOfficeDaily
+import requests
 import tweepy
 
-API_KEY = ''
-API_SECRET_KEY = ''
-access_token = ''
-access_token_secret = ''
-bearer_token = ''
+# URL for the random quote endpoint
+url = "https://officeapi.akashrajpurohit.com/quote/random"
 
-client = tweepy.Client(bearer_token = bearer_token,
-                                consumer_key = API_KEY, consumer_secret = API_SECRET_KEY,
-                                access_token = access_token, access_token_secret = access_token_secret)
+# These are placeholders so my keys won't be on a public github repo
+bearer_token = 'placeholder'
+api_key = 'placeholder'
+api_key_secret = 'placeholder'
+access_token = 'placeholder'
+access_token_secret = 'placeholder'
+
+# Set up Tweepy client for Twitter API v2
+client = tweepy.Client(bearer_token=bearer_token,
+                       consumer_key=api_key,
+                       consumer_secret=api_key_secret,
+                       access_token=access_token,
+                       access_token_secret=access_token_secret)
 
 
-def PostQuote(event, context):
-
-
-    tweet_text = dict[random.randint(1,len(dict))]
-
-    percDict = {"#StarWars ": 0.4,
-                "#swtwt ": 0.25,
-                "#StarWarsQuotes ": 0.05}  # todo i can add more if i want to change probability of including a specific tag
-    tagsString = f""
-    tags = ["#StarWars ", "#StarWarsQuotes ",
-            "#swtwt "]  # todo i can add more possible tags if desired
-    for tag in tags:
-        randomProb = 0.3  #each tag has 30% chance of being included unless otherwise specified
-        if tag in percDict:  # pulls pre-destined probability
-            randomProb = percDict[tag]
-        if random.random() < randomProb:
-            tagsString += tag
-    tweet_text += tagsString
+def get_random_quote(event, context):
+    response = requests.get(url)
+    data = response.json()
+    #can pass id if i want to skip, idk how to easily find the id if i want to not post a quote, if needed probably just search for quote text exact
+    # while (data['id'] == -1 or data['id'] == -1):
+    #     response = requests.get(url)
+    #     data = response.json()
+    tweet_text = f"\"{data['quote']}\" -{data['character']}\n#TheOffice"
+    # Tweet the quote
     client.create_tweet(text=tweet_text)
+
 
