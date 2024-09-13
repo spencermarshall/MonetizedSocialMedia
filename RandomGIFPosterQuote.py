@@ -63,6 +63,7 @@ class RandomGIFPoster:
 
 
         # Upload GIF using media_upload (v1.1)
+
         media = self.api.media_upload(str(random_gif)) #todo at least 1 file is actually too large it fails, maybe manually check with breakpoints sometime
 
         # Prepare tweet text
