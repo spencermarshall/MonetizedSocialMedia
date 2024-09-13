@@ -1,17 +1,17 @@
 import requests
 
-# API endpoint to get a random advice
-url = "https://api.adviceslip.com/advice"
+url = "https://api.quotable.io/quotes"
 
-# Send a GET request to fetch the random advice
-response = requests.get(url)
+params = {
+    'query': 'Marvel',
+    'limit': 1
+}
 
-# Check if the request was successful
+response = requests.get(url, params=params)
+
 if response.status_code == 200:
-    data = response.json()  # Convert the response to JSON format
-    advice = data['slip']['advice']  # Extract the advice text
-
-    # Print the advice
-    print(f"Advice: {advice}")
+    data = response.json()
+    for quote in data['results']:
+        print(f"{quote['author']}: \"{quote['content']}\"")
 else:
-    print(f"Failed to fetch advice. Status code: {response.status_code}")
+    print(f"Error: {response.status_code}")
