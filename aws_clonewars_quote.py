@@ -152,16 +152,11 @@ def postCWQuote(event, context):
     }
 
     tweet_text = quotes[random.randint(1, len(quotes))] + " "
-    percDict = {"#StarWars ": 0.4,
-                "#swtwt ": 0.25,
-                "#TheCloneWars ": 0.2,
-                "#StarWarsQuotes ": 0.1}  # todo i can add more if i want to change probability of including a specific tag
+
     tagsString = f""
     tags = ["#StarWars ", "#TheCloneWars ", "#StarWarsQuotes ", "#swtwt "]   # todo i can add more possible tags if desired
     for tag in tags:
-        randomProb = 0.3  # each tag has 30% chance of being included unless otherwise specified
-        if tag in percDict:  # pulls pre-destined probability
-            randomProb = percDict[tag]
+        randomProb = 0.10  # each tag has 10% chance of being included unless otherwise specified
         if random.random() < randomProb:
             tagsString += tag
     tweet_text += tagsString
