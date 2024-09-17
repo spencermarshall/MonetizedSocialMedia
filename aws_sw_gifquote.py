@@ -470,7 +470,7 @@ def SW_gif_post(event,context):
         # Post the tweet with the GIF
         client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
-        # Remove the temporary file after posting the tweet
+        # Remove the temporary file after posting the twee t
         os.remove(temp_filename)
 
         return "Tweet posted successfully!"
