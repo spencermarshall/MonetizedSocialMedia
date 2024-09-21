@@ -45,7 +45,7 @@ def post_quote(event, context):
 
     tweet_text = f"\"{quote}\" -{data['author']} "
     tagsString = f""
-    tags = ["#BreakingBad "]  # i can add more possible tags if desired
+    tags = ["#BreakingBad "]  #i can add more possible tags if desired
     for tag in tags:
         randomProb = 0.20  # each tag has 20% chance of being included unless otherwise specified
         if random.random() < randomProb:
