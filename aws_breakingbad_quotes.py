@@ -1,4 +1,5 @@
 import requests
+import random
 import tweepy
 # These are placeholders so my keys won't be on a public github repo
 bearer_token = 'placeholder'
@@ -25,7 +26,7 @@ words_to_replace = {
     'shit': 'sh*t',
     'fuck': 'f*ck',
     'bitch': 'b*tch',
-    'masturbating': 'm*****ng',
+    'masturbating': 'm******g',
 }
 
 
@@ -42,10 +43,15 @@ def post_quote(event, context):
         if word in quote.lower():
             quote = quote.replace(word, replacement)
 
-    # Print the updated quote
-    print(f"\"{quote}\" -{data['author']}\n#BreakingBad #BetterCallSaul")
-
-
+    tweet_text = f"\"{quote}\" -{data['author']} "
+    tagsString = f""
+    tags = ["#BreakingBad "]  # i can add more possible tags if desired
+    for tag in tags:
+        randomProb = 0.20  # each tag has 20% chance of being included unless otherwise specified
+        if random.random() < randomProb:
+            tagsString += tag
+    tweet_text += tagsString
+    client.create_tweet(text=tweet_text)
 
 # Call the function to get and print a random quote
 post_quote(1,2)
