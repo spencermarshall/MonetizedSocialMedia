@@ -29,7 +29,7 @@ words_to_replace = {
 }
 
 
-def get_random_quote(event, context):
+def post_quote(event, context):
     response = requests.get(url)
 
     if response.status_code != 200:
@@ -48,4 +48,4 @@ def get_random_quote(event, context):
 
 
 # Call the function to get and print a random quote
-get_random_quote(1,2)
+post_quote(1,2)
