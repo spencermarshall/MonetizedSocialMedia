@@ -23,6 +23,7 @@ client = tweepy.Client(
     access_token = access_token,
     access_token_secret = access_token_secret
 )
+
 def dailyHelloThere(event, context):
     start_date = date(2024, 7, 1)
     today_date = date.today()
@@ -32,41 +33,24 @@ def dailyHelloThere(event, context):
     if probFirstName > 0.5:
         name = "Obi-Wan Kenobi"
     tweet_text = f"Day {days_since_target} of posting {name}'s \"Hello there\" from Star Wars Episode 3: Revenge of the Sith "
-    #hashtags
-    percDict = {
-        "#StarWars ": 0.25,
-                }  # todo i can add more if i want to change probability of including a specific tag
     tagsString = f""
-    tags = ["#StarWars ", "#Kenobi ", "#Obiwan ", "#hellothere ",
-            "#swtwt "]  # todo i can add more possible tags if desired
+    tags = ["#StarWars ", "#Kenobi ", "#Obiwan ", "#hellothere ", "#swtwt "]  # todo i can add more possible tags if desired
     for tag in tags:
         randomProb = 0.10  # each tag has 10% chance of being included unless otherwise specified
-        if tag in percDict:  # pulls pre-destined probability
-            randomProb = percDict[tag]
         if random.random() < randomProb:
             tagsString += tag
     tweet_text += tagsString
 
-    # Media URL
+    # GitHub "Hello there" Kenobi GIF
     media_url = 'https://raw.githubusercontent.com/spencermarshall/StarWarsTwitterPost/main/images/helloThere.gif'
     temp_filename = '/tmp/temp_media.gif'
-
-    # Download the media
     response = requests.get(media_url)
     if response.status_code == 200:
         # Save the content to the temporary file
         with open(temp_filename, 'wb') as f:
             f.write(response.content)
-
-        # Upload the media using Tweepy
         media = api.media_upload(temp_filename)
-
-        # Post the tweet with the media
         client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
         # Remove the temporary file
         os.remove(temp_filename)
-    else:
-        print("Failed to download media")
-
-
