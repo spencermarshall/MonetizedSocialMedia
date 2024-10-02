@@ -14,18 +14,14 @@ btc_bearer_token = 'placeholder'
 client = tweepy.Client(bearer_token=btc_bearer_token,
                        consumer_key=btc_api_key, consumer_secret=btc_api_key_secret,
                        access_token=btc_access_token, access_token_secret=btc_access_token_secret)
-# Authenticate to Twitter
+
 auth = tweepy.OAuth1UserHandler(btc_api_key, btc_api_key_secret, btc_access_token, btc_access_token_secret)
 api = tweepy.API(auth)
 
 def get_btc_data(event, context):
     # CoinGecko API endpoint for getting current price and price change data
     url = "https://api.coingecko.com/api/v3/coins/bitcoin"
-
-    # Make a GET request to the CoinGecko API
     response = requests.get(url)
-
-    # Initialize an empty string to accumulate the output
     output = ""
 
     if response.status_code == 200:
@@ -56,16 +52,12 @@ def get_btc_data(event, context):
         # price_200d_ago = current_price / (1 + (price_change_200d_percent / 100))
         price_365d_ago = current_price / (1 + (price_change_365d_percent / 100))
 
-        # Calculate the price change in USD for each time period
         def format_change(start_price, change_percent):
             usd_change = current_price - start_price
             percent_change = (usd_change / start_price) * 100
 
             # Sign logic based on percentage change
             sign = "+" if percent_change > 0 else "-"
-
-            # Format USD and percentage change with sign
-            # return f"{sign}${abs(usd_change):,.2f} or {sign}{abs(percent_change):.2f}%"
             return f"{sign}{abs(percent_change):.2f}% or {sign}${abs(usd_change):,.2f}"
 
         # Append the results to the output string
@@ -82,6 +74,5 @@ def get_btc_data(event, context):
         output += f"Failed to retrieve data. Status code: {response.status_code}\n"
 
     output += "#Bitcoin #Crypto #BTC $BTC"  # todo i can add more here
-    # Print the accumulated output
     client.create_tweet(text=output)
 
