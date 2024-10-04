@@ -2,11 +2,12 @@ import requests
 import random
 import tweepy
 # These are placeholders so my keys won't be on a public github repo
-bearer_token = 'placeholder'
+
 api_key = 'placeholder'
 api_key_secret = 'placeholder'
 access_token = 'placeholder'
 access_token_secret = 'placeholder'
+bearer_token = 'placeholder'
 
 # Set up Tweepy client for Twitter API v2
 client = tweepy.Client(bearer_token=bearer_token,
@@ -53,5 +54,3 @@ def post_quote(event, context):
     tweet_text += tagsString
     client.create_tweet(text=tweet_text)
 
-# Call the function to get and print a random quote
-post_quote(1,2)
