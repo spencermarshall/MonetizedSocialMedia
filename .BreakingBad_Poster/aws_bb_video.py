@@ -53,7 +53,7 @@ def aws_bb_video(event, context):
     #filter season and episode
     s_pos = random_file.find('s') + 1  # The season number starts after 's'
     e_pos = random_file.find('e') + 1  # The episode number starts after 'e'
-
+    tweet_text = f'{s_pos},{e_pos}' #todo i made this line for debugging, need to comment out try and just hard code this
     try:
         # Extract season and episode numbers
         season = int(random_file[s_pos:e_pos - 1])  # Convert to integer
@@ -148,9 +148,6 @@ def aws_bb_video(event, context):
 
     # Upload the file to Twitter using Tweepy
     media = api.media_upload(download_path)
-
-
-    # Create a tweet with the uploaded media
     client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
     return {
