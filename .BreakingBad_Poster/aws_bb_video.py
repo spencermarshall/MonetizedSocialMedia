@@ -5,15 +5,19 @@ import os
 
 def aws_bb_video(event, context):
 
-    #AWS api key's
-    #...
-    #...
-    #...
-    client = tweepy.Client(bearer_token=bearer_token,
-                           consumer_key=API_KEY, consumer_secret=API_SECRET_KEY,
-                           access_token=access_token, access_token_secret=access_token_secret)
+    bb_client_id = 'placeholder'
+    bb_client_secret = 'placeholder'
+    bb_api_key = 'placeholder'
+    bb_api_key_secret = 'placeholder'
+    bb_access_token = 'placeholder'
+    bb_access_token_secret = 'placeholder'
+    bb_bearer_token = 'placeholder'
 
-    auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, access_token, access_token_secret)
+    client = tweepy.Client(bearer_token=bb_bearer_token,
+                           consumer_key=bb_api_key, consumer_secret=bb_api_key_secret,
+                           access_token=bb_access_token, access_token_secret=bb_access_token_secret)
+
+    auth = tweepy.OAuth1UserHandler(bb_api_key, bb_api_key_secret, bb_access_token, bb_access_token_secret)
     api = tweepy.API(auth)
 
     # Initialize the S3 client
@@ -50,11 +54,19 @@ def aws_bb_video(event, context):
     s_pos = random_file.find('s') + 1  # The season number starts after 's'
     e_pos = random_file.find('e') + 1  # The episode number starts after 'e'
 
-    # Extract season and episode numbers
-    season = int(random_file[s_pos:e_pos - 1])  # Convert to integer
-    episode = int(random_file[e_pos:random_file.find(' ', e_pos)])  # Stop at the first space
-    tweet_text = f"Breaking Bad - Season {season} Episode {episode} - "
-    se = 's' + str(season) + 'e' + str(episode)
+    try:
+        # Extract season and episode numbers
+        season = int(random_file[s_pos:e_pos - 1])  # Convert to integer
+        episode = int(random_file[e_pos:random_file.find(' ', e_pos)])  # Stop at the first space
+
+        # Construct the tweet text and SE string
+        tweet_text = f"Breaking Bad - Season {season} Episode {episode} - "
+        se = 's' + str(season) + 'e' + str(episode)
+    except ValueError:
+        # Handle errors if we can't convert season/episode to an integer
+        print("Error: Could not extract season or episode number from the filename.")
+        tweet_text = "Error: Invalid filename format."
+        se = 's1e1'
 
     breaking_bad_episodes = {
         "s1e1": "Pilot",
@@ -137,7 +149,7 @@ def aws_bb_video(event, context):
     # Upload the file to Twitter using Tweepy
     media = api.media_upload(download_path)
 
-    title = 'placeholder'
+
     # Create a tweet with the uploaded media
     client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
@@ -150,25 +162,3 @@ def aws_bb_video(event, context):
 
 
 
-
-
-
-
-
-video_path = '../.StarWars_Poster/videos/2 Ahsoka Short (trailer) 30s - Copy.mp4'
-media = api.media_upload(video_path)
-
-client.create_tweet(text="Ahsoka", media_ids=[media.media_id])
-
-#IAM permission for lambda function according to chat-gpt
-# {
-#   "Effect": "Allow",
-#   "Action": [
-#     "s3:ListBucket",
-#     "s3:GetObject"
-#   ],
-#   "Resource": [
-#     "arn:aws:s3:::your-s3-bucket-name",
-#     "arn:aws:s3:::your-s3-bucket-name/*"
-#   ]
-# }

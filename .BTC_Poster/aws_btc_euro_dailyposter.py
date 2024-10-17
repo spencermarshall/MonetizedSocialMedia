@@ -29,36 +29,10 @@ def get_btc_data(event, context):
         current_price = data['market_data']['current_price']['eur']
         current_price += random.uniform(0, 0.99)
 
-        # Extract the percentage price changes in EUR
-        price_change_1h_percent = data['market_data']['price_change_percentage_1h_in_currency']['eur']
-        price_change_24h_percent = data['market_data']['price_change_percentage_24h_in_currency']['eur']
-        price_change_30d_percent = data['market_data']['price_change_percentage_30d_in_currency']['eur']
-        price_change_365d_percent = data['market_data']['price_change_percentage_1y_in_currency']['eur']
-
-        # Calculate the historical price for each period
-        def calculate_historical_price(change_percent):
-            return current_price / (1 + (change_percent / 100))
-
-        price_1h_ago = current_price / (1 + (price_change_1h_percent / 100))
-        price_24h_ago = current_price / (1 + (price_change_24h_percent / 100))
-        price_30d_ago = current_price / (1 + (price_change_30d_percent / 100))
-        price_365d_ago = current_price / (1 + (price_change_365d_percent / 100))
-
-        def format_change(start_price, change_percent):
-            eur_change = current_price - start_price
-            percent_change = (eur_change / start_price) * 100
-
-            # Sign logic based on percentage change
-            sign = "+" if percent_change > 0 else "-"
-            return f"{sign}{abs(percent_change):.2f}% or {sign}€{abs(eur_change):,.2f}"
-
-        # Append the results to the output string
-        output += f"Current Bitcoin Price: €{current_price:,.2f}\n\n"
+        output += f"Bitcoin: €{current_price:,.2f}\n\n"
 
 
     else:
-        output += f"Failed to retrieve data. Status code: {response.status_code}\n"
-
-    output += "#Bitcoin #Crypto #BTC €BTC"  # todo you can add more hashtags here
+        output += f"Bitcoin"
     client.create_tweet(text=output)
 
