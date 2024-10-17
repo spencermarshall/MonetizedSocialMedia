@@ -53,7 +53,7 @@ def aws_bb_video(event, context):
     # Extract season and episode numbers
     season = int(random_file[s_pos:e_pos - 1])  # Convert to integer
     episode = int(random_file[e_pos:random_file.find(' ', e_pos)])  # Stop at the first space
-    tweet_text = f"Breaking Bad - Season {season} Episode {episode}"
+    tweet_text = f"Breaking Bad - Season {season} Episode {episode} - "
     se = 's' + str(season) + 'e' + str(episode)
 
     breaking_bad_episodes = {
@@ -128,6 +128,7 @@ def aws_bb_video(event, context):
     episode_title = breaking_bad_episodes[se]
 
     tweet_text += episode_title
+    tweet_text += " #BreakingBad"
 
     # Download the random file to /tmp/ in Lambda
     download_path = f"/tmp/{os.path.basename(random_file)}"
