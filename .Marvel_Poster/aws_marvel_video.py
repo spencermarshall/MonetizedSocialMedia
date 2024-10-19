@@ -3,14 +3,12 @@ import random
 import tweepy
 import os
 
-def aws_sw_video(event, context):
+def aws_marvel_video(event, context):
     api_key = 'placeholder'
     api_key_secret = 'placeholder'
+    bearer_token = 'placeholder'
     access_token = 'placeholder'
     access_token_secret = 'placeholder'
-    bearer_token = 'placeholder'
-    consumer_key = 'placeholder'
-    consumer_secret = 'placeholder'
 
     client = tweepy.Client(bearer_token=bearer_token,
                            consumer_key=api_key, consumer_secret=api_key_secret,
@@ -23,7 +21,7 @@ def aws_sw_video(event, context):
     s3_client = boto3.client('s3')
 
     # Define your S3 bucket name
-    bucket_name = 'starwars.videos'   #'s3://starwars.videos'
+    bucket_name = 'marvel.videos'   #'s3://marvel.videos'
 
     # List objects in the bucket
     response = s3_client.list_objects_v2(Bucket=bucket_name)
@@ -51,11 +49,11 @@ def aws_sw_video(event, context):
 
     titles = {
         "infinitywar": "Avengers: Infinity War",
-        "endgame": "Avengers: End Game"
+        "endgame": "Avengers: Endgame"
     }
 
-
-    tweet_text = titles[random_file]
+    title = random_file[:random_file.find("/")] #this gets str up until the first space
+    tweet_text = titles[title]
     tweet_text += " #MCU"
     if random.random() > 0.85:
         tweet_text += " #Marvel"

@@ -63,16 +63,16 @@ def aws_sw_video(event, context):
         "rg": "Rogue One",
         "solo": "Solo",
 
-        "tcw": "Star Wars: The Clone Wars",
+        "tcw": "The Clone Wars",
         "rebels": "Star Wars Rebels",
         "mando": "The Mandalorian",
         "bobf": "The Book of Boba Fett",
-        "badbatch": "Star Wars: The Bad Batch",
+        "badbatch": "The Bad Batch",
         "kenobi": "Obi-Wan Kenobi",
         "andor": "Andor",
         "ahsoka": "Ahsoka",
-        "visions": "Star Wars: Visions",
-        "resist": "Star Wars Resistance",
+        "visions": "Visions",
+        "resist": "Resistance",
         "totj": "Tales of the Jedi",
         "acolyte": "The Acolyte"
     }
