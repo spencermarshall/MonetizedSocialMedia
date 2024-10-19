@@ -4,8 +4,13 @@ import tweepy
 import os
 
 def aws_sw_video(event, context):
-
-
+    api_key = 'placeholder'
+    api_key_secret = 'placeholder'
+    access_token = 'placeholder'
+    access_token_secret = 'placeholder'
+    bearer_token = 'placeholder'
+    consumer_key = 'placeholder'
+    consumer_secret = 'placeholder'
 
     client = tweepy.Client(bearer_token=bearer_token,
                            consumer_key=api_key, consumer_secret=api_key_secret,
@@ -44,99 +49,36 @@ def aws_sw_video(event, context):
     # Select a random MP4 file
     random_file = random.choice(mp4_files)
 
-    #filter season and episode
-    s_pos = random_file.find('s') + 1  # The season number starts after 's'
-    e_pos = random_file.find('e') + 1  # The episode number starts after 'e'
-    tweet_text = f'{s_pos},{e_pos}' #todo i made this line for debugging, need to comment out try and just hard code this
-    try:
-        # Extract season and episode numbers
-        season = int(random_file[s_pos:e_pos - 1])  # Convert to integer
-        episode = int(random_file[e_pos:random_file.find(' ', e_pos)])  # Stop at the first space
+    titles = {
+        "ep1": "The Phantom Menace",
+        "ep2": "Attack of the Clones",
+        "ep3": "Revenge of the Sith",
+        "ep4": "A New Hope",
+        "ep5": "The Empire Strikes Back",
+        "ep6": "Return of the Jedi",
+        "ep7": "The Force Awakens",
+        "ep8": "The Last Jedi",
+        "ep9": "The Rise of Skywalker",
 
-        # Construct the tweet text and SE string
-        tweet_text = f"Breaking Bad - Season {season} Episode {episode} - "
-        se = 's' + str(season) + 'e' + str(episode)
-    except ValueError:
-        # Handle errors if we can't convert season/episode to an integer
-        print("Error: Could not extract season or episode number from the filename.")
-        tweet_text = "Error: Invalid filename format."
-        se = 's1e1'
+        "rg": "Rogue One",
+        "solo": "Solo",
 
-    breaking_bad_episodes = {
-        "s1e1": "Pilot",
-        "s1e2": "Cat's in the Bag...",
-        "s1e3": "...And the Bag's in the River",
-        "s1e4": "Cancer Man",
-        "s1e5": "Gray Matter",
-        "s1e6": "Crazy Handful of Nothin'",
-        "s1e7": "A No-Rough-Stuff-Type Deal",
-
-        "s2e1": "Seven Thirty-Seven",
-        "s2e2": "Grilled",
-        "s2e3": "Bit by a Dead Bee",
-        "s2e4": "Down",
-        "s2e5": "Breakage",
-        "s2e6": "Peekaboo",
-        "s2e7": "Negro y Azul",
-        "s2e8": "Better Call Saul",
-        "s2e9": "4 Days Out",
-        "s2e10": "Over",
-        "s2e11": "Mandala",
-        "s2e12": "Phoenix",
-        "s2e13": "ABQ",
-
-        "s3e1": "No Más",
-        "s3e2": "Caballo sin Nombre",
-        "s3e3": "I.F.T.",
-        "s3e4": "Green Light",
-        "s3e5": "Más",
-        "s3e6": "Sunset",
-        "s3e7": "One Minute",
-        "s3e8": "I See You",
-        "s3e9": "Kafkaesque",
-        "s3e10": "Fly",
-        "s3e11": "Abiquiu",
-        "s3e12": "Half Measures",
-        "s3e13": "Full Measure",
-
-        "s4e1": "Box Cutter",
-        "s4e2": "Thirty-Eight Snub",
-        "s4e3": "Open House",
-        "s4e4": "Bullet Points",
-        "s4e5": "Shotgun",
-        "s4e6": "Cornered",
-        "s4e7": "Problem Dog",
-        "s4e8": "Hermanos",
-        "s4e9": "Bug",
-        "s4e10": "Salud",
-        "s4e11": "Crawl Space",
-        "s4e12": "End Times",
-        "s4e13": "Face Off",
-
-        "s5e1": "Live Free or Die",
-        "s5e2": "Madrigal",
-        "s5e3": "Hazard Pay",
-        "s5e4": "Fifty-One",
-        "s5e5": "Dead Freight",
-        "s5e6": "Buyout",
-        "s5e7": "Say My Name",
-        "s5e8": "Gliding Over All",
-        "s5e9": "Blood Money",
-        "s5e10": "Buried",
-        "s5e11": "Confessions",
-        "s5e12": "Rabid Dog",
-        "s5e13": "To'hajiilee",
-        "s5e14": "Ozymandias",
-        "s5e15": "Granite State",
-        "s5e16": "Felina"
+        "tcw": "Star Wars: The Clone Wars",
+        "rebels": "Star Wars Rebels",
+        "mando": "The Mandalorian",
+        "bobf": "The Book of Boba Fett",
+        "badbatch": "Star Wars: The Bad Batch",
+        "kenobi": "Obi-Wan Kenobi",
+        "andor": "Andor",
+        "ahsoka": "Ahsoka",
+        "visions": "Star Wars: Visions",
+        "resist": "Star Wars Resistance",
+        "totj": "Tales of the Jedi",
+        "acolyte": "The Acolyte"
     }
 
-    episode_title = breaking_bad_episodes[se]
+    tweet_text = titles[random_file]
 
-    tweet_text += episode_title
-    tweet_text += " #BreakingBad"
-
-    # Download the random file to /tmp/ in Lambda
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)
 

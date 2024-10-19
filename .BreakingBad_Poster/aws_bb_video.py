@@ -1,10 +1,10 @@
-import boto3 #this is pre-downloaded on aws
+import boto3  # this is pre-downloaded on aws
 import random
 import tweepy
 import os
 
-def aws_bb_video(event, context):
 
+def aws_bb_video(event, context):
     bb_client_id = 'placeholder'
     bb_client_secret = 'placeholder'
     bb_api_key = 'placeholder'
@@ -23,12 +23,12 @@ def aws_bb_video(event, context):
     # Initialize the S3 client
     s3_client = boto3.client('s3')
 
+
     # Define your S3 bucket name
-    bucket_name = 'bb.videos'   #'s3://bb.videos'
+    bucket_name = 'bb.videos'  # 's3://bb.videos'
 
     # List objects in the bucket
     response = s3_client.list_objects_v2(Bucket=bucket_name)
-
 
     # Check if there are any objects in the bucket
     if 'Contents' not in response:
@@ -50,23 +50,10 @@ def aws_bb_video(event, context):
     # Select a random MP4 file
     random_file = random.choice(mp4_files)
 
-    #filter season and episode
+    # filter season and episode
     s_pos = random_file.find('s') + 1  # The season number starts after 's'
     e_pos = random_file.find('e') + 1  # The episode number starts after 'e'
-    tweet_text = f'{s_pos},{e_pos}' #todo i made this line for debugging, need to comment out try and just hard code this
-    try:
-        # Extract season and episode numbers
-        season = int(random_file[s_pos:e_pos - 1])  # Convert to integer
-        episode = int(random_file[e_pos:random_file.find(' ', e_pos)])  # Stop at the first space
-
-        # Construct the tweet text and SE string
-        tweet_text = f"Breaking Bad - Season {season} Episode {episode} - "
-        se = 's' + str(season) + 'e' + str(episode)
-    except ValueError:
-        # Handle errors if we can't convert season/episode to an integer
-        print("Error: Could not extract season or episode number from the filename.")
-        tweet_text = "Error: Invalid filename format."
-        se = 's1e1'
+    se = f"s{s_pos}e{e_pos}"
 
     breaking_bad_episodes = {
         "s1e1": "Pilot",
@@ -138,7 +125,7 @@ def aws_bb_video(event, context):
     }
 
     episode_title = breaking_bad_episodes[se]
-
+    tweet_text = ''
     tweet_text += episode_title
     tweet_text += " #BreakingBad"
 
@@ -148,6 +135,8 @@ def aws_bb_video(event, context):
 
     # Upload the file to Twitter using Tweepy
     media = api.media_upload(download_path)
+
+    # Create a tweet with the uploaded media
     client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
     return {
