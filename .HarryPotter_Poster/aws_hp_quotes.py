@@ -87,7 +87,7 @@ def post_hp_quote(event, context):
         70: "\"Does it hurt? Dying?\" -Harry Potter",
         71: "\"Of course it’s happening inside your head, Harry, but why on earth should that mean that it is not real?\" -Albus Dumbledore",
         72: "\"I open at the close.\" -Harry Potter",
-        73: "\"Together, we’ll be stronger.\" -Hermione Granger",
+        73: "\"Together, we’ll be stronger.\" -Hermione Granger"
     }
 
     tweet_text = hp_quotes[random.randint(0,len(hp_quotes))]
