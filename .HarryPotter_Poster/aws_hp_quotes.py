@@ -90,6 +90,6 @@ def post_hp_quote(event, context):
         73: "\"Together, we’ll be stronger.\" -Hermione Granger"
     }
 
-    tweet_text = hp_quotes[random.randint(0,len(hp_quotes))]
+    tweet_text = hp_quotes[random.randint(0,len(hp_quotes)-1)]
     tweet_text += " #HarryPotter"
     client.create_tweet(text=tweet_text)
