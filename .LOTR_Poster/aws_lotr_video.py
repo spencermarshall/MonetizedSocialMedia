@@ -5,26 +5,26 @@ import os
 
 def aws_hp_video(event, context):
     # harry potter
-    hp_api_key = 'placeholder'
-    hp_api_key_secret = 'placeholder'
-    hp_client_id = 'placeholder'
-    hp_client_secret = 'placeholder'
-    hp_bearer_token = 'placeholder'
-    hp_access_token = 'placeholder'
-    hp_access_token_secret = 'placeholder'
+    lotr_api_key = 'placeholder'
+    lotr_api_key_secret = 'placeholder'
+    lotr_client_id = 'placeholder'
+    lotr_client_secret = 'placeholder'
+    lotr_bearer_token = 'placeholder'
+    lotr_access_token = 'placeholder'
+    lotr_access_token_secret = 'placeholder'
 
-    client = tweepy.Client(bearer_token=hp_bearer_token,
-                           consumer_key=hp_api_key, consumer_secret=hp_api_key_secret,
-                           access_token=hp_access_token, access_token_secret=hp_access_token_secret)
+    client = tweepy.Client(bearer_token=lotr_bearer_token,
+                           consumer_key=lotr_api_key, consumer_secret=lotr_api_key_secret,
+                           access_token=lotr_access_token, access_token_secret=lotr_access_token_secret)
 
-    auth = tweepy.OAuth1UserHandler(hp_api_key, hp_api_key_secret, hp_access_token, hp_access_token_secret)
+    auth = tweepy.OAuth1UserHandler(lotr_api_key, lotr_api_key_secret, lotr_access_token, lotr_access_token_secret)
     api = tweepy.API(auth)
 
     # Initialize the S3 client
     s3_client = boto3.client('s3')
 
     # Define your S3 bucket name
-    bucket_name = 'harrypotter.videos'   #'s3://starwars.videos'
+    bucket_name = 'lotr.videos'   # s3 bucket
 
     # List objects in the bucket
     response = s3_client.list_objects_v2(Bucket=bucket_name)
@@ -50,17 +50,18 @@ def aws_hp_video(event, context):
     # Select a random MP4 file
     random_file = random.choice(mp4_files)
     titles = {
-        "hp1": "Harry Potter and the Sorcerer's Stone",
-        "hp2": "Harry Potter and the Chamber of Secrets",
-        "hp3": "Harry Potter and the Prisoner of Azkaban",
-        "hp4": "Harry Potter and the Goblet of Fire",
-        "hp5": "Harry Potter and the Order of the Phoenix",
-        "hp6": "Harry Potter and the Half-Blood Prince",
-        "hp7": "Harry Potter and the Deathly Hallows"
+        "lotr1": "title1",
+        "lotr2": "title2",
+        "lotr3": "title3",
+        "hobbit1": "title4",
+        "hobbit2": "title5",
+        "hobbit3": "title6",
     }
 
 
     tweet_text = random_file#titles[titles] #temporarily hard coding
+    tweet_text += " #LordOfTheRings"
+    tweet_text += " #TheHobbit"
 
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)
