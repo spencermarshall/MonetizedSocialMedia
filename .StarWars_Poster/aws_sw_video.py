@@ -60,7 +60,7 @@ def aws_sw_video(event, context):
         "ep8": "The Last Jedi",
         "ep9": "The Rise of Skywalker",
 
-        "rg": "Rogue One",
+        "rogueone": "Rogue One",
         "solo": "Solo",
 
         "tcw": "The Clone Wars",
@@ -77,7 +77,8 @@ def aws_sw_video(event, context):
         "acolyte": "The Acolyte"
     }
 
-    tweet_text = titles[random_file]
+    title = random_file[:random_file.find("/")]  # this gets str up until the first space
+    tweet_text = titles[title]
 
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)

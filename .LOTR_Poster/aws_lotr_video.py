@@ -3,15 +3,16 @@ import random
 import tweepy
 import os
 
-def aws_hp_video(event, context):
-    # harry potter
-    lotr_api_key = 'placeholder'
-    lotr_api_key_secret = 'placeholder'
-    lotr_client_id = 'placeholder'
-    lotr_client_secret = 'placeholder'
-    lotr_bearer_token = 'placeholder'
-    lotr_access_token = 'placeholder'
-    lotr_access_token_secret = 'placeholder'
+lotr_api_key = 'placeholder'
+lotr_api_key_secret = 'placeholder'
+lotr_client_id = 'placeholder'
+lotr_client_secret = 'placeholder'
+lotr_bearer_token = 'placeholder'
+lotr_access_token = 'placeholder'
+lotr_access_token_secret = 'placeholder'
+
+def aws_lotr_video(event, context):
+    
 
     client = tweepy.Client(bearer_token=lotr_bearer_token,
                            consumer_key=lotr_api_key, consumer_secret=lotr_api_key_secret,
@@ -47,10 +48,10 @@ def aws_hp_video(event, context):
             'body': 'No MP4 files found in the S3 bucket.'
         }
 
-    # Select a random MP4 file
     random_file = random.choice(mp4_files)
+
     titles = {
-        "lotr1": "title1",
+        "lotr1": "Lord of the Rings", #i should change this to be title of 1st movie, but for now all videos are here so i just want text to be LOTR
         "lotr2": "title2",
         "lotr3": "title3",
         "hobbit1": "title4",
@@ -58,10 +59,10 @@ def aws_hp_video(event, context):
         "hobbit3": "title6",
     }
 
-
-    tweet_text = random_file#titles[titles] #temporarily hard coding
+    title = random_file[:random_file.find("/")]  # this gets str up until the first space
+    tweet_text = titles[title]
     tweet_text += " #LordOfTheRings"
-    tweet_text += " #TheHobbit"
+    # tweet_text += " #TheHobbit"
 
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)

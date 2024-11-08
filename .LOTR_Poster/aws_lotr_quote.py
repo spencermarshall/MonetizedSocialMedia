@@ -15,10 +15,11 @@ client = tweepy.Client(bearer_token = lotr_bearer_token,
 
 def post_lotr_quote(event, context):
     lotr_quotes = {
-        0: "\"You're a wizard, Harry.\" -Hagrid",
+        0: "\"Text quote.\" -name",
     }
 
     tweet_text = lotr_quotes[random.randint(0,len(lotr_quotes)-1)]
+
     #identify if lotr or hobbit for hashtag, might be possible.
     tweet_text += " #LordOfTheRings" #verify this is best hashtag
     tweet_text += " #TheHobbit" #verify this is best hashtag
