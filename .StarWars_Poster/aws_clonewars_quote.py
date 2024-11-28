@@ -7,7 +7,7 @@ access_token = 'placeholder'
 access_token_secret = 'placeholder'
 bearer_token = 'placeholder'
 consumer_key = 'placeholder'
-consumer_secret = 'placeholder' #also client secret i guess :/
+consumer_secret = 'placeholder'   #also client secret i guess :/
 
 client = tweepy.Client(bearer_token = bearer_token,
                                 consumer_key = API_KEY, consumer_secret = API_SECRET_KEY,
