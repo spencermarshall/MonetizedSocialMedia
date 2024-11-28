@@ -316,5 +316,10 @@ def post_office_quote(event, context):
 
 
     tweet_text = office_quotes[random.randint(0,len(office_quotes)-1)]
-    tweet_text += " #HarryPotter"
+    ran = random.random()
+    if ran < 0.3:
+        tweet_text += " #TheOffice"
+    elif ran < 0.35:
+        tweet_text += " #MichaelScott"
+
     client.create_tweet(text=tweet_text)
