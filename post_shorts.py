@@ -5,7 +5,6 @@ from googleapiclient.http import MediaFileUpload
 
 # Set the environment variables in your Python code
 
-
 # Define the scope for the YouTube Data API
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 
