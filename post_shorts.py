@@ -4,9 +4,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 # Set the environment variables in your Python code
-os.environ["REFRESH_TOKEN"] = "1//04RaPurJgV86XCgYIARAAGAQSNwF-L9IrLvTfiwEKD1SYQVj6CDxKbAzkUEBDaNHa3ae1LKtQCN0p1BALOS4cuuOWtRCwwIYbAhY"
-os.environ["CLIENT_ID"] = "556066699705-0rpktcmob5dkie5hts9hn9bjgvk2ku3r.apps.googleusercontent.com"
-os.environ["CLIENT_SECRET"] = "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"
+
 
 # Define the scope for the YouTube Data API
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
