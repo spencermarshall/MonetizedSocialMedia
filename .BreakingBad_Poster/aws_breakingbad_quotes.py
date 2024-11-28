@@ -16,41 +16,195 @@ client = tweepy.Client(bearer_token=bearer_token,
                        access_token=access_token,
                        access_token_secret=access_token_secret)
 
-# URL for the random quote endpoint
-url = "https://api.breakingbadquotes.xyz/v1/quotes"
-
-# List of words to replace and their replacements
-words_to_replace = {
-    'ass': 'a*s',
-    'hell': 'h*ll',
-    'damn': 'd*mn',
-    'shit': 'sh*t',
-    'fuck': 'f*ck',
-    'bitch': 'b*tch',
-    'masturbating': 'm******g',
-}
 
 
-def post_quote(event, context):
-    response = requests.get(url)
+def post_bb_quote(event, context):
+    breaking_bad_quotes = {
+        0: "\"I'm sorry, what were you asking me? Oh, yes, that stupid plastic container I asked you to buy. You see, hydrofluoric acid won't eat through plastic; it will however dissolve metal, rock, glass, ceramic. So there's that.\" -Walter White",
+        1: "\"Alright, I've got the talking pillow now... Okay?\" -Walter White",
+        2: "\"We tried to poison you. We tried to poison you because you are an insane, degenerate piece of filth and you deserve to die.\" -Walter White",
+        3: "\"Alright, tell you what. Both of you pull it out your butts right now, or I go grab a flashlight and some pliers and go exploring.\" -Jesse Pinkman",
+        4: "\"I do not believe fear to be an effective motivator. I want investment. For now, I'm simply interested in time frame.\" -Gustavo Fring",
+        5: "\"When you have children, you always have family. They will always be your priority, your responsibility. And a man, a man provides. And he does it even when he's not appreciated or respected or even loved. He simply bears up and he does it. Because he's a man.\" -Gustavo Fring",
+        6: "\"Hey, tell your douchebag brother-in-law to head towards the light.\" -Jesse Pinkman",
+        7: "\"Did you know that there's an acceptable level of rat turds that can go into candy bars? It's the government, jack. Even government doesn't care that much about quality. You know what is okay to put in hot dogs? Huh? Pig lips and *beep* But I say, hey, have at it b*tches 'cause I love hot dogs.\" -Jesse Pinkman",
+        8: "\"The one that says if I can't kill you, you'll sure as *beep* wish you were dead.\" -Jesse Pinkman",
+        9: "\"You won, Walter. You got the job. Do yourself a favor and learn to take yes for an answer.\" -Mike Ehrmantraut",
+        10: "\"The thing is, if you just do stuff and nothing happens, what's it all mean? What's the point? Oh right, this whole thing is about self-acceptance.\" -Jesse Pinkman",
+        11: "\"You are a time bomb, tick-tick-ticking. And I have no intention of being around for the boom.\" -Mike Ehrmantraut",
+        12: "\"Don't drink and drive but if you do, call me.\" -Saul Goodman",
+        13: "\"I am not in danger, Skyler. I AM the danger!\" -Walter White",
+        14: "\"A guy opens his door and gets shot and you think that of me? No. I am the one who knocks!\" -Walter White",
+        15: "\"If that’s true, if you don’t know who I am, then maybe your best course… would be to tread lightly.\" -Walter White",
+        16: "\"Someone has to protect this family from the man who protects this family.\" -Skyler White",
+        17: "\"The whole minimalist thing never blew my hair back, but hey.\" -Saul Goodman",
+        18: "\"Stay out of my territory.\" -Walter White",
+        19: "\"Because I say so.\" -Walter White",
+        20: "\"I'm not in the meth business. I'm in the empire business.\" -Walter White",
+        21: "\"You all know exactly who I am. Say my name.\" -Walter White",
+        22: "\"I watched Jane die. I was there. And I watched her die.\" -Walter White",
+        23: "\"I did it for me. I liked it. I was good at it. And... I was really... I was alive.\" -Walter White",
+        24: "\"Cap'n Cook? That's not you? Like I said, no one is looking for you.\" -Walter White",
+        25: "\"Do you know how much I make a year? I mean, even if I told you, you wouldn't believe it.\" -Walter White",
+        26: "\"Jesus! Just grow some f*cking balls!\" -Walter White",
+        27: "\"F*ck you! And your eyebrows!\" -Walter White",
+        28: "\"Send him to Belize? I'll send YOU to Belize.\" -Walter White",
+        29: "\"We're done when I say we're done.\" -Walter White",
+        30: "\"I am awake!\" -Walter White",
+        31: "\"I did it for me. I liked it. I was good at it. And I was really... I was alive.\" -Walter White",
+        32: "\"B*tch!\" -Jesse Pinkman",
+        33: "\"So you do have a plan? Yeah, Mr. White! Yeah, science!\" -Jesse Pinkman",
+        34: "\"I'm a criminal, yo.\" -Jesse Pinkman",
+        35: "\"Yeah, b*tch! Magnets!\" -Jesse Pinkman",
+        36: "\"You're my free pass... b*tch!\" -Jesse Pinkman",
+        37: "\"Fire in the hole, b*tch!\" -Jesse Pinkman",
+        38: "\"Did you just bring a bomb into a hospital?\" -Jesse Pinkman",
+        39: "\"Seriously? \"Hello Kitty\"?\" -Jesse Pinkman",
+        40: "\"Speak into the mic, b*tch.\" -Jesse Pinkman",
+        41: "\"Better call Saul!\" -Saul Goodman",
+        42: "\"You do seem to have a little “sh*t creek” action going… You know, FYI, you can buy a paddle.\" -Saul Goodman",
+        43: "\"If I ever get anal polyps, I'll know what to name them.\" -Saul Goodman",
+        44: "\"You two suck at peddling meth.\" -Saul Goodman",
+        45: "\"Clearly, his taste in women is the same as his taste in lawyers.\" -Saul Goodman",
+        46: "\"Congratulations, you’ve just left your family a second-hand Subaru.\" -Saul Goodman",
+        47: "\"I’m not saying it’s not bad. It’s bad. But it could be worse.\" -Saul Goodman",
+        48: "\"I hide in plain sight, same as you.\" -Gustavo Fring",
+        49: "\"May his death satisfy you.\" -Gustavo Fring",
+        50: "\"I will kill your wife, I will kill your son, I will kill your infant daughter.\" -Gustavo Fring",
+        51: "\"Everyone sounds like Meryl Streep with a gun to their head.\" -Mike Ehrmantraut",
+        52: "\"You know how they say it's been a pleasure'? Well... it hasn't.\" -Mike Ehrmantraut",
+        53: "\"Just because you shot Jesse James doesn't mean you are Jesse James.\" -Mike Ehrmantraut",
+        54: "\"No more half-measures, Walter.\" -Mike Ehrmantraut",
+        55: "\"Shut the f*ck up and let me die in peace.\" -Mike Ehrmantraut",
+        56: "\"Keys, scumbag. It's the universal symbol for keys.\" -Mike Ehrmantraut",
+        57: "\"I will put you under the jail.\" -Hank Schrader",
+        58: "\"My name is ASAC Schrader, and you can go f*ck yourself.\" -Hank Schrader",
+        59: "\"They're minerals, Marie! Jesus!\" -Hank Schrader",
+        60: "\"Since when do vegans eat fried chicken?\" -Hank Schrader",
+        61: "\"You're the smartest guy I ever met, and you're too stupid to see he made up his mind 10 minutes ago.\" -Hank Schrader",
+        62: "\"All I can do is wait... for the cancer to come back.\" -Skyler White",
+        63: "\"Put me on your magical boat, man, and sail me down your chocolaty river of meth!\" -Badger",
+        64: "\"Buzz buzz buzz.\" -The Fly",
+        65: "\"The Universe is Random. Not Inevitable. It's simple Chaos.\" -Walter White",
+        66: "\"Sometimes it just feels better not to talk. At all. About Anything. To Anyone.\" -Walter White",
+        67: "\"Name one thing in this world that is non-negotiable.\" -Walter White",
+        68: "\"You are not the guy. You're not capable of being the guy. I had a guy but now I don't. You are not the guy.\" -Mike Ehrmantraut",
+        69: "\"If you don’t know who I am, then maybe your best course would be to tread lightly.\" -Walter White",
+        70: "\"Walter Jr., you're my big man. There are going to be some things that you'll come to learn about me in the next few days. But just know that no matter how it may look, I only had you in my heart. Goodbye!\" -Walter White",
+        71: "\"What I came to realize is that fear, that's the worst of it. That's the real enemy. So, get up, get out in the real world and you kick that bastard as hard as you can right in the teeth.\" -Walter White",
+        72: "\"You need to stop focusing on the darkness behind you. The past is the past. Nothing can change what we’ve done.\" -Walter White",
+        73: "\"This is my own private domicile and I will not be harassed... b*tch!\" -Jesse Pinkman",
+        74: "\"You don't want a criminal lawyer. You want a criminal lawyer.\" -Jesse Pinkman",
+        75: "\"So roll me further, b*tch!\" -Jesse Pinkman",
+        76: "\"I won.\" -Walter White",
+        77: "\"You're never too old for balloons.\" -Mike Ehrmantraut",
+        78: "\"I have spent my whole life scared frightened of things that could happen, might happen, might not happen.\" -Walter White",
+        79: "\"Now, hey, remember, not all learning comes out of books.\" -Jesse Pinkman",
+        80: "\"Then why don't you just f*cking die, already?\" -Walter White Jr.",
+        81: "\"He handles the businesses, and I handle him.\" -Walter White",
+        82: "\"Sh*t!\" -Walter White",
+        83: "\"You little bastard.\" -Walter White",
+        84: "\"Stop acting like such a baby.\" -Walter White",
+        85: "\"Is that your fly-sabre?\" -Jesse Pinkman",
+        86: "\"Don't bullsh*t a bullsh*tter.\" -Walter White",
+        87: "\"Some people are immune to good advice.\" -Saul Goodman",
+        88: "\"Well, technically, chemistry is the study of matter. But I prefer to see it as the study of change.\" -Walter White",
+        89: "\"Find what you love and let it kill you.\" -Walter White",
+        90: "\"Let's see, how should I put this? I'm in, you're out.\" -Walter White",
+        91: "\"Never give up control. Live life on your own terms.\" -Walter White",
+        92: "\"Fear is the real enemy.\" -Walter White",
+        93: "\"All bad things must come to an end.\" -Walter White",
+        94: "\"Jesse, you asked me if I was in the meth business or the money business.. Neither. I'm in the empire business.\" -Walter White",
+        95: "\"Sometimes the forbidden fruit tastes the sweetest.\" -Hank Schrader",
+        96: "\"Free food always tastes good. Free drinks even better.\" -Hank Schrader",
+        97: "\"My friends, I promise you that together, we will prosper.\" -Gustavo Fring",
+        98: "\"Now look buddy, the last thing I want to do is get you in hot water, but some meth monkey had a feeding frenzy in here.\" -Hank Schrader",
+        99: "\"Fifty years I spent like that. Finding myself awake at three in the morning. But you know what? Ever since my diagnosis, I sleep just fine.\" -Walter White",
+        100: "\"I told you, Skyler, I warned you for a solid year: you cross me, and there will be consequences.\" -Walter White",
+        101: "\"I want my kids back. I want my life back. Please tell me – How much is enough? How big does this pile have to be?\" -Skyler White",
+        102: "\"It’s easy money. Until we catch you.\" -Hank Schrader",
+        103: "\"I once told a woman I was Kevin Costner and it worked because I believed it.\" -Saul Goodman",
+        104: "\"Scientists love lasers.\" -Saul Goodman",
+        105: "\"If you’re committed enough, you can make any story work.\" -Saul Goodman",
+        106: "\"Did I say you could open your mouth? And, hands off the car!\" -Hank Schrader",
+        107: "\"If you believe that there’s a h*ll, we’re pretty much already going there.\" -Walter White",
+        108: "\"You add plus a douchebag to a minus douchebag and you get, like, zero douchebags.\" -Jesse Pinkman",
+        109: "\"A guy that clean has to be dirty.\" -Hank Schrader",
+        110: "\"There is gold in the streets just waiting for someone to come and scoop it up.\" -Walter White",
+        111: "\"The fun’s over. From here on out, I’m Mr. Low Profile. Just another douchebag with a job and three pairs of Dockers. If I’m lucky, month from now, best-case scenario, I’m managing a Cinnabon in Omaha.\" -Saul Goodman",
+        112: "\"I am speaking to my family now. Skyler, you are the love of my life. I hope you know that.\" -Walter White",
+        113: "\"I could have saved her.\" -Walter White",
+        114: "\"I'm not a criminal. I'm a criminal lawyer.\" -Saul Goodman",
+        115: "\"I have lived under the threat of death for a year now, and because of that, I've made peace with it.\" -Walter White",
+        116: "\"I investigate everyone with whom I do business. What careful man wouldn't?\" -Gustavo Fring",
+        117: "\"It’s like Scarface had sex with Mr. Rogers or something.\" -Hank Schrader",
+        118: "\"Who are you talking to right now? Who is it you think you see? Do you know how much I make a year? I mean, even if I told you, you wouldn't believe it. Do you know what would happen if I suddenly decided to stop going into work? A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in. I am not in danger, Skyler. I am the danger. A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks!\" -Walter White",
+        119: "\"Gatorade me, b*tch!\" -Jesse Pinkman",
+        120: "\"We're done when I say we're done.\" -Walter White",
+        121: "\"My name is Skyler White yo. My husband is Walter White... yo.\" -Skyler White",
+        122: "\"To all law enforcement entities, this is not an admission of guilt.\" -Walter White",
+        123: "\"We're all on the same page. The one that says, if I can't kill you, you'll sure as sh*t wish you were dead.\" -Jesse Pinkman",
+        124: "\"Coin flip is sacred.\" -Jesse Pinkman",
+        125: "\"You either run from things, or you face them, Mr. White.\" -Jesse Pinkman",
+        126: "\"Tight. Tight. Tight.\" -Tuco Salamanca",
+        127: "\"Get busy living or get busy dying.\" -Stephen King",
+        128: "\"Free to cook anytime, anywhere.\" -Jesse Pinkman",
+        129: "\"Cooking is art. And the sh*t I cook is the bomb.\" -Jesse Pinkman",
+        130: "\"I'm the guy your boss brought here to show you how it's done.\" -Jesse Pinkman",
+        131: "\"Moral of the story is: I chose a half measure when I should have gone all the way. I'll never make that mistake again. No more half measures, Walter.\" -Mike Ehrmantraut",
+        132: "\"I did it for the chemistry.\" -Gale Boetticher",
+        133: "\"You’re early lucky, you know that? You didn’t have to wait your whole life to do something special.\" -Walter White",
+        134: "\"You have a good rest of your life, kid.\" -Jesse Pinkman",
+        135: "\"Do what you're gonna do.\" -Hank Schrader",
+        136: "\"Say the words! Say YOU want this! Nothing happens until I hear you say it.\" -Jesse Pinkman",
+        137: "\"Don't you know me by now?\" -Walter White",
+        138: "\"Just so you know, this isn't personal.\" -Todd",
+        139: "\"One of these days when you come up here, I'll be dead.\" -Walter White",
+        140: "\"Heart wants what the heart wants, right?\" -Uncle Jack",
+        141: "\"I have done this long enough to know that there are two kinds of heists: Those where the guys get away with it and those that leave witnesses.\" -Mike Ehrmantraut",
+        142: "\"It's always darkest just before the dawn.\" -Hank Schrader",
+        143: "\"Funny how words can be so open to interpretation.\" -Mike Ehrmantraut",
+        144: "\"Look, I saved your life, Jesse. Are you gonna save mine?\" -Walter White",
+        145: "\"Never say never.\" -Saul Goodman",
+        146: "\"Being the best at something is a very rare thing. You don't just toss something like that away. And what, you wanna squander that potential?\" -Walter White",
+        147: "\"What good is money that doesn't spend?\" -Saul Goodman",
+        148: "\"There's no honor among thieves, except for us of course.\" -Saul Goodman",
+        149: "\"Let's just say, I know a guy who knows a guy, who knows another guy.\" -Saul Goodman",
+        150: "\"Jesse, we need to cook!\" -Walter White",
+        151: "\"Right now, what I need, is for you to climb down out of my a*s. Can you do that? Will you do that for me honey? Will you please, just once, get off my a*s? You know? I'd appreciate it. I really would.\" -Walter White",
+        152: "\"Yo, yo yo, 148-3 to the 3 to the 6 to the 9, representing the ABQ, what up biatch? Leave it at the tone.\" -Jesse Pinkman",
+        153: "\"No more prolonging the inevitable.\" -Walter White"
+        154: "\"You know I, I just think, that ah, things have a way of working themselves out.\" -Walter White",
+        155: "\"Chick's got an a*s like an onion, makes me wanna cry.\" -Hank Schrader",
+        156: "\"Yo, Mr. White. I can't even pronounce half this sh*t!\" -Jesse Pinkman",
+        157: "\"Today is the first day of the rest of your life.\" -Walter White",
+        158: "\"Better safe than sorry. That's my motto.\" -Saul Goodman",
+        159: "\"Conscience gets expensive, doesn't it?\" -Saul Goodman",
+        160: "\"You can never trust a drug addict.\" -Gustavo Fring",
+        161: "\"Cyber-begging. That's all that is. Just rattling a little tin cup to the entire world.\" -Walter White",
+        162: "\"I am the man that I am son, and there's plenty that I would change about that but, here we are and this is just what it is.\" -Walter White",
+        163: "\"La familia es todo.\" -Tio Salamanca",
+        164: "\"Muscle memory. Happens all the time. Years of training, your body acted faster than your brain.\" -Marie Schrader",
+        165: "\"So you're chasing around a fly and in your world, I'm the idiot?\" -Jesse Pinkman",
+        166: "\"Ignorance of the law doesn't equate to criminality. It equates to ignorance.\" -Skyler White",
+        167: "\"You know, I have never seen anybody work so hard not to get 5 million dollars.\" -Mike Ehrmantraut",
+        168: "\"It can be done exactly how I want it. The only question is: Are you the man to do it? Figure it out. That's what I'm paying you for.\" -Walter White",
+        169: "\"Mr White, he's the devil. You know, he is... he is smarter than you, he is luckier than you. Whatever... whatever you think is supposed to happen... I'm telling you the exact reverse opposite of that is gonna happen, okay?\" -Jesse Pinkman",
+        170: "\"Do you know what would happen if I suddenly decided to stop going into work? A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in. I am not in danger, Skyler. I am the danger. A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks!\" -Walter White",
+        171: "\"You clearly don't know who you're talking to, so let me clue you in. I am not in danger, Skyler. I am the danger. A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks!\" -Walter White",
+        172: "\"I am not in danger, Skyler. I am the danger. A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks!\" -Walter White",
+        173: "\"I am not in danger, Skyler. I am the danger.\" -Walter White",
+        174: "\"A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks!\" -Walter White"
+    }
 
-    if response.status_code != 200:
-        return
-    data = response.json()[0]  # The API returns a list with one quote
-    quote = data['quote']
-
-    # Loop through the list of words and replace them
-    for word, replacement in words_to_replace.items():
-        if word in quote.lower():
-            quote = quote.replace(word, replacement)
-
-    tweet_text = f"\"{quote}\" -{data['author']} "
-    tagsString = f""
-    tags = ["#BreakingBad "]  #i can add more possible tags if desired
-    for tag in tags:
-        randomProb = 0.20  # each tag has 20% chance of being included unless otherwise specified
-        if random.random() < randomProb:
-            tagsString += tag
-    tweet_text += tagsString
+    tweet_text = breaking_bad_quotes[random.randint(0,len(breaking_bad_quotes)-1)]
+    ran = random.random()
+    if ran < 0.40:
+        tweet_text += " #BreakingBad"
+    elif ran < 0.45:
+        tweet_text += " #BetterCallSaul"
+    elif ran < 0.475:
+        tweet_text += " #WalterWhite"
+    elif ran < 0.50:
+        tweet_text += " #Heisenberg"
     client.create_tweet(text=tweet_text)
-
