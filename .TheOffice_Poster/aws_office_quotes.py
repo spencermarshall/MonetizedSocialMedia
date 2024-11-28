@@ -302,7 +302,7 @@ def post_office_quote(event, context):
         279: "\"Hate to see you leave, but love to watch you go. ‘Cause of your butt.\" -Michael Scott",
         280: "\"Jim couldn’t land me in a thousand years.\" -Dwight Schrute",
         281: "\"If I can’t scuba, then what’s this all been about? What am I working toward?\" -Creed Bratton",
-        282: "\"Number eight. Learn how to take off a woman’s bra: You just twist your hand until something breaks.\" -Michael Scott",
+        282: "\"I’m screaming! I’m screaming! I’m screaming! Aah! Numb me up! I want anesthesia!\" -Dwight Schrute",
         283: "\"I don’t care what Jim says. This is NOT the real Ben Franklin. I am 99.9 percent sure.\" -Dwight Schrute",
         284: "\"OK. When the baby emerges, mark it secretly in a kind of a mark that only you could recognize and no baby snatcher could ever copy.\" -Dwight Schrute",
         285: "\"I live by one rule: No office romances, no way. Very messy, inappropriate… no. But, I live by another rule: Just do it… Nike.\" -Michael Scott",
@@ -311,7 +311,6 @@ def post_office_quote(event, context):
         288: "\"It takes you thirty seconds to brush your teeth? Wow, that’s ten times as long as it takes me.\" -Michael Scott",
         289: "\"I find the mystery genre disgusting. I hate being titillated.\" -Angela Martin",
         290: "\"I feel like all my kids grew up and then they married each other. It’s every parent’s dream.\" -Michael Scott",
-        291: "\"I’m screaming! I’m screaming! I’m screaming! Aah! Numb me up! I want anesthesia!\" -Dwight Schrute",
     }
 
 
