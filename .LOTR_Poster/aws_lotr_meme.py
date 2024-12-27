@@ -1,4 +1,4 @@
-import boto3  # Pre-downloaded on AWS Lambda
+import boto3   # Pre-downloaded on AWS Lambda
 import random
 import tweepy
 import os
