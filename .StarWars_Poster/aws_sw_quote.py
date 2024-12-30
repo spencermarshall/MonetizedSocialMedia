@@ -366,7 +366,7 @@ def PostQuote(event, context):
     tags = ["#StarWars ", "#StarWarsQuotes ",
             "#swtwt "]  # todo i can add more possible tags if desired
     for tag in tags:
-        randomProb = 0.1  #each tag has 10% chance of being included unless otherwise specified
+        randomProb = 0.1  #each tag has 10% chance of being  included unless otherwise specified
         if random.random() < randomProb:
             tagsString += tag
     tweet_text += tagsString
