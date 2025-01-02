@@ -1,16 +1,17 @@
-import boto3 #this is pre-downloaded on aws
+import boto3  # this is pre-downloaded on aws
 import random
 import tweepy
 import os
 
+
 def aws_sw_video(event, context):
-    api_key = 'placeholder'
-    api_key_secret = 'placeholder'
-    access_token = 'placeholder'
-    access_token_secret = 'placeholder'
-    bearer_token = 'placeholder'
-    consumer_key = 'placeholder'
-    consumer_secret = 'placeholder'
+    api_key = os.environ["API_KEY"]
+    api_key_secret = os.environ["API_KEY_SECRET"]
+    access_token = os.environ["ACCESS_TOKEN"]
+    access_token_secret = os.environ["ACCESS_TOKEN_SECRET"]
+    bearer_token = os.environ["BEARER_TOKEN"]
+    consumer_key = os.environ["CONSUMER_KEY"]
+    consumer_secret = os.environ["CONSUMER_SECRET"]
 
     client = tweepy.Client(bearer_token=bearer_token,
                            consumer_key=api_key, consumer_secret=api_key_secret,
@@ -23,11 +24,10 @@ def aws_sw_video(event, context):
     s3_client = boto3.client('s3')
 
     # Define your S3 bucket name
-    bucket_name = 'starwars.videos'   #'s3://starwars.videos'
+    bucket_name = 'starwars.videos'  # 's3://starwars.videos'
 
     # List objects in the bucket
     response = s3_client.list_objects_v2(Bucket=bucket_name)
-
 
     # Check if there are any objects in the bucket
     if 'Contents' not in response:
@@ -79,6 +79,12 @@ def aws_sw_video(event, context):
 
     title = random_file[:random_file.find("/")]  # this gets str up until the first space
     tweet_text = titles[title]
+
+    ran = random.random()
+    if ran < 0.01:
+        tweet_text += " #StarWars"
+    elif ran < 0.02:
+        tweet_text += " #swtwt"
 
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)
