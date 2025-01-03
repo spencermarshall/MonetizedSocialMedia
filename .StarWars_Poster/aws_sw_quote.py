@@ -13,7 +13,6 @@ client = tweepy.Client(bearer_token = BEARER_TOKEN,
                                 consumer_key = API_KEY, consumer_secret = API_SECRET_KEY,
                                 access_token = ACCESS_TOKEN, access_token_secret = ACCESS_TOKEN_SECRET)
 
-
 def PostQuote(event, context):
     dict = {
         0: "I’ve been waiting for you, Obi-Wan. We meet again, at last. The circle is now complete. When I left you, I was but the learner; now I am the master.\" -Darth Vader ",
