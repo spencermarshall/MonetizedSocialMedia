@@ -1,3 +1,4 @@
+#this is an exact copy of what is in AWS Lambda "SW_video"
 import boto3  # this is pre-downloaded on aws
 import random
 import tweepy
