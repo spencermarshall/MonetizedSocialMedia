@@ -1,19 +1,20 @@
+#this is an exact copy of what is in AWS Lambda "SW_video"
 import random
 import tweepy
+import os
 
-API_KEY = 'placeholder'
-API_SECRET_KEY = 'placeholder'
-access_token = 'placeholder'
-access_token_secret = 'placeholder'
-bearer_token = 'placeholder'
+API_KEY = os.environ["API_KEY"]
+API_SECRET_KEY = os.environ["API_KEY_SECRET"]
+ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
+BEARER_TOKEN = os.environ["BEARER_TOKEN"]
 
-client = tweepy.Client(bearer_token = bearer_token,
+client = tweepy.Client(bearer_token = BEARER_TOKEN,
                                 consumer_key = API_KEY, consumer_secret = API_SECRET_KEY,
-                                access_token = access_token, access_token_secret = access_token_secret)
+                                access_token = ACCESS_TOKEN, access_token_secret = ACCESS_TOKEN_SECRET)
 
 
 def PostQuote(event, context):
-
     dict = {
         0: "I’ve been waiting for you, Obi-Wan. We meet again, at last. The circle is now complete. When I left you, I was but the learner; now I am the master.\" -Darth Vader ",
         1: "Don't get technical with me. What mission? What are you talking about? I've just about had enough of you. Go that way, you'll be malfunctioning in a day you near-sighted scrap pile.\" -C-3PO ",
@@ -362,15 +363,11 @@ def PostQuote(event, context):
 
     tweet_text = "\"" + dict[random.randint(0,342)]
 
-    tagsString = f""
-    tags = ["#StarWars ", "#StarWarsQuotes ",
-            "#swtwt "]   # todo i can add more possible tags if desired
-    for tag in tags:
-        randomProb = 0.1  #each tag has 10% chance of being included unless otherwise specified
-        if random.random() < randomProb:
-            tagsString += tag
-    tweet_text += tagsString
+    ran = random.random()
+    if ran < 0.02:
+        tweet_text += "#StarWars"
+    elif ran < 0.04:
+        tweet_text += "#swtwt"
+    elif ran < 0.05:
+        tweet_text += "#StarWarsQuotes"
     client.create_tweet(text=tweet_text)
-
-
-
