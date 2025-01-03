@@ -10,8 +10,6 @@ def aws_sw_video(event, context):
     access_token = os.environ["ACCESS_TOKEN"]
     access_token_secret = os.environ["ACCESS_TOKEN_SECRET"]
     bearer_token = os.environ["BEARER_TOKEN"]
-    consumer_key = os.environ["CONSUMER_KEY"]
-    consumer_secret = os.environ["CONSUMER_SECRET"]
 
     client = tweepy.Client(bearer_token=bearer_token,
                            consumer_key=api_key, consumer_secret=api_key_secret,
@@ -19,24 +17,22 @@ def aws_sw_video(event, context):
 
     auth = tweepy.OAuth1UserHandler(api_key, api_key_secret, access_token, access_token_secret)
     api = tweepy.API(auth)
-
-    # Initialize the S3 client
     s3_client = boto3.client('s3')
 
-    # Define your S3 bucket name
+    # aws S3 bucket name
     bucket_name = 'starwars.videos'  # 's3://starwars.videos'
 
-    # List objects in the bucket
+    # List all objects in the bucket - i only put .mp4 in this bucket but i verify files chosen end in .mp4
     response = s3_client.list_objects_v2(Bucket=bucket_name)
 
-    # Check if there are any objects in the bucket
+    # Check if bucket is empty
     if 'Contents' not in response:
         return {
             'statusCode': 404,
             'body': 'No files found in the S3 bucket.'
         }
 
-    # Filter the list to include only .mp4 files
+    # Filter the list to include only .mp4 files - s3 bucket should only have .mp4 in the first place though
     mp4_files = [file['Key'] for file in response['Contents'] if file['Key'].endswith('.mp4')]
 
     # If there are no MP4 files
@@ -46,8 +42,7 @@ def aws_sw_video(event, context):
             'body': 'No MP4 files found in the S3 bucket.'
         }
 
-    # Select a random MP4 file
-    random_file = random.choice(mp4_files)
+    random_file = random.choice(mp4_files) #this picks a random mp4 file from the s3 bucket
 
     titles = {
         "ep1": "The Phantom Menace",
@@ -89,9 +84,8 @@ def aws_sw_video(event, context):
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)
 
-    # Upload the file to Twitter using Tweepy
     media = api.media_upload(download_path)
-    client.create_tweet(text=tweet_text, media_ids=[media.media_id])
+    client.create_tweet(text=tweet_text, media_ids=[media.media_id]) #this actually posts the tweet
 
     return {
         'statusCode': 200,
