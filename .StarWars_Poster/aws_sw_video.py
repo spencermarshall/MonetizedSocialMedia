@@ -6,17 +6,17 @@ import os
 
 
 def aws_sw_video(event, context):
-    api_key = os.environ["API_KEY"]
-    api_key_secret = os.environ["API_KEY_SECRET"]
-    access_token = os.environ["ACCESS_TOKEN"]
-    access_token_secret = os.environ["ACCESS_TOKEN_SECRET"]
-    bearer_token = os.environ["BEARER_TOKEN"]
+    API_KEY = os.environ["API_KEY"]
+    API_SECRET_KEY = os.environ["API_SECRET_KEY"]
+    ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+    ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
+    BEARER_TOKEN = os.environ["BEARER_TOKEN"]
 
-    client = tweepy.Client(bearer_token=bearer_token,
-                           consumer_key=api_key, consumer_secret=api_key_secret,
-                           access_token=access_token, access_token_secret=access_token_secret)
+    client = tweepy.Client(bearer_token=BEARER_TOKEN,
+                           consumer_key=API_KEY, consumer_secret=API_SECRET_KEY,
+                           access_token=ACCESS_TOKEN, access_token_secret=ACCESS_TOKEN_SECRET)
 
-    auth = tweepy.OAuth1UserHandler(api_key, api_key_secret, access_token, access_token_secret)
+    auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
     api = tweepy.API(auth)
     s3_client = boto3.client('s3')
 

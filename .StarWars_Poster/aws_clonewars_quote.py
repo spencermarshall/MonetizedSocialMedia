@@ -1,17 +1,18 @@
 import random
 import tweepy
+import os
 
-API_KEY = 'placeholder'
-API_SECRET_KEY = 'placeholder'
-access_token = 'placeholder'
-access_token_secret = 'placeholder'
-bearer_token = 'placeholder'
-consumer_key = 'placeholder'
-consumer_secret = 'placeholder'   #also client secret i guess :/
+API_KEY = os.environ["API_KEY"]
+API_SECRET_KEY = os.environ["API_SECRET_KEY"]
+ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
+BEARER_TOKEN = os.environ["BEARER_TOKEN"]
 
-client = tweepy.Client(bearer_token = bearer_token,
-                                consumer_key = API_KEY, consumer_secret = API_SECRET_KEY,
-                                access_token = access_token, access_token_secret = access_token_secret)
+client = tweepy.Client(bearer_token=BEARER_TOKEN,
+                       consumer_key=API_KEY, consumer_secret=API_SECRET_KEY,
+                       access_token=ACCESS_TOKEN, access_token_secret=ACCESS_TOKEN_SECRET)
+
+
 def postCWQuote(event, context):
     quotes = {
         1: 'Great leaders inspire greatness in others. -The Clone Wars s1e1',
@@ -36,7 +37,6 @@ def postCWQuote(event, context):
         20: 'The costs of war can never be truly accounted for. -The Clone Wars s1e20',
         21: 'Compromise is a virtue to be cultivated, not a weakness to be despised. -The Clone Wars s1e21',
         22: 'A secret shared is a trust formed. -The Clone Wars s1e22',
-
         23: 'A lesson learned is a lesson earned. -The Clone Wars s2e1',
         24: 'Overconfidence is the most dangerous form of carelessness. -The Clone Wars s2e2',
         25: 'The first step to correcting a mistake is patience. -The Clone Wars s2e3',
@@ -58,8 +58,6 @@ def postCWQuote(event, context):
         41: 'Who my father was matters less than my memory of him. -The Clone Wars s2e20',
         42: 'Adversity is a friendship’s truest test. -The Clone Wars s2e21',
         43: 'Revenge is a confession of pain. -The Clone Wars s2e22',
-        128: 'Believe in yourself or no one else will. -The Clone Wars s2e5',
-
         44: 'Brothers in arms are brothers for life. -The Clone Wars s3e1',
         45: 'Fighting a war tests a soldier’s skills, defending his home tests a soldier’s heart. -The Clone Wars s3e2',
         46: 'Where there’s a will, there’s a way. -The Clone Wars s3e3',
@@ -82,7 +80,6 @@ def postCWQuote(event, context):
         63: 'Without honor, victory is hollow. -The Clone Wars s3e20',
         64: 'Without humility, courage is a dangerous game. -The Clone Wars s3e21',
         65: 'A great student is what the teacher hopes to be. -The Clone Wars s3e22',
-
         66: 'When destiny calls, the chosen have no choice. -The Clone Wars s4e1',
         67: 'Only through fire is a strong sword forged. -The Clone Wars s4e2',
         68: 'Crowns are inherited, kingdoms are earned. -The Clone Wars s4e3',
@@ -105,7 +102,6 @@ def postCWQuote(event, context):
         85: 'Who we are never changes, who we think we are does. -The Clone Wars s4e20',
         86: 'A fallen enemy may rise again, but the reconciled one is truly vanquished. -The Clone Wars s4e21',
         87: 'The enemy of my enemy is my friend. -The Clone Wars s4e22',
-
         88: 'Strength of character can defeat strength in numbers. -The Clone Wars s5e1',
         89: 'Fear is a malleable weapon. -The Clone Wars s5e2',
         90: 'To seek something is to believe in its possibility. -The Clone Wars s5e3',
@@ -125,8 +121,6 @@ def postCWQuote(event, context):
         104: 'Courage begins by trusting oneself. -The Clone Wars s5e18',
         105: 'Never become desperate enough to trust the untrustworthy. -The Clone Wars s5e19',
         106: 'Never give up hope, no matter how dark things seem. -The Clone Wars s5e20',
-        129: 'Disobedience is a demand for change. -The Clone Wars s5e5',
-
         107: 'The truth about yourself is always the hardest to accept. -The Clone Wars s6e1',
         108: 'The wise benefit from a second opinion. -The Clone Wars s6e2',
         109: 'When in doubt, go to the source. -The Clone Wars s6e3',
@@ -140,7 +134,6 @@ def postCWQuote(event, context):
         117: 'Madness can sometimes be the path to truth. -The Clone Wars s6e11',
         118: 'Death is just the beginning. -The Clone Wars s6e12',
         119: 'Facing all that you fear will free you from yourself. -The Clone Wars s6e13',
-
         120: 'Embrace others for their differences, for that makes you whole. -The Clone Wars s7e1',
         121: 'The search for truth begins with belief. -The Clone Wars s7e2',
         122: 'Survival is one step on the path to living. -The Clone Wars s7e3',
@@ -148,16 +141,22 @@ def postCWQuote(event, context):
         124: 'If there is no path before you, create your own. -The Clone Wars s7e5',
         125: 'Mistakes are valuable lessons often learned too late. -The Clone Wars s7e6',
         126: 'Who you were does not have to define who you are. -The Clone Wars s7e7',
-        127: 'You can change who you are, but you cannot run from yourself. -The Clone Wars s7e8'
+        127: 'You can change who you are, but you cannot run from yourself. -The Clone Wars s7e8',
+        128: 'Believe in yourself or no one else will. -The Clone Wars s2e5',
+        129: 'Disobedience is a demand for change. -The Clone Wars s5e5'
     }
 
     tweet_text = quotes[random.randint(1, len(quotes))] + " "
 
     tagsString = f""
-    tags = ["#StarWars ", "#TheCloneWars ", "#StarWarsQuotes ", "#swtwt "]   # todo i can add more possible tags if desired
-    for tag in tags:
-        randomProb = 0.10  # each tag has 10% chance of being included unless otherwise specified
-        if random.random() < randomProb:
-            tagsString += tag
-    tweet_text += tagsString
+    ran = random.random()
+    if ran < 0.04:
+        tweet_text += " #swtwt"
+    elif ran < 0.05:
+        tweet_text += " #StarWars"
+    elif ran < 0.06:
+        tweet_text += " #TheCloneWars"
+    elif ran < 0.07:
+        tweet_text += " #StarWarsQuotes"
+
     client.create_tweet(text=tweet_text)
