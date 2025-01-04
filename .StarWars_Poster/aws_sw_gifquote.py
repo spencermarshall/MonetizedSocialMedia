@@ -449,10 +449,8 @@ def SW_gif_post(event,context):
         elif ran < 0.12:
             tweet_text += "#swtwt"
 
-        # Post the tweet with the GIF
         client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
-        # Remove the temporary file after posting the tweet
         os.remove(temp_filename)
 
         return "Tweet posted successfully!"
