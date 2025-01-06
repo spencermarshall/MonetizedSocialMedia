@@ -428,7 +428,6 @@ def SW_gif_post(event,context):
     random_key = random.choice(list(gif_dict.keys()))
     gif_url = "https://raw.githubusercontent.com/spencermarshall/StarWarsTwitterPost/main/images/quote-or-meme/" + random_key
 
-    # Temporary file path in AWS Lambda
     temp_filename = '/tmp/temp_media.gif'
 
     # Download the GIF
