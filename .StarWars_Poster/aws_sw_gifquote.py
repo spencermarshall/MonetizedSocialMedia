@@ -4,7 +4,7 @@ import os
 import requests
 
 
-# Authenticate to Twitter using Client for v2 API
+# Authenticate to Twitter using Client for v2   API
 client = tweepy.Client(
     bearer_token = bearer_token,
     consumer_key = API_KEY,
