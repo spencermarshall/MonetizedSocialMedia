@@ -51,7 +51,7 @@ def aws_lotr_video(event, context):
     random_file = random.choice(mp4_files)
 
     titles = {
-        "lotr1": "Lord of the Rings", #i should change this to be title of 1st movie, but for now all videos are here so i just want text to be LOTR
+        "lotr1": "Lord of the Rings",  #i should change this to be title of 1st movie, but for now all videos are here so i just want text to be LOTR
         "lotr2": "title2",
         "lotr3": "title3",
         "hobbit1": "title4",
