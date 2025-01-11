@@ -19,7 +19,6 @@ def aws_lotr_video(event, context):
     auth = tweepy.OAuth1UserHandler(lotr_api_key, lotr_api_key_secret, lotr_access_token, lotr_access_token_secret)
     api = tweepy.API(auth)
 
-    # Initialize the S3 client
     s3_client = boto3.client('s3')
 
     # Define your S3 bucket name

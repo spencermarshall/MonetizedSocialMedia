@@ -1,9 +1,10 @@
-import tweepy
 import os
 import random
-import requests
+import boto3
+import tweepy
 from datetime import date
 
+# X credentials stored in env variables
 API_KEY = os.environ["API_KEY"]
 API_SECRET_KEY = os.environ["API_SECRET_KEY"]
 ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
@@ -21,48 +22,52 @@ client = tweepy.Client(
     access_token_secret=ACCESS_TOKEN_SECRET
 )
 
-
 def dailyHelloThere(event, context):
+    # 1) Calculate the day count since your start date
     start_date = date(2024, 7, 1)
     today_date = date.today()
     days_since_target = (today_date - start_date).days
 
     name = "Kenobi"
-    ran = random.random()
-    if ran > 0.5:
+    if random.random() < 0.5:
         name = "Obi-Wan Kenobi"
 
     title = " "
-    ran = random.random()
-    if ran > 0.2:
+    if random.random() < 0.8:
         title = " Star Wars "
-    tweet_text = f"Day {days_since_target} of posting {name}'s \"Hello there\" from{title}Episode 3: Revenge of the Sith "
 
-    ran = random.random()
-    if ran < 0.04:
+    posting = "posting"
+    if random.random() < 0.1:
+        posting = "tweeting"
+
+    tweet_text = (
+        f"Day {days_since_target} of {posting} {name}'s \"Hello there\" from{title}Episode 3: Revenge of the Sith "
+    )
+
+    r = random.random()
+    if r < 0.04:
         tweet_text += "#swtwt"
-    elif ran < 0.05:
+    elif r < 0.05:
         tweet_text += "#StarWars"
-    elif ran < 0.055:
+    elif r < 0.055:
         tweet_text += "#Kenobi"
-    elif ran < 0.06:
+    elif r < 0.06:
         tweet_text += "#Obiwan"
-    elif ran < 0.065:
+    elif r < 0.065:
         tweet_text += "#hellothere"
 
-    # temp github, todo: in future put the helloThere.gif in s3 bucket and pull from there, but this works for now
-    media_url = 'https://raw.githubusercontent.com/spencermarshall/StarWarsTwitterPost/main/images/helloThere.gif'
+    s3 = boto3.client('s3')
+    bucket_name = 'starwars.gifs'
+    ep3_hellothere = 'hellothere/helloThere.gif'
     temp_filename = '/tmp/temp_media.gif'
 
-    response = requests.get(media_url)
-    if response.status_code == 200:
-        with open(temp_filename, 'wb') as f:
-            f.write(response.content)
+    try:
+        s3.download_file(bucket_name, ep3_hellothere, temp_filename)
+    except Exception as e:
+        print(f"Failed to download {ep3_hellothere} from S3: {e}")
+        return  # Exit if we cannot get the file
 
-        media = api.media_upload(temp_filename)
+    media = api.media_upload(temp_filename)
+    client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
-        client.create_tweet(text=tweet_text, media_ids=[media.media_id])
-
-        os.remove(temp_filename)
-    else:
-        print("Failed to download media")
+    os.remove(temp_filename)
