@@ -79,7 +79,7 @@ def aws_sw_video(event, context):
     ran = random.random()
     if ran < 0.01:
         tweet_text += " #StarWars"
-    elif ran < 0.02:
+    elif ran < 0.03:
         tweet_text += " #swtwt"
 
     download_path = f"/tmp/{os.path.basename(random_file)}"
