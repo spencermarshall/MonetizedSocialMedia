@@ -3,7 +3,6 @@ import random
 import tweepy
 import os
 
-
 API_KEY = os.environ["API_KEY"]
 API_SECRET_KEY = os.environ["API_SECRET_KEY"]
 ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
