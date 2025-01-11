@@ -57,11 +57,11 @@ def SW_meme_post(event, context):
         tweet_text = "#StarWarsMemes"
     elif rand_val < 0.1:
         tweet_text = "lol"
-    elif rand_val < 0.2:
+    elif rand_val < 0.13:
         tweet_text = "Star Wars"
-    elif rand_val < 0.22:
+    elif rand_val < 0.16:
         tweet_text = "Star Wars Meme"
-    elif rand_val < 0.25:
+    elif rand_val < 0.2:
         tweet_text = "😂"
     elif rand_val < 0.3:
         tweet_text = "🤣"
