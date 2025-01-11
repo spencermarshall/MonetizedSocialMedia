@@ -26,7 +26,6 @@ def aws_sw_video(event, context):
     # List all objects in the bucket - i only put .mp4 in this bucket but i verify files chosen end in .mp4
     response = s3_client.list_objects_v2(Bucket=bucket_name)
 
-    # Check if bucket is empty
     if 'Contents' not in response:
         return {
             'statusCode': 404,
@@ -36,7 +35,6 @@ def aws_sw_video(event, context):
     # Filter the list to include only .mp4 files - s3 bucket should only have .mp4 in the first place though
     mp4_files = [file['Key'] for file in response['Contents'] if file['Key'].endswith('.mp4')]
 
-    # If there are no MP4 files
     if not mp4_files:
         return {
             'statusCode': 404,
@@ -73,7 +71,7 @@ def aws_sw_video(event, context):
         "acolyte": "The Acolyte"
     }
 
-    title = random_file[:random_file.find("/")]  # this gets str up until the first space
+    title = random_file[:random_file.find("/")]  # this gets file name until /
     tweet_text = titles[title]
 
     ran = random.random()
