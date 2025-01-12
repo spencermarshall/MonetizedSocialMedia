@@ -22,10 +22,11 @@ client = tweepy.Client(
 )
 
 s3_client = boto3.client('s3')
-bucket_name = 'lotr.photos'
+bucket_name = 'lotr.gifs'
 
 
-def LOTR_meme_post(event, context):
+def LOTR_gif_post(event, context):
+    # List objects in the bucket
     response = s3_client.list_objects_v2(Bucket=bucket_name)
 
     if 'Contents' not in response:
@@ -34,27 +35,30 @@ def LOTR_meme_post(event, context):
             'body': 'No files found in the S3 bucket.'
         }
 
-    # Filter to include only .jpg files
-    jpg_files = [file['Key'] for file in response['Contents'] if file['Key'].endswith('.jpg')]
+    # Filter the list to include only .jpg files
+    jpg_files = [file['Key'] for file in response['Contents'] if file['Key'].endswith('.gif')]
 
     if not jpg_files:
         return {
             'statusCode': 404,
-            'body': 'No JPG files found in the S3 bucket.'
+            'body': 'No gif files found in the S3 bucket.'
         }
 
     random_file = random.choice(jpg_files)
-
-    tweet_text = ""  # 20% of each possible: "", #LOTR, #LordOfTheRings, Lord of the Rings, LOTR
+    first_letter = random_file[0]
+    tweet_text = ""
     ran = random.random()
     if ran < 0.02:
-        tweet_text = "#LOTR"
-    elif ran < 0.04:
-        tweet_text = "#LordOfTheRings"
-    elif ran < 0.14:
-        tweet_text = "Lord of the Rings"
-    elif ran < 0.2:
-        tweet_text = "LOTR"
+        tweet_text += "#LOTR"
+    elif ran < 0.25:
+        if first_letter == "l":
+            tweet_text += "Lord of the Rings"
+        elif first_letter == "h":
+            tweet_text += "The Hobbit"
+        elif first_letter == "r":
+            tweet_text += "The Rings of Power"
+    elif ran < 0.26:
+        tweet_text += "#LordOfTheRings"
 
     # Download the selected file to a temporary directory
     download_path = f"/tmp/{os.path.basename(random_file)}"

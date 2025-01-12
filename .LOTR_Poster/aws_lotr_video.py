@@ -1,44 +1,42 @@
-import boto3 #this is pre-downloaded on aws
+import boto3  # this is pre-downloaded on aws
 import random
 import tweepy
 import os
 
-lotr_api_key = 'placeholder'
-lotr_api_key_secret = 'placeholder'
-lotr_client_id = 'placeholder'
-lotr_client_secret = 'placeholder'
-lotr_bearer_token = 'placeholder'
-lotr_access_token = 'placeholder'
-lotr_access_token_secret = 'placeholder'
+# X credentials stored in env variables
+API_KEY = os.environ["API_KEY"]
+API_SECRET_KEY = os.environ["API_SECRET_KEY"]
+ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
+BEARER_TOKEN = os.environ["BEARER_TOKEN"]
+
+auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+api = tweepy.API(auth)
+
+client = tweepy.Client(
+    bearer_token=BEARER_TOKEN,
+    consumer_key=API_KEY,
+    consumer_secret=API_SECRET_KEY,
+    access_token=ACCESS_TOKEN,
+    access_token_secret=ACCESS_TOKEN_SECRET
+)
+
 
 def aws_lotr_video(event, context):
-    client = tweepy.Client(bearer_token=lotr_bearer_token,
-                           consumer_key=lotr_api_key, consumer_secret=lotr_api_key_secret,
-                           access_token=lotr_access_token, access_token_secret=lotr_access_token_secret)
-
-    auth = tweepy.OAuth1UserHandler(lotr_api_key, lotr_api_key_secret, lotr_access_token, lotr_access_token_secret)
-    api = tweepy.API(auth)
-
     s3_client = boto3.client('s3')
+    bucket_name = 'lotr.videos'  # s3 bucket
 
-    # Define your S3 bucket name
-    bucket_name = 'lotr.videos'   # s3 bucket
-
-    # List objects in the bucket
     response = s3_client.list_objects_v2(Bucket=bucket_name)
 
-
-    # Check if there are any objects in the bucket
     if 'Contents' not in response:
         return {
             'statusCode': 404,
             'body': 'No files found in the S3 bucket.'
         }
 
-    # Filter the list to include only .mp4 files
+    # only .mp4 files
     mp4_files = [file['Key'] for file in response['Contents'] if file['Key'].endswith('.mp4')]
 
-    # If there are no MP4 files
     if not mp4_files:
         return {
             'statusCode': 404,
@@ -48,18 +46,29 @@ def aws_lotr_video(event, context):
     random_file = random.choice(mp4_files)
 
     titles = {
-        "lotr1": "Lord of the Rings",  #i should change this to be title of 1st movie, but for now all videos are here so i just want text to be LOTR
-        "lotr2": "title2",
-        "lotr3": "title3",
-        "hobbit1": "title4",
-        "hobbit2": "title5",
-        "hobbit3": "title6",
+        "lotr1": "LOTR: The Fellowship of the Ring",
+        "lotr2": "LOTR: The Two Towers",
+        "lotr3": "LOTR: The Return of the King",
+        "hobbit1": "The Hobbit: An Unexpected Journey",
+        "hobbit2": "The Hobbit: The Desolation of Smaug",
+        "hobbit3": "The Hobbit: The Battle of the Five Armies",
     }
 
     title = random_file[:random_file.find("/")]  # this gets str up until the first space
     tweet_text = titles[title]
-    tweet_text += " #LordOfTheRings"
-    # tweet_text += " #TheHobbit"
+
+    if random.random() < 0.5:
+        if tweet_text[0] == "L":
+            tweet_text = tweet_text[6:]
+        elif tweet_text[0] == "T":
+            tweet_text = tweet_text[12:]
+
+    ran = random.random()
+    if ran < 0.02:
+        tweet_text += " #LOTR"
+    elif ran < 0.04:
+        tweet_text += " #LordOfTheRings"
+    print(ran)
 
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)
@@ -72,8 +81,3 @@ def aws_lotr_video(event, context):
         'statusCode': 200,
         'body': f"Tweet posted with media: {random_file}"
     }
-
-
-
-
-
