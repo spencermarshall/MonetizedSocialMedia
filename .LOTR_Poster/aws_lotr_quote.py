@@ -2,11 +2,7 @@ import random
 import tweepy
 import os
 
-lotr_api_key = 'placeholder'
-lotr_api_key_secret = 'placeholder'
-lotr_bearer_token = 'placeholder'
-lotr_access_token = 'placeholder'
-lotr_access_token_secret = 'placeholder'
+
 
 
 client = tweepy.Client(bearer_token = lotr_bearer_token,
