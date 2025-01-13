@@ -3,8 +3,6 @@ import tweepy
 import os
 
 
-
-
 client = tweepy.Client(bearer_token = lotr_bearer_token,
                                 consumer_key = lotr_api_key, consumer_secret = lotr_api_key_secret,
                                 access_token = lotr_access_token, access_token_secret = lotr_access_token_secret)
