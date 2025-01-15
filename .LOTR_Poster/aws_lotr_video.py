@@ -68,7 +68,6 @@ def aws_lotr_video(event, context):
         tweet_text += " #LOTR"
     elif ran < 0.04:
         tweet_text += " #LordOfTheRings"
-    print(ran)
 
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)
@@ -81,4 +80,3 @@ def aws_lotr_video(event, context):
         'statusCode': 200,
         'body': f"Tweet posted with media: {random_file}"
     }
-
