@@ -69,6 +69,10 @@ def aws_lotr_video(event, context):
     elif ran < 0.04:
         tweet_text += " #LordOfTheRings"
 
+
+
+
+
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)
 
