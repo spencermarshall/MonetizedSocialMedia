@@ -71,8 +71,6 @@ def aws_lotr_video(event, context):
 
 
 
-
-
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)
 
