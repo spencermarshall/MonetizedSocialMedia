@@ -25,6 +25,10 @@ s3_client = boto3.client('s3')
 bucket_name = 'lotr.gifs'
 
 
+
+
+
+
 def LOTR_gif_post(event, context):
     # List objects in the bucket
     response = s3_client.list_objects_v2(Bucket=bucket_name)
