@@ -7,8 +7,6 @@ client = tweepy.Client(bearer_token = lotr_bearer_token,
                                 access_token = lotr_access_token, access_token_secret = lotr_access_token_secret)
 
 
-
-
 def post_lotr_quote(event, context):
     lotr_quotes = {
         0: "\"Text quote.\" -name",
