@@ -15,10 +15,6 @@ client = tweepy.Client(bearer_token=BEARER_TOKEN,
 
 
 def bom_daily_verse(event, context):
-    today = datetime.today()
-    day_num = today.timetuple().tm_yday
-    print(day_num)
-    print(today)
 
     daily_verse = {
         1: "We believe in God, the Eternal Father, and in His Son, Jesus Christ, and in the Holy Ghost.",
