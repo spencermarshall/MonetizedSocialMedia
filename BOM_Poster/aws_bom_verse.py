@@ -123,3 +123,5 @@ def bom_daily_verse(event, context):
     print(tweet_text)
 
     client.create_tweet(text=tweet_text)
+
+
