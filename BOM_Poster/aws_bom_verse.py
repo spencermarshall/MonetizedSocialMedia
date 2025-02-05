@@ -15,7 +15,6 @@ client = tweepy.Client(bearer_token=BEARER_TOKEN,
 
 
 def bom_daily_verse(event, context):
-
     daily_verse = {
         1: "We believe in God, the Eternal Father, and in His Son, Jesus Christ, and in the Holy Ghost.",
         2: "We believe that men will be punished for their own sins, and not for Adam’s transgression.",
