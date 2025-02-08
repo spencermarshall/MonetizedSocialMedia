@@ -136,7 +136,6 @@ def aws_bb_video(event, context):
     # Upload the file to Twitter using Tweepy
     media = api.media_upload(download_path)
 
-    # Create a tweet with the uploaded media
     client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
     return {
