@@ -2,6 +2,7 @@ import random
 import boto3
 import tweepy
 import os
+import json
 
 # X credentials stored in env variables
 API_KEY = os.environ["API_KEY"]
@@ -23,7 +24,6 @@ client = tweepy.Client(
 
 
 def SW_question(event, context):
-
     questions = {
         1: "Rebellion or Empire?",
         2: "Stormtrooper or Clone Trooper?",
@@ -39,7 +39,7 @@ def SW_question(event, context):
         12: "What are your opinions on Star Wars Rebels?",
         13: "What are your thoughts on the Clone Wars show (2003)?",
         14: "What are your thoughts on The Clone Wars?",
-        15: "What are your thoughts on The Mandalorian?",
+        15: "What are your thoughts on The Mandalorian TV Show?",
         16: "What are your opinions on the Bad Batch?",
         17: "What are your opinions on Skeleton Crew?",
         18: "What are your thoughts on Tales of the Jedi?",
@@ -87,7 +87,7 @@ def SW_question(event, context):
         60: "What are your opinions on the newer Lego Star Wars: Skywalker Saga game (2022)?",
         61: "What are your opinions on Jedi Fallen Order?",
         62: "What are your opinions on the Star Wars Squadrons game (2020)?",
-        63: "What are your opinions on the Star Wars: Knights of the Old Republic game?",
+        63: "What are your opinions on the Star Wars: Knights Of The Old Republic game?",
         64: "What are your opinions on Jedi Survivor?",
         65: "What are your opinions on Cal Kestis?",
         66: "What are your opinions on Sith Troopers from Ep9?",
@@ -113,7 +113,7 @@ def SW_question(event, context):
         86: "Which is your favorite Star Wars Trilogy?",
         87: "Which is your favorite Star Wars live action TV show?",
         88: "Which is your favorite Star Wars animated TV show?",
-        89: "What are your opinions on ep1 Yoda as a Puppet?",
+        89: "What are your opinions on Yoda as a Puppet in Ep 1?",
         90: "What are your opinions on Ray Park as Darth Maul",
         91: "What are your thoughts on Qui-Gon Jinn coming back as a Force Ghost in the Kenobi show??",
         92: "What are your thoughts on C-3PO's red arm?",
@@ -165,9 +165,10 @@ def SW_question(event, context):
         138: "What are your thoughts on the relationship between Obi-Wan Kenobi and Satine Kryze?",
         139: "Do you think the Jedi Council was too rigid in their beliefs? Why or why not?",
         140: "What are your opinions on the portrayal of Anakin Skywalker's fall to the dark side?",
-        141: "What are your thoughts on how Clone Troopers were treated after Order 66?"
+        141: "What are your thoughts on how Clone Troopers were treated after Order 66?",
         142: "How do you feel about Lando Calrissian’s role in both the original trilogy and his return in ep9?",
-        143: "If you could choose one non-canon story to make canon, which one would it be and why?", #pictures below here
+        143: "If you could choose one non-canon story to make canon, which one would it be and why?",
+        # pictures below here
         144: "What are your opinions on Mace Windu?",
         145: "What are your opinions on Chancellor Valorum?",
         146: "What are your opinions on Watto?",
@@ -189,7 +190,7 @@ def SW_question(event, context):
         162: "What are your thoughts on Jyn Erso?",
         163: "What are your thoughts on K-2SO?",
         164: "What are your thoughts on Director Krennic?",
-        165: "What are your thoughts on Mon Monthma in Rogue One and Andor?",
+        165: "What are your thoughts on Mon Mothma in Rogue One and Andor?",
         166: "What are your thoughts of Cassion Andor just in Rogue One? What about in his TV show?",
         167: "What are your thoughts on Alden Ehrenreich's portrayal of Han Solo?",
         168: "What are your thoughts on Donald Glover's portrayal of Lando Calrissian?",
@@ -259,18 +260,97 @@ def SW_question(event, context):
         232: "What are your thoughts on Kumail Ali Nanjiani's character in the Obi-Wan Kenobi show?",
         233: "What are your thoughts on Darth Jar Jar?"
     }
-    index = random.randint(1, len(questions))
-    question = questions[index]
+
+    # s3 bucket files look up
+    lookup = {
+        89: "questions/char_Yoda(puppet)/",  # yoda puppet
+        215: "questions/char_JudeLaw/",
+        216: "questions/char_Omega/",
+        217: "questions/char_Crosshair/",
+        218: "questions/char_Hunter/",
+        219: "questions/char_Tech/",
+        220: "questions/char_Wrecker/",
+        221: "questions/char_Echo/",
+        226: "questions/char_Leia(Kenobi-show)/",
+        227: "questions/char_Obi-Wan(Kenobi-Show)/",
+        228: "questions/char_Vader(Kenobi-show)/",
+        229: "questions/char_OwenBeruLars(Kenobi-show)/",
+        230: "None",
+        231: "questions/char_SenatorOrgana(Kenobi-Show)/",
+        232: "questions/char_Kumail(Kenobi-Show)/",
+        233: "questions/char_DarthJarJar/"
+    }
+
+    bucket_name = 'starwars.photos'
+    file_key = 'notes/SW_questions.txt'
+    s3 = boto3.client('s3')
+
+    try:
+        # Fetch the current file from S3
+        response = s3.get_object(Bucket=bucket_name, Key=file_key)
+        file_content = response['Body'].read().decode('utf-8')
+
+        # Convert the file content (string) into a Python list
+        question_indices = json.loads(file_content)
+        print(question_indices)
+
+        index = random.randint(1, len(questions))
+
+        # try again until we get new item not in list
+        while index in question_indices:
+            index = random.randint(1, len(questions))
+
+        # gets image from s3 bucket, not yet implemented
+        # temp = lookup[index]
+        # response = s3.list_objects_v2(Bucket=bucket_name, Prefix=temp)
+        # if 'Contents' not in response:
+        #     return {
+        #         'statusCode': 404,
+        #         'body': 'No files found in the specified directory.'
+        #     }
+        # # Extract file keys (paths) from the response
+        # file_keys = [obj['Key'] for obj in response['Contents'] if obj['Key'] != temp]
+        # # Check if there are files to choose from
+        # if not file_keys:
+        #     return {
+        #         'statusCode': 404,
+        #         'body': 'No files found in the specified directory.'
+        #     }
+        # # Pick a random file from the list
+        # random_file = random.choice(file_keys)
+
+        question_indices.insert(0, index)
+
+        # Ensure the list does not exceed its original length
+        if len(question_indices) > 100:
+            question_indices.pop()  # Remove the last element
+
+        # Convert the updated list back to JSON string
+        updated_content = json.dumps(question_indices)
+
+        # Upload the updated content back to S3
+        s3.put_object(Bucket=bucket_name, Key=file_key, Body=updated_content)
+        question = questions[index]
+
+        client.create_tweet(text=question)
+        # these 4 are for image, not implemented yet:   TODO
+        # download_path = f"/tmp/{os.path.basename(random_file)}"
+        # s3.download_file(bucket_name, random_file, download_path)
+        # media = api.media_upload(download_path)
+        # client.create_tweet(text=question, media_ids=[media.media_id])
+
+        return {
+            'statusCode': 200,
+            'body': f"Updated SW_questions.txt with new index {index}."
+        }
 
 
-    factor = len(questions) / 168
-    # dictionary, 1000 questions open ended to cause discussion, conversation, and engagement
-
-    # pull question/id
-
-    # while question is in 50 most recent, pick a new question
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': f"An error occurred: {str(e)}"
+        }
 
     # post tweet question
-    client.create_tweet(text=question)
 
     # update 50 most recent dynamo DB, FIFO so it keeps track of 50 most recent questions/id
