@@ -276,7 +276,6 @@ def SW_question(event, context):
         248: "How has Star Wars impacted your life?",
         249: "Which Star Wars character do you relate to the most?",
         250: "When did you first become a Star Wars fan?",
-        251: "What is your favorite Star Wars toy?"
     }
 
     # s3 bucket files look up

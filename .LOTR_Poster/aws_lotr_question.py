@@ -242,7 +242,7 @@ def lotr_question(event, context):
         215: "What are your opinions on Thorin Oakenshield?",
         216: "What are your opinions on Smaug?",
         217: "What are your opinions on Boromir?",
-        218: "What are your opinions on Celebrimbor?",
+        218: "What is your favorite quote from The Hobbit?",
         219: "What are your opinions on Faramir?",
         220: "What are your opinions on Éomer?",
         221: "What are your opinions on Treebeard?",
@@ -277,8 +277,8 @@ def lotr_question(event, context):
         250: "What do you think is the most significant moment of courage in LOTR?",
         251: "What do you think is the most significant moment of wisdom in LOTR?",
         252: "What do you think is the most significant moment of love in LOTR?",
-        253: "What is your favorite quote from LOTR?",
-        254: "What is your favorite quote from The Hobbit?"
+        253: "What is your favorite quote from LOTR?"
+
     }
 
     # s3 bucket files look up
@@ -515,11 +515,32 @@ def lotr_question(event, context):
         230: "None",
         231: "None",  # "questions/char_SenatorOrgana(Kenobi-Show)/",
         232: "None",  # "questions/char_Kumail(Kenobi-Show)/",
-        233: "None"  # "questions/char_DarthJarJar/"
+        233: "None",  # "questions/char_DarthJarJar/"
+        234: "None",
+        235: "None",
+        236: "None",
+        237: "None",
+        238: "None",
+        239: "None",
+        240: "None",
+        241: "None",
+        242: "None",
+        243: "None",
+        244: "None",
+        245: "None",
+        246: "None",
+        247: "None",
+        248: "None",
+        249: "None",
+        250: "None",
+        251: "None",
+        252: "None",
+        253: "None",
+        254: "None"
     }
 
     bucket_name = 'lotr.photos'
-    file_key = 'notes/SW_questions.txt'
+    file_key = 'notes/lotr_questions.txt'
     s3 = boto3.client('s3')
 
     try:
