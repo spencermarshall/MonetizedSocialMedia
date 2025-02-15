@@ -274,7 +274,7 @@ def BB_question(event, context):
         247: "How is isolation used as a recurring motif to underscore the internal emptiness of Breaking Bad’s characters?",
         248: "What does the psychological toll of a criminal lifestyle look like through the eyes of characters like Walt and Jesse?",
         249: "How does Walt’s final transformation complete his tragic arc and redefine his legacy in Breaking Bad?",
-        250: "How do the final episodes of Breaking Bad encapsulate the clash between personal ambition and moral responsibility?"
+        250: "How do the final episodes of Breaking Bad encapsulate the clash between personal ambition and moral responsibility?",
     }
 
 
