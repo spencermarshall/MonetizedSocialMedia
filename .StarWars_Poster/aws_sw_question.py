@@ -258,7 +258,25 @@ def SW_question(event, context):
         230: "What are your thoughts on the Kenobi Show's portrayal of the Inquisitors?",
         231: "What are your thoughts on the Kenobi Show's portrayal of Senator Organa?",
         232: "What are your thoughts on Kumail Ali Nanjiani's character in the Obi-Wan Kenobi show?",
-        233: "What are your thoughts on Darth Jar Jar?"
+        233: "What are your thoughts on Darth Jar Jar?",
+        234: "What are your thoughts on the Star Wars fandom?",
+        235: "Why do you like Star Wars?",
+        236: "What are your thoughts on the Star Wars prequels?",
+        237: "What are your thoughts on the Star Wars sequels?",
+        238: "What are your thoughts on the Star Wars originals?",
+        239: "What are your thoughts on the Star Wars Anthology films?",
+        240: "What are your thoughts on the Star Wars spin-off films?",
+        241: "What are your thoughts on the Star Wars animated shows?",
+        242: "What are your thoughts on the Star Wars live-action shows?",
+        243: "Who is your favorite Star Wars actor?",
+        244: "When did you first watch Star Wars?",
+        245: "What is your favorite Star Wars memory?",
+        246: "What is your favorite Star Wars moment?",
+        247: "What is your favorite Star Wars scene?",
+        248: "How has Star Wars impacted your life?",
+        249: "Which Star Wars character do you relate to the most?",
+        250: "When did you first become a Star Wars fan?",
+        251: "What is your favorite Star Wars toy?"
     }
 
     # s3 bucket files look up
