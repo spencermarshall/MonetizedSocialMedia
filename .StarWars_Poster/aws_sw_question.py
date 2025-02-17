@@ -259,23 +259,21 @@ def SW_question(event, context):
         231: "What are your thoughts on the Kenobi Show's portrayal of Senator Organa?",
         232: "What are your thoughts on Kumail Ali Nanjiani's character in the Obi-Wan Kenobi show?",
         233: "What are your thoughts on Darth Jar Jar?",
-        234: "What are your thoughts on the Star Wars fandom?",
-        235: "Why do you like Star Wars?",
-        236: "What are your thoughts on the Star Wars prequels?",
-        237: "What are your thoughts on the Star Wars sequels?",
-        238: "What are your thoughts on the Star Wars originals?",
-        239: "What are your thoughts on the Star Wars Anthology films?",
-        240: "What are your thoughts on the Star Wars spin-off films?",
-        241: "What are your thoughts on the Star Wars animated shows?",
-        242: "What are your thoughts on the Star Wars live-action shows?",
-        243: "Who is your favorite Star Wars actor?",
-        244: "When did you first watch Star Wars?",
-        245: "What is your favorite Star Wars memory?",
-        246: "What is your favorite Star Wars moment?",
-        247: "What is your favorite Star Wars scene?",
-        248: "How has Star Wars impacted your life?",
-        249: "Which Star Wars character do you relate to the most?",
-        250: "When did you first become a Star Wars fan?",
+        234: "Rebellion or Resistance?",
+        235: "Canon or Legends?",
+        236: "C-3PO or R2-D2",
+        237: "Anakin or Obi-Wan?",
+        238: "Darth Vader or Kylo Ren?",
+        239: "Darth Maul or Darth Vader?",
+        240: "Darth Vader or Darth Sidious?",
+        241: "Darth Sidious or Snoke?",
+        242: "Darth Sidious or Darth Plagueis?",
+        243: "Light Side or Dark Side?",
+        244: "X-Wing or TIE Fighter?",
+        245: "Mandalorian or Jedi?",
+        246: "Lightsaber or Blaster?",
+        247: "Death Star or Starkiller Base?",
+        248: "Star Wars or Star Trek?"
     }
 
     # s3 bucket files look up
@@ -512,7 +510,22 @@ def SW_question(event, context):
         230: "None",
         231: "None",  # "questions/char_SenatorOrgana(Kenobi-Show)/",
         232: "None",  # "questions/char_Kumail(Kenobi-Show)/",
-        233: "None"  # "questions/char_DarthJarJar/"
+        233: "None",  # "questions/char_DarthJarJar/"
+        234: "None",
+        235: "None",
+        236: "None",
+        237: "None",
+        238: "None",
+        239: "None",
+        240: "None",
+        241: "None",
+        242: "None",
+        243: "None",
+        244: "None",
+        245: "None",
+        246: "None",
+        247: "None",
+        248: "None"
     }
 
     bucket_name = 'starwars.photos'
@@ -575,6 +588,3 @@ def SW_question(event, context):
         return f"tweeted image with question {question}"
     except Exception as e:
         print(e)
-
-        #test
-
