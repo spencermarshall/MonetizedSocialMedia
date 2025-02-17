@@ -273,7 +273,7 @@ def SW_question(event, context):
         245: "Mandalorian or Jedi?",
         246: "Lightsaber or Blaster?",
         247: "Death Star or Starkiller Base?",
-        248: "Star Wars or Star Trek?"
+        248: "Star Wars or Star Trek?",
     }
 
     # s3 bucket files look up
