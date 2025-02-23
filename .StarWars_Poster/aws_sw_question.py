@@ -161,12 +161,12 @@ def SW_question(event, context):
         134: "What are your opinions on the portrayal of the Jedi Council in the prequels?",
         135: "What are your thoughts on the idea of a Star Wars story set during the Old Republic era?",
         136: "What are your opinions on the portrayal of the Sith in the prequels?",
-        137: "What are your thoughts on the concept of the World Between Worlds in Star Wars lore?",
-        138: "What are your thoughts on the relationship between Obi-Wan Kenobi and Satine Kryze?",
+        137: "What are your thoughts on the concept of the World Between Worlds?",
+        138: "What are your thoughts on the relationship between Obi-Wan Kenobi and Duchess Satine?",
         139: "Do you think the Jedi Council was too rigid in their beliefs? Why or why not?",
         140: "What are your opinions on the portrayal of Anakin Skywalker's fall to the dark side?",
         141: "What are your thoughts on how Clone Troopers were treated after Order 66?",
-        142: "How do you feel about Lando Calrissian’s role in both the original trilogy and his return in ep9?",
+        142: "How do you feel about Lando Calrissian’s role in the original trilogy?",
         143: "If you could choose one non-canon story to make canon, which one would it be and why?",
         # pictures below here
         144: "What are your opinions on Mace Windu?",
@@ -274,7 +274,11 @@ def SW_question(event, context):
         246: "Lightsaber or Blaster?",
         247: "Death Star or Starkiller Base?",
         248: "Star Wars or Star Trek?",
-        249: "Chopper or R2-D2?"
+        249: "Chopper or R2-D2?",
+        250: "What are your thoughts on Lando Calrissian's return in Episode 9?",
+        # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
+        # what are your thoughts on the 4 jedi that died attacking palpatine in rots
+        #thoughts on count dooku in TOTJ, and other characters
     }  # add questions for "what are your thoughts on Hera Syndulla in Live action?", etc.
 
     # s3 bucket files look up
