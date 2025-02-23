@@ -36,7 +36,7 @@ def BB_question(event, context):
         9: "Which Breaking Bad character is most relatable?",
         10: "What fuels Gus Fring’s cold nature in Breaking Bad?",
         11: "What's the most controversial decision in Breaking Bad?",
-        12: "Which character had the most satisfying arc in Breaking Bad?"
+        12: "Which character had the most satisfying arc in Breaking Bad?",
         13: "Is Better Call Saul better than Breaking Bad?",
         14: "Do you like how law enforcement is portrayed in Breaking Bad?",
         15: "When does Jimmy turn into Saul in Better Call Saul?",
@@ -194,6 +194,8 @@ def BB_question(event, context):
         187: "What is your least favorite part from El Camino?",
         188: "What are your thoughts on the future of the Breaking Bad universe?",
         189: "Should we get another Breaking Bad Spinoff Show?",
+        #was todd justified in killing the kid
+        #fly episode
     }
 
     # s3 bucket files look up
@@ -452,7 +454,6 @@ def BB_question(event, context):
         while index in question_indices:
             index = random.randint(1, len(questions))
 
-        index = 140 # temp
         path = lookup[index]
 
         question_indices.insert(0, index)
