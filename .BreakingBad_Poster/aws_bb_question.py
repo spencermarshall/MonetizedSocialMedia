@@ -27,7 +27,7 @@ def BB_question(event, context):
     questions = {
         1: "What's the most underrated episode in Breaking Bad?",
         2: "What's the most underrate episode in Better Call Saul?",
-        3: "Thoughts on Walter White's transformation in Breaking Bad?",
+        3: "How many times have you watched Better Call Saul?",
         4: "How do you view Jesse’s struggle in Breaking Bad?",
         5: "What makes Saul so intriguing in Breaking Bad/Better Call Saul?",
         6: "Does Kim Wexler resonate with you in Better Call Saul?",
@@ -89,7 +89,7 @@ def BB_question(event, context):
         62: "What are your thoughts on the relationship between Jimmy and Kim in Better Call Saul?",
         63: "What are your thoughts on the relationship between Walter White and Skyler in Breaking Bad?",
         64: "What are your thoughts on the relationship between Walter White and Hank in Breaking Bad?",
-        65: "What are your thoughts on the relationship between Walter White and Gus in Breaking Bad?",
+        65: "What are your thoughts on the relationship between Walter White and Gustavo Fring in Breaking Bad?",
         66: "What are your thoughts on the relationship between Walter White and Saul Goodman in Breaking Bad?",
         67: "What are your thoughts on the relationship between Jesse Pinkman and Jane in Breaking Bad?",
         68: "Are Breaking Bad’s color cues effective?",
@@ -116,9 +116,9 @@ def BB_question(event, context):
         109: "What are your thoughts on Jimmy turning into Saul in Better Call Saul?",
         110: "Is Gus Fring the top villain in Breaking Bad?",
         111: "How did Skyler White impact Breaking Bad’s story?",
-        112: "Are Jimmy & Kim the favorite duo in Better Call Saul?",
+        112: "Are Jimmy & Kim the best duo in Better Call Saul?",
         113: "Did you like the ending of Breaking Bad?",
-        114: "Thoughts on the finale of Better Call Saul?",
+        114: "What are your thoughts on the finale of Better Call Saul?",
         115: "What are your views on the Salamanca family in Breaking Bad?",
         116: "Is the bond between Walt & Jesse strong in Breaking Bad?",
         117: "What are your thoughts on Lalo Salamanca in Better Call Saul?",
@@ -134,7 +134,7 @@ def BB_question(event, context):
         127: "What are your thoughts on Rhea Seehorn's portrayal of Kim Wexler?",
         128: "What are your thoughts on Patrick Fabian's portrayal of Howard Hamlin?",
         129: "What are your thougths on Michael McKean's portrayal of Chuck McGill?",
-        130: "What are your thoughts on Dean Norris' portrayal of Hank Schrader?",
+        130: "How many times have you watched Breaking Bad?",
         131: "What are your thoughts on Hector Salamanca in Breaking Bad?",
         132: "What are your thoughts on Mike Ehrmantraut in Breaking Bad?",
         133: "What are your thoughts on Jesse Pinkman in Breaking Bad?",
@@ -166,13 +166,13 @@ def BB_question(event, context):
         159: "What are your thoughts on Mark Margolis's performance as Hector Salamanca in Breaking Bad?",
         160: "What are your thoughts on David Costabile's portrayal of Gale Boetticher in Breaking Bad?",
         161: "What are your thoughts on Michael Mando's performance as Nacho Varga in Better Call Saul?",
-        162: "What are your thoughts on Bill Burr's cameo in Better Call Saul?",
+        162: "What are your thoughts on Bill Burr's cameo in Breaking Bad?",
         163: "What is your overall opinion on the main actors in Breaking Bad and Better Call Saul?",
         164: "How do you feel about the actors' chemistry in high-tension scenes in Better Call Saul?",
         165: "What are your thoughts on the casting choices in Better Call Saul?",
         166: "Which actor's performance in Breaking Bad surprised you the most?",
         167: "Which actor's performance in Better Call Saul surprised you the most?",
-        168: "What are your thoughts on the role of improvisation by the actors in Breaking Bad?",
+        168: "What are your thoughts on the character development in Breaking Bad?",
         169: "How do you rate the overall performances of the main actors in Breaking Bad?",
         170: "How do you rate the overall performances of the main actors in Better Call Saul?",
         171: "Why do you think Breaking Bad has such a strong fanbase?",
@@ -194,8 +194,6 @@ def BB_question(event, context):
         187: "What is your least favorite part from El Camino?",
         188: "What are your thoughts on the future of the Breaking Bad universe?",
         189: "Should we get another Breaking Bad Spinoff Show?",
-        190: "How many times have you watched Breaking Bad?",
-        191: "How many times have you watched Better Call Saul?"
     }
 
     # s3 bucket files look up
@@ -339,7 +337,7 @@ def BB_question(event, context):
         137: "None",
         138: "None",
         139: "None",
-        140: "None",
+        140: "questions/char_ToddAlquist/",
         141: "None",
         142: "None",
         143: "None",
@@ -454,6 +452,7 @@ def BB_question(event, context):
         while index in question_indices:
             index = random.randint(1, len(questions))
 
+        index = 140 # temp
         path = lookup[index]
 
         question_indices.insert(0, index)
