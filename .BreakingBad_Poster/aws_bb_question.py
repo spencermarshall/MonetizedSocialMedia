@@ -194,8 +194,24 @@ def BB_question(event, context):
         187: "What is your least favorite part from El Camino?",
         188: "What are your thoughts on the future of the Breaking Bad universe?",
         189: "Should we get another Breaking Bad Spinoff Show?",
-        #was todd justified in killing the kid
-        #fly episode
+        190: "Was Todd justified in killing the kid in the Train Heist episode?",
+        191: "What are your thoughts on the Fly episode?",
+        192: "Was Walter White justified in poisoning Brock?",
+        193: "Was Walter White justified in letting Jane die?",
+        194: "Was Walter White justified in killing Mike?",
+        195: "Was Walter White justified in killing Gus?",
+        196: "Was Walter White justified in the end for his actions?",
+        197: "What are your thoughts on Lalo killing Howard Hamlin in Better Call Saul?"
+        198: "What are your thoughts on Walter White's death in Breaking Bad?",
+        199: "What are your thoughts on Gus Fring's death in Breaking Bad?",
+        200: "What are your thoughts on Hank Schrader's death in Breaking Bad?",
+        201: "What are your thoughts on Mike Ehrmantraut's death in Breaking Bad?",
+        202: "What are your thoughts on Jane's death in Breaking Bad?",
+        203: "What are your thoughts on Saul Goodman's fate in Better Call Saul?",
+        204: "What are your thoughts on Kim Wexler's fate in Better Call Saul?",
+        205: "I need a new dust filter for my Hoover Max Extract Pressure Pro, Model 60.  Does anyone know who can help me with that?",
+        206: "What are your thoughts on Ed Galbraith?",
+        207: "What are your thoughts on the character of Emilio Koyama in Breaking Bad?",
     }
 
     # s3 bucket files look up
