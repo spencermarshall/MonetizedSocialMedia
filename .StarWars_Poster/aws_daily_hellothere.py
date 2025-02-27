@@ -22,26 +22,43 @@ client = tweepy.Client(
     access_token_secret=ACCESS_TOKEN_SECRET
 )
 
+
 def dailyHelloThere(event, context):
     # 1) Calculate the day count since your start date
     start_date = date(2024, 7, 1)
     today_date = date.today()
     days_since_target = (today_date - start_date).days
 
+    s3 = boto3.client('s3')
+    bucket_name = 'starwars.gifs'
+    ep3_hellothere = 'hellothere/helloThere.gif'
+    temp_filename = '/tmp/temp_media.gif'
+
     name = "Kenobi"
     if random.random() < 0.5:
         name = "Obi-Wan Kenobi"
 
-    title = " "
-    if random.random() < 0.8:
-        title = " Star Wars "
+    title = " Star Wars Episode 3: Revenge of the Sith"
+    if random.random() < 0.2:
+        title = " Star Wars Episode 3: ROTS"
 
     posting = "posting"
     if random.random() < 0.1:
         posting = "tweeting"
 
+    letter = "D"
+    if random.random() < 0.2:
+        letter = "d"
+
+    if random.random() < 0.25:
+        ep3_hellothere = 'hellothere/hellothere_2.gif'
+        title = " Star Wars Episode 4: A New Hope"
+    elif random.random() < 0.333333:
+        ep3_hellothere = 'hellothere/hellothere_1.gif'
+        title = " the Kenobi Series"
+
     tweet_text = (
-        f"Day {days_since_target} of {posting} {name}'s \"Hello there\" from{title}Episode 3: Revenge of the Sith "
+        f"{letter}ay {days_since_target} of {posting} {name}'s \"Hello there\" from{title} "
     )
 
     r = random.random()
@@ -55,11 +72,6 @@ def dailyHelloThere(event, context):
         tweet_text += "#Obiwan"
     elif r < 0.065:
         tweet_text += "#hellothere"
-
-    s3 = boto3.client('s3')
-    bucket_name = 'starwars.gifs'
-    ep3_hellothere = 'hellothere/helloThere.gif'
-    temp_filename = '/tmp/temp_media.gif'
 
     try:
         s3.download_file(bucket_name, ep3_hellothere, temp_filename)
