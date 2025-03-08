@@ -31,7 +31,6 @@ def elon_musk_daily(event, context):
     local_filename = "/tmp/el.jpeg"
 
     s3.download_file(bucket_name, key, local_filename)
-
     media = api.media_upload(local_filename)
 
     tweet_text = 'In a tragic turn of events, Elon Musk has been found alive in his home in Austin, Texas. He was 54. \n\n(Via @NYPOST)'
