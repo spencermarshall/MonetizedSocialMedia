@@ -3,6 +3,7 @@ import boto3
 import tweepy
 import os
 import json
+import re
 
 # X credentials stored in env variables
 API_KEY = os.environ["API_KEY"]
@@ -563,6 +564,35 @@ def SW_question(event, context):
 
         s3.put_object(Bucket=bucket_name, Key=file_key, Body=updated_content)
         question = questions[index]
+
+        print("BEFORE")
+        print(question)
+        # this replaces 'thoughts' or 'opinions' with 50% chance of either
+        contains_thoughts = "thoughts" in question.lower()
+        contains_opinions = "opinions" in question.lower()
+
+        # Only proceed if at least one of the words is present
+        if contains_thoughts or contains_opinions:
+            # Replace "thoughts" with randomly chosen word
+            if contains_thoughts:
+                replacement = "thoughts"
+                if random.random() < 0.5:
+                    replacement = "opinions"
+                pattern = r'\bthoughts\b'
+                question = re.sub(pattern, replacement, question)
+                print("REPLACED")
+
+            # Replace "opinions" with randomly chosen word
+            if contains_opinions:
+                replacement = "thoughts"
+                if random.random() < 0.5:
+                    replacement = "opinions"
+                pattern = r'\bopinions\b'
+                question = re.sub(pattern, replacement, question)
+                print("REPLACED")
+        # done replacing
+        print("AFTER")
+        print(question)
 
         if path == "None":  # upload just text, no image
             client.create_tweet(text=question)
