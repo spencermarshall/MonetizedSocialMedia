@@ -276,6 +276,26 @@ def SW_question(event, context):
         247: "Death Star or Starkiller Base?",
         248: "Star Wars or Star Trek?",
         249: "What are your thoughts on Lando Calrissian's return in Episode 9?",
+        250: "What do you think makes a great Star Wars villain, and why?",
+        251: "How would you imagine a Star Wars story told entirely from the perspective of a smuggler?",
+        252: "What role do you think music plays in enhancing the Star Wars experience?",
+        253: "What are your thoughts on the depiction of droid culture in the Star Wars universe?",
+        254: "What are your thoughts on the blend of practical and visual effects in the original trilogy?",
+        255: "What are your thoughts on the cultural impact of Star Wars across multiple generations?",
+        256: "If you could add one new species to the Star Wars universe, what unique traits would it have?",
+        257: "How do you feel about the political themes interwoven throughout the Star Wars narratives?",
+        258: "What role do you think fan theories play in shaping and expanding the Star Wars universe?",
+        259: "If you could design your own Star Wars planet, what would it have?",
+        260: "How would you describe Star Wars' impact on modern pop culture?",
+        261: "Which aspect of Star Wars lore do you find most compelling, and why?",
+        262: "How do the TV series compare to the films in exploring character depth?",
+        263: "Which lesser-known character deserves more spotlight in Star Wars?",
+        264: "Has the expanded universe enriched the main Star Wars narrative for you?",
+        265: "In what ways has Star Wars influenced the broader science fiction genre?",
+        266: "What narrative challenges come from balancing epic battles with intimate moments?",
+        267: "How do different eras of Star Wars offer unique storytelling perspectives?",
+        268: "If you could write the next chapter of Star Wars, what direction would you take?"
+
         # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
         # what are your thoughts on the 4 jedi that died attacking palpatine in rots
         # thoughts on count dooku in TOTJ, and other characters
