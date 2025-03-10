@@ -6,27 +6,6 @@ import random
 import requests
 from datetime import datetime, timedelta
 
-# Reddit API Credentials
-# REDDIT_CLIENT_ID = os.environ['REDDIT_CLIENT_ID']
-# REDDIT_CLIENT_SECRET = os.environ['REDDIT_CLIENT_SECRET']
-# REDDIT_USER_AGENT = os.environ['REDDIT_USER_AGENT']
-REDDIT_CLIENT_ID = 'USAgnTeY8fqGUtRtJJjNeg'
-REDDIT_CLIENT_SECRET = 'oViJMoCRQxcJo6go_QVYUU5jUuGkvA'
-REDDIT_USER_AGENT = 'data_bot'
-
-# Twitter API Credentials
-# TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
-# TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
-# TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
-# TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
-# TWITTER_BEARER_TOKEN = os.environ['TWITTER_BEARER_TOKEN']
-api_key = 'og4HjXRYmKAzHHTYP0xFJ6D3q'
-api_key_secret = 'k3axIzwG18PAVUCmgg2Wwzatc29aiUdvrXy6UIlzMbcESucNj5'
-client_id = 'ZlBDcWxWaUdWeE9RbjFWYTJDams6MTpjaQ'
-client_secret = 'E0tGd957j87G_J42aAcazaZsZeoE0TkT0ad-U7FS4DVZ36lPw7'
-bearer_token = 'AAAAAAAAAAAAAAAAAAAAAHmDwgEAAAAAdta3NLjsPDs4piYh6cUKNw%2B1WU0%3D4jUmVHUEhaKI6RzDxhk26HNHINjq1YCk4zmavEPSpJMvTatlHx'
-access_token = '1849619632052961280-xUY3pvEPa9v0ye2ZMxtoKavSj6j2oh'
-access_token_secret = 'iaTq7GcUqkLU0aBJEX4N1Je59ppJ3xRydUlZCgRtsa87X'
 
 # Initialize Reddit API
 reddit = praw.Reddit(
@@ -86,6 +65,8 @@ def lambda_handler(event, context):
 
             link = post.shortlink
             link = link.replace("i", "𝗂", 1)
+            link = link[8:]
+
             tweet_text = f"{text} {link}"
 
             print(f"Posting to Twitter: {tweet_text}")
@@ -126,3 +107,4 @@ def lambda_handler(event, context):
             'statusCode': 200,
             'body': json.dumps('No suitable post with media found.')
         }
+

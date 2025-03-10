@@ -54,20 +54,11 @@ def lambda_handler(event, context):
                 text = post.title[4:]
             if post.title[-1] == ']':
                 text = post.title[:len(post.title) - 4]
+
             link = post.shortlink
-
-            print(link)
             link = link.replace("i", "𝗂", 1)
-            print(link)
 
-            tweet_text = ''
-            choice = random.randint(1, 2)
-            if choice == 1:
-                tweet_text = f"{text} {link[8:]}"
-            elif choice == 2:
-                edited_shortlink = post.shortlink.replace('.', ',')
-                edited_shortlink = edited_shortlink[8:]
-                tweet_text = f"{text} {edited_shortlink}"
+            tweet_text = f"{text} {link[8:]}"
 
             print(f"Posting to Twitter: {tweet_text}")
             client.create_tweet(text=tweet_text, media_ids=[media.media_id])
@@ -107,4 +98,3 @@ def lambda_handler(event, context):
             'statusCode': 200,
             'body': json.dumps('No suitable post with media found.')
         }
-
