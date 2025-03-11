@@ -385,10 +385,9 @@ def SW_question(event, context):
         356: "What are your opinions on Sabine Wren in Rebels?",
         357: "What are your opinions on Zeb Orrelios in Rebels?",
         358: "What are your opinions on Agent Kallus in Rebels?",
-        359: "What are your opinions on Darth Vader",
-        360: "What are your opinions on the Grand Inquisitor?",
-        361: "What are your opinions on the Clone Wars movie?",
-        362: "What are your opinions on Darth Maul's return in The Clone Wars?",
+        359: "What are your opinions on the Grand Inquisitor?",
+        360: "What are your opinions on the Clone Wars movie?",
+        361: "What are your opinions on Darth Maul's return in The Clone Wars?",
 
         # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
         # what are your thoughts on the 4 jedi that died attacking palpatine in rots
