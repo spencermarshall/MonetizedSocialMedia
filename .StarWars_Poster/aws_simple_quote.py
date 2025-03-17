@@ -35,7 +35,7 @@ def postQuote(event, context):
         18: "That's no moon. That's a space station.",
         19: "Strike me down, and I shall become more powerful than you can possibly imagine.",
         20: "This is where the fun begins.",
-        21: "Rebellions are built on hope.",
+        21: "Gonk",
         22: "I am no Jedi.",
         23: "I am the Senate.",
         24: "I have brought Peace, Freedom, Justice, and Security to my new Empire.",

@@ -191,7 +191,7 @@ def SW_question(event, context):
         162: "What are your thoughts on Jyn Erso?",
         163: "What are your thoughts on K-2SO?",
         164: "What are your thoughts on Director Krennic?",
-        165: "What are your thoughts on Mon Mothma in Rogue One and Andor?",
+        165: "What are your thoughts on Mon Mothma?",
         166: "What are your thoughts of Cassion Andor just in Rogue One? What about in his TV show?",
         167: "What are your thoughts on Alden Ehrenreich's portrayal of Han Solo?",
         168: "What are your thoughts on Donald Glover's portrayal of Lando Calrissian?",
@@ -288,7 +288,7 @@ def SW_question(event, context):
         259: "If you could design your own Star Wars planet, what would it have?",
         260: "How would you describe Star Wars' impact on modern pop culture?",
         261: "Which aspect of Star Wars lore do you find most compelling, and why?",
-        262: "How do the TV series compare to the films in exploring character depth?",
+        262: "What are your opinions on Darth Maul's return in The Clone Wars?",
         263: "Which lesser-known character deserves more spotlight in Star Wars?",
         264: "Has the expanded universe enriched the main Star Wars narrative for you?",
         265: "In what ways has Star Wars influenced the broader science fiction genre?",
@@ -387,7 +387,7 @@ def SW_question(event, context):
         358: "What are your opinions on Agent Kallus in Rebels?",
         359: "What are your opinions on the Grand Inquisitor?",
         360: "What are your opinions on the Clone Wars movie?",
-        361: "What are your opinions on Darth Maul's return in The Clone Wars?",
+
 
 
         # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
