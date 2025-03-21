@@ -273,7 +273,7 @@ def SW_question(event, context):
         244: "X-Wing or TIE Fighter?",
         245: "Mandalorian or Jedi?",
         246: "Lightsaber or Blaster?",
-        247: "Death Star or Starkiller Base?",
+        247: "Death Star or Starkiller Base?",  
         248: "Star Wars or Star Trek?",
         249: "What are your thoughts on Lando Calrissian's return in Episode 9?",
         250: "What do you think makes a great Star Wars villain, and why?",
