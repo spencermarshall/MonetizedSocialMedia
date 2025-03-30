@@ -31,7 +31,7 @@ def bom_daily_verse(event, context):
         5: "Blessed are the peacemakers: for they shall be called the children of God. -Matthew 5:9",
         6: "And Jesus, when he was baptized, went up straightway out of the water: and, lo, the heavens were opened unto him, and he saw the Spirit of God descending like a dove, and lighting upon him. -Matthew 3:16",
         7: "And every one that heareth these sayings of mine, and doeth them not, shall be likened unto a foolish man, which built his house upon the sand. -Matthew 7:26",
-        8: "Blessed are the pure in heart: for they shall see God. - Matthew 5:8",
+        8: "Blessed are the pure in heart: for they shall see God. -Matthew 5:8",
         9: "For what is a man profited, if he shall gain the whole world, and lose his own soul? or what shall a man give in exchange for his soul? -Matthew 16:26",
         10: "Whosoever looketh on a woman to lust after her hath committed adultery with her already in his heart. -Matthew 5:28",
         11: "Blessed are the meek: for they shall inherit the earth. -Matthew 5:5",
@@ -48,7 +48,7 @@ def bom_daily_verse(event, context):
         22: "Therefore I say unto you, Take no thought for your life, what ye shall eat, or what ye shall drink; nor yet for your body, what ye shall put on. Is not the life more than meat, and the body than raiment? -Matthew 6:25",
         23: "And she shall bring forth a son, and thou shalt call his name JESUS: for he shall save his people from their sins. -Matthew 1:21",
         24: "No man can serve two masters: for either he will hate the one, and love the other; or else he will hold to the one, and despise the other. Ye cannot serve God and mammon. -Matthew 6:24",
-        25: "Take heed that ye do not your alms before men, to be seen of them: otherwise ye have no reward of your Father which is in heaven. - Matthew 6:1",
+        25: "Take heed that ye do not your alms before men, to be seen of them: otherwise ye have no reward of your Father which is in heaven. -Matthew 6:1",
         26: "For where two or three are gathered together in my name, there am I in the midst of them. -Matthew 18:20",
     }
     # 16: "After ye have received the Holy Ghost ye can speak with the tongue of angels. -2 Nephi 32:2",
