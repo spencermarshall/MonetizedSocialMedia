@@ -55,7 +55,7 @@ def aws_sw_video(event, context):
         "ep9": "The Rise of Skywalker",
 
         "rogueone": "Rogue One",
-        "solo": "Solo",
+        "solo": "Solo: A Star Wars Story",
 
         "tcw": "The Clone Wars",
         "rebels": "Star Wars Rebels",
@@ -70,9 +70,14 @@ def aws_sw_video(event, context):
         "totj": "Tales of the Jedi",
         "acolyte": "The Acolyte"
     }
+    tweet_text = "What are your opinions on "
 
     title = random_file[:random_file.find("/")]  # this gets file name until /
-    tweet_text = titles[title]
+    tweet_text += titles[title]
+    tweet_text += "?"
+
+    if random.random() < 0.5:
+        tweet_text = "Did you enjoy " + titles[title] + " as a movie?"
 
     ran = random.random()
     if ran < 0.01:
