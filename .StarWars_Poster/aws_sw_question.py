@@ -804,7 +804,7 @@ def SW_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 180:
+        if len(question_indices) > 210:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)
