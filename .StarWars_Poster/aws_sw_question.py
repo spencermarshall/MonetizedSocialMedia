@@ -386,7 +386,18 @@ def SW_question(event, context):
         357: "What are your opinions on Zeb Orrelios in Rebels?",
         358: "What are your opinions on Agent Kallus in Rebels?",
         359: "What are your opinions on John Williams?",
-        360: "What are your opinions on the Grand Inquisitor?"
+        360: "What are your opinions on the Grand Inquisitor?",
+        361: "Did you enjoy The Phantom Menace as a Star Wars movie?",
+        362: "Did you enjoy Attack of the Clones as a Star Wars movie?",
+        363: "Did you enjoy Revenge of the Sith as a Star Wars movie?",
+        364: "Did you enjoy A New Hope as a Star Wars movie?",
+        365: "Did you enjoy The Empire Strikes Back as a Star Wars movie?",
+        366: "Did you enjoy The Return of the Jedi as a Star Wars movie?",
+        367: "Did you enjoy The Force Awakens as a Star Wars movie?",
+        368: "Did you enjoy The Last Jedi as a Star Wars movie?",
+        369: "Did you enjoy The Rise of Skywalker as a Star Wars movie?",
+        370: "Did you enjoy Rogue One as a Star Wars movie?",
+        371: "Did you enjoy Solo as a Star Wars movie?"
 
 
 
@@ -757,7 +768,17 @@ def SW_question(event, context):
         358: "questions/char_AgentKallus/",
         359: "questions/char_JohnWilliams/",
         360: "",
-        361: "None"
+        361: "questions/movie_ep1/",
+        362: "questions/movie_ep2/",
+        363: "questions/movie_ep3/",
+        364: "questions/movie_ep4/",
+        365: "questions/movie_ep5/",
+        366: "questions/movie_ep6/",
+        367: "questions/movie_ep7/",
+        368: "questions/movie_ep8/",
+        369: "questions/movie_ep9/",
+        370: "questions/movie_RogueOne",
+        371: "questions/movie_Solo/",
     }
 
     bucket_name = 'starwars.photos'
