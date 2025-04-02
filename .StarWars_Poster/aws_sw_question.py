@@ -157,7 +157,7 @@ def SW_question(event, context):
         129: "What are your thoughts on the idea of a Star Wars story told from the perspective of a stormtrooper?",
         130: "What are your opinions on the portrayal of the Jedi in the High Republic era?",
         131: "What are your thoughts on the idea of a Star Wars story set entirely in the criminal underworld?",
-        132: "What are your opinions on the portrayal of the Empire in the animated shows versus the movies?",
+        132: "What about the droid attack on the wookies ", #TODO TEMP ?? maybe idk
         133: "What are your thoughts on the idea of a Star Wars story told from the perspective of a droid?",
         134: "What are your opinions on the portrayal of the Jedi Council in the prequels?",
         135: "What are your thoughts on the idea of a Star Wars story set during the Old Republic era?",
@@ -387,17 +387,17 @@ def SW_question(event, context):
         358: "What are your opinions on Agent Kallus in Rebels?",
         359: "What are your opinions on John Williams?",
         360: "What are your opinions on the Grand Inquisitor?",
-        361: "Did you enjoy The Phantom Menace as a Star Wars movie?",
-        362: "Did you enjoy Attack of the Clones as a Star Wars movie?",
-        363: "Did you enjoy Revenge of the Sith as a Star Wars movie?",
-        364: "Did you enjoy A New Hope as a Star Wars movie?",
-        365: "Did you enjoy The Empire Strikes Back as a Star Wars movie?",
-        366: "Did you enjoy The Return of the Jedi as a Star Wars movie?",
-        367: "Did you enjoy The Force Awakens as a Star Wars movie?",
-        368: "Did you enjoy The Last Jedi as a Star Wars movie?",
-        369: "Did you enjoy The Rise of Skywalker as a Star Wars movie?",
-        370: "Did you enjoy Rogue One as a Star Wars movie?",
-        371: "Did you enjoy Solo as a Star Wars movie?"
+        361: "If you could change one thing about The Phantom Menace what would it be?",
+        362: "If you could change one thing about Attack of the Clones what would it be?",
+        363: "If you could change one thing about Revenge of the Sith what would it be?",
+        364: "If you could change one thing about A New Hope what would it be?",
+        365: "If you could change one thing about The Empire Strikes Back what would it be?",
+        366: "If you could change one thing about The Return of the Jedi what would it be?",
+        367: "If you could change one thing about The Force Awakens what would it be?",
+        368: "If you could change one thing about The Last Jedi what would it be?",
+        369: "If you could change one thing about The Rise of Skywalker what would it be?",
+        370: "If you could change one thing about Rogue One what would it be?",
+        371: "If you could change one thing about the Solo movie, what would it be?"
 
 
 
