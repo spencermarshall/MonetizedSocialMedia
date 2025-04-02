@@ -157,7 +157,7 @@ def SW_question(event, context):
         129: "What are your thoughts on the idea of a Star Wars story told from the perspective of a stormtrooper?",
         130: "What are your opinions on the portrayal of the Jedi in the High Republic era?",
         131: "What are your thoughts on the idea of a Star Wars story set entirely in the criminal underworld?",
-        132: "What about the droid attack on the wookies ", #TODO TEMP ?? maybe idk
+        132: "What about the droid attack on the wookies? ", #TODO TEMP ?? maybe idk
         133: "What are your thoughts on the idea of a Star Wars story told from the perspective of a droid?",
         134: "What are your opinions on the portrayal of the Jedi Council in the prequels?",
         135: "What are your thoughts on the idea of a Star Wars story set during the Old Republic era?",
