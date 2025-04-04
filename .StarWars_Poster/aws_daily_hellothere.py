@@ -42,7 +42,8 @@ def dailyHelloThere(event, context):
 
     if random.random() < 0.2:
         title = " Star Wars Episode 3: ROTS"
-    question_ran = random.randint(1, 6)
+    question_ran = random.randint(1,
+                                  9)  # 9 because purposely leave some blank so i don't overwhelm by asking question every time
     if question_ran == 1:
         title += "\n\nDo you like how Kenobi saying \"Hello there\" has become a meme?"
     elif question_ran == 2:
@@ -67,7 +68,8 @@ def dailyHelloThere(event, context):
     if ran_clip < 0.2:
         ep3_hellothere = 'hellothere/hellothere_1.gif'
         title = " Star Wars Episode 4: A New Hope.\n\n"
-        question_ran = random.randint(1, 5)
+        question_ran = random.randint(1,
+                                      8)  # 8 because purposely leave some blank so i don't overwhelm by asking question every time
         if question_ran == 1:
             title += "Did you enjoy Sir Alec Guinness as Ben Kenobi?"
         elif question_ran == 2:
@@ -82,7 +84,8 @@ def dailyHelloThere(event, context):
     elif ran_clip < 0.5:
         ep3_hellothere = 'hellothere/hellothere_2.gif'
         title = " the Kenobi Series.\n\n"
-        question_ran = random.randint(1, 6)
+        question_ran = random.randint(1,
+                                      9)  # 9 because purposely leave some blank so i don't overwhelm by asking question every time
         if question_ran == 1:
             title += "Did you enjoy the return of Ewan McGregor in the Kenobi Series?"
         elif question_ran == 2:
