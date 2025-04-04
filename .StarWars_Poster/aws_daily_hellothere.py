@@ -43,22 +43,23 @@ def dailyHelloThere(event, context):
         title = " Star Wars Episode 3: ROTS"
 
     posting = "posting"
-    if random.random() < 0.1:
+    if random.random() < 0.15:
         posting = "tweeting"
 
     letter = "D"
-    if random.random() < 0.2:
+    if random.random() < 0.25:
         letter = "d"
 
-    if random.random() < 0.25:
-        ep3_hellothere = 'hellothere/hellothere_2.gif'
-        title = " Star Wars Episode 4: A New Hope"
-    elif random.random() < 0.333333:
+    ran_clip = random.random()
+    if ran_clip < 0.25:
         ep3_hellothere = 'hellothere/hellothere_1.gif'
+        title = " Star Wars Episode 4: A New Hope"
+    elif ran_clip < 0.75:
+        ep3_hellothere = 'hellothere/hellothere_2.gif'
         title = " the Kenobi Series"
 
     tweet_text = (
-        f"{letter}ay {days_since_target} of {posting} {name}'s \"Hello there\" from{title} "
+        f"{letter}ay {days_since_target} of {posting} {name} saying \"Hello there\" this time from{title} "
     )
 
     r = random.random()
