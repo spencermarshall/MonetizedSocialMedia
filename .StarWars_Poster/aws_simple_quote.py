@@ -16,7 +16,7 @@ client = tweepy.Client(bearer_token = BEARER_TOKEN,
 def postQuote(event, context):
     dict = {
         1: "Hello There",
-        2: "Another Happy Landing.",
+        2: "If you strike me down, and I will become more powerful than you could possibly imagine.",
         3: "May the force be with you.",
         4: "I have a bad feeling about this.",
         5: "It's over Anakin, I have the High Ground.",
@@ -42,9 +42,30 @@ def postQuote(event, context):
         25: "A surprise, to be sure, but a welcome one.",
         26: "I'll try spinning, that's a good trick.",
         27: "Now this is podracing.",
-        28: "In my experience, there's no such thing as luck"
-        # 25: "Do it.",
-        #I can add more quotes here as needed,
+        28: "In my experience, there's no such thing as luck",
+        29: "Aren't you a little short for a storm trooper?",
+        30: "Fear is the path to the dark side. Fear leads to anger, anger leads to hate, hate leads to suffering.",
+        31: "These are not the droids you're looking for.",
+        32: "I find your lack of faith disturbing.",
+        33: "The ability to speak does not make you intelligent.",
+        34: "So this is how liberty dies... with thunderous applause.",
+        35: "Only a Sith deals in absolutes.",
+        36: "I sense a plot to destroy the Jedi.",
+        37: "Let the past die. Kill it, if you have to.",
+        38: "Insolence!? We are pirates! We don’t even know what that means.",
+        39: "I can bring you in warm, or I can bring you in cold.",
+        40: "I have spoken.",
+        41: "I'm a Mandalorian. Weapons are part of my religion.",
+        42: "Jabba ruled with fear. I intend to rule with respect.",
+        43: "The mission. The nightmares. They're... finally... over.",
+        44: "In my book, experience outranks everything.",
+        45: "We're just clones, sir. We're meant to be expendable.",
+        46: "Clones, bred for combat. All part of the plan... THE Plan. The only Plan that matters. Not even I was made aware of its grand design, but I played my part. And do you know what happened to me? I was cast aside. I was forgotten. But I survived, and I can thrive in the chaos that is to come.",
+        47: "There is no justice, now law, no order... except for the one that will replace it!",
+        48: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.",
+        49: "You're A good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
+        50: "Do it.",
+
     }
 
     tweet_text = dict[random.randint(1,len(dict))]
