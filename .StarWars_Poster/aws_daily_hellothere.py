@@ -38,10 +38,23 @@ def dailyHelloThere(event, context):
     if random.random() < 0.5:
         name = "Obi-Wan Kenobi"
 
-    title = " Star Wars Episode 3: Revenge of the Sith"
+    title = " Star Wars Episode 3: Revenge of the Sith "
+
     if random.random() < 0.2:
         title = " Star Wars Episode 3: ROTS"
-
+    question_ran = random.randint(1, 6)
+    if question_ran == 1:
+        title += "\n\nDo you like how Kenobi saying \"Hello there\" has become a meme?"
+    elif question_ran == 2:
+        title += "\n\nDo you enjoy Ewan McGregor as Kenobi?"
+    elif question_ran == 3:
+        title += "\n\nDo you think it was smart he gave up the high ground just to say this?"
+    elif question_ran == 4:
+        title += "\n\nWhy did this become a meme? lol"
+    elif question_ran == 5:
+        title += "\n\nDo you always respond with \"General Kenobi\"?"
+    elif question_ran == 6:
+        title += "\n\nIs this the best part of Ep 3?"
     posting = "posting"
     if random.random() < 0.15:
         posting = "tweeting"
@@ -51,12 +64,37 @@ def dailyHelloThere(event, context):
         letter = "d"
 
     ran_clip = random.random()
-    if ran_clip < 0.25:
+    if ran_clip < 0.2:
         ep3_hellothere = 'hellothere/hellothere_1.gif'
-        title = " Star Wars Episode 4: A New Hope"
-    elif ran_clip < 0.75:
+        title = " Star Wars Episode 4: A New Hope.\n\n"
+        question_ran = random.randint(1, 5)
+        if question_ran == 1:
+            title += "Did you enjoy Sir Alec Guinness as Ben Kenobi?"
+        elif question_ran == 2:
+            title += "Do you think Ben Kenobi aged too much since Episode 3 or Kenobi Series?"
+        elif question_ran == 3:
+            title += "Since Tatooine has 2 suns do people age twice as fast there?"
+        elif question_ran == 4:
+            title += "When did you learn this was the original \"Hello there\"?"
+        elif question_ran == 5:
+            title += "Do you think Obi-Wan will ever say this again in Canonical Star Wars?"
+
+    elif ran_clip < 0.5:
         ep3_hellothere = 'hellothere/hellothere_2.gif'
-        title = " the Kenobi Series"
+        title = " the Kenobi Series.\n\n"
+        question_ran = random.randint(1, 6)
+        if question_ran == 1:
+            title += "Did you enjoy the return of Ewan McGregor in the Kenobi Series?"
+        elif question_ran == 2:
+            title += "What did you like most about the Kenobi Series?"
+        elif question_ran == 3:
+            title += "What did you like least about the Kenobi Series?"
+        elif question_ran == 4:
+            title += "Did you think it was forced fan service for him to say this line at the end of the Kenobi Series?"
+        elif question_ran == 5:
+            title += "Do you think Obi-Wan will ever say this again in Canonical Star Wars?"
+        elif question_ran == 6:
+            title += "Do you think Ewan McGregor will return as Obi-Wan Kenobi again?"
 
     tweet_text = (
         f"{letter}ay {days_since_target} of {posting} {name} saying \"Hello there\" this time from{title} "
@@ -65,13 +103,13 @@ def dailyHelloThere(event, context):
     r = random.random()
     if r < 0.04:
         tweet_text += "#swtwt"
-    elif r < 0.05:
-        tweet_text += "#StarWars"
-    elif r < 0.055:
-        tweet_text += "#Kenobi"
     elif r < 0.06:
-        tweet_text += "#Obiwan"
+        tweet_text += "#StarWars"
     elif r < 0.065:
+        tweet_text += "#Kenobi"
+    elif r < 0.07:
+        tweet_text += "#Obiwan"
+    elif r < 0.075:
         tweet_text += "#hellothere"
 
     try:
