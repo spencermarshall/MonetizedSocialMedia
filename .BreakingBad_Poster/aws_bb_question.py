@@ -217,7 +217,7 @@ def BB_question(event, context):
         14: "None",
         15: "None",
         16: "None",
-        17: "None",
+        17: "questions/other_JaneDeath/",
         18: "None",
         19: "None",
         20: "None",
