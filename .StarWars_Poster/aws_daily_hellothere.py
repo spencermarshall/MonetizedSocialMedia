@@ -125,3 +125,5 @@ def dailyHelloThere(event, context):
     client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
     os.remove(temp_filename)
+
+
