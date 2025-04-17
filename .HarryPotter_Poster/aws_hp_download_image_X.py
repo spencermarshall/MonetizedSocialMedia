@@ -12,8 +12,6 @@ BUCKET_NAME = 'harrypotter.photos'  # EDIT THIS AS NEEDED
 # i need to make sure i have policy permissions for each s3 bucket
 
 
-
-
 # Set up Tweepy client for Twitter API v2
 client = tweepy.Client(bearer_token=bearer_token,
                        consumer_key=api_key,
