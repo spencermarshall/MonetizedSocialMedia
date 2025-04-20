@@ -314,6 +314,7 @@ def post_office_quote(event, context):
     }
 
 
+
     tweet_text = office_quotes[random.randint(0,len(office_quotes)-1)]
     ran = random.random()
     if ran < 0.3:
