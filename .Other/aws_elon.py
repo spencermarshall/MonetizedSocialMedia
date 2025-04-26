@@ -16,23 +16,23 @@ api = tweepy.API(auth)
 
 
 def elon_musk_daily(event, context):
-    ran = random.random()
-    if ran < 0.01:
-        client.create_tweet(text="No")
-    elif ran < 0.011:
-        client.create_tweet(text="Nope")
-    elif ran < 0.012:
-        client.create_tweet(text="Not today")
+    text = ''
+    ran = random.randint(1, 2)
+    if ran == 1:
+        text = 'No'
+    elif ran == 2:
+        negative_words = ['Nope', 'Not today', 'Negative', 'Not yet', 'Nah', 'Nay', 'Definitely not']
+        text = random.choice(negative_words)
 
-    s3 = boto3.client('s3')
-    bucket_name = "aws.misc"
-    key = "el.jpeg"
+    if random.random() < 0.5:  # 50% add '!'
+        text = text + '!'
 
-    local_filename = "/tmp/el.jpeg"
+    # next add images from s3 bucket 50% of time
+    client.create_tweet(text=text)
+    return text
 
-    s3.download_file(bucket_name, key, local_filename)
-    media = api.media_upload(local_filename)
+    # else add image
 
-    tweet_text = 'In a tragic turn of events, Elon Musk has been found alive in his home in Austin, Texas. He was 54. \n\n(Via @NYPOST)'
+    # tweet_text = 'In a tragic turn of events, Elon Musk has been found alive in his home in Austin, Texas. He was 54. \n\n(Via @NYPOST)'
 
-    client.create_tweet(text=tweet_text, media_ids=[media.media_id])
+    # client.create_tweet(text=tweet_text, media_ids=[media.media_id])
