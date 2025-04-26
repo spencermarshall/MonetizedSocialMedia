@@ -51,18 +51,18 @@ def lotr_question(event, context):
         23: "What are your opinions on Radagast the Brown?",
         24: "What are your opinions on Isildur?",
         25: "What are your opinions on the Balrog?",
-        26: "What do you think makes Aragorn such a compelling leader and hero?",
+        26: "Which scene in The Hobbit films best captures the spirit of the book?",
         27: "Frodo or Sam?",
         28: "What do you think is the most significant sacrifice made by any character in LOTR?",
         29: "What do you think is the most iconic scene in LOTR and why?",
         30: "If you could possess one item from LOTR, what would it be and why?",
-        31: "What do you think is the most powerful moment in The Hobbit?",
+        31: "What is the most memorable piece of wisdom offered by Gandalf?",
         32: "How do you think the themes of friendship and loyalty are portrayed in LOTR?",
         33: "What do you think is the most underrated character in LOTR and why?",
         34: "What do you think is the most visually stunning location in Middle-earth?",
         35: "What do you think is the most important lesson we can learn from LOTR?",
         36: "What is the most significant moment in Middle-earth history?",
-        37: "How do you think the concept of 'home' is portrayed in LOTR?",
+        37: "Which character from LOTR do you think deserves more recognition?",
         38: "What do you think is the most significant difference between the book and film adaptations of LOTR?",
         39: "What do you think is the most epic battle in LOTR?",
         40: "What do you think is the most tragic moment in LOTR?",
@@ -77,7 +77,7 @@ def lotr_question(event, context):
         49: "What do you think is the most significant moment of betrayal in LOTR?",
         50: "What do you think is the most significant moment of courage in LOTR?",
         51: "What do you think is the most significant moment of wisdom in LOTR?",
-        52: "What do you think is the most significant moment of love in LOTR?",
+        52: "Which character from The Hobbit do you think deserves more recognition?",
         53: "What is your favorite quote from LOTR?",
         54: "What lasting legacy do the epic tales of LOTR, The Hobbit, and Rings of Power leave on the fantasy genre?",
         55: "How does the beauty of Middle-earth enhance its storytelling?",
@@ -85,7 +85,7 @@ def lotr_question(event, context):
         57: "What role does fate play in the journeys of Middle-earth’s heroes?",
         58: "What are your thoughts on the magic in Tolkien’s world?",
         59: "Which moment of friendship in LOTR stands out to you?",
-        60: "How do you view the transformation of Gollum’s character?",
+        60: "What is your favorite quote from Bilbo Baggins?",
         61: "What element of Tolkien's world-building captivates you the most?",
         62: "Which character’s journey in LOTR resonated with you the most?",
         63: "If you could write a new Middle-earth story, what would it be about?",
@@ -107,7 +107,7 @@ def lotr_question(event, context):
         79: "What is the most underrated aspect of Middle-earth?",
         80: "What is the most powerful moment in LOTR?",
         81: "What is the most impactful death in the LOTR series?",
-        82: "Book Aragorn or movie Aragorn: which portrayal is better?",
+        82: "What is your favorite quote from Saruman?",
         83: "What is the most memorable moment from The Hobbit?",
         84: "The Shire or Rivendell: where would you rather live?",
         85: "If you could visit one place in Middle-earth, where would it be?",
@@ -140,7 +140,7 @@ def lotr_question(event, context):
         112: "What is the most iconic line from Gollum?",
         113: "Which character’s death hit you the hardest?",
         114: "What is your favorite moment of humor in LOTR?",
-        115: "Which character's inner journey do you find most relatable?",
+        115: "Which is your favorite movie trilogy: The Lord of the Rings or The Hobbit?",
         116: "What is the most powerful moment of forgiveness in LOTR?",
         117: "Which is your favorite LOTR movie?",
         118: "Who is your favorite LOTR character?",
@@ -161,8 +161,58 @@ def lotr_question(event, context):
         133: "What is the most iconic line from Sam?",
         134: "Dwarves or Elves?",
         135: "Dwarves or Hobbits?",
-        136: "Elves or Hobbits?"
+        136: "Elves or Hobbits?",
+        137: "What are your opinions on The Fellowship of the Ring as a movie?",
+        138: "What are your opinions on The Two Towers as a movie?",
+        139: "What are your opinions on The Return of the King as a movie?",
+        140: "What are your opinions on The Hobbit: An Unexpected Journey as a movie?",
+        141: "What are your opinions on The Hobbit: The Desolation of Smaug as a movie?",
+        142: "What are your opinions on The Hobbit: The Battle of the Five Armies as a movie?",
+        143: "What are your opinions on The War of the Rohirrim as a movie?",
+        144: "Are you happy with how Amazon handled Rings of Power?",
+        145: "Which new character introduced in Rings of Power has become your favorite?",
+        146: "What are your opinions on Galadriel in Rings of Power?",
+        147: "What are your opinions on Sauron in Rings of Power?",
+        148: "What are your opinions on Elrond in Rings of Power?",
+        149: "What are your opinions on Durin in Rings of Power?",
+        150: "What are your opinions on Disa in Rings of Power?",
+        151: "Which location shown in Rings of Power would you most love to visit and why?",
+        152: "Which is your favorite episode of Rings of Power?",
+        153: "What are your lrast favorite episode of Rings of Power?",
+        154: "What are your opinions on the Rings of Power soundtrack?",
+        155: "What are your opinions on the Rings of Power cinematography?",
+        156: "If you could change one thing about Rings of Power, what would it be?",
+        157: "Who is your favorite new character introduced in The Rings of Power?",
+        158: "Is Rings of Power Season 2 better than Season 1?",
+        159: "Do you think The Rings of Power stays true to the spirit of Tolkien's work?",
+        160: "LOTR or Star Wars?",
+        161: "LOTR or Harry Potter?",
+        162: "What are your opiniosn on Tolkien's writing style?",
+        163: "LOTR or Marvel?",
+        164: "What are your opinions on the LOTR fandom?",
+        165: "LOTR or Game of Thrones?",
+        166: "LOTR or The Hobbit?",
+
+
     }
+
+
+    #deleted because it got no comments in April 2025:
+    #        60: "How do you view the transformation of Gollum’s character?",
+    #        26: "What do you think makes Aragorn such a compelling leader and hero?",
+    #        82: "Book Aragorn or movie Aragorn: which portrayal is better?",
+    #        52: "What do you think is the most significant moment of love in LOTR?",
+#        115: "Which character's inner journey do you find most relatable?",
+    #        37: "How do you think the concept of 'home' is portrayed in LOTR?",
+    #        31: "What do you think is the most powerful moment in The Hobbit?",
+
+
+
+
+
+
+
+
 
     # s3 bucket files look up
     lookup = {
@@ -444,7 +494,7 @@ def lotr_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 90:
+        if len(question_indices) > 120:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)
