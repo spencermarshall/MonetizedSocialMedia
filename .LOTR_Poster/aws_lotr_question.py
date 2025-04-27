@@ -98,9 +98,9 @@ def lotr_question(event, context):
         70: "What do you think is the most significant moment of triumph in LOTR?",
         71: "What do you think is the most significant moment of loss in LOTR?",
         72: "What do you think is the most significant moment of sacrifice in LOTR?",
-        73: "What do you think is the most significant moment of redemption in LOTR?",
+        73: "What are your opinions on the killing count game between Gimli and Legolas?",
         74: "What is the most significant moment of loyalty in LOTR?",
-        75: "What is the most significant moment of betrayal in LOTR?",
+        75: "What are some LOTR social media accounts you'd recommend?",
         76: "What is the most significant moment of unity in LOTR?",
         77: "What is the most underrated scene in LOTR?",
         78: "What is the most underrated character in LOTR?",
@@ -178,7 +178,7 @@ def lotr_question(event, context):
         150: "What are your opinions on Disa in Rings of Power?",
         151: "Which location shown in Rings of Power would you most love to visit and why?",
         152: "Which is your favorite episode of Rings of Power?",
-        153: "What are your lrast favorite episode of Rings of Power?",
+        153: "What are your least favorite episode of Rings of Power?",
         154: "What are your opinions on the Rings of Power soundtrack?",
         155: "What are your opinions on the Rings of Power cinematography?",
         156: "If you could change one thing about Rings of Power, what would it be?",
@@ -205,8 +205,6 @@ def lotr_question(event, context):
         177: "What are some LOTR YouTube channels you'd recommend?",
         178: "Are there any good LOTR podcasts you'd recommend?",
         179: "What are some LOTR X (Twitter) accounts you'd recommend someone following?",
-        180: "What are some LOTR social media accounts you'd recommend?",
-        181: "What are your opinions on the killing count game between Gimli and Legolas?",
     }
 
     # deleted because it got no comments in April 2025:
@@ -509,6 +507,9 @@ def lotr_question(event, context):
 
         contains_thoughts = "thoughts" in question.lower()
         contains_opinions = "opinions" in question.lower()
+        if random.random() < 0.5:
+            contains_thoughts = "honest thoughts" in question.lower()
+            contains_opinions = "honest opinions" in question.lower()
 
         # Only proceed if at least one of the words is present
         if contains_thoughts or contains_opinions:

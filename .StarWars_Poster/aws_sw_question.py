@@ -157,7 +157,7 @@ def SW_question(event, context):
         129: "What are your thoughts on the idea of a Star Wars story told from the perspective of a stormtrooper?",
         130: "What are your opinions on the portrayal of the Jedi in the High Republic era?",
         131: "What are your thoughts on the idea of a Star Wars story set entirely in the criminal underworld?",
-        132: "What about the droid attack on the wookies? ", #TODO TEMP ?? maybe idk
+        132: "What about the droid attack on the wookies? ",  # TODO TEMP ?? maybe idk
         133: "What are your thoughts on the idea of a Star Wars story told from the perspective of a droid?",
         134: "What are your opinions on the portrayal of the Jedi Council in the prequels?",
         135: "What are your thoughts on the idea of a Star Wars story set during the Old Republic era?",
@@ -258,7 +258,7 @@ def SW_question(event, context):
         229: "What are your thoughts on the Kenobi Show's portrayal of Owen and Beru Lars?",
         230: "What are your thoughts on the Kenobi Show's portrayal of the Inquisitors?",
         231: "What are your thoughts on the Kenobi Show's portrayal of Senator Organa?",
-        232: "What are your thoughts on Haja Estree (Kumail Ali Nanjiani's) in the Obi-Wan Kenobi show?",
+        232: "What are your thoughts on the con-Jedi guy in the Obi-Wan Kenobi show?",
         233: "What are your thoughts on Darth Jar Jar?",
         234: "Rebellion or Resistance?",
         235: "Canon or Legends?",
@@ -280,7 +280,7 @@ def SW_question(event, context):
         251: "How would you imagine a Star Wars story told entirely from the perspective of a smuggler?",
         252: "What role do you think music plays in enhancing the Star Wars experience?",
         253: "What are your thoughts on the depiction of droid culture in the Star Wars universe?",
-        254: "What are your thoughts on the blend of practical and visual effects in the original trilogy?",
+        254: "If you're stuck in the Star Wars universe for 24 hours, what's the first thing you would do?",
         255: "What are your thoughts on the cultural impact of Star Wars across multiple generations?",
         256: "If you could add one new species to the Star Wars universe, what unique traits would it have?",
         257: "How do you feel about the political themes interwoven throughout the Star Wars narratives?",
@@ -355,7 +355,7 @@ def SW_question(event, context):
         326: "What are your opinions on Ahch-To as a planet?",
         327: "What are your opinions on Canto Bight as a planet?",
         328: "What are your opinions on Ajan Kloss as a planet?",
-        329: "What do you think 'that business on Cato Neimoidia' was?",
+        329: "If you're in the Star Wars universe, what would your job be?",
         330: "What are your thoughts on the 4 Jedi that died attacking Palpatine in ROTS?",
         331: "Jedi Temple or Sith Temple?",
         332: "Astromech or Battle Droid?",
@@ -397,9 +397,10 @@ def SW_question(event, context):
         368: "If you could change one thing about The Last Jedi what would it be?",
         369: "If you could change one thing about The Rise of Skywalker what would it be?",
         370: "If you could change one thing about Rogue One what would it be?",
-        371: "If you could change one thing about the Solo movie, what would it be?"
-
-
+        371: "If you could change one thing about the Solo movie, what would it be?",
+        372: "What is your Star Wars Hot Take?",
+        373: "What do you disagree with most Star Wars fans about?",
+        374: "Tweet like you're in the Star Wars universe.",
 
         # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
         # what are your thoughts on the 4 jedi that died attacking palpatine in rots
@@ -407,6 +408,7 @@ def SW_question(event, context):
     }  # add questions for "what are your thoughts on Hera Syndulla in Live action?", etc.
 
     # s3 bucket files look up
+    # add image look up for id: 329,  254, 372, 373
     lookup = {
         1: "None",
         2: "None",
@@ -779,6 +781,12 @@ def SW_question(event, context):
         369: "questions/movie_ep9/",
         370: "questions/movie_RogueOne",
         371: "questions/movie_Solo/",
+        372: "None",
+        373: "None",
+        374: "None",
+        375: "None",
+        376: "None",
+        377: "None",
     }
 
     bucket_name = 'starwars.photos'
@@ -817,6 +825,9 @@ def SW_question(event, context):
         # this replaces 'thoughts' or 'opinions' with 50% chance of either
         contains_thoughts = "thoughts" in question.lower()
         contains_opinions = "opinions" in question.lower()
+        if random.random() < 0.5:
+            contains_thoughts = "honest thoughts" in question.lower()
+            contains_opinions = "honest opinions" in question.lower()
 
         # Only proceed if at least one of the words is present
         if contains_thoughts or contains_opinions:
