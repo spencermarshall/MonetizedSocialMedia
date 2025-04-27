@@ -138,7 +138,7 @@ def lotr_question(event, context):
         110: "What is the most iconic line from Legolas?",
         111: "What is the most iconic line from Gimli?",
         112: "What is the most iconic line from Gollum?",
-        113: "Which character’s death hit you the hardest?",
+        113: "If you could witness one battle from LOTR, which would it be?",
         114: "What is your favorite moment of humor in LOTR?",
         115: "Which is your favorite movie trilogy: The Lord of the Rings or The Hobbit?",
         116: "What is the most powerful moment of forgiveness in LOTR?",
@@ -192,43 +192,47 @@ def lotr_question(event, context):
         164: "What are your opinions on the LOTR fandom?",
         165: "LOTR or Game of Thrones?",
         166: "LOTR or The Hobbit?",
-
-
+        167: "Aragorn or Legolas?",
+        168: "Gandalf or Saruman?",
+        169: "Pippin or Merry?",
+        170: "Gimli or Legolas?",
+        171: "LOTR: Books or movies?",
+        172: "The Hobbit: Books or movies?",
+        173: "If you could spend the day with one character from LOTR, who would it be?",
+        174: "If you could spend the day with one character from The Hobbit, who would it be?",
+        175: "If you could have one character as a mentor from LOTR who would it be?",
+        176: "If you could have one character as a mentor from The Hobbit who would it be?",
+        177: "What are some LOTR YouTube channels you'd recommend?",
+        178: "Are there any good LOTR podcasts you'd recommend?",
+        179: "What are some LOTR X (Twitter) accounts you'd recommend someone following?",
+        180: "What are some LOTR social media accounts you'd recommend?",
+        181: "What are your opinions on the killing count game between Gimli and Legolas?",
     }
 
-
-    #deleted because it got no comments in April 2025:
+    # deleted because it got no comments in April 2025:
     #        60: "How do you view the transformation of Gollum’s character?",
     #        26: "What do you think makes Aragorn such a compelling leader and hero?",
     #        82: "Book Aragorn or movie Aragorn: which portrayal is better?",
     #        52: "What do you think is the most significant moment of love in LOTR?",
-#        115: "Which character's inner journey do you find most relatable?",
+    #        115: "Which character's inner journey do you find most relatable?",
     #        37: "How do you think the concept of 'home' is portrayed in LOTR?",
     #        31: "What do you think is the most powerful moment in The Hobbit?",
 
-
-
-
-
-
-
-
-
     # s3 bucket files look up
     lookup = {
-        1: "None",
-        2: "None",
-        3: "None",
-        4: "None",
-        5: "None",
-        6: "None",
-        7: "None",
-        8: "None",
-        9: "None",
-        10: "None",
-        11: "None",
-        12: "None",
-        13: "None",
+        1: "questions/char_Frodo/",
+        2: "questions/char_Samwise/",
+        3: "questions/char_Gandalf/",
+        4: "questions/char_Aragorn/",
+        5: "questions/char_Legolas/",
+        6: "questions/char_Gimli/",
+        7: "questions/char_Gollum/",
+        8: "questions/char_Sauron/",
+        9: "questions/char_Sauron/",
+        10: "questions/char_galadriel/",
+        11: "questions/char_Elrond/",
+        12: "questions/char_Arwen/",
+        13: "questions/char_Eowyn/",
         14: "None",
         15: "None",
         16: "None",
@@ -491,6 +495,7 @@ def lotr_question(event, context):
         while index in question_indices:
             index = random.randint(1, len(questions))
 
+        # index = 1
         path = lookup[index]
 
         question_indices.insert(0, index)
@@ -523,9 +528,6 @@ def lotr_question(event, context):
                     replacement = "opinions"
                 pattern = r'\bopinions\b'
                 question = re.sub(pattern, replacement, question)
-
-
-
 
         if path == "None":  # upload just text, no image
             client.create_tweet(text=question)
