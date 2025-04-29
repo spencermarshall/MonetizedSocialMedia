@@ -85,7 +85,7 @@ def SW_question(event, context):
         57: "What are your opinions on the new (2017) Star Wars Battlefront 2 game?",
         58: "What are your opinions on the original Star Wars Battlefront 2 game?",
         59: "What are your opinions on the Lego Star Wars games?",
-        60: "What are your opinions on the newer Lego Star Wars: Skywalker Saga game (2022)?",
+        60: "What are your opinions on the Skywalker Saga game?",
         61: "What are your opinions on Jedi Fallen Order?",
         62: "What are your opinions on the Star Wars Squadrons game (2020)?",
         63: "What are your opinions on the Star Wars: Knights Of The Old Republic game?",
@@ -155,7 +155,7 @@ def SW_question(event, context):
         127: "Which Star Wars droid do you think is the most useful?",
         128: "Which Star Wars character do you think had the most tragic backstory?",
         129: "What are your thoughts on the idea of a Star Wars story told from the perspective of a stormtrooper?",
-        130: "What are your opinions on the portrayal of the Jedi in the High Republic era?",
+        130: "What do you disagree with most Star Wars fans about?", #maybe generic picture here idk
         131: "What are your thoughts on the idea of a Star Wars story set entirely in the criminal underworld?",
         132: "What about the droid attack on the wookies? ",  # TODO TEMP ?? maybe idk
         133: "What are your thoughts on the idea of a Star Wars story told from the perspective of a droid?",
@@ -192,7 +192,7 @@ def SW_question(event, context):
         163: "What are your thoughts on K-2SO?",
         164: "What are your thoughts on Director Krennic?",
         165: "What are your thoughts on Mon Mothma?",
-        166: "What are your thoughts of Cassion Andor just in Rogue One? What about in his TV show?",
+        166: "What are your thoughts of Cassion Andor as a character?",
         167: "What are your thoughts on Alden Ehrenreich's portrayal of Han Solo?",
         168: "What are your thoughts on Donald Glover's portrayal of Lando Calrissian?",
         169: "What are your thoughts on Qi'ra character in the Solo movie?",
@@ -279,19 +279,19 @@ def SW_question(event, context):
         250: "What do you think makes a great Star Wars villain, and why?",
         251: "How would you imagine a Star Wars story told entirely from the perspective of a smuggler?",
         252: "What role do you think music plays in enhancing the Star Wars experience?",
-        253: "What are your thoughts on the depiction of droid culture in the Star Wars universe?",
+        253: "What are your thoughts on droid culture in the Star Wars universe?", #maybe get rid of 'in the star wars universe' idk
         254: "If you're stuck in the Star Wars universe for 24 hours, what's the first thing you would do?",
         255: "What are your thoughts on the cultural impact of Star Wars across multiple generations?",
         256: "If you could add one new species to the Star Wars universe, what unique traits would it have?",
         257: "How do you feel about the political themes interwoven throughout the Star Wars narratives?",
         258: "What role do you think fan theories play in shaping and expanding the Star Wars universe?",
-        259: "If you could design your own Star Wars planet, what would it have?",
+        259: "If you could design your own Star Wars planet, what would it look like?", #this performed bad last time , 5 comments, maybe delete
         260: "How would you describe Star Wars' impact on modern pop culture?",
         261: "Which aspect of Star Wars lore do you find most compelling, and why?",
         262: "What are your opinions on Darth Maul's return in The Clone Wars?",
         263: "Which lesser-known character deserves more spotlight in Star Wars?",
         264: "Has the expanded universe enriched the main Star Wars narrative for you?",
-        265: "In what ways has Star Wars influenced the broader science fiction genre?",
+        265: "How has Star Wars influenced the science fiction genre?", #maybe get rid of idk
         266: "What are your opinions on the Clone Wars movie?",
         267: "How do different eras of Star Wars offer unique storytelling perspectives?",
         268: "If you could write the next chapter of Star Wars, what direction would you take?",
@@ -321,7 +321,7 @@ def SW_question(event, context):
         292: "Blue Lightsaber or Green Lightsaber?",
         293: "What color lightsaber are you?",
         294: "Ahsoka’s White Sabers or Traditional Sabers?",
-        295: "What are your thoughts on the portrayal of the Jedi in the High Republic era?",
+        295: "Tweet like you're in the Star Wars universe.",
         296: "What are your thoughts on the portrayal of the Sith in the High Republic era?",
         297: "Battle of Jakku or Battle of Endor?",
         298: "Battle of Geonosis or Battle of Naboo?",
@@ -399,9 +399,7 @@ def SW_question(event, context):
         370: "If you could change one thing about Rogue One what would it be?",
         371: "If you could change one thing about the Solo movie, what would it be?",
         372: "What is your Star Wars Hot Take?",
-        373: "What do you disagree with most Star Wars fans about?",
-        374: "Tweet like you're in the Star Wars universe.",
-
+        373: "What are your thoughts on the portrayal of the Lars family in the Kenobi Show?"
         # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
         # what are your thoughts on the 4 jedi that died attacking palpatine in rots
         # thoughts on count dooku in TOTJ, and other characters
