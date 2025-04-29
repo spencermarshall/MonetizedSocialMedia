@@ -399,7 +399,6 @@ def SW_question(event, context):
         370: "If you could change one thing about Rogue One what would it be?",
         371: "If you could change one thing about the Solo movie, what would it be?",
         372: "What is your Star Wars Hot Take?",
-        373: "What are your thoughts on the portrayal of the Lars family in the Kenobi Show?"
         # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
         # what are your thoughts on the 4 jedi that died attacking palpatine in rots
         # thoughts on count dooku in TOTJ, and other characters
