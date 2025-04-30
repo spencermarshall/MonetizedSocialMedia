@@ -144,7 +144,7 @@ def SW_question(event, context):
         116: "Have you read any of the Star Wars books? Legends or Disney Canon?",
         117: "What is your favorite Star Wars book?",
         118: "What is your favorite Star Wars comic?",
-        119: "What is your favorite Star Wars planet, and what makes it stand out?",
+        119: "What is your favorite Star Wars planet?",
         120: "If you could spend a day with any Star Wars character, who would it be and why?",
         121: "If you could rewrite one Star Wars character’s arc, who would it be and what would you change?",
         122: "What’s your opinion on the role of politics in the Star Wars universe?",
