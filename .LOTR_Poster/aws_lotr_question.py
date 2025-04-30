@@ -156,7 +156,7 @@ def lotr_question(event, context):
         128: "When did you first learn Aragorn broke his toe in the filming of LOTR?",
         129: "What are your opinions on the LOTR extended editions?",
         130: "When did you first watch/read LOTR?",
-        131: "How do you feel about the development of Merry and Pippin throughout the trilogy?",
+        131: "What are your opinions on Merry and Pippin?",
         132: "What is the most iconic line from Frodo?",
         133: "What is the most iconic line from Sam?",
         134: "Dwarves or Elves?",
@@ -216,6 +216,8 @@ def lotr_question(event, context):
         188: "What are your opinions on the changes made in the Hobbit movies compared to the book?",
         189: "What are your opinions on the changes made in the LOTR movies compared to the book?",
         190: "What are your opinions on J.R.R. Tolkien?",
+        191: "What are your opinions on Peter Jackson?",
+
 
 
     }
