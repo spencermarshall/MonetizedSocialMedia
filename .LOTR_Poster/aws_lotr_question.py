@@ -119,7 +119,7 @@ def lotr_question(event, context):
         91: "What is the most epic moment in The Hobbit?",
         92: "What is the most memorable scene from Rings of Power?",
         93: "What are your opinions of Rings of Power?",
-        94: "What are your opinions on The Hobbit book?", # i stopped here
+        94: "What are your opinions on The Hobbit book?", # todo i stopped here
         95: "What are your opinions of The Hobbit movies?",
         96: "What are your opinions of the LOTR books?",
         97: "What are your opinions of the LOTR movies?",
@@ -207,7 +207,15 @@ def lotr_question(event, context):
         179: "What are some LOTR X (Twitter) accounts you'd recommend someone following?",
         180: "What are your opinions on Bilbo Baggins in LOTR?",
         181: "What are your opinions on Boromir's death scene?",
-        182: "What are your opinions on Middle-Earth geography?"
+        182: "What are your opinions on Middle-Earth geography?",
+        183: "What are your opinions on the LOTR fandom?",
+        184: "What are your opinions on the LOTR video games?",
+        185: "What are your opinions on the LOTR board games?",
+        186: "What are your opinions on the LOTR Lego sets?",
+        187: "What are your opinions on the Lego LOTR video games?",
+        188: "What are your opinions on the changes made in the Hobbit movies compared to the book?",
+        189: "What are your opinions on the changes made in the LOTR movies compared to the book?",
+        190: "What are your opinions on J.R.R. Tolkien?",
 
 
     }
@@ -502,7 +510,7 @@ def lotr_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 120:
+        if len(question_indices) > 150:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)
