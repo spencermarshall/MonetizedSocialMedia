@@ -119,7 +119,7 @@ def lotr_question(event, context):
         91: "What is the most epic moment in The Hobbit?",
         92: "What is the most memorable scene from Rings of Power?",
         93: "What are your opinions of Rings of Power?",
-        94: "What are your opinions on The Hobbit book?", # todo i stopped here
+        94: "What are your opinions on The Hobbit book?",
         95: "What are your opinions of The Hobbit movies?",
         96: "What are your opinions of the LOTR books?",
         97: "What are your opinions of the LOTR movies?",
@@ -148,7 +148,7 @@ def lotr_question(event, context):
         120: "Who is your favorite Hobbit character?",
         121: "What are your opinions on The Shire?",
         122: "What are your opinions on Rivendell?",
-        123: "What are your opinions on Mirkwood?",
+        123: "What are your opinions on Mirkwood Forest?",
         124: "What are your opinions on Lothlórien?",
         125: "What are your opinions on Isengard?",
         126: "What are your opinions on Gondor?",
@@ -159,7 +159,7 @@ def lotr_question(event, context):
         131: "What are your opinions on Merry and Pippin?",
         132: "What is the most iconic line from Frodo?",
         133: "What is the most iconic line from Sam?",
-        134: "Dwarves or Elves?",
+        134: "Dwarves or Elves?", #todo i stopped here
         135: "Dwarves or Hobbits?",
         136: "Elves or Hobbits?",
         137: "What are your opinions on The Fellowship of the Ring as a movie?",
@@ -178,7 +178,7 @@ def lotr_question(event, context):
         150: "What are your opinions on Disa in Rings of Power?",
         151: "Which location shown in Rings of Power would you most love to visit and why?",
         152: "Which is your favorite episode of Rings of Power?",
-        153: "What are your least favorite episode of Rings of Power?",
+        153: "What is your least favorite episode of Rings of Power?",
         154: "What are your opinions on the Rings of Power soundtrack?",
         155: "What are your opinions on the Rings of Power cinematography?",
         156: "If you could change one thing about Rings of Power, what would it be?",
@@ -233,6 +233,10 @@ def lotr_question(event, context):
         205: "Shelob or Balrog?",
         206: "Would you want to see a Silmarillion movie adaptation?",
         207: "Who were you hoping would win the killing count game between Gimli and Legolas?",
+        208: "What role do you think C.S. Lewis had in Tolkien writing LOTR?",
+        209: "What are your opinions on the direction Rings of Power is heading?",
+
+        #maybe add more "What are the most iconic lines from..." questions i currently only have frodo and sam, or maybe switch adjective instead of iconic idk
 
 
 
@@ -366,23 +370,23 @@ def lotr_question(event, context):
         114: "None",
         115: "questions/other_movie-LOTRorHobbit/",
         116: "None",
-        117: "None",
+        117: "questions/other_LOTR-Movies/", #maybe delete this one and show just the 3 movie posters if possible idk
         118: "None",
-        119: "None",
+        119: "questions/other_HobbitMovie/", #maybe delete this also and just show hobbit movies
         120: "None",
-        121: "None",
-        122: "None",
-        123: "None",
-        124: "None",
-        125: "None",
-        126: "None",
-        127: "None",
-        128: "None",
-        129: "None",
+        121: "questions/place_Shire/",
+        122: "questions/place_Rivendell/",
+        123: "questions/place_Mirkwood/",
+        124: "questions/place_Lothlorien/",
+        125: "questions/place_Isengard/",
+        126: "questions/place_Gondor/",
+        127: "questions/place_Mordor/",
+        128: "questions/other_AragornBrokeToe/",
+        129: "questions/char_MerryANDPippin/",
         130: "None",
         131: "None",
-        132: "None",
-        133: "None",
+        132: "questions/char_Frodo/",
+        133: "questions/char_Samwise/",
         134: "None",
         135: "None",
         136: "None",
@@ -539,9 +543,6 @@ def lotr_question(event, context):
 
         contains_thoughts = "thoughts" in question.lower()
         contains_opinions = "opinions" in question.lower()
-        if random.random() < 0.5:
-            contains_thoughts = "honest thoughts" in question.lower()
-            contains_opinions = "honest opinions" in question.lower()
 
         # Only proceed if at least one of the words is present
         if contains_thoughts or contains_opinions:
