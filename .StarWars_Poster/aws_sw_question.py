@@ -809,7 +809,7 @@ def SW_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 210:
+        if len(question_indices) > 300:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)
@@ -822,17 +822,19 @@ def SW_question(event, context):
         # this replaces 'thoughts' or 'opinions' with 50% chance of either
         contains_thoughts = "thoughts" in question.lower()
         contains_opinions = "opinions" in question.lower()
-        if random.random() < 0.5:
-            contains_thoughts = "honest thoughts" in question.lower()
-            contains_opinions = "honest opinions" in question.lower()
+
 
         # Only proceed if at least one of the words is present
         if contains_thoughts or contains_opinions:
             # Replace "thoughts" with randomly chosen word
+            ran = random.random()
             if contains_thoughts:
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
+
+                if random.random() < 0.5:
+                    replacement = "honest " + replacement
                 pattern = r'\bthoughts\b'
                 question = re.sub(pattern, replacement, question)
                 print("REPLACED")
@@ -842,6 +844,8 @@ def SW_question(event, context):
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
+                if random.random() < 0.5:
+                    replacement = "honest " + replacement
                 pattern = r'\bopinions\b'
                 question = re.sub(pattern, replacement, question)
                 print("REPLACED")
