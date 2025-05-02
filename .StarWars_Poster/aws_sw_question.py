@@ -833,8 +833,7 @@ def SW_question(event, context):
                 if random.random() < 0.5:
                     replacement = "opinions"
 
-                if random.random() < 0.5:
-                    replacement = "honest " + replacement
+                v
                 pattern = r'\bthoughts\b'
                 question = re.sub(pattern, replacement, question)
                 print("REPLACED")

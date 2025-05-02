@@ -63,7 +63,7 @@ def postQuote(event, context):
         46: "Clones, bred for combat. All part of the plan... THE Plan. The only Plan that matters. Not even I was made aware of its grand design, but I played my part. And do you know what happened to me? I was cast aside. I was forgotten. But I survived, and I can thrive in the chaos that is to come.",
         47: "There is no justice, now law, no order... except for the one that will replace it!",
         48: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.",
-        49: "You're A good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
+        49: "You're a good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
         50: "Do it.",
 
     }

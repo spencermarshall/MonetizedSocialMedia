@@ -550,6 +550,9 @@ def lotr_question(event, context):
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
+
+                if random.random() < 0.5:
+                    replacement = "honest " + replacement
                 pattern = r'\bthoughts\b'
                 question = re.sub(pattern, replacement, question)
                 print("REPLACED")
@@ -559,6 +562,9 @@ def lotr_question(event, context):
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
+
+                if random.random() < 0.5:
+                    replacement = "honest " + replacement
                 pattern = r'\bopinions\b'
                 question = re.sub(pattern, replacement, question)
 
