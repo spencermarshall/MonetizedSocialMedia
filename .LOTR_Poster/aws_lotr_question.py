@@ -217,12 +217,12 @@ def lotr_question(event, context):
         189: "What are your opinions on the changes made in the LOTR movies compared to the book?",
         190: "What are your opinions on J.R.R. Tolkien?",
         191: "What are your opinions on Peter Jackson?",
-        192: "What is your opinion on Legolas being in The Hobbit movies while not being in the book?",
-        193: "What is your opinion on Radagast being in The Hobbit movies while not being in the book?",
-        194: "What is your opinion on Galadriel being in The Hobbit movies while not being in the book?",
-        195: "What is your opinion on Tauriel being in The Hobbit movies while not being in the book?",
-        196: "What is your opinion on Azog being in The Hobbit movies while not being in the book?",
-        197: "What is your opinion on Saruman being in The Hobbit movies while not being in the book?",
+        192: "What is your opinion on Legolas being in The Hobbit movies but not the book?",
+        193: "What is your opinion on Radagast being in The Hobbit movies but not the book?",
+        194: "What is your opinion on Galadriel being in The Hobbit movies but not the book?",
+        195: "What is your opinion on Tauriel being in The Hobbit movies but not the book?",
+        196: "What is your opinion on Azog being in The Hobbit movies but not the book?",
+        197: "What is your opinion on Saruman being in The Hobbit movies but not the book?",
         198: "What are your opinions on animated LOTR content such as The War of the Rohirrim?",
         199: "What are your thoughts on the Eagles’ rescue at the end of Return of the King?",
         200: "What are your thoughts on the ending of The Hobbit?",
@@ -235,6 +235,9 @@ def lotr_question(event, context):
         207: "Who were you hoping would win the killing count game between Gimli and Legolas?",
         208: "What role do you think C.S. Lewis had in Tolkien writing LOTR?",
         209: "What are your opinions on the direction Rings of Power is heading?",
+        210: "Which would be a better title: The Magic Ring or Lord of the Rings?",
+
+
 
         #maybe add more "What are the most iconic lines from..." questions i currently only have frodo and sam, or maybe switch adjective instead of iconic idk
 
