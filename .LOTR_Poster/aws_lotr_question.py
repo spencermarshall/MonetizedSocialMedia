@@ -85,7 +85,7 @@ def lotr_question(event, context):
         57: "What role does fate play in the journeys of Middle-earth’s heroes?",
         58: "What are your thoughts on the magic in Tolkien’s world?",
         59: "Which moment of friendship in LOTR stands out to you?",
-        60: "What is your favorite quote from Bilbo Baggins?", #here has young bilbo picture, maybe not applicable
+        60: "What is your favorite quote from Bilbo Baggins?",  # here has young bilbo picture, maybe not applicable
         61: "What element of Tolkien's world-building captivates you the most?",
         62: "Which character’s journey in LOTR resonated with you the most?",
         63: "If you could write a new Middle-earth story, what would it be about?",
@@ -141,7 +141,7 @@ def lotr_question(event, context):
         113: "If you could witness one battle from LOTR, which would it be?",
         114: "What is your favorite moment of humor in LOTR?",
         115: "Which is your favorite movie trilogy: The Lord of the Rings or The Hobbit?",
-        116: "What is the most powerful moment of forgiveness in LOTR?", #todo stopped here
+        116: "What is the most powerful moment of forgiveness in LOTR?",  # todo stopped here
         117: "Which is your favorite LOTR movie?",
         118: "Who is your favorite LOTR character?",
         119: "Which is your favorite Hobbit movie?",
@@ -159,7 +159,7 @@ def lotr_question(event, context):
         131: "What are your opinions on Merry and Pippin?",
         132: "What is the most iconic line from Frodo?",
         133: "What is the most iconic line from Sam?",
-        134: "Dwarves or Elves?", #todo i stopped here
+        134: "Dwarves or Elves?",  # todo i stopped here
         135: "Dwarves or Hobbits?",
         136: "Elves or Hobbits?",
         137: "What are your opinions on The Fellowship of the Ring as a movie?",
@@ -171,7 +171,7 @@ def lotr_question(event, context):
         143: "What are your opinions on The War of the Rohirrim as a movie?",
         144: "Are you happy with how Amazon handled Rings of Power?",
         145: "Which new character introduced in Rings of Power has become your favorite?",
-        146: "What are your opinions on Galadriel in Rings of Power?",
+        146: "What are your opinions on Galadriel in Rings of Power?",  # todo stopped here
         147: "What are your opinions on Sauron in Rings of Power?",
         148: "What are your opinions on Elrond in Rings of Power?",
         149: "What are your opinions on Durin in Rings of Power?",
@@ -237,12 +237,12 @@ def lotr_question(event, context):
         209: "What are your opinions on the direction Rings of Power is heading?",
         210: "Which would be a better title: The Magic Ring or Lord of the Rings?",
 
+        # maybe add more "What are the most iconic lines from..." questions i currently only have frodo and sam, or maybe switch adjective instead of iconic idk
 
-
-        #maybe add more "What are the most iconic lines from..." questions i currently only have frodo and sam, or maybe switch adjective instead of iconic idk
-
-
-
+        # maybe ask question about bifur as a character
+        # question about elrond being in both LOTR and rings of power, maybe if ROP was good protrayl
+        # question maybe about other LOTR characters you would want to see in Rings of Power
+        # question about Sauron purposely being a different actor in s2 than s1
 
     }
 
@@ -373,9 +373,9 @@ def lotr_question(event, context):
         114: "None",
         115: "questions/other_movie-LOTRorHobbit/",
         116: "None",
-        117: "questions/other_LOTR-Movies/", #maybe delete this one and show just the 3 movie posters if possible idk
+        117: "questions/other_LOTR-Movies/",  # maybe delete this one and show just the 3 movie posters if possible idk
         118: "None",
-        119: "questions/other_HobbitMovie/", #maybe delete this also and just show hobbit movies
+        119: "questions/other_HobbitMovie/",  # maybe delete this also and just show hobbit movies
         120: "None",
         121: "questions/place_Shire/",
         122: "questions/place_Rivendell/",
@@ -390,23 +390,23 @@ def lotr_question(event, context):
         131: "None",
         132: "questions/char_Frodo/",
         133: "questions/char_Samwise/",
-        134: "None",
-        135: "None",
+        134: "questions/char_DwarvesORElves/",
+        135: "questions/char_DwarvesORHobbit/",
         136: "None",
-        137: "None",
-        138: "None",
-        139: "None",
-        140: "None",
-        141: "None",
-        142: "None",
-        143: "None",
+        137: "questions/movie_FellowshipOfTheRing/",
+        138: "questions/movie_TheTwoTowers/",
+        139: "questions/movie_ReturnOfTheKing/",
+        140: "questions/movie_UnexpectedJourney/",
+        141: "questions/movie_DesolationOfSmaug/",
+        142: "questions/movie_BattleOfTheFiveArmies/",
+        143: "questions/movie_WarOfTheRohirrim/",
         144: "questions/show_RingsOfPower/",
         145: "None",
         146: "None",
-        147: "None",
-        148: "None",
-        149: "None",
-        150: "None",
+        147: "questions/char_SauronROP/",
+        148: "questions/char_ElrondROP/",
+        149: "questions/char_Durin/",
+        150: "questions/char_Disa/",
         151: "None",
         152: "questions/show_RingsOfPower/",
         153: "questions/show_RingsOfPower/",
