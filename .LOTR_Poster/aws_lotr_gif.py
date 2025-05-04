@@ -52,17 +52,14 @@ def LOTR_gif_post(event, context):
     first_letter = random_file[0]
     tweet_text = ""
     ran = random.random()
-    if ran < 0.02:
+    if ran < 0.05:
         tweet_text += "#LOTR"
-    elif ran < 0.25:
-        if first_letter == "l":
-            tweet_text += "Lord of the Rings"
-        elif first_letter == "h":
-            tweet_text += "The Hobbit"
-        elif first_letter == "r":
-            tweet_text += "The Rings of Power"
-    elif ran < 0.26:
+    elif ran < 0.1:
+        tweet_text += "LOTR"
+    elif ran < 0.15:
         tweet_text += "#LordOfTheRings"
+    elif ran < 0.2:
+        tweet_text += "Lord of the Rings"
 
     # Download the selected file to a temporary directory
     download_path = f"/tmp/{os.path.basename(random_file)}"
