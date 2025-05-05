@@ -89,7 +89,7 @@ def SW_question(event, context):
         61: "What are your opinions on Jedi Fallen Order?",
         62: "What are your opinions on the Star Wars Squadrons game (2020)?",
         63: "What are your opinions on the Star Wars: Knights Of The Old Republic game?",
-        64: "What are your opinions on Jedi Survivor?",
+        64: "What are your opinions on EA's Jedi Survivor video game?",
         65: "What are your opinions on Cal Kestis?",
         66: "What are your opinions on Sith Troopers from Ep9?",
         67: "What are your opinions on Babu Frik?",
@@ -320,7 +320,7 @@ def SW_question(event, context):
         291: "What are your opinions on Porgs in The Last Jedi?",
         292: "Blue Lightsaber or Green Lightsaber?",
         293: "What color lightsaber are you?",
-        294: "Ahsoka’s White Sabers or Traditional Sabers?",
+        294: "Do you like Ahsoka’s White Sabers or her original Sabers?",
         295: "Tweet like you're in the Star Wars universe.",
         296: "What are your thoughts on the portrayal of the Sith in the High Republic era?",
         297: "Battle of Jakku or Battle of Endor?",
@@ -399,6 +399,7 @@ def SW_question(event, context):
         370: "If you could change one thing about Rogue One what would it be?",
         371: "If you could change one thing about the Solo movie, what would it be?",
         372: "What is your Star Wars Hot Take?",
+        373: "Palpatine did nothing wrong. Change my mind.",
         # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
         # what are your thoughts on the 4 jedi that died attacking palpatine in rots
         # thoughts on count dooku in TOTJ, and other characters
