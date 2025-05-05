@@ -174,7 +174,7 @@ def lotr_question(event, context):
         146: "What are your opinions on Galadriel in Rings of Power?",  # todo stopped here
         147: "What are your opinions on Sauron in Rings of Power?",
         148: "What are your opinions on Elrond in Rings of Power?",
-        149: "What are your opinions on Durin in Rings of Power?",
+        149: "Which would be a better title: The Magic Ring or Lord of the Rings?",
         150: "What are your opinions on Disa in Rings of Power?",
         151: "Which location shown in Rings of Power would you most love to visit and why?",
         152: "Which is your favorite episode of Rings of Power?",
@@ -235,7 +235,6 @@ def lotr_question(event, context):
         207: "Who were you hoping would win the killing count game between Gimli and Legolas?",
         208: "What role do you think C.S. Lewis had in Tolkien writing LOTR?",
         209: "What are your opinions on the direction Rings of Power is heading?",
-        210: "Which would be a better title: The Magic Ring or Lord of the Rings?",
 
         # maybe add more "What are the most iconic lines from..." questions i currently only have frodo and sam, or maybe switch adjective instead of iconic idk
 
@@ -405,7 +404,7 @@ def lotr_question(event, context):
         146: "None",
         147: "questions/char_SauronROP/",
         148: "questions/char_ElrondROP/",
-        149: "questions/char_Durin/",
+        149: "",
         150: "questions/char_Disa/",
         151: "None",
         152: "questions/show_RingsOfPower/",

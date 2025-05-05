@@ -45,15 +45,15 @@ def LOTR_meme_post(event, context):
 
     random_file = random.choice(jpg_files)
 
-    tweet_text = ""  # 20% of each possible: "", #LOTR, #LordOfTheRings, Lord of the Rings, LOTR
+    tweet_text = ""
     ran = random.random()
-    if ran < 0.02:
+    if ran < 0.025:
         tweet_text = "#LOTR"
-    elif ran < 0.04:
+    elif ran < 0.05:
         tweet_text = "#LordOfTheRings"
-    elif ran < 0.14:
+    elif ran < 0.1:
         tweet_text = "Lord of the Rings"
-    elif ran < 0.2:
+    elif ran < 0.15:
         tweet_text = "LOTR"
 
     # Download the selected file to a temporary directory
