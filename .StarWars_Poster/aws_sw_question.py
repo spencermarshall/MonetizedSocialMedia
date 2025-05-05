@@ -402,7 +402,9 @@ def SW_question(event, context):
         # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
         # what are your thoughts on the 4 jedi that died attacking palpatine in rots
         # thoughts on count dooku in TOTJ, and other characters
+        #add sw lego question kinda like lotr with sw images
     }  # add questions for "what are your thoughts on Hera Syndulla in Live action?", etc.
+
 
     # s3 bucket files look up
     # add image look up for id: 329,  254, 372, 373
