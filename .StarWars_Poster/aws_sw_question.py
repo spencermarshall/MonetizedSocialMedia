@@ -89,7 +89,7 @@ def SW_question(event, context):
         61: "What are your opinions on Jedi Fallen Order?",
         62: "What are your opinions on the Star Wars Squadrons game (2020)?",
         63: "What are your opinions on the Star Wars: Knights Of The Old Republic game?",
-        64: "What are your opinions on EA's Jedi Survivor video game?",
+        64: "Did you enjoy Jedi Survivor as a SW video game?",
         65: "What are your opinions on Cal Kestis?",
         66: "What are your opinions on Sith Troopers from Ep9?",
         67: "What are your opinions on Babu Frik?",
