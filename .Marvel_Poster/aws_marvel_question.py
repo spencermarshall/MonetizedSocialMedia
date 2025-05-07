@@ -30,7 +30,7 @@ def Marvel_question(event, context):
         2: "Which Marvel character would you want to be friends with?",
         3: "What is your favorite Marvel movie?",
         4: "Who is your favorite Marvel villain?",
-        5: "Which Marvel character would you want to be?",
+        5: "Would you want to live in Wakanda?",
         6: "How old were you when you saw your first Marvel movie?",
         7: "Which Marvel character would you want to be your mentor?",
         8: "Which Marvel character would you want to be your sidekick?",
@@ -127,8 +127,82 @@ def Marvel_question(event, context):
         99: "If you could have any Marvel character's weapon, which would you choose?",
         100: "If you could have any Marvel character's suit, which would you choose?",
         101: "If you could have any Marvel character's abilities, which would you choose?",
-        102: "If Dr. Strange didn't give up the Time Stone, how would the events of Infinity War have changed?"
-    }
+        102: "Which Marvel comic storyline would you most like to see adapted into a film?",
+        103: "How do you feel about Marvel's use of post-credit scenes?",
+        104: "How do you feel about Marvel's use of humor in their films?",
+        105: "What Marvel prop or artifact would you display in your home?",
+        106: "Which Marvel supporting character deserves their own spin-off show?",
+        107: "What is your favorite Marvel Easter egg?",
+        108: "What is your favorite Marvel crossover event?",
+        109: "What is your favorite Marvel team-up?",
+        110: "Which MCU Phase do you think was the best?",
+        111: "Which MCU Phase do you think was the worst?",
+        112: "Which upcoming MCU Project are you most excited about?",
+        113: "Which Marvel character do you think has the best costume?",
+        114: "Which Marvel character do you think has the worst costume?",
+        115: "What are your opinions on Kevin Fiege",
+        116: "Which MCU character is most underrated?",
+        117: "Which MCU character is most overrated?",
+        118: "Which Marvel actor's performance do you admire most?",
+        119: "Which Marvel actor's performance do you dislike most?",
+        120: "What are your opinions on the direction the MCU is headed?",
+        121: "Which Marvel character's backstory do you find most compelling?",
+        122: "What is your favorite fictional location in the MCU?",
+        123: "Which is your favorite planet in the MCU?",
+        124: "What is your favorite Marvel artifact?",
+        125: "If you could recast one Marvel character, who would it be and why?",
+        126: "What are your top 3 Marvel movies?",
+        127: "If you could have dinner with any Marvel character, who would it be?",
+        128: "If you could create your own MCU movie, what would it be about?",
+        129: "Which Marvel character do you think deserves their own standalone movie or series?",
+        130: "If you could introduce a new character to the MCU, who would it be and how would they fit in?",
+        131: "What crossover event would you like to see in future Marvel projects?",
+        132: "Which Marvel movie do you think is the most rewatchable?",
+        133: "How did you feel about the introduction of the multiverse in the MCU?",
+        134: "What are your thoughts on the handling of time travel in Avengers: Endgame?",
+        135: "What are your opinions on the relationship between Tony Stark and Peter Parker?",
+        136: "What are your opinions on the relationship between Steve Rogers and Bucky Barnes?",
+        137: "What are your opinions on the relationship between Thor and Loki?",
+        138: "What are your opinions on the relationship between Wanda Maximoff and Vision?",
+        139: "What are your opinions on the relationship between Natasha Romanoff and Clint Barton?",
+        140: "What are your opinions on the Ant-Man movies?",
+        141: "Which Marvel character do you think was best adapted from the comics to the movies?",
+        142: "Which Marvel character do you think was worst adapted from the comics to the movies?",
+        143: "If you could swap lives with a Marvel character for a day, who would it be?",
+        144: "What do you think of the MCU’s approach to introducing new characters?",
+        145: "What is your favorite Marvel fan theory?",
+        146: "Which Marvel video-game adaptation do you think was executed best?",
+        147: "Do you own any Marvel Lego sets?",
+        148: "What is your favorite Marvel video game?",
+        149: "Which Marvel animated project would you love to see adapted into live action?",
+        150: "What is your favorite Marvel animated series?",
+        151: "Do you want to see more animated projects in the MCU?",
+        152: "What are your opinions on Stan Lee",
+        153: "Which Stan Lee cameo is your favorite?",
+        154: "Which surprise cameo in a Marvel project blew your mind the most?",
+        155: "Which ‘What If…?’ episode would you develop into a full-length movie?",
+        156: "How has your opinion of a Marvel character changed over time?",
+        157: "Which Marvel villain do you think deserves a redemption arc, and how would you imagine it happen?",
+        158: "If you could explore any untold story from the Marvel universe, what would it be and why?",
+        159: "What’s the most emotional moment in a Marvel movie that still resonates with you?",
+        160: "If you could rewrite the ending of any Marvel movie, which one would it be and what would you change?",
+        161: "Which Marvel story do you think deserves a prequel, and what would it focus on?",
+        162: "What’s the most exciting technological innovation from the Marvel universe you’d want in real life?",
+        163: "If you could have a Marvel character as your personal trainer, who would it be and why?",
+        164: "Which Marvel character do you think would make the best detective?",
+        165: "What’s the most inspiring act of heroism you’ve seen from a Marvel character?",
+        166: "Which Marvel character’s origin story would you most want to see reimagined, and how?",
+        167: "Infinity War or Endgame?",
+        168: "What are your opinions on Mjolnir?",
+        169: "Thor's hammer or Captain America's shield?",
+        170: "Tesseract or Thor's hammer?",
+        171: "Tesseract or Captain America's shield?",
+        172: "Iron man or Spider man?",
+        173: "WandaVision or Hawkeye show?",
+        174: "Wakanda or Asgard?",
+        175: "Would you want to live in Asgard?",
+     } #add question about funny mexican guy from antman movies
+
 
     # s3 bucket files look up
     lookup = {
@@ -151,7 +225,7 @@ def Marvel_question(event, context):
         17: "None",
         18: "None",
         19: "None",
-        20: "None",
+        20: "questions/char_Antman/",
         21: "None",
         22: "None",
         23: "None",
@@ -406,7 +480,6 @@ def Marvel_question(event, context):
         # try again until we get new item not in list
         while index in question_indices:
             index = random.randint(1, len(questions))
-
         path = lookup[index]
 
         question_indices.insert(0, index)
@@ -418,16 +491,22 @@ def Marvel_question(event, context):
         s3.put_object(Bucket=bucket_name, Key=file_key, Body=updated_content)
         question = questions[index]
 
+        print("BEFORE")
+        print(question)
+        # this replaces 'thoughts' or 'opinions' with 50% chance of either
         contains_thoughts = "thoughts" in question.lower()
         contains_opinions = "opinions" in question.lower()
+
 
         # Only proceed if at least one of the words is present
         if contains_thoughts or contains_opinions:
             # Replace "thoughts" with randomly chosen word
+            ran = random.random()
             if contains_thoughts:
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
+
                 pattern = r'\bthoughts\b'
                 question = re.sub(pattern, replacement, question)
                 print("REPLACED")
@@ -437,8 +516,14 @@ def Marvel_question(event, context):
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
+                if random.random() < 0.5:
+                    replacement = "honest " + replacement
                 pattern = r'\bopinions\b'
                 question = re.sub(pattern, replacement, question)
+                print("REPLACED")
+        # done replacing
+        print("AFTER")
+        print(question)
 
         if path == "None":  # upload just text, no image
             client.create_tweet(text=question)
