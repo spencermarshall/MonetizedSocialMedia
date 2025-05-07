@@ -115,6 +115,10 @@ def BB_question(event, context):
         88: "It's all good man",
         89: "You're the smartest guy I ever met, and you're too stupid to see he made up his mind 10 minutes ago.",
         90: "What are your opinions on the use of black and white scenes in BCS?",
+        91: "What are your opinions on the death of Andrea?",
+        92: "Who had the saddest death in all of BB/BCS?",
+        93: "Who's death was most surprising in BB/BCS",
+        94: "If you could change one thing about Better Call Saul what would it be?", #maybe image maybe delete idk
         95: "What is your favorite moment involving Walter White?",
         96: "What is your favorite moment involving Jesse Pinkman?",
         97: "What is your favorite moment involving Gus Fring?",
@@ -192,8 +196,9 @@ def BB_question(event, context):
         169: "Was Walter White justified in poisoning Brock?",
         170: "What are your thoughts on Ed Galbraith?",
         171: "Why do you think Breaking Bad has such a strong fanbase?",
+        172: "Was Walter White justified in killing Krazy-8"
     } #maybe a post about howard death like i just finished s5 what if lalo met howard joke
-
+        # maybe something like "the fly episode is either one of your favorites or one of your least favorites, there is no inbetween." idk tho
     # s3 bucket files look up
     lookup = {
         1: "questions/show_BreakingBad/",
@@ -268,7 +273,7 @@ def BB_question(event, context):
         70: "questions/other_GoodmanOfficeBB/",
         71: "questions/other_HowardDeath/",
         72: "questions/other_SaulGoodmanCommercials/",
-        73: "None",
+        73: "questions/char_SaulGoodmanBB/",
         74: "questions/char_SaulGoodman/",
         75: "questions/other_JimmyHoward/",
         76: "None",
@@ -286,13 +291,13 @@ def BB_question(event, context):
         88: "None",
         89: "None",
         90: "None",
-        91: "None",
-        92: "None",
+        91: "questions/other_AndreaDeath/",
+        92: "questions/other_SaddestDeath/",
         93: "None",
         94: "None",
         95: "questions/char_WalterWhite/",
         96: "questions/char_Jesse/",
-        97: "None",
+        97: "questions/char_GusFring/",
         98: "questions/char_SaulGoodman/",
         99: "None",
         100: "None",
@@ -305,7 +310,7 @@ def BB_question(event, context):
         107: "None",
         108: "questions/other_walter_transformation/",
         109: "None",
-        110: "None",
+        110: "questions/char_GusFring/",
         111: "None",
         112: "None",
         113: "None",
@@ -319,7 +324,7 @@ def BB_question(event, context):
         121: "questions/char_Jesse/",
         122: "questions/char_SaulGoodman/",
         123: "None",
-        124: "None",
+        124: "questions/char_GusFring/",
         125: "questions/movie_ElCamino/",
         126: "None",
         127: "questions/char_KimWexler/",
@@ -332,40 +337,40 @@ def BB_question(event, context):
         134: "None",
         135: "None",
         136: "None",
-        137: "None",
-        138: "None",
-        139: "None",
+        137: "questions/char_StevenGomez/",
+        138: "questions/char_MarieSchrader/",
+        139: "questions/char_TucoSalamanca/",
         140: "questions/char_ToddAlquist/",
-        141: "None",
-        142: "None",
-        143: "None",
-        144: "None",
-        145: "None",
-        146: "None",
-        147: "None",
-        148: "None",
-        149: "None",
+        141: "questions/char_LydiaR/",
+        142: "questions/char_HowardHamlin/",
+        143: "questions/char_ChuckMcGill/",
+        144: "questions/char_GeneTakavic/",
+        145: "questions/char_Francesca/",
+        146: "questions/char_Huell/",
+        147: "questions/char_Krazy8/",
+        148: "questions/char_Jane/",
+        149: "questions/char_Gale/",
         150: "None",
         151: "None",
         152: "None",
-        153: "None",
-        154: "None",
-        155: "None",
+        153: "questions/char_SkinnyPete/",
+        154: "questions/char_Badger/",
+        155: "questions/char_Combo/",
         156: "None",
         157: "questions/movie_ElCamino/",
         158: "None",
         159: "questions/movie_ElCamino/",
         160: "None",
         161: "None",
-        162: "None",
+        162: "questions/char_BillBurr/",
         163: "questions/show_BreakingBad/",
         164: "questions/other_BCS_Ending/",
         165: "questions/other_JaneDeath/",
-        166: "None",
-        167: "None",
+        166: "questions/other_ToddKillsKid/",
+        167: "questions/other_Fly/",
         168: "questions/show_BreakingBad/",
-        169: "None",
-        170: "None",
+        169: "questions/other_PoisonBrock/",
+        170: "questions/char_Ed/",
         171: "questions/show_BreakingBad/",
         172: "None",
         173: "None",
@@ -460,6 +465,40 @@ def BB_question(event, context):
 
         s3.put_object(Bucket=bucket_name, Key=file_key, Body=updated_content)
         question = questions[index]
+
+        print("BEFORE")
+        print(question)
+        # this replaces 'thoughts' or 'opinions' with 50% chance of either
+        contains_thoughts = "thoughts" in question.lower()
+        contains_opinions = "opinions" in question.lower()
+
+
+        # Only proceed if at least one of the words is present
+        if contains_thoughts or contains_opinions:
+            # Replace "thoughts" with randomly chosen word
+            ran = random.random()
+            if contains_thoughts:
+                replacement = "thoughts"
+                if random.random() < 0.5:
+                    replacement = "opinions"
+
+                pattern = r'\bthoughts\b'
+                question = re.sub(pattern, replacement, question)
+                print("REPLACED")
+
+            # Replace "opinions" with randomly chosen word
+            if contains_opinions:
+                replacement = "thoughts"
+                if random.random() < 0.5:
+                    replacement = "opinions"
+                if random.random() < 0.5:
+                    replacement = "honest " + replacement
+                pattern = r'\bopinions\b'
+                question = re.sub(pattern, replacement, question)
+                print("REPLACED")
+        # done replacing
+        print("AFTER")
+        print(question)
 
         if path == "None":  # upload just text, no image
             client.create_tweet(text=question)
