@@ -3,6 +3,7 @@ import boto3
 import tweepy
 import os
 import json
+import re
 
 # X credentials stored in env variables
 API_KEY = os.environ["API_KEY"]
@@ -118,7 +119,7 @@ def BB_question(event, context):
         91: "What are your opinions on the death of Andrea?",
         92: "Who had the saddest death in all of BB/BCS?",
         93: "Who's death was most surprising in BB/BCS",
-        94: "If you could change one thing about Better Call Saul what would it be?", #maybe image maybe delete idk
+        94: "If you could change one thing about Better Call Saul what would it be?",  # maybe image maybe delete idk
         95: "What is your favorite moment involving Walter White?",
         96: "What is your favorite moment involving Jesse Pinkman?",
         97: "What is your favorite moment involving Gus Fring?",
@@ -196,9 +197,59 @@ def BB_question(event, context):
         169: "Was Walter White justified in poisoning Brock?",
         170: "What are your thoughts on Ed Galbraith?",
         171: "Why do you think Breaking Bad has such a strong fanbase?",
-        172: "Was Walter White justified in killing Krazy-8"
-    } #maybe a post about howard death like i just finished s5 what if lalo met howard joke
-        # maybe something like "the fly episode is either one of your favorites or one of your least favorites, there is no inbetween." idk tho
+        172: "Was Walter White justified in killing Krazy-8",
+        173: "The fly episode is either one of your favorite episodes or one of your least favorite episodes. There is no inbetween.",
+        174: "What role does family loyalty actually play throughout Breaking Bad?",
+        175: "How do you think Jane's death affected Jesse throughout the rest of the show?",
+        176: "What role do you think Molly had in Walter White's decisions?",
+        177: "What are your opinions on the entire plane crash incident?",
+        178: "What are your opinions on the entire train heist idea?",
+        179: "What are your opinions on the underground lab as a whole?",
+        180: "Would you eat at Los Pollos Hermanos?",
+        181: "What are your opinions on how Money Laundering is portrayed?",
+        182: "What are your opinions on Walter buying the Car Wash?",
+        183: "Would you ever buy a unsliced pizza?",
+        184: "Should Walter have accepted the money from Elliot and Gretchen?",
+        185: "What are your opinions on Elliot and Gretchen?",
+        186: "Do you think Walter should have gotten equity in Gray Matter?",
+        187: "With a qualified background, why do you think Walter stayed as a High School Chemistry teacher?",
+        188: "What are your opinions on the RV that Walter and Jesse used?",
+        189: "What are your opinions on the scene where Hank almost caught Jesse and Walter in the RV?",
+        190: "What are your opinions on when Hank beat up Jesse?",
+        191: "What are your opinions on the scene where Walter and Jesse first meet?",
+        192: "Do you think Walter would have lived and recovered if he had never gotten into the meth business?",
+        193: "Why do you think Walter was so obsessed with the idea of being a drug lord?",
+        194: "Why do you think Hank was never able to catch Walter?",
+        195: "I was just reading this book and it was signed by W.W. What name do you think that is?",
+        196: "Do you think Gus should have never gotten involved with Walter and Jesse?",
+        197: "Why do you think Gus initially didn't want to work with Walter and Jesse but later decided to?",
+        198: "Would you want to be a fast food employee at Los Pollos Hermanos?",
+        199: "What are your opinions on how Jesse's clothing?",
+        200: "Do you think the pink teddy bear was a good symbol for the show?",
+        201: "Who's your favorite BB character that showed up in BCS?",
+        202: "Who's your least favorite BB character that showed up in BCS?",
+        203: "What's the most surprising character crossover in BCS?",
+        204: "What are your opinions on Jesse buying his parents house?",
+        205: "Do you think the Salamanca twins were good villains?",
+        206: "What are your opinions on Ted Beneke?",
+        207: "What are your opiniosn on Skyler doing the deed with Ted?",
+        208: "Which is your least favorite scene in BB and why is it when Skyler sings Happy Birthday to Ted?",
+        209: "Who is your least favorite character in BB and why is it Skyler?",
+        210: "What are your opinions when Kim Wexler met Jesse Pinkman?",
+        211: "What are your opinions on Jesse's magnet idea with the evidence room?",
+        212: "Should Skyler have made Walter return the car he bought for Walt Jr?",
+        213: "What are your opinions on Nacho's death in BCS?",
+        214: "Do you think Jimmy should have taken the shorter jail time?",
+        215: "What are your opinions on the mall theft scenes in BCS?",
+        216: "Was Saul working at the Cinnabon a good idea?",
+        217: "What were your thoughts when Gene Takavic got recognized as Saul Goodman?",
+        218: "Was Gene Takavic a good undercover character?",
+        219: "Why do you think Saul continued his criminal activities as Gene Takavic?",
+        220: "What are your opinions on Kim confessing her crimes to the DA?",
+        221: "What are your opinions on Kim's character development throughout BCS?",
+        222: "What are your opinions on Kim working at Palm Coast Sprinklers?",
+    }
+
     # s3 bucket files look up
     lookup = {
         1: "questions/show_BreakingBad/",
@@ -242,7 +293,7 @@ def BB_question(event, context):
         39: "questions/show_BetterCallSaul/",
         40: "questions/other_BCSCourt/",
         41: "None",
-        42: "None", #gus or walter or ...
+        42: "None",  # gus or walter or ...
         43: "questions/char_Jesse/",
         44: "questions/show_BreakingBad/",
         45: "questions/char_WalterWhite/",
@@ -373,7 +424,7 @@ def BB_question(event, context):
         170: "questions/char_Ed/",
         171: "questions/show_BreakingBad/",
         172: "None",
-        173: "None",
+        173: "questions/other_Fly/",
         174: "None",
         175: "None",
         176: "None",
@@ -458,7 +509,7 @@ def BB_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 120:
+        if len(question_indices) > 150:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)
@@ -471,7 +522,6 @@ def BB_question(event, context):
         # this replaces 'thoughts' or 'opinions' with 50% chance of either
         contains_thoughts = "thoughts" in question.lower()
         contains_opinions = "opinions" in question.lower()
-
 
         # Only proceed if at least one of the words is present
         if contains_thoughts or contains_opinions:
