@@ -248,9 +248,14 @@ def office_question(event, context):
         222: "Who do you think had the best one-liner in the series?",
         223: "Why do you think Angela had strict party planning committee rules?",
         224: "What are your thoughts on the “The Paper Airplane” episode’s competition?",
-
-
-
+        225: "What are your opinions on WUPH?",
+        226: "What are your opinions on the Garage Sale episode?",
+        227: "What are your opinions on the Michael's Last Dundies?",
+        228: "What were your reactions to when the Warehouse won the lottery?",
+        229: "What are your opinions on the Garden Paerty episode?",
+        230: "What are your opinions on the Florida trip?",
+        231: "What are your opinions on the Lice episode?",
+        232: "What are your opinions on Dwight's AARM hiring method?",
     }
 
     # s3 bucket files look up
@@ -479,6 +484,15 @@ def office_question(event, context):
         222: "None",
         223: "None",
         224: "None",
+        225: "None",
+        226: "None",
+        227: "None",
+        228: "None",
+        229: "None",
+        230: "None",
+        231: "None",
+        232: "None",
+
 
 
 
@@ -506,7 +520,7 @@ def office_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 120:
+        if len(question_indices) > 150:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)
