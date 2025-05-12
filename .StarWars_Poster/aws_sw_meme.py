@@ -34,7 +34,13 @@ def SW_meme_post(event, context):
         }
 
     # Filter the list to include only .jpg files
-    jpg_files = [file['Key'] for file in response['Contents'] if file['Key'].endswith('.jpg')]
+    jpg_files = [
+        file['Key'] for file in response['Contents']
+        if file['Key'].endswith('.jpg')
+           and not file['Key'].startswith('questions/')
+           and not file['Key'].startswith('notes/')
+           and not file['Key'].startswith('art/')
+    ]
 
     if not jpg_files:
         return {
@@ -55,17 +61,15 @@ def SW_meme_post(event, context):
         tweet_text = "#swtwt"
     elif rand_val < 0.03:
         tweet_text = "#StarWarsMemes"
-    elif rand_val < 0.1:
-        tweet_text = "lol"
-    elif rand_val < 0.13:
-        tweet_text = "Star Wars"
-    elif rand_val < 0.16:
-        tweet_text = "Star Wars Meme"
     elif rand_val < 0.2:
-        tweet_text = "😂"
-    elif rand_val < 0.3:
-        tweet_text = "🤣"
+        tweet_text = "lol"
+    elif rand_val < 0.21:
+        tweet_text = "Star Wars Meme"
     elif rand_val < 0.4:
+        tweet_text = "😂"
+    elif rand_val < 0.55:
+        tweet_text = "🤣"
+    elif rand_val < 0.75:
         tweet_text = "LOL"
 
     # Download the selected file to a temporary directory
