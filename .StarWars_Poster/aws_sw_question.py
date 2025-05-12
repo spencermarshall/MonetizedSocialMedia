@@ -143,7 +143,7 @@ def SW_question(event, context):
         115: "What do you think would have happened if Anakin had never turned to the Dark Side?",
         116: "Have you read any of the Star Wars books? Legends or Disney Canon?",
         117: "What is your favorite Star Wars book?",
-        118: "What is your favorite Star Wars comic?",
+        118: "Which is your favorite Star Wars comic series?",
         119: "What is your favorite Star Wars planet?",
         120: "If you could spend a day with any Star Wars character, who would it be and why?",
         121: "If you could rewrite one Star Wars character’s arc, who would it be and what would you change?",
@@ -293,7 +293,7 @@ def SW_question(event, context):
         264: "Has the expanded universe enriched the main Star Wars narrative for you?",
         265: "How has Star Wars influenced the science fiction genre?", #maybe get rid of idk
         266: "What are your opinions on the Clone Wars movie?",
-        267: "How do different eras of Star Wars offer unique storytelling perspectives?",
+        267: "Which is a better name: Count Dooku or Darth Tyranus",
         268: "If you could write the next chapter of Star Wars, what direction would you take?",
         269: "Mandalorian Armor or Stormtrooper Armor?",
         270: "Droid Army or Clone Army?",
@@ -315,7 +315,7 @@ def SW_question(event, context):
         286: "What are your thoughts on the portrayal of the Martez Sisters arc in The Clone Wars?",
         287: "Chopper or BD-1?",
         288: "Poe’s X-Wing or Luke’s X-Wing?",
-        289: "Porgs or Loth-Cats?",
+        289: "What are your opinions on Jawas?",
         290: "Porgs or Ewoks?",
         291: "What are your opinions on Porgs in The Last Jedi?",
         292: "Blue Lightsaber or Green Lightsaber?",
@@ -405,7 +405,8 @@ def SW_question(event, context):
         # thoughts on count dooku in TOTJ, and other characters
         #add sw lego question kinda like lotr with sw images
     }  # add questions for "what are your thoughts on Hera Syndulla in Live action?", etc.
-
+#maybe question about loth cat
+    #question about hux
 
     # s3 bucket files look up
     # add image look up for id: 329,  254, 372, 373
