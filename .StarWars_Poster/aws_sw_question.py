@@ -155,7 +155,7 @@ def SW_question(event, context):
         127: "Which Star Wars droid do you think is the most useful?",
         128: "Which Star Wars character do you think had the most tragic backstory?",
         129: "What are your thoughts on the idea of a Star Wars story told from the perspective of a stormtrooper?",
-        130: "What do you disagree with most Star Wars fans about?", #maybe generic picture here idk
+        130: "What do you disagree with most Star Wars fans about?",  # maybe generic picture here idk
         131: "What are your thoughts on the idea of a Star Wars story set entirely in the criminal underworld?",
         132: "What about the droid attack on the wookies? ",  # TODO TEMP ?? maybe idk
         133: "What are your thoughts on the idea of a Star Wars story told from the perspective of a droid?",
@@ -279,19 +279,21 @@ def SW_question(event, context):
         250: "What do you think makes a great Star Wars villain, and why?",
         251: "How would you imagine a Star Wars story told entirely from the perspective of a smuggler?",
         252: "What role do you think music plays in enhancing the Star Wars experience?",
-        253: "What are your thoughts on droid culture in the Star Wars universe?", #maybe get rid of 'in the star wars universe' idk
+        253: "What are your thoughts on droid culture in the Star Wars universe?",
+        # maybe get rid of 'in the star wars universe' idk
         254: "If you're stuck in the Star Wars universe for 24 hours, what's the first thing you would do?",
         255: "What are your thoughts on the cultural impact of Star Wars across multiple generations?",
         256: "If you could add one new species to the Star Wars universe, what unique traits would it have?",
         257: "How do you feel about real world political themes being explored within the Star Wars Universe (from either George Lucas or Disney)?",
         258: "What role do you think fan theories play in shaping and expanding the Star Wars universe?",
-        259: "If you could design your own Star Wars planet, what would it look like?", #this performed bad last time , 5 comments, maybe delete
+        259: "If you could design your own Star Wars planet, what would it look like?",
+        # this performed bad last time , 5 comments, maybe delete
         260: "How would you describe Star Wars' impact on modern pop culture?",
         261: "Which aspect of Star Wars lore do you find most compelling, and why?",
         262: "What are your opinions on Darth Maul's return in The Clone Wars?",
         263: "Which lesser-known character deserves more spotlight in Star Wars?",
         264: "How has the Expanded Universe (EU) enhanced the main Star Wars narrative for you?",
-        265: "How has Star Wars influenced the science fiction genre?", #maybe get rid of idk
+        265: "How has Star Wars influenced the science fiction genre?",  # maybe get rid of idk
         266: "What are your opinions on the Clone Wars movie?",
         267: "Which is a better name: Count Dooku or Darth Tyranus",
         268: "If you could write the next chapter of Star Wars, what direction would you take?",
@@ -403,10 +405,10 @@ def SW_question(event, context):
         # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
         # what are your thoughts on the 4 jedi that died attacking palpatine in rots
         # thoughts on count dooku in TOTJ, and other characters
-        #add sw lego question kinda like lotr with sw images
+        # add sw lego question kinda like lotr with sw images
     }  # add questions for "what are your thoughts on Hera Syndulla in Live action?", etc.
-#maybe question about loth cat
-    #question about hux
+    # maybe question about loth cat
+    # question about hux
 
     # s3 bucket files look up
     # add image look up for id: 329,  254, 372, 373
@@ -827,7 +829,6 @@ def SW_question(event, context):
         contains_thoughts = "thoughts" in question.lower()
         contains_opinions = "opinions" in question.lower()
 
-
         # Only proceed if at least one of the words is present
         if contains_thoughts or contains_opinions:
             # Replace "thoughts" with randomly chosen word
@@ -837,7 +838,6 @@ def SW_question(event, context):
                 if random.random() < 0.5:
                     replacement = "opinions"
 
-                v
                 pattern = r'\bthoughts\b'
                 question = re.sub(pattern, replacement, question)
                 print("REPLACED")
