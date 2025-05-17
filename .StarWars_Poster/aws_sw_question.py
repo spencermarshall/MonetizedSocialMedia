@@ -131,7 +131,7 @@ def SW_question(event, context):
         103: "What are your thoughts on the Star Wars Expanded Universe (Legends)?",
         104: "If you could create a new Force power, what would it be?",
         105: "What Star Wars creature would you most want as a pet?",
-        106: "Would you ever consider joining the Jedi Order or the Sith if you lived in the Star Wars universe?",
+        106: "Would you rather join the Jedi Order or the Sith?",
         107: "If you could have any Star Wars weapon, which one would you choose?",
         108: "If you were a bounty hunter in the Star Wars universe, who would you want as a partner?",
         109: "What Star Wars character do you think deserves their own spin-off series?",
@@ -277,7 +277,7 @@ def SW_question(event, context):
         248: "Star Wars or Star Trek?",
         249: "What are your thoughts on Lando Calrissian's return in Episode 9?",
         250: "What do you think makes a great Star Wars villain, and why?",
-        251: "How would you imagine a Star Wars story told entirely from the perspective of a smuggler?",
+        251: "Would you want a Star Wars story told entirely from the perspective of a smuggler?",
         252: "What role do you think music plays in enhancing the Star Wars experience?",
         253: "What are your thoughts on droid culture in the Star Wars universe?",
         # maybe get rid of 'in the star wars universe' idk
@@ -322,7 +322,7 @@ def SW_question(event, context):
         291: "What are your opinions on Porgs in The Last Jedi?",
         292: "Blue Lightsaber or Green Lightsaber?",
         293: "What color lightsaber are you?",
-        294: "Do you like Ahsoka’s White Sabers or her original Sabers?",
+        294: "Do you prefer Ahsoka’s White Sabers or her original Sabers?",
         295: "Tweet like you're in the Star Wars universe.",
         296: "What are your thoughts on the portrayal of the Sith in the High Republic era?",
         297: "Battle of Jakku or Battle of Endor?",
@@ -402,13 +402,25 @@ def SW_question(event, context):
         371: "If you could change one thing about the Solo movie, what would it be?",
         372: "What is your Star Wars Hot Take?",
         373: "Palpatine did nothing wrong. Change my mind.",
-        # 250: "What are your thoughts on the Kenobi Show's portrayal of the Lars family?",
-        # what are your thoughts on the 4 jedi that died attacking palpatine in rots
-        # thoughts on count dooku in TOTJ, and other characters
-        # add sw lego question kinda like lotr with sw images
-    }  # add questions for "what are your thoughts on Hera Syndulla in Live action?", etc.
-    # maybe question about loth cat
-    # question about hux
+        374: "Should they make a GTA style Star Wars video game?",
+        375: "Did you enjoy seeing Count Dooku in the Tales of the Jedi?",
+        376: "What are your opinions on Yaddle?",
+        377: "Which Lego Star Wars set is your favorite?",
+        378: "What are your thoughts on the Star Wars Legos?",
+        379: "What are your thoughts on seeing Bariss Offee in Tales of the Empire?",
+        380: "What are your thoughts on seeing Asajj Ventress in Tales of the Underworld?",
+        381: "What are your thoughts on seeing Cad Bane in Tales of the Underworld?",
+        382: "What are your thoughts on Jocasta Nu as a character?",
+        383: "What are your opinions on seeing Cad Bane in live action?",
+        384: "What are your thoughts on seeing Ezra Bridger in live action?",
+        385: "What are your thoughts on seeing Sabine Wren in live action?",
+        386: "What are your thoughts on seeing Hera Syndulla in live action?",
+        387: "What are your thoughts on seeing Zeb in live action?",
+        388: "What other animated characters would you want to see in live action?",
+        389: "What are your opinions about the Loth-cats?",
+        390: "Who is your favorite Smuggler in all of Star Wars?",
+        391: "What are your thoughts on how easy Palpatine killed 3 of the 4 Jedi that came to arrest him?",
+    }
 
     # s3 bucket files look up
     # add image look up for id: 329,  254, 372, 373
@@ -790,6 +802,20 @@ def SW_question(event, context):
         375: "None",
         376: "None",
         377: "None",
+        378: "None",
+        379: "None",
+        380: "None",
+        381: "None",
+        382: "None",
+        383: "None",
+        384: "None",
+        385: "None",
+        386: "None",
+        387: "None",
+        388: "None",
+        389: "None",
+        390: "None",
+        391: "None",
     }
 
     bucket_name = 'starwars.photos'
