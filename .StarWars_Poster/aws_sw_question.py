@@ -830,6 +830,19 @@ def SW_question(event, context):
         389: "None",
         390: "None",
         391: "None",
+        392: "None",
+        393: "None",
+        394: "None",
+        395: "None",
+        396: "None",
+        397: "None",
+        398: "None",
+        399: "None",
+        400: "None",
+        401: "None",
+        402: "None",
+        403: "None",
+        404: "None",
     }
 
     bucket_name = 'starwars.photos'
