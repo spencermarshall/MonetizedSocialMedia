@@ -420,6 +420,12 @@ def SW_question(event, context):
         389: "What are your opinions about the Loth-cats?",
         390: "Who is your favorite Smuggler in all of Star Wars?",
         391: "What are your thoughts on how easy Palpatine killed 3 of the 4 Jedi that came to arrest him?",
+        392: "Who is your favorite character from the Prequels?",
+        393: "Who is your least favorite character from the Prequels?",
+        394: "Who is your favorite character from the Original Trilogy?",
+        395: "Who is your least favorite character from the Original Trilogy?",
+        396: "Who is your favorite character from the Sequels?",
+        397: "Who is your least favorite character from the Sequels?",
     }
 
     # s3 bucket files look up
