@@ -426,6 +426,14 @@ def SW_question(event, context):
         395: "Who is your least favorite character from the Original Trilogy?",
         396: "Who is your favorite character from the Sequels?",
         397: "Who is your least favorite character from the Sequels?",
+        398: "What are your honest opinions on recasting of Bail Organa in Andor season 2?",
+        399: "How did Andor Season 2 compare to Season 1?",
+        400: "what is a star war?",
+        401: "OPINION: The Han Solo movie was very well done and I would love to see a sequel in some form. Thoughts?",
+        402: "OPINION: The Clone Wars show is my favorite Star Wars content. Thoughts?",
+        403: "OPINION: Live action Ahsoka should have been done by Ashley Eckstein. Thoughts?",
+        404: "OPINION: James Earl Jones signing his voice rights over to Disney to use with AI was a great decision. Thoughts?",
+
     }
 
     # s3 bucket files look up
