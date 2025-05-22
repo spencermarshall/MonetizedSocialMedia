@@ -1,67 +1,87 @@
-import boto3  # Pre-downloaded on AWS Lambda
-import random
-import tweepy
-import os
+import boto3      # AWS SDK for Python, to talk to S3
+import random     # for picking a random file
+import tweepy     # Twitter/X API client
+import os         # to read environment variables
+import json       # to parse and write JSON
 
 def SW_art(event, context):
-    # X credentials stored in env variables
-    API_KEY = os.environ["API_KEY"]
-    API_SECRET_KEY = os.environ["API_SECRET_KEY"]
-    ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+    # 1️⃣ Load Twitter credentials
+    API_KEY             = os.environ["API_KEY"]
+    API_SECRET_KEY      = os.environ["API_SECRET_KEY"]
+    ACCESS_TOKEN        = os.environ["ACCESS_TOKEN"]
     ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
-    BEARER_TOKEN = os.environ["BEARER_TOKEN"]
+    BEARER_TOKEN        = os.environ["BEARER_TOKEN"]
 
-    # Initialize Tweepy
-    auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-    api = tweepy.API(auth)
+    # 2️⃣ Init Tweepy
+    auth   = tweepy.OAuth1UserHandler(
+                API_KEY, API_SECRET_KEY,
+                ACCESS_TOKEN, ACCESS_TOKEN_SECRET
+             )
+    api    = tweepy.API(auth)
     client = tweepy.Client(
-        bearer_token=BEARER_TOKEN,
-        consumer_key=API_KEY,
-        consumer_secret=API_SECRET_KEY,
-        access_token=ACCESS_TOKEN,
-        access_token_secret=ACCESS_TOKEN_SECRET
-    )
+                bearer_token=BEARER_TOKEN,
+                consumer_key=API_KEY,
+                consumer_secret=API_SECRET_KEY,
+                access_token=ACCESS_TOKEN,
+                access_token_secret=ACCESS_TOKEN_SECRET
+             )
 
-    # Initialize S3 client
-    s3_client = boto3.client('s3')
-    bucket_name = 'starwars.photos'
+    # 3️⃣ Init S3 info
+    s3        = boto3.client('s3')
+    bucket    = 'starwars.photos'
+    index_key = 'notes/SW_art.txt'
+    prefix    = 'art/'
 
-    # List only objects under the "art/" prefix
-    response = s3_client.list_objects_v2(Bucket=bucket_name, Prefix='art/')
+    # 4️⃣ Load our “recent” list from S3
+    obj              = s3.get_object(Bucket=bucket, Key=index_key)
+    content          = obj['Body'].read().decode('utf-8')
+    question_indices = json.loads(content)  # e.g. [12, 5, 79, …]
 
-    if 'Contents' not in response:
-        return {
-            'statusCode': 404,
-            'body': 'No files found in the art/ folder of the S3 bucket.'
-        }
-
-    # Filter for .jpg files
-    jpg_files = [
-        obj['Key'] for obj in response['Contents']
-        if obj['Key'].lower().endswith('.jpg')
+    # 5️⃣ List all JPG keys under art/
+    listing = s3.list_objects_v2(Bucket=bucket, Prefix=prefix)
+    jpgs    = [
+        o['Key'] for o in listing.get('Contents', [])
+        if o['Key'].lower().endswith('.jpg')
     ]
+    if not jpgs:
+        return {'statusCode': 404, 'body': 'No JPGs found under art/'}
 
-    if not jpg_files:
-        return {
-            'statusCode': 404,
-            'body': 'No JPG files found in art/.'
-        }
+    # 6️⃣ Pick a random file—and ensure its number isn’t in our 14
+    def extract_num(key):
+        start = key.find('(')
+        end   = key.find(')', start + 1)
+        return int(key[start+1:end])
 
-    # Pick a random file and log its name
-    random_file = random.choice(jpg_files)
-    print(f"Selected file: {random_file}")
+    while True:
+        chosen = random.choice(jpgs)
+        num = extract_num(chosen)
+        if num not in question_indices:
+            break
+        # else: we loop and pick again
 
-    # Download it locally
-    download_path = f"/tmp/{os.path.basename(random_file)}"
-    s3_client.download_file(bucket_name, random_file, download_path)
+    # 7️⃣ Now that we have a fresh `num`, push it onto the front…
+    question_indices.insert(0, num)
+    #    …and trim to keep exactly 30 entries
+    while len(question_indices) > 30:
+        question_indices.pop()
 
-    # Upload to X
-    media = api.media_upload(download_path)
+    # 8️⃣ Write that updated list back to S3
+    updated = json.dumps(question_indices)
+    s3.put_object(Bucket=bucket, Key=index_key, Body=updated)
 
-    # Use tweet_text from the event payload (or adjust as needed)
+    # 9️⃣ Download the chosen image locally
+    local_path = f"/tmp/{os.path.basename(chosen)}"
+    s3.download_file(bucket, chosen, local_path)
+
+    # 🔟 Upload to Twitter and tweet it
+    media = api.media_upload(local_path)
     client.create_tweet(text="", media_ids=[media.media_id])
 
+    # 1️⃣1️⃣ Return success
     return {
         'statusCode': 200,
-        'body': f"Tweet posted with media: {random_file}"
+        'body': (
+            f"Picked fresh image #{num}, kept recent list at 14 items, "
+            f"and tweeted: {chosen}"
+        )
     }
