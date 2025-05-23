@@ -35,7 +35,7 @@ def SW_art(event, context):
     # 4️⃣ Load our “recent” list from S3
     obj              = s3.get_object(Bucket=bucket, Key=index_key)
     content          = obj['Body'].read().decode('utf-8')
-    question_indices = json.loads(content)  # e.g. [12, 5, 79, …]
+    question_indices = json.loads(content)  # e.g. [12, 5, 79, …]     #
 
     # 5️⃣ List all JPG keys under art/
     listing = s3.list_objects_v2(Bucket=bucket, Prefix=prefix)
