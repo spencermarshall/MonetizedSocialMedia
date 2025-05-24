@@ -483,7 +483,7 @@ def Marvel_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 90:
+        if len(question_indices) > 120:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)
@@ -506,6 +506,8 @@ def Marvel_question(event, context):
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
+                if random.random() < 0.3:
+                    replacement = "honest " + replacement
 
                 pattern = r'\bthoughts\b'
                 question = re.sub(pattern, replacement, question)
@@ -516,7 +518,7 @@ def Marvel_question(event, context):
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
-                if random.random() < 0.5:
+                if random.random() < 0.3:
                     replacement = "honest " + replacement
                 pattern = r'\bopinions\b'
                 question = re.sub(pattern, replacement, question)
