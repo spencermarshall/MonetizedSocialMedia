@@ -159,13 +159,13 @@ def SW_question(event, context):
         131: "What are your thoughts on the idea of a Star Wars story set entirely in the criminal underworld?",
         132: "What about the droid attack on the wookies? ",  # TODO TEMP ?? maybe idk
         133: "What are your thoughts on the idea of a Star Wars story told from the perspective of a droid?",
-        134: "What are your opinions on the portrayal of the Jedi Council in the prequels?",
+        134: "What are your opinions on the Jedi Council in the prequels?",
         135: "What are your thoughts on the idea of a Star Wars story set during the Old Republic era?",
         136: "What are your opinions on the portrayal of the Sith in the prequels?",
         137: "What are your thoughts on the concept of the World Between Worlds?",
         138: "What are your thoughts on the relationship between Obi-Wan Kenobi and Duchess Satine?",
         139: "Do you think the Jedi Council was too rigid in their beliefs? Why or why not?",
-        140: "What are your opinions on the portrayal of Anakin Skywalker's fall to the dark side?",
+        140: "What are your opinions on Anakin's fall to the dark side?",
         141: "What are your thoughts on how Clone Troopers were treated after Order 66?",
         142: "How do you feel about Lando Calrissian’s role in the original trilogy?",
         143: "If you could choose one non-canon story to make canon, which one would it be and why?",
@@ -198,7 +198,7 @@ def SW_question(event, context):
         169: "What are your thoughts on Qi'ra character in the Solo movie?",
         170: "What are your thoughts on Tobias Beckett in the Han Solo movie?",
         171: "What are your thoughts on L3-37 in the Han Solo movie?",
-        172: "What are your thoughts on Dryden Vos in the Han Solo movie??",
+        172: "OPINION: James Earl Jones signing his voice rights over to Disney to use with AI was a great decision. What do you think?",
         173: "What are your thoughts on Enfys Nest from the Han Solo Movie?",
         174: "What are your thoughts on Maul's cameo in the Han Solo Movie?",
         175: "What are your thoughts on how Han Solo got his name in the Han Solo Movie?",
@@ -429,11 +429,9 @@ def SW_question(event, context):
         398: "What are your honest opinions on recasting of Bail Organa in Andor season 2?",
         399: "How did Andor Season 2 compare to Season 1?",
         400: "what is a star war?",
-        401: "OPINION: The Han Solo movie was very well done and I would love to see a sequel in some form. Thoughts?",
-        402: "OPINION: The Clone Wars show is my favorite Star Wars content. Thoughts?",
-        403: "OPINION: Live action Ahsoka should have been done by Ashley Eckstein. Thoughts?",
-        404: "OPINION: James Earl Jones signing his voice rights over to Disney to use with AI was a great decision. Thoughts?",
-
+        401: "OPINION: The Han Solo movie was very well done and I would love to see a sequel in some form. What do you think?",
+        402: "OPINION: The Clone Wars show is my favorite Star Wars content. What do you think?",
+        403: "What are your honest opinions on Star Wars: Starfighter coming May 2027?",
     }
 
     # s3 bucket files look up
@@ -610,7 +608,7 @@ def SW_question(event, context):
         169: "questions/char_Qira/",
         170: "questions/char_TobiasBeckett/",
         171: "questions/char_L3-37/",
-        172: "questions/char_DrydenVos/",
+        172: "None",
         173: "questions/char_EnfysNest/",
         174: "questions/char_Maul(SoloMovie)/",
         175: "questions/char_HanSolo(SoloMovie)/",
