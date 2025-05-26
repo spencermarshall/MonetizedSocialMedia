@@ -72,3 +72,4 @@ def LOTR_meme_post(event, context):
         'statusCode': 200,
         'body': f"Tweet posted with media: {random_file}"
     }
+
