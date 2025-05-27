@@ -16,7 +16,7 @@ client = tweepy.Client(bearer_token = BEARER_TOKEN,
 def postQuote(event, context):
     dict = {
         1: "Hello There",
-        2: "If you strike me down, and I will become more powerful than you could possibly imagine.",
+        2: "If you strike me down, I will become more powerful than you could possibly imagine.",
         3: "May the force be with you.",
         4: "I have a bad feeling about this.",
         5: "It's over Anakin, I have the High Ground.",
