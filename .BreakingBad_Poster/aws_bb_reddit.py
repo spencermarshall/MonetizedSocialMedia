@@ -1,3 +1,34 @@
+import praw
+import tweepy
+import random
+import os
+import json
+import requests
+from datetime import datetime, timedelta
+import time
+
+# Reddit API Credentials
+# REDDIT_CLIENT_ID = os.environ['REDDIT_CLIENT_ID']
+# REDDIT_CLIENT_SECRET = os.environ['REDDIT_CLIENT_SECRET']
+# REDDIT_USER_AGENT = os.environ['REDDIT_USER_AGENT']
+REDDIT_CLIENT_ID = 'USAgnTeY8fqGUtRtJJjNeg'
+REDDIT_CLIENT_SECRET = 'oViJMoCRQxcJo6go_QVYUU5jUuGkvA'
+REDDIT_USER_AGENT = 'data_bot'
+
+# Twitter API Credentials
+# TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
+# TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
+# TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
+# TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
+# TWITTER_BEARER_TOKEN = os.environ['TWITTER_BEARER_TOKEN']
+client_id = 'cnFHZ0h6LURnVmxqbXVmZW9qWTY6MTpjaQ'
+client_secret = 'gHpeCROnQ330bUhYj9Yry-dWQj01tlnogUUIHRTd8y6TM_rWVL'
+api_key = 'm5GPo8zjDkAuWMuZhjTM2ksJu'
+api_key_secret = 'iBt6OHUdCkq88fvwNVFsnuxL7CAU4avLzemUyU97aP18IWFZmS'
+access_token = '1837346181229563904-49LOpBdittQOb1hHkrEMRk5mzhVXFU'
+access_token_secret = 'HsPyF7XRBkfkhXI0sHUBZRKboPWTgtPRCy7fkHfy65bhU'
+bearer_token = 'AAAAAAAAAAAAAAAAAAAAANbewAEAAAAA2dsHWBhQRdWJwY6OhKfhja6fKOY%3DShBe6NotqhviLUXh3tjd2tZIa0rAkPvK654vNKcP93mV5OPIiq'
+
 # Initialize Reddit API
 reddit = praw.Reddit(
     client_id=REDDIT_CLIENT_ID,
@@ -25,6 +56,9 @@ def fetch_top_post_with_media():
         count += 1
         post_time = post.created_utc  # Get post's Unix timestamp
         print(f"Checked if post {count} has media. Posted at {datetime.utcfromtimestamp(post_time)} UTC")
+        if post.over_18:
+            print(f"Skipping post {idx} titled '{post.title}' because it is marked as NSFW.")
+            continue
 
         # Ensure the post is within the last 24 hours and contains media
         if post_time >= twelve_hours_ago and not post.stickied and post.url.endswith(
@@ -58,7 +92,7 @@ def lambda_handler(event, context):
             link = post.shortlink
             link = link.replace("i", "𝗂", 1)
 
-            tweet_text = f"{text} {link[8:]}"
+            tweet_text = f"{text}"  # {link[8:]}"
 
             print(f"Posting to Twitter: {tweet_text}")
             client.create_tweet(text=tweet_text, media_ids=[media.media_id])
@@ -98,3 +132,4 @@ def lambda_handler(event, context):
             'statusCode': 200,
             'body': json.dumps('No suitable post with media found.')
         }
+
