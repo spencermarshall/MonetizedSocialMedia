@@ -1,18 +1,21 @@
-#I can easily add/remove quotes by adding/remove items to the dict. That's all that's needed, the rest will be taken care of automatically
+import json
 import random
-import tweepy
 import os
+import boto3
+import tweepy
 
-API_KEY = os.environ["API_KEY"]
-API_SECRET_KEY = os.environ["API_SECRET_KEY"]
-ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
-ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
-BEARER_TOKEN = os.environ["BEARER_TOKEN"]
+# --- Tweepy client setup ---
+API_KEY            = os.environ["API_KEY"]
+API_SECRET_KEY     = os.environ["API_SECRET_KEY"]
+ACCESS_TOKEN       = os.environ["ACCESS_TOKEN"]
+ACCESS_TOKEN_SECRET= os.environ["ACCESS_TOKEN_SECRET"]
+BEARER_TOKEN       = os.environ["BEARER_TOKEN"]
 
-client = tweepy.Client(bearer_token = BEARER_TOKEN,
-                                consumer_key = API_KEY, consumer_secret = API_SECRET_KEY,
-                                access_token = ACCESS_TOKEN, access_token_secret = ACCESS_TOKEN_SECRET)
-
+client = tweepy.Client(
+    bearer_token=BEARER_TOKEN,
+    consumer_key=API_KEY, consumer_secret=API_SECRET_KEY,
+    access_token=ACCESS_TOKEN, access_token_secret=ACCESS_TOKEN_SECRET
+)
 def postQuote(event, context):
     dict = {
         1: "Hello There",
@@ -65,8 +68,67 @@ def postQuote(event, context):
         48: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.",
         49: "You're a good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
         50: "Do it.",
+        51: "I can't swim.",
 
     }
 
-    tweet_text = dict[random.randint(1,len(dict))]
-    client.create_tweet(text=tweet_text)
+    # --- S3 setup for storing our 7-item history ---
+    S3_BUCKET = "starwars.photos"
+    S3_KEY = "notes/SW_quote.txt"
+    s3 = boto3.client("s3")
+
+    def load_history():
+        """Fetches the 7-item list from S3; returns list of ints."""
+        try:
+            obj = s3.get_object(Bucket=S3_BUCKET, Key=S3_KEY)
+            body = obj["Body"].read().decode("utf-8")
+            hist = json.loads(body)
+            # ensure it’s a list of ints
+            if isinstance(hist, list) and all(isinstance(i, int) for i in hist):
+                return hist
+        except Exception:
+            pass
+        # On any error, start with an “empty” history
+        return [0] * 7
+
+    def save_history(hist):
+        """Writes our updated history list back to S3 as JSON."""
+        s3.put_object(
+            Bucket=S3_BUCKET,
+            Key=S3_KEY,
+            Body=json.dumps(hist),
+            ContentType="application/json"
+        )
+
+    def postQuote(event, context):
+        # 1. Load the recent-IDs history
+        recent = load_history()
+
+        # 2. Pick a new random ID not in recent
+        max_id = len(dict)
+        while True:
+            candidate = random.randint(1, max_id)
+            if candidate not in recent:
+                break
+
+        # 3. Update history: prepend new, drop oldest
+        updated = [candidate] + recent[:-1]
+        save_history(updated)
+
+        # 4. Look up the text and send the tweet
+        text = dict[candidate]
+        try:
+            client.create_tweet(text=text)
+            print(f"Tweeted quote #{candidate}: {text}")
+        except Exception as e:
+            print(f"Failed to tweet quote #{candidate}: {e}")
+            raise
+
+        return {
+            "statusCode": 200,
+            "body": json.dumps({
+                "quote_id": candidate,
+                "text": text,
+                "new_history": updated
+            })
+        }
