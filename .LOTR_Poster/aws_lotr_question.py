@@ -155,7 +155,7 @@ def lotr_question(event, context):
         127: "What are your opinions on Mordor?",
         128: "When did you first learn Aragorn broke his toe in the filming of LOTR?",
         129: "What are your opinions on the LOTR extended editions?",
-        130: "When did you first watch/read LOTR?",
+        130: "Who were you hoping would win the killing count game between Gimli and Legolas?",
         131: "What are your opinions on Merry and Pippin?",
         132: "What is the most iconic line from Frodo?",
         133: "What is the most iconic line from Sam?",
@@ -232,9 +232,6 @@ def lotr_question(event, context):
         204: "Rohan or Gondor?",
         205: "Shelob or Balrog?",
         206: "Would you want to see a Silmarillion movie adaptation?",
-        207: "Who were you hoping would win the killing count game between Gimli and Legolas?",
-        208: "",
-        209: "",
 
         # maybe add more "What are the most iconic lines from..." questions i currently only have frodo and sam, or maybe switch adjective instead of iconic idk
 
@@ -385,7 +382,7 @@ def lotr_question(event, context):
         127: "questions/place_Mordor/",
         128: "questions/other_AragornBrokeToe/",
         129: "None",
-        130: "None",
+        130: "questions/char_GimliORLegolas/",
         131: "questions/char_MerryANDPippin/",
         132: "questions/char_Frodo/",
         133: "questions/char_Samwise/",
@@ -462,7 +459,7 @@ def lotr_question(event, context):
         204: "None",
         205: "None",
         206: "questions/other_Silmarillion/",
-        207: "questions/char_GimliORLegolas/",
+        207: "None",
         208: "None",
         209: "None",
         210: "None",
