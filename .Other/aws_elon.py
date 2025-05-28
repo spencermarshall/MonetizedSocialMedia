@@ -34,8 +34,8 @@ def elon_musk_daily(event, context):
     if random.random() < 0.5:
         text += '!'
 
-    # 2) Decide branch: 50% text-only, 50% text+image
-    if random.random() < 0.5:
+    # 2) Decide branch: 30% text-only, 70% text+image
+    if random.random() < 0.3:
         # Text-only tweet
         client.create_tweet(text=text)
     else:
