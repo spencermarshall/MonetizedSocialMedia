@@ -16,119 +16,113 @@ client = tweepy.Client(
     consumer_key=API_KEY, consumer_secret=API_SECRET_KEY,
     access_token=ACCESS_TOKEN, access_token_secret=ACCESS_TOKEN_SECRET
 )
+
+quotes = {
+    1: "Hello There",
+    2: "If you strike me down, I will become more powerful than you could possibly imagine.",
+    3: "May the force be with you.",
+    4: "I have a bad feeling about this.",
+    5: "It's over Anakin, I have the High Ground.",
+    6: "Good soldiers follow orders.",
+    7: "Execute Order 66",
+    8: "No, I am your father.",
+    9: "Do or do not, there is no try.",
+    10: "Help me Obi-Wan Kenobi. You're my only hope.",
+    11: "It's a Trap!",
+    12: "I am one with the Force, and the Force is with me.",
+    13: "This is the way",
+    14: "Long live the Empire.",
+    15: "I don't like sand. It's coarse, and rough, and irritating... and it gets everywhere.",
+    16: "I'm just a simple man trying to make my way in the universe.",
+    17: "These are not the droids you are looking for",
+    18: "That's no moon. That's a space station.",
+    19: "Strike me down, and I shall become more powerful than you can possibly imagine.",
+    20: "This is where the fun begins.",
+    21: "Gonk",
+    22: "I am no Jedi.",
+    23: "I am the Senate.",
+    24: "I have brought Peace, Freedom, Justice, and Security to my new Empire.",
+    25: "A surprise, to be sure, but a welcome one.",
+    26: "I'll try spinning, that's a good trick.",
+    27: "Now this is podracing.",
+    28: "In my experience, there's no such thing as luck",
+    29: "Aren't you a little short for a storm trooper?",
+    30: "Fear is the path to the dark side. Fear leads to anger, anger leads to hate, hate leads to suffering.",
+    31: "These are not the droids you're looking for.",
+    32: "I find your lack of faith disturbing.",
+    33: "The ability to speak does not make you intelligent.",
+    34: "So this is how liberty dies... with thunderous applause.",
+    35: "Only a Sith deals in absolutes.",
+    36: "I sense a plot to destroy the Jedi.",
+    37: "Let the past die. Kill it, if you have to.",
+    38: "Insolence!? We are pirates! We don’t even know what that means.",
+    39: "I can bring you in warm, or I can bring you in cold.",
+    40: "I have spoken.",
+    41: "I'm a Mandalorian. Weapons are part of my religion.",
+    42: "Jabba ruled with fear. I intend to rule with respect.",
+    43: "The mission. The nightmares. They're... finally... over.",
+    44: "In my book, experience outranks everything.",
+    45: "We're just clones, sir. We're meant to be expendable.",
+    46: "Clones, bred for combat. All part of the plan... THE Plan. The only Plan that matters. Not even I was made aware of its grand design, but I played my part. And do you know what happened to me? I was cast aside. I was forgotten. But I survived, and I can thrive in the chaos that is to come.",
+    47: "There is no justice, now law, no order... except for the one that will replace it!",
+    48: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.",
+    49: "You're a good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
+    50: "Do it.",
+    51: "I can't swim.",
+}
+
+
+# --- S3 config ---
+S3_BUCKET = "starwars.photos"
+S3_KEY    = "notes/SW_quote.txt"
+s3        = boto3.client("s3")
+
+def load_history():
+    """Fetch the 7 most‐recent quote IDs from S3, or default to zeros."""
+    try:
+        obj  = s3.get_object(Bucket=S3_BUCKET, Key=S3_KEY)
+        hist = json.loads(obj["Body"].read().decode("utf-8"))
+        if isinstance(hist, list) and all(isinstance(i, int) for i in hist):
+            return hist
+    except Exception:
+        pass
+    # On any failure, start with a ‘blank’ history
+    return [0] * 7
+
+def save_history(hist):
+    """Write the updated 7‐item list back to S3."""
+    s3.put_object(
+        Bucket=S3_BUCKET,
+        Key=S3_KEY,
+        Body=json.dumps(hist),
+        ContentType="application/json"
+    )
+
 def postQuote(event, context):
-    dict = {
-        1: "Hello There",
-        2: "If you strike me down, I will become more powerful than you could possibly imagine.",
-        3: "May the force be with you.",
-        4: "I have a bad feeling about this.",
-        5: "It's over Anakin, I have the High Ground.",
-        6: "Good soldiers follow orders.",
-        7: "Execute Order 66",
-        8: "No, I am your father.",
-        9: "Do or do not, there is no try.",
-        10: "Help me Obi-Wan Kenobi. You're my only hope.",
-        11: "It's a Trap!",
-        12: "I am one with the Force, and the Force is with me.",
-        13: "This is the way",
-        14: "Long live the Empire.",
-        15: "I don't like sand. It's coarse, and rough, and irritating... and it gets everywhere.",
-        16: "I'm just a simple man trying to make my way in the universe.",
-        17: "These are not the droids you are looking for",
-        18: "That's no moon. That's a space station.",
-        19: "Strike me down, and I shall become more powerful than you can possibly imagine.",
-        20: "This is where the fun begins.",
-        21: "Gonk",
-        22: "I am no Jedi.",
-        23: "I am the Senate.",
-        24: "I have brought Peace, Freedom, Justice, and Security to my new Empire.",
-        25: "A surprise, to be sure, but a welcome one.",
-        26: "I'll try spinning, that's a good trick.",
-        27: "Now this is podracing.",
-        28: "In my experience, there's no such thing as luck",
-        29: "Aren't you a little short for a storm trooper?",
-        30: "Fear is the path to the dark side. Fear leads to anger, anger leads to hate, hate leads to suffering.",
-        31: "These are not the droids you're looking for.",
-        32: "I find your lack of faith disturbing.",
-        33: "The ability to speak does not make you intelligent.",
-        34: "So this is how liberty dies... with thunderous applause.",
-        35: "Only a Sith deals in absolutes.",
-        36: "I sense a plot to destroy the Jedi.",
-        37: "Let the past die. Kill it, if you have to.",
-        38: "Insolence!? We are pirates! We don’t even know what that means.",
-        39: "I can bring you in warm, or I can bring you in cold.",
-        40: "I have spoken.",
-        41: "I'm a Mandalorian. Weapons are part of my religion.",
-        42: "Jabba ruled with fear. I intend to rule with respect.",
-        43: "The mission. The nightmares. They're... finally... over.",
-        44: "In my book, experience outranks everything.",
-        45: "We're just clones, sir. We're meant to be expendable.",
-        46: "Clones, bred for combat. All part of the plan... THE Plan. The only Plan that matters. Not even I was made aware of its grand design, but I played my part. And do you know what happened to me? I was cast aside. I was forgotten. But I survived, and I can thrive in the chaos that is to come.",
-        47: "There is no justice, now law, no order... except for the one that will replace it!",
-        48: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.",
-        49: "You're a good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
-        50: "Do it.",
-        51: "I can't swim.",
+    # 1️⃣ Load last 7 IDs
+    recent = load_history()
 
+    # 2️⃣ Pick a new random ID not in the recent history
+    max_id = len(quotes)
+    while True:
+        candidate = random.randint(1, max_id)
+        if candidate not in recent:
+            break
+
+    # 3️⃣ Update history (prepend & trim) and save
+    updated = [candidate] + recent[:-1]
+    save_history(updated)
+
+    # 4️⃣ Tweet the chosen quote
+    text = quotes[candidate]
+    client.create_tweet(text=text)
+
+    # 5️⃣ Return a proper JSON response (so Lambda doesn’t return null)
+    return {
+        "statusCode": 200,
+        "body": json.dumps({
+            "quote_id": candidate,
+            "text": text,
+            "new_history": updated
+        })
     }
-
-    # --- S3 setup for storing our 7-item history ---
-    S3_BUCKET = "starwars.photos"
-    S3_KEY = "notes/SW_quote.txt"
-    s3 = boto3.client("s3")
-
-    def load_history():
-        """Fetches the 7-item list from S3; returns list of ints."""
-        try:
-            obj = s3.get_object(Bucket=S3_BUCKET, Key=S3_KEY)
-            body = obj["Body"].read().decode("utf-8")
-            hist = json.loads(body)
-            # ensure it’s a list of ints
-            if isinstance(hist, list) and all(isinstance(i, int) for i in hist):
-                return hist
-        except Exception:
-            pass
-        # On any error, start with an “empty” history
-        return [0] * 7
-
-    def save_history(hist):
-        """Writes our updated history list back to S3 as JSON."""
-        s3.put_object(
-            Bucket=S3_BUCKET,
-            Key=S3_KEY,
-            Body=json.dumps(hist),
-            ContentType="application/json"
-        )
-
-    def postQuote(event, context):
-        # 1. Load the recent-IDs history
-        recent = load_history()
-
-        # 2. Pick a new random ID not in recent
-        max_id = len(dict)
-        while True:
-            candidate = random.randint(1, max_id)
-            if candidate not in recent:
-                break
-
-        # 3. Update history: prepend new, drop oldest
-        updated = [candidate] + recent[:-1]
-        save_history(updated)
-
-        # 4. Look up the text and send the tweet
-        text = dict[candidate]
-        try:
-            client.create_tweet(text=text)
-            print(f"Tweeted quote #{candidate}: {text}")
-        except Exception as e:
-            print(f"Failed to tweet quote #{candidate}: {e}")
-            raise
-
-        return {
-            "statusCode": 200,
-            "body": json.dumps({
-                "quote_id": candidate,
-                "text": text,
-                "new_history": updated
-            })
-        }
