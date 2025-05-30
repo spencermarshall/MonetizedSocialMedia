@@ -53,6 +53,10 @@ def office_meme_post(event, context):
     tweet_options = ["literally me", "wow", "same", "The Office", " "]
     tweet_text = random.choice(tweet_options)
 
+    # 50% chance to uppercase only the very first character
+    if random.random() < 0.5:
+        tweet_text = tweet_text[:1].upper() + tweet_text[1:]
+
     # Download the selected file to a temporary directory
     download_path = f"/tmp/{os.path.basename(random_file)}"
     s3_client.download_file(bucket_name, random_file, download_path)
