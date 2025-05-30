@@ -315,11 +315,11 @@ def lotr_question(event, context):
         287: "Did Elijah Wood do a good job portraying Frodo?",
         288: "Did Ian McKellen do a good job portraying Gandalf?",
         289: "Did Martin Freeman do a good job portraying Bilbo?",
-        290: "Did Orlando Bloom do a good job portraying Legolas?",
+        290: "Did you enjoy Orlando Bloom's portrayal of Legolas?",
         291: "Did Benedict Cumberbatch do a good job as the voice of Smaug?",
         292: "Did Andy Serkis do a good job portraying Gollum?",
-        293: "Did Christopher Lee do a good job portraying Saruman?",
-        294: "Did Sean Astin do a good job portraying Sam?",
+        293: "Did you enjoy Christopher Lee's portrayal of Saruman?",
+        294: "Did you enjoy Sean Astin's portrayal of Sam?",
 
 
 
