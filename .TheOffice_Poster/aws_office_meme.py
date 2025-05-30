@@ -37,9 +37,9 @@ def office_meme_post(event, context):
 
     # Filter the list to include only .jpg files
     jpg_files = [file['Key'] for file in response['Contents'] if
-                 file['Key'].endswith('.jpg') or file['Key'].endswith('.webp') or file['Key'].endswith('.png') or file[
-                     'Key'].endswith('.gif')]
-
+                 file['Key'].endswith('.jpg') or file['Key'].endswith('.webp') or file['Key'].endswith(
+                     '.png')]  # or file['Key'].endswith('.gif')]
+    # todo i think it crashes when it pulls .gif so look into this later
     # If there are no JPG files
     if not jpg_files:
         return {
@@ -50,12 +50,8 @@ def office_meme_post(event, context):
     # Select a random JPG file
     random_file = random.choice(jpg_files)
 
-    tweet_text = ""
-    ran = random.random()
-    if ran < 0.7:
-        tweet_text = "The Office"
-    elif ran < 0.8:
-        tweet_text = "#TheOffice"
+    tweet_options = ["literally me", "wow", "same", "The Office", " "]
+    tweet_text = random.choice(tweet_options)
 
     # Download the selected file to a temporary directory
     download_path = f"/tmp/{os.path.basename(random_file)}"
