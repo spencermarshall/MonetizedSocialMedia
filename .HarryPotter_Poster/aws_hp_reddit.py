@@ -6,6 +6,7 @@ import random
 import requests
 from datetime import datetime, timedelta
 
+# Reddit API Credentials
 
 # Initialize Reddit API
 reddit = praw.Reddit(
@@ -67,7 +68,7 @@ def lambda_handler(event, context):
             link = link.replace("i", "𝗂", 1)
             link = link[8:]
 
-            tweet_text = f"{text} {link}"
+            tweet_text = f"{text}"  # {link}"
 
             print(f"Posting to Twitter: {tweet_text}")
             client.create_tweet(text=tweet_text, media_ids=[media.media_id])
