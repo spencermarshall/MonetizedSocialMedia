@@ -57,7 +57,6 @@ def post_bb_quote(event, context):
         33: "TIGHT TIGHT TIGHT",
         34: "I am the one who knocks",
         35: "Let's cook.",
-
     }
 
     tweet_text = breaking_bad_quotes[random.randint(1, len(breaking_bad_quotes))]
