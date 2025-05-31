@@ -520,7 +520,6 @@ def office_question(event, context):
         # try again until we get new item not in list
         while index in question_indices:
             index = random.randint(1, len(questions))
-        index = 1
         path = lookup[index]
 
         question_indices.insert(0, index)
