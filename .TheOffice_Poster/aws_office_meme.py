@@ -50,7 +50,7 @@ def office_meme_post(event, context):
     # Select a random JPG file
     random_file = random.choice(jpg_files)
 
-    tweet_options = ["literally me", "wow", "same", "The Office", " "]
+    tweet_options = ["literally me", "wow", "same", "The Office", " ", " ", " ", " "]
     tweet_text = random.choice(tweet_options)
 
     # 50% chance to uppercase only the very first character

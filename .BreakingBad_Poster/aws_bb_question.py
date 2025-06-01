@@ -90,7 +90,7 @@ def BB_question(event, context):
         62: "What are your thoughts on the relationship between Walter White and Jesse in Breaking Bad?",
         63: "What are your thoughts on the relationship between Walter White and Skyler in Breaking Bad?",
         64: "What are your thoughts on the relationship between Walter White and Hank in Breaking Bad?",
-        65: "What are your thoughts on the relationship between Walter White and Gus Fring in Breaking Bad?",
+        65: "Walter White or Gus Fring?",
         66: "What are your thoughts on the relationship between Walter White and Saul Goodman in Breaking Bad?",
         67: "What are your thoughts on the relationship between Jesse Pinkman and Jane in Breaking Bad?",
         68: "How did you first hear about Breaking Bad?",
