@@ -7,8 +7,6 @@ import boto3
 import requests
 from datetime import datetime, timedelta
 
-
-
 client = tweepy.Client(
     bearer_token=bearer_token,
     consumer_key=api_key,
@@ -29,7 +27,7 @@ BUCKET_NAME = 'elon.media'
 
 def elon_musk_daily(event, context):
     # 1) Generate a “negative” text
-    negative_base = ['No', 'Nope', 'Not today', 'Negative', 'Not yet', 'Nah', 'Nay', 'Definitely not']
+    negative_base = ['No', 'No, Elon Musk did NOT die today','Today was NOT the day Elon Musk died','Nope', 'Last I checked, Elon Musk is still alive', 'Not today', 'Negative', 'Not yet', 'Nah', 'Nay', 'Definitely not']
     text = random.choice(negative_base)
     if random.random() < 0.5:
         text += '!'
