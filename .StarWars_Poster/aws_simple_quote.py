@@ -69,6 +69,7 @@ quotes = {
     49: "You're a good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
     50: "Do it.",
     51: "I can't swim.",
+    52: "What about the droid attack on the wookies?",
 }
 
 
