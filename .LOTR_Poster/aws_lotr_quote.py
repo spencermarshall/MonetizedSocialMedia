@@ -95,3 +95,4 @@ def lotr_quote(event, context):
             "new_history": updated[:HISTORY_LENGTH]
         })
     }
+
