@@ -4,10 +4,10 @@ import requests
 import boto3
 import os
 
-# X_TARGET_USERNAME = 'LOTRCulture' # EDIT THIS AS NEEDED
-X_TARGET_USERNAME = 'TheLOTRMemes' # EDIT THIS AS NEEDED
 
-BUCKET_NAME = 'lotr.photos' # EDIT THIS AS NEEDED
+X_TARGET_USERNAME = 'aestheticspost_'
+
+BUCKET_NAME = 'nature.photos' # EDIT THIS AS NEEDED
 # i need to make sure i have policy permissions for each s3 bucket
 
 
