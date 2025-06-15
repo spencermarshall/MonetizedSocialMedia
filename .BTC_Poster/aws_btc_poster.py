@@ -1,78 +1,118 @@
-#this code is up on aws lambda in a function called post_btc
-#where once an hour, on the hour, it posts btc price on the X page.
-import random
-import requests
+import praw
 import tweepy
+import os
+import json
+import requests
+import random
+from datetime import datetime, timedelta
 
-#these are placeholders, so the real keys aren't in a public repo, the real keys are in aws and in .env
-btc_api_key = 'placeholder'
-btc_api_key_secret = 'placeholder'
-btc_access_token = 'placeholder'
-btc_access_token_secret = 'placeholder'
-btc_bearer_token = 'placeholder'
+REDDIT_CLIENT_ID = 'USAgnTeY8fqGUtRtJJjNeg'
+REDDIT_CLIENT_SECRET = 'oViJMoCRQxcJo6go_QVYUU5jUuGkvA'
+REDDIT_USER_AGENT = 'data_bot'
 
-client = tweepy.Client(bearer_token=btc_bearer_token,
-                       consumer_key=btc_api_key, consumer_secret=btc_api_key_secret,
-                       access_token=btc_access_token, access_token_secret=btc_access_token_secret)
+API_KEY = os.environ["API_KEY"]
+API_SECRET_KEY = os.environ["API_SECRET_KEY"]
+ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
+BEARER_TOKEN = os.environ["BEARER_TOKEN"]
 
-auth = tweepy.OAuth1UserHandler(btc_api_key, btc_api_key_secret, btc_access_token, btc_access_token_secret)
+# Initialize Reddit API
+reddit = praw.Reddit(
+    client_id=REDDIT_CLIENT_ID,
+    client_secret=REDDIT_CLIENT_SECRET,
+    user_agent=REDDIT_USER_AGENT
+)
+
+# Set up Tweepy client for Twitter API v2
+client = tweepy.Client(bearer_token=BEARER_TOKEN,
+                       consumer_key=API_KEY, consumer_secret=API_SECRET_KEY,
+                       access_token=ACCESS_TOKEN, access_token_secret=ACCESS_TOKEN_SECRET)
+
+auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
 
-def get_btc_data(event, context):
-    # CoinGecko API endpoint for getting current price and price change data
-    url = "https://api.coingecko.com/api/v3/coins/bitcoin"
-    response = requests.get(url)
-    output = ""
 
-    if response.status_code == 200:
-        data = response.json()
+def fetch_top_post_with_media():
+    """Fetch the top post from r/cryptocurrencymemes in the last 8 hours that has valid media."""
+    subreddit = reddit.subreddit('cryptocurrencymemes')
+    # Fetch top posts from the past 6 hours
+    top_posts = subreddit.top(time_filter='day', limit=20)
+    count = 0
+    # Get current time and 6-hour threshold
+    now = datetime.utcnow()
+    eight_hours_ago = now - timedelta(hours=6)
+    print(top_posts)
 
-        # Extract the current price of BTC in USD
-        current_price = data['market_data']['current_price']['usd']
-        current_price += random.uniform(0, 0.99)
+    # Loop through posts and return the first one with valid media posted within the last 8 hours
+    for post in top_posts:
+        count += 1
+        print(f"Checked if post {count} has media")
+        print(post.title)
+        post_time = datetime.utcfromtimestamp(post.created_utc)
+        if (not post.stickied and
+                post.url.endswith(('.jpg', '.jpeg', '.png', '.gif', '.mp4', '.webp')) and
+                post_time >= eight_hours_ago):
+            print(f"Valid post found: {post.title}, URL: {post.url}, Posted: {post_time}")
+            return post
 
-        # Extract the percentage price changes
-        price_change_1h_percent = data['market_data']['price_change_percentage_1h_in_currency']['usd']
-        price_change_24h_percent = data['market_data']['price_change_percentage_24h_in_currency']['usd']
-        # price_change_7d_percent = data['market_data']['price_change_percentage_7d_in_currency']['usd']
-        price_change_30d_percent = data['market_data']['price_change_percentage_30d_in_currency']['usd']
-        # price_change_60d_percent = data['market_data']['price_change_percentage_60d_in_currency']['usd']
-        # price_change_200d_percent = data['market_data']['price_change_percentage_200d_in_currency']['usd']
-        price_change_365d_percent = data['market_data']['price_change_percentage_1y_in_currency']['usd']
+    # If no suitable post is found, return None
+    print("No suitable post with media found within the last 6 hours.")
+    return None
 
-        # Calculate the historical price for each period
-        def calculate_historical_price(change_percent):
-            return current_price / (1 + (change_percent / 100))
 
-        price_1h_ago = current_price / (1 + (price_change_1h_percent / 100))
-        price_24h_ago = current_price / (1 + (price_change_24h_percent / 100))
-        # price_7d_ago = current_price / (1 + (price_change_7d_percent / 100))
-        price_30d_ago = current_price / (1 + (price_change_30d_percent / 100))
-        # price_60d_ago = current_price / (1 + (price_change_60d_percent / 100))
-        # price_200d_ago = current_price / (1 + (price_change_200d_percent / 100))
-        price_365d_ago = current_price / (1 + (price_change_365d_percent / 100))
+def reddit_crypto_meme(event, context):
+    def post_to_twitter(post):
+        try:
+            # Check if the post URL points to valid media
+            filename = '/tmp/temp_media'
+            # Download media
+            response = requests.get(post.url, timeout=10)
+            response.raise_for_status()  # Raise an HTTPError for bad responses
+            with open(filename, 'wb') as file:
+                file.write(response.content)
 
-        def format_change(start_price, change_percent):
-            usd_change = current_price - start_price
-            percent_change = (usd_change / start_price) * 100
+            # Post image or video to Twitter
+            media = api.media_upload(filename)
+            text = post.title
+            if post.title[0] == '[':
+                text = post.title[4:]
+            if post.title[-1] == ']':
+                text = post.title[:len(post.title) - 4]
 
-            # Sign logic based on percentage change
-            sign = "+" if percent_change > 0 else "-"
-            return f"{sign}{abs(percent_change):.2f}% or {sign}${abs(usd_change):,.2f}"
+            client.create_tweet(text=text, media_ids=[media.media_id])
+            print(f"Successfully posted: {post.title}")
+        except tweepy.errors.TweepyException as e:
+            print("An error occurred while posting to Twitter.")
+            if hasattr(e, 'response') and e.response is not None:
+                print("HTTP Status Code:", e.response.status_code)
+                print("Reason:", e.response.reason)
+                try:
+                    error_details = e.response.json()
+                    print("Error Details:", json.dumps(error_details, indent=4))
+                except Exception as json_error:
+                    print("Error while parsing response JSON:", json_error)
+            else:
+                print("No response object available in the exception.")
+            print("Error Message:", str(e))
+        except requests.exceptions.RequestException as e:
+            print("An error occurred while downloading media.")
+            print("Error Type:", type(e).__name__)
+            print("Error Message:", str(e))
+        except Exception as e:
+            print("An unexpected error occurred.")
+            print("Error Type:", type(e).__name__)
+            print("Error Message:", str(e))
 
-        # Append the results to the output string
-        output += f"Current Bitcoin Price: ${current_price:,.2f}\n\n"
-        output += f"Price Change (1 Hour): {format_change(price_1h_ago, price_change_1h_percent)}\n"
-        output += f"Price Change (24 Hours): {format_change(price_24h_ago, price_change_24h_percent)}\n"
-        # output += f"Price Change (7 Days): {format_change(price_7d_ago, price_change_7d_percent)}\n"
-        output += f"Price Change (30 Days): {format_change(price_30d_ago, price_change_30d_percent)}\n"
-        # output += f"Price Change (60 Days): {format_change(price_60d_ago, price_change_60d_percent)}\n"
-        # output += f"Price Change (200 Days): {format_change(price_200d_ago, price_change_200d_percent)}\n"
-        output += f"Price Change (365 Days): {format_change(price_365d_ago, price_change_365d_percent)}\n"
-
+    post = fetch_top_post_with_media()
+    if post:
+        post_to_twitter(post)
+        return {
+            'statusCode': 200,
+            'body': json.dumps(f"Posted: {post.title}")
+        }
     else:
-        output += f"Failed to retrieve data. Status code: {response.status_code}\n"
-
-    output += "#Bitcoin #Crypto #BTC $BTC"  # todo i can add more here
-    client.create_tweet(text=output)
-
+        print("No suitable post with media found.")
+        return {
+            'statusCode': 200,
+            'body': json.dumps('No suitable post with media found.')
+        }
