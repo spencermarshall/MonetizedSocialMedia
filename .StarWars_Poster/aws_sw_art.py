@@ -4,6 +4,9 @@ import tweepy     # Twitter/X API client
 import os         # to read environment variables
 import json       # to parse and write JSON
 
+# Number of recent images to avoid repeating
+MAX_RECENT = 30
+
 def SW_art(event, context):
     # 1️⃣ Load Twitter credentials
     API_KEY             = os.environ["API_KEY"]
@@ -35,7 +38,7 @@ def SW_art(event, context):
     # 4️⃣ Load our “recent” list from S3
     obj              = s3.get_object(Bucket=bucket, Key=index_key)
     content          = obj['Body'].read().decode('utf-8')
-    question_indices = json.loads(content)  # e.g. [12, 5, 79, …]     #
+    question_indices = json.loads(content)  # e.g. [12, 5, 79, …]
 
     # 5️⃣ List all JPG keys under art/
     listing = s3.list_objects_v2(Bucket=bucket, Prefix=prefix)
@@ -46,7 +49,7 @@ def SW_art(event, context):
     if not jpgs:
         return {'statusCode': 404, 'body': 'No JPGs found under art/'}
 
-    # 6️⃣ Pick a random file—and ensure its number isn’t in our 14
+    # 6️⃣ Pick a random file—and ensure its number isn’t in our recent list
     def extract_num(key):
         start = key.find('(')
         end   = key.find(')', start + 1)
@@ -61,8 +64,8 @@ def SW_art(event, context):
 
     # 7️⃣ Now that we have a fresh `num`, push it onto the front…
     question_indices.insert(0, num)
-    #    …and trim to keep exactly 30 entries
-    while len(question_indices) > 30:
+    #    …and trim to keep at most MAX_RECENT entries
+    while len(question_indices) > MAX_RECENT:
         question_indices.pop()
 
     # 8️⃣ Write that updated list back to S3
@@ -81,7 +84,7 @@ def SW_art(event, context):
     return {
         'statusCode': 200,
         'body': (
-            f"Picked fresh image #{num}, kept recent list at 14 items, "
+            f"Picked fresh image #{num}, kept recent list at {MAX_RECENT} items, "
             f"and tweeted: {chosen}"
         )
     }
