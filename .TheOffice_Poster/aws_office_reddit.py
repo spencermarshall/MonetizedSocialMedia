@@ -26,7 +26,7 @@ def fetch_top_post_with_media():
     subreddit = reddit.subreddit('DunderMifflin')
     now = time.time()
     cutoff = now - 6 * 3600  # 6 hours ago in seconds
-    posts = list(subreddit.new(limit=100))  # Fetch the 100 most recent posts
+    posts = list(subreddit.new(limit=40))  # Fetch the 100 most recent posts
     eligible_posts = [
         post for post in posts
         if post.created_utc > cutoff
