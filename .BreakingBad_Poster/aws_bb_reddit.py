@@ -8,92 +8,65 @@ from datetime import datetime, timedelta
 import time
 
 # Reddit API Credentials
-# REDDIT_CLIENT_ID = os.environ['REDDIT_CLIENT_ID']
-# REDDIT_CLIENT_SECRET = os.environ['REDDIT_CLIENT_SECRET']
-# REDDIT_USER_AGENT = os.environ['REDDIT_USER_AGENT']
-REDDIT_CLIENT_ID = 'USAgnTeY8fqGUtRtJJjNeg'
-REDDIT_CLIENT_SECRET = 'oViJMoCRQxcJo6go_QVYUU5jUuGkvA'
-REDDIT_USER_AGENT = 'data_bot'
 
-# Twitter API Credentials
-# TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
-# TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
-# TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
-# TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
-# TWITTER_BEARER_TOKEN = os.environ['TWITTER_BEARER_TOKEN']
-client_id = 'cnFHZ0h6LURnVmxqbXVmZW9qWTY6MTpjaQ'
-client_secret = 'gHpeCROnQ330bUhYj9Yry-dWQj01tlnogUUIHRTd8y6TM_rWVL'
-api_key = 'm5GPo8zjDkAuWMuZhjTM2ksJu'
-api_key_secret = 'iBt6OHUdCkq88fvwNVFsnuxL7CAU4avLzemUyU97aP18IWFZmS'
-access_token = '1837346181229563904-49LOpBdittQOb1hHkrEMRk5mzhVXFU'
-access_token_secret = 'HsPyF7XRBkfkhXI0sHUBZRKboPWTgtPRCy7fkHfy65bhU'
-bearer_token = 'AAAAAAAAAAAAAAAAAAAAANbewAEAAAAA2dsHWBhQRdWJwY6OhKfhja6fKOY%3DShBe6NotqhviLUXh3tjd2tZIa0rAkPvK654vNKcP93mV5OPIiq'
-
-# Initialize Reddit API
 reddit = praw.Reddit(
     client_id=REDDIT_CLIENT_ID,
     client_secret=REDDIT_CLIENT_SECRET,
     user_agent=REDDIT_USER_AGENT
 )
 client = tweepy.Client(bearer_token=bearer_token,
-                       consumer_key=api_key, consumer_secret=api_key_secret,
-                       access_token=access_token, access_token_secret=access_token_secret)
+                           consumer_key=api_key, consumer_secret=api_key_secret,
+                           access_token=access_token, access_token_secret=access_token_secret)
 
 auth = tweepy.OAuth1UserHandler(api_key, api_key_secret, access_token, access_token_secret)
 api = tweepy.API(auth)
 
-
 def fetch_top_post_with_media():
-    """Fetch the top post from r/breakingbadmemes in the last 12 hours that has valid media."""
+    """Fetch the top post from r/breakingbadmemes in the last 6 hours that has valid media."""
     subreddit = reddit.subreddit('breakingbadmemes')
-    top_posts = subreddit.top(time_filter='day', limit=20)  # Fetch top posts from the last 24 hours
+    recent_posts = subreddit.new(limit=30)  # Fetch recent posts to cover at least 6 hours
+    now = time.time()
+    six_hours_ago = now - (6 * 3600)  # Calculate timestamp for 6 hours ago
 
-    now = time.time()  # Get current time in Unix timestamp
-    twelve_hours_ago = now - (24 * 3600)  # Subtract 24 hours
+    # Filter posts: within 6 hours, not NSFW, not stickied, and has valid media
+    eligible_posts = [
+        post for post in recent_posts
+        if post.created_utc >= six_hours_ago
+        and not post.over_18
+        and not post.stickied
+        and post.url.endswith(('.jpg', '.jpeg', '.png', '.gif', '.mp4', '.webp'))
+    ]
 
-    count = 0
-    for post in top_posts:
-        count += 1
-        post_time = post.created_utc  # Get post's Unix timestamp
-        print(f"Checked if post {count} has media. Posted at {datetime.utcfromtimestamp(post_time)} UTC")
-        if post.over_18:
-            print(f"Skipping post {idx} titled '{post.title}' because it is marked as NSFW.")
-            continue
-
-        # Ensure the post is within the last 24 hours and contains media
-        if post_time >= twelve_hours_ago and not post.stickied and post.url.endswith(
-                ('.jpg', '.jpeg', '.png', '.gif', '.mp4', '.webp')):
-            print(f"Valid post found: {post.title}, URL: {post.url}")
-            return post
-
-    print("No suitable post with media found within the last 24 hours.")
-    return None
-
+    if eligible_posts:
+        # Select the post with the highest score
+        top_post = max(eligible_posts, key=lambda p: p.score)
+        print(f"Valid post found: {top_post.title}, URL: {top_post.url}, Posted at {datetime.utcfromtimestamp(top_post.created_utc)} UTC")
+        return top_post
+    else:
+        print("No suitable post with media found in the last 6 hours.")
+        return None
 
 def lambda_handler(event, context):
     def post_to_twitter(post):
         try:
-            # Check if the post URL points to valid media
+            # Download media from the post URL
             filename = '/tmp/temp_media'
-            # Download media
             response = requests.get(post.url, timeout=10)
-            response.raise_for_status()  # Raise an HTTPError for bad responses
+            response.raise_for_status()
             with open(filename, 'wb') as file:
                 file.write(response.content)
 
-            # Post image or video to Twitter
+            # Upload media to Twitter
             media = api.media_upload(filename)
             text = post.title
+
+            # Clean the title by removing brackets if present
             if post.title[0] == '[':
                 text = post.title[4:]
             if post.title[-1] == ']':
-                text = post.title[:len(post.title) - 4]
+                text = post.title[:len(post.title)-4]
 
-            link = post.shortlink
-            link = link.replace("i", "𝗂", 1)
-
-            tweet_text = f"{text}"  # {link[8:]}"
-
+            tweet_text = f"{text}"
             print(f"Posting to Twitter: {tweet_text}")
             client.create_tweet(text=tweet_text, media_ids=[media.media_id])
             print(f"Successfully posted: {post.title}")
@@ -132,4 +105,3 @@ def lambda_handler(event, context):
             'statusCode': 200,
             'body': json.dumps('No suitable post with media found.')
         }
-
