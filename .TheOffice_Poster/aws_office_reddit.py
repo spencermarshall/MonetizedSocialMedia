@@ -3,28 +3,9 @@ import tweepy
 import os
 import json
 import random
+import time
 import requests
 from datetime import datetime, timedelta
-
-# Reddit API Credentials
-# REDDIT_CLIENT_ID = os.environ['REDDIT_CLIENT_ID']
-# REDDIT_CLIENT_SECRET = os.environ['REDDIT_CLIENT_SECRET']
-# REDDIT_USER_AGENT = os.environ['REDDIT_USER_AGENT']
-REDDIT_CLIENT_ID = 'USAgnTeY8fqGUtRtJJjNeg'
-REDDIT_CLIENT_SECRET = 'oViJMoCRQxcJo6go_QVYUU5jUuGkvA'
-REDDIT_USER_AGENT = 'data_bot'
-
-# Twitter API Credentials
-# TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
-# TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
-# TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
-# TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
-# TWITTER_BEARER_TOKEN = os.environ['TWITTER_BEARER_TOKEN']
-bearer_token = "AAAAAAAAAAAAAAAAAAAAAGscvwEAAAAAD%2BE%2FA1HFvb4hGDFzbZeMyA1hLuc%3D3yngqIcsmqDYyawEm2x3TVYfPEZaKYbnDRtEfFKEc9tPLmV8gk"
-api_key = "4ORKKv2122tpa1CKy6yGHZInO"
-api_key_secret = "35fQjzS0sxk5AverD0ur1YP9fZN8FdkJoS6xUW71Pc4zDGltDv"
-access_token = "1832642294165487616-Ro503mjfYALzFDKhSYqyRThUAiC2R9"
-access_token_secret = "2NsamH45xFXmM5BPUtb8K9pAIdI3hu3lvJqm561YMKSEz"
 
 # Initialize Reddit API
 reddit = praw.Reddit(
@@ -41,24 +22,25 @@ api = tweepy.API(auth)
 
 
 def fetch_top_post_with_media():
-    """Fetch the top post from r/dataisbeautiful in the last 1 hour that has valid media."""
+    """Fetch the top post from r/DunderMifflin in the last 6 hours that has valid media."""
     subreddit = reddit.subreddit('DunderMifflin')
-    top_posts = subreddit.top(time_filter='day', limit=20)  # Fetch top posts from the past hour
-    count = 0
-    # Loop through posts and return the first one with valid media
-    for post in top_posts:
-        count += 1
-        print(f"Checked if post {count} has media")
-        if post.over_18:
-            print(f"Skipping NSFW post: {post.title}")
-            continue
-        if not post.stickied and post.url.endswith(('.jpg', '.jpeg', '.png', '.gif', '.mp4', '.webp')):
-            print(f"Valid post found: {post.title}, URL: {post.url}")
-            return post
-
-    # If no suitable post is found, return None
-    print("No suitable post with media found.")
-    return None
+    now = time.time()
+    cutoff = now - 6 * 3600  # 6 hours ago in seconds
+    posts = list(subreddit.new(limit=100))  # Fetch the 100 most recent posts
+    eligible_posts = [
+        post for post in posts
+        if post.created_utc > cutoff
+           and not post.over_18
+           and not post.stickied
+           and post.url.endswith(('.jpg', '.jpeg', '.png', '.gif', '.mp4', '.webp'))
+    ]
+    if eligible_posts:
+        top_post = max(eligible_posts, key=lambda p: p.score)
+        print(f"Valid post found: {top_post.title}, URL: {top_post.url}")
+        return top_post
+    else:
+        print("No suitable post with media found in the last 6 hours.")
+        return None
 
 
 def lambda_handler(event, context):
@@ -80,9 +62,7 @@ def lambda_handler(event, context):
             if post.title[-1] == ']':
                 text = post.title[:len(post.title) - 4]
 
-            link = post.shortlink
-            link = link.replace("i", "𝗂", 1)
-            tweet_text = f"{text}"  # {link[8:]}"
+            tweet_text = f"{text}"
 
             print(f"Posting to Twitter: {tweet_text}")
             client.create_tweet(text=tweet_text, media_ids=[media.media_id])
