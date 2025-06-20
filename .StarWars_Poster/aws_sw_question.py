@@ -239,7 +239,7 @@ def SW_question(event, context):
         210: "What are your thoughts on Bib Fortuna?",
         211: "What are your thoughts on The Armorer?",
         212: "Did you enjoy seeing Bill Burr appearing in The Mandalorian",
-        213: "What are your thoughts on Hera Syndulla's portrayal in live action?",
+        213: "what is a star war?",
         214: "Is the Ahsoka show just Rebels Season 5?",
         215: "What are your opinions on Jod Na Nawood (Jude Law) from Skeleton Crew?",
         216: "What are your thoughts on Omega from The Bad Batch?",
@@ -428,7 +428,6 @@ def SW_question(event, context):
         397: "Who is your least favorite character from the Sequels?",
         398: "What are your opinions on recasting of Bail Organa in Andor season 2?",
         399: "Andor: Season 1 or Season 2?",
-        400: "what is a star war?",
 
     } #maybeee citadel arc with photo if other CW arc w/ photo does well
     #maybe questions if you could change one thing about [character] what would it be?
@@ -651,7 +650,7 @@ def SW_question(event, context):
         210: "questions/char_BibFortuna/",
         211: "questions/char_Armorer/",
         212: "questions/char_BillBurr/",
-        213: "questions/char_HeraSyndulla(live-action)/",
+        213: "None",
         214: "questions/show_Ahsoka/",
         215: "questions/char_JudeLaw/",
         216: "questions/char_Omega/",
