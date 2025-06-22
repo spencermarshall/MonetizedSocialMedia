@@ -43,7 +43,7 @@ def dailyHelloThere(event, context):
     if random.random() < 0.2:
         title = " Star Wars Episode 3: ROTS"
     question_ran = random.randint(1,
-                                  9)  # 9 because purposely leave some blank so i don't overwhelm by asking question every time
+                                  19)  # 9 because purposely leave some blank so i don't overwhelm by asking question every time
     if question_ran == 1:
         title += "\n\nDo you like how Kenobi saying \"Hello there\" has become a meme?"
     elif question_ran == 2:
