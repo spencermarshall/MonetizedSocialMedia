@@ -73,24 +73,27 @@ def X_Download_Image_Nature(event, context):
         if 'attachments' in tweet and 'media_keys' in tweet.attachments:
             for media_key in tweet.attachments['media_keys']:
                 media = media_dict.get(media_key)
-                if media and media.url.endswith(('.jpg', '.png', '.webp','.jpeg')):
-                    image_url = media.url
-                    print(f"Downloading {image_url}")
-
-                    response = requests.get(image_url)
-                    if response.status_code == 200:
-                        file_name = os.path.basename(image_url)
-                        file_path = f"/tmp/{file_name}"
-                        with open(file_path, 'wb') as file:
-                            file.write(response.content)
-
-                        # Upload to S3
-                        try:
-                            s3.upload_file(file_path, BUCKET_NAME, file_name)
-                            print(f"Uploaded {file_name} to S3 bucket {BUCKET_NAME}")
-                        except boto3.exceptions.S3UploadFailedError as e:
-                            print(f"Failed to upload {file_name} to S3: {str(e)}")
+                if media:
+                    if media.type in ['video', 'animated_gif']:
+                        print(f"Skipping {media.type} media.")
+                        continue
+                    if media.type == 'photo' and hasattr(media, 'url') and media.url.endswith(('.jpg', '.png', '.webp', '.jpeg')):
+                        image_url = media.url
+                        print(f"Downloading {image_url}")
+                        response = requests.get(image_url)
+                        if response.status_code == 200:
+                            file_name = os.path.basename(image_url)
+                            file_path = f"/tmp/{file_name}"
+                            with open(file_path, 'wb') as file:
+                                file.write(response.content)
+                            # Upload to S3
+                            try:
+                                s3.upload_file(file_path, BUCKET_NAME, file_name)
+                                print(f"Uploaded {file_name} to S3 bucket {BUCKET_NAME}")
+                            except boto3.exceptions.S3UploadFailedError as e:
+                                print(f"Failed to upload {file_name} to S3: {str(e)}")
+                        else:
+                            print(f"Failed to download {image_url}: Status code {response.status_code}")
                     else:
-                        print(f"Failed to download {image_url}: Status code {response.status_code}")
-
-    return {"status": "success", "message": "Processed tweets and uploaded images."}
+                        print(f"Skipping media with type {media.type} or invalid URL.")
+    print("Finished processing tweets.")
