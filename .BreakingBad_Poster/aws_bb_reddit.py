@@ -1,14 +1,5 @@
-import praw
-import tweepy
-import random
-import os
-import json
-import requests
-from datetime import datetime, timedelta
-import time
 
-# Reddit API Credentials
-
+# Initialize Reddit API
 reddit = praw.Reddit(
     client_id=REDDIT_CLIENT_ID,
     client_secret=REDDIT_CLIENT_SECRET,
@@ -68,7 +59,7 @@ def lambda_handler(event, context):
 
             tweet_text = f"{text}"
             print(f"Posting to Twitter: {tweet_text}")
-            client.create_tweet(text=tweet_text, media_ids=[media.media_id])
+            client.create_tweet(text="", media_ids=[media.media_id])
             print(f"Successfully posted: {post.title}")
         except tweepy.errors.TweepyException as e:
             print("An error occurred while posting to Twitter.")

@@ -2,6 +2,7 @@ import boto3  # Pre-downloaded on AWS Lambda
 import random
 import tweepy
 import os
+import json
 
 
 def office_meme_post(event, context):
@@ -22,50 +23,60 @@ def office_meme_post(event, context):
     # Initialize the S3 client
     s3_client = boto3.client('s3')
 
-    # Define your S3 bucket name
-    bucket_name = 'office.photoss'
+    # Maximum number of recently posted items to keep track of
+    RECENTLY_POSTED = 30
 
-    # List objects in the bucket
-    response = s3_client.list_objects_v2(Bucket=bucket_name)
+    # Initialize S3 and Twitter clients
+    s3_client = boto3.client('s3')
 
-    # Check if there are any objects in the bucket
-    if 'Contents' not in response:
-        return {
-            'statusCode': 404,
-            'body': 'No files found in the S3 bucket.'
-        }
+    index_key = 'notes/office_meme.txt'
+    bucket_name = "office.photoss"
+    obj = s3_client.get_object(Bucket=bucket_name, Key=index_key)
+    content = obj['Body'].read().decode('utf-8')
+    recent_memes = json.loads(content)  # Expecting a list like ["1.jpg", "2.jpg", ..., "n.jpg"]
 
-    # Filter the list to include only .jpg files
-    jpg_files = [file['Key'] for file in response['Contents'] if
-                 file['Key'].endswith('.jpg') or file['Key'].endswith('.webp') or file['Key'].endswith(
-                     '.png')]  # or file['Key'].endswith('.gif')]
-    # todo i think it crashes when it pulls .gif so look into this later
-    # If there are no JPG files
-    if not jpg_files:
-        return {
-            'statusCode': 404,
-            'body': 'No JPG files found in the S3 bucket.'
-        }
+    # List objects directly in the bucket root
+    response = s3_client.list_objects_v2(Bucket=bucket_name, Delimiter='/')
 
-    # Select a random JPG file
-    random_file = random.choice(jpg_files)
+    # Filter for image files with supported extensions
+    image_files = [
+        file['Key'] for file in response.get('Contents', [])
+        if file['Key'].endswith(('.jpg', '.webp', '.png'))
+    ]
 
-    tweet_options = ["literally me", "wow", "same", "The Office", " ", " ", " ", " "]
-    tweet_text = random.choice(tweet_options)
+    if not image_files:
+        return "No image files found directly in the bucket."
 
-    # 50% chance to uppercase only the very first character
-    if random.random() < 0.5:
-        tweet_text = tweet_text[:1].upper() + tweet_text[1:]
+    # Select a random file not recently posted
+    available_files = [f for f in image_files if f not in recent_memes]
+    if not available_files:
+        return "All available images have been recently posted."
 
-    # Download the selected file to a temporary directory
-    download_path = f"/tmp/{os.path.basename(random_file)}"
+    random_file = random.choice(available_files)
+
+    # Download the file to /tmp
+    download_path = f"/tmp/{random_file}"
     s3_client.download_file(bucket_name, random_file, download_path)
 
-    # Upload the file to Twitter using Tweepy
-    media = api.media_upload(download_path)
-    client.create_tweet(text=tweet_text, media_ids=[media.media_id])
+    # Upload to Twitter with appropriate media category
+    if random_file.endswith('.gif'):
+        media = api.media_upload(download_path, media_category='tweet_gif')
+    else:
+        media = api.media_upload(download_path, media_category='tweet_image')
 
-    return {
-        'statusCode': 200,
-        'body': f"Tweet posted with media: {random_file}"
-    }
+    # Post the tweet
+    client.create_tweet(text="", media_ids=[media.media_id])
+
+    recent_memes.insert(0, random_file)
+    # Truncate the list to n items if it exceeds the limit
+    while len(recent_memes) > RECENTLY_POSTED:
+        recent_memes.pop()
+
+    # Save the updated list back to S3
+    updated_content = json.dumps(recent_memes)
+    s3_client.put_object(Bucket=bucket_name, Key=index_key, Body=updated_content)
+
+    # Clean up and update recent_posted list
+    os.remove(download_path)
+
+    return f"Tweet posted with media: {random_file}"
