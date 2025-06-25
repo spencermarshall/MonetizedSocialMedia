@@ -10,24 +10,7 @@ import time
 # Reddit API Credentials
 # REDDIT_CLIENT_ID = os.environ['REDDIT_CLIENT_ID']
 # REDDIT_CLIENT_SECRET = os.environ['REDDIT_CLIENT_SECRET']
-# REDDIT_USER_AGENT = os.environ['REDDIT_USER_AGENT']
-REDDIT_CLIENT_ID = 'USAgnTeY8fqGUtRtJJjNeg'
-REDDIT_CLIENT_SECRET = 'oViJMoCRQxcJo6go_QVYUU5jUuGkvA'
-REDDIT_USER_AGENT = 'data_bot'
 
-# Twitter API Credentials
-# TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
-# TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
-# TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
-# TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
-# TWITTER_BEARER_TOKEN = os.environ['TWITTER_BEARER_TOKEN']
-api_key = 'yCGaHjd9563R6uH7WFIrLZd3d'
-api_key_secret = 'z3g6gSjlMVDZk4c6aTbuvjkSi9hl984lUtOJ3kUdC9SXrmij1f'
-client_id = 'eHZyQ2JTU3NDcEswNjZfSEsxNE46MTpjaQ'
-client_secret = '908AB3em5NuRNKOjhfVEv6gSm5Zak0JRysqdKlRiNk6ORXGFsm'
-bearer_token = 'AAAAAAAAAAAAAAAAAAAAABn2vgEAAAAAG%2B%2FCtdrVmqeJTt%2BV6Dk2sK8nAW8%3DZlTeUtYsgRe0axwB0OVf1y0Yiskheqjx9vx8bTJxzYPl2KuoEs'
-access_token = '1831828094526922752-CPna733OcTgkgsscCtg5igxT4pOmqF'
-access_token_secret = 'fjGfebtR42ZNJVr6JpoQd5AzKTFssrXfqKCLUBhkbFvaT'
 
 # Initialize Reddit API
 reddit = praw.Reddit(
@@ -98,7 +81,7 @@ def lambda_handler(event, context):
                 tweet_text = f"{text}"  # {edited_shortlink}"
 
             print(f"Posting to Twitter: {tweet_text}")
-            client.create_tweet(text=tweet_text, media_ids=[media.media_id])
+            client.create_tweet(text="", media_ids=[media.media_id])
             print(f"Successfully posted: {post.title}")
         except tweepy.errors.TweepyException as e:
             print("An error occurred while posting to Twitter.")
@@ -135,4 +118,3 @@ def lambda_handler(event, context):
             'statusCode': 200,
             'body': json.dumps('No suitable post with media found.')
         }
-
