@@ -1,26 +1,35 @@
 import requests
 import random
 import tweepy
+import os
+import json
+import boto3
 
-# These are placeholders so my keys won't be on a public github repo
 
-api_key = 'm5GPo8zjDkAuWMuZhjTM2ksJu'
-api_key_secret = 'iBt6OHUdCkq88fvwNVFsnuxL7CAU4avLzemUyU97aP18IWFZmS'
-access_token = '1837346181229563904-49LOpBdittQOb1hHkrEMRk5mzhVXFU'
-access_token_secret = 'HsPyF7XRBkfkhXI0sHUBZRKboPWTgtPRCy7fkHfy65bhU'
-bearer_token = 'AAAAAAAAAAAAAAAAAAAAANbewAEAAAAA2dsHWBhQRdWJwY6OhKfhja6fKOY%3DShBe6NotqhviLUXh3tjd2tZIa0rAkPvK654vNKcP93mV5OPIiq'
-
-# Set up Tweepy client for Twitter API v2
 client = tweepy.Client(bearer_token=bearer_token,
                        consumer_key=api_key,
                        consumer_secret=api_key_secret,
                        access_token=access_token,
                        access_token_secret=access_token_secret)
 
+RECENT_LIST_MAX = 20
 
+# S3 location of the JSON file that stores the “recent indices”
+S3_BUCKET = 'bb.photos'
+S3_KEY    = 'notes/BB_quote.txt'
+s3_client = boto3.client('s3')
 # here
 
 def post_bb_quote(event, context):
+    #half the time post a meme instead
+    if random.random() < 0.5:
+        lambda_client = boto3.client('lambda', region_name='us-east-1')
+        lambda_client.invoke(
+            FunctionName='arn:aws:lambda:us-east-1:975050204241:function:BB_meme_post',
+            InvocationType='Event',  # Asynchronous invocation
+            Payload=json.dumps({})  # Empty payload; modify if needed
+        )
+        return "called meme"
     breaking_bad_quotes = {
         1: "A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks.",
         2: "I am not in danger, Skyler. I am the danger.",
@@ -50,16 +59,70 @@ def post_bb_quote(event, context):
         26: "Yeah b****, Magents!!",
         27: "This whole thing, all of this... It's all about me.",
         28: "I won.",
-        29: "This, is not Meth...",
-        30: "If you believe that there's a hell, I don't know if you're into that, we're already pretty much going there, right? -Walter White",
-        31: "If you don’t know who I am, then maybe your best course would be to tread lightly.",
+        29: "This is not Meth...",
+        30: "If you believe that there's a hell, i don't know if you're into that, we're already pretty much going there, right? -Walter White",
+        31: "If you don’t know who i am, then maybe your best course would be to tread lightly.",
         32: "Say my name.",
         33: "TIGHT TIGHT TIGHT",
         34: "I am the one who knocks",
         35: "Let's cook.",
     }
 
-    tweet_text = breaking_bad_quotes[random.randint(1, len(breaking_bad_quotes))]
+    try:
+        obj = s3_client.get_object(Bucket=S3_BUCKET, Key=S3_KEY)
+        raw_bytes = obj["Body"].read()
+        text      = raw_bytes.decode("utf-8")
+        recent_indices = json.loads(text)
+        # If for some reason it isn’t a Python list, reset
+        if not isinstance(recent_indices, list):
+            recent_indices = []
+    except Exception as e:
+        # If the file doesn’t exist or JSON is invalid, start fresh
+        recent_indices = []
 
-    client.create_tweet(text=tweet_text)
+    # ──── 5.2. STEP 2: CHOOSE A RANDOM INDEX NOT IN RECENT_INDICES ─────────────────
+    max_index = len(breaking_bad_quotes)  # here, 35
+    if max_index == 0:
+        # If somehow your dictionary is empty, bail out
+        return {
+            "statusCode": 500,
+            "body": "No breaking_bad_quotes defined."
+        }
+
+    # Pick an integer between 1 and max_index, reroll if it’s “recent”
+    num = random.randint(1, max_index)
+    while num in recent_indices:
+        num = random.randint(1, max_index)
+
+    # ──── 5.3. STEP 3: RETRIEVE THE QUOTE & COMPOSE TWEET TEXT ───────────────────
+    quote = breaking_bad_quotes.get(num, "")
+    tweet_text = quote
+
+    # ──── 5.4. STEP 4: ATTEMPT TO POST THE TWEET ───────────────────────────────────
+    try:
+        client.create_tweet(text=tweet_text)
+        print(f"✅ Successfully tweeted quote #{num}")
+    except Exception as tweet_err:
+        # Log the error; proceed to update the “recent” list anyway
+        print(f"❌ Failed to tweet quote #{num}: {tweet_err}")
+
+    # ──── 5.5. STEP 5: UPDATE THE “RECENT INDICES” LIST ───────────────────────────
+    recent_indices.insert(0, num)  # put this index at the front
+    if len(recent_indices) > RECENT_LIST_MAX:
+        # Trim anything beyond the first RECENT_LIST_MAX
+        recent_indices = recent_indices[:RECENT_LIST_MAX]
+
+    # ──── 5.6. STEP 6: WRITE THE UPDATED LIST BACK TO S3 ───────────────────────────
+    try:
+        serialized = json.dumps(recent_indices)
+        s3_client.put_object(Bucket=S3_BUCKET, Key=S3_KEY, Body=serialized)
+        print(f"💾 Updated S3 with recent indices: {recent_indices}")
+    except Exception as write_err:
+        print(f"❌ Failed to write recent indices to S3: {write_err}")
+
+    # ──── 5.7. RETURN A SIMPLE RESPONSE ─────────────────────────────────────────────
+    return {
+        "statusCode": 200,
+        "body": f"Tried to tweet quote #{num}."
+    }
 
