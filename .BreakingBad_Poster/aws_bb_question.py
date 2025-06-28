@@ -120,7 +120,7 @@ def BB_question(event, context):
         88: "Should Nacho have survived BCS?", #todo maybe delete or delete the one under this
         # 88: "What are your opinions on Nacho's death in BCS?",
         89: "You're the smartest guy I ever met, and you're too stupid to see he made up his mind 10 minutes ago.",
-        90: "What are your opinions on the use of black and white scenes in BCS?",
+        90: "",
         91: "What are your opinions on the death of Andrea?",
         92: "Who had the saddest death in all of BB/BCS?",
         93: "Who's death was most surprising in BB/BCS",
