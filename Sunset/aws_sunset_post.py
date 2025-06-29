@@ -8,9 +8,6 @@ from datetime import datetime, timedelta
 import boto3
 from urllib.parse import urlparse
 
-REDDIT_CLIENT_ID = 'USAgnTeY8fqGUtRtJJjNeg'
-REDDIT_CLIENT_SECRET = 'oViJMoCRQxcJo6go_QVYUU5jUuGkvA'
-REDDIT_USER_AGENT = 'data_bot'
 
 API_KEY = os.environ["API_KEY"]
 API_SECRET_KEY = os.environ["API_SECRET_KEY"]
@@ -42,7 +39,7 @@ def fetch_top_post_with_media():
     count = 0
     # Get current time and 6-hour threshold
     now = datetime.utcnow()
-    eight_hours_ago = now - timedelta(hours=6)
+    eight_hours_ago = now - timedelta(hours=5)
     print(top_posts)
 
     # Loop through posts and return the first one with valid media posted within the last 8 hours
