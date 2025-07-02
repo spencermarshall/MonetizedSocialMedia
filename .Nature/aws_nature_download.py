@@ -39,7 +39,7 @@ def X_Download_Image_Nature(event, context):
     try:
         tweets = client.search_recent_tweets(
             query=f"from:{X_TARGET_USERNAME} has:media -is:retweet",
-            max_results=32,
+            max_results=30,
             tweet_fields=['created_at', 'public_metrics', 'lang', 'possibly_sensitive', 'text'],
             expansions='author_id,attachments.media_keys',
             media_fields=['url', 'type', 'preview_image_url'],
