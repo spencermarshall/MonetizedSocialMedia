@@ -193,9 +193,9 @@ def SW_question(event, context):
         164: "What are your thoughts on Director Krennic?",
         165: "What are your thoughts on Mon Mothma?",
         166: "What are your thoughts of Cassion Andor as a character?",
-        167: "What are your thoughts on Alden Ehrenreich's portrayal of Han Solo?",
-        168: "What are your thoughts on Donald Glover's portrayal of Lando Calrissian?",
-        169: "What are your thoughts on Qi'ra character in the Solo movie?",
+        167: "Did you enjoy Alden Ehrenreich as Han Solo?",
+        168: "Did you enjoy Donald Glover's portrayal of Lando Calrissian?",
+        169: "What are your thoughts on Qi'ra in the Solo movie?",
         170: "What are your thoughts on Tobias Beckett in the Han Solo movie?",
         171: "What are your thoughts on L3-37 in the Han Solo movie?",
         172: "OPINION: James Earl Jones signing his voice rights over to Disney to use with AI was a great decision. What do you think?",
@@ -231,7 +231,7 @@ def SW_question(event, context):
         202: "What are your thoughts on Greef Karga?",
         203: "What are your thoughts on Dave Filoni showing up in The Mandalorian?",
         204: "What are your thoughts on Cobb Vanth?",
-        205: "What are your thoughts on the portrayal of the Tusken Raiders in The Mandalorian?",
+        205: "Did you like seeing Tusken Raiders in The Mandalorian?",
         206: "What are your thoughts on Fennec Shand?",
         207: "Do you want to see more of Dr. Pershing?",
         208: "What are your thoughts on IG-11?",
@@ -252,13 +252,13 @@ def SW_question(event, context):
         223: "What are your thoughts on the Bad Batch's portrayal of Order 66?",
         224: "What is the most iconic line from Darth Vader?",
         225: "Did the Acolyte show live up to your expectations?",
-        226: "What are your thoughts on Leia's portrayal in the Kenobi Show?",
-        227: "What are your thoughts on the Kenobi Show's portrayal of Obi-Wan Kenobi?",
-        228: "What are your thoughts on the Kenobi Show's portrayal of Darth Vader?",
-        229: "What are your thoughts on the Kenobi Show's portrayal of Owen and Beru Lars?",
-        230: "What are your thoughts on the Kenobi Show's portrayal of the Inquisitors?",
-        231: "What are your thoughts on the Kenobi Show's portrayal of Senator Organa?",
-        232: "What are your thoughts on the con-Jedi guy in the Obi-Wan Kenobi show?",
+        226: "Did you like Leia's portrayal in the Kenobi Show?",
+        227: "Did you like the Kenobi Show's portrayal of Obi-Wan Kenobi?",
+        228: "Did you like the Kenobi Show's portrayal of Darth Vader?",
+        229: "Did you like the Kenobi Show's portrayal of Owen and Beru Lars?",
+        230: "Did you enjoy the Kenobi Show's portrayal of the Inquisitors?",
+        231: "Did you like the Kenobi Show's portrayal of Senator Organa?",
+        232: "Did you like the con-Jedi guy in the Obi-Wan Kenobi show?",
         233: "What are your thoughts on Darth Jar Jar?",
         234: "Rebellion or Resistance?",
         235: "Canon or Legends?",
@@ -279,13 +279,13 @@ def SW_question(event, context):
         250: "What do you think makes a great Star Wars villain, and why?",
         251: "Would you want a Star Wars story told entirely from the perspective of a smuggler?",
         252: "What role do you think music plays in enhancing the Star Wars experience?",
-        253: "What are your thoughts on droid culture in the Star Wars universe?",
+        253: "Do you like droid culture?", #todo maybe delete
         # maybe get rid of 'in the star wars universe' idk
         254: "If you're stuck in the Star Wars universe for 24 hours, what's the first thing you would do?",
         255: "What will Star Wars look like in 30 years?",
         256: "What species would you add to the Star Wars Universe?",
         257: "What role should real world politics have in Star Wars?",
-        258: "What role do you think fan theories play in shaping and expanding the Star Wars universe?",
+        258: "What fan theories do you like the most?",
         259: "If you could design your own Star Wars planet, what would it look like?",
         # this performed bad last time , 5 comments, maybe delete
         260: "What are your opinions on Admiral Holdo?", #todo added picture
@@ -428,6 +428,32 @@ def SW_question(event, context):
         397: "Who is your least favorite character from the Sequels?",
         398: "What are your opinions on recasting of Bail Organa in Andor season 2?",
         399: "Andor: Season 1 or Season 2?",
+        400: "Do you want a season 2 of The Book of Boba Fett?",
+        401: "Do you want a season 2 of Obi-Wan Kenobi?",
+        402: "Do you want a season 2 of The Acolyte?",
+        403: "Do you want a season 2 of Ahsoka?",
+        404: "Do you want a season 2 of Skeleton Crew?",
+        405: "What is the most iconic line from Yoda?",
+        406: "What is the most iconic line from Obi-Wan Kenobi?",
+        407: "What is the most iconic line from Padme?",
+        408: "What is the most iconic line from Ahsoka Tano?",
+        409: "What is the most iconic line from Mace Windu?",
+        410: "What is the most iconic line from Sheev Palpatine?",
+        411: "What is the most iconic line from C-3PO?",
+        412: "What are your thoughts on Anakin during episodes 2 and 3?",
+        413: "What are your thoughts on Han Solo in the OT?",
+        414: "What are your thoughts on Luke in the OT?",
+        415: "What are your thoughts on Leia in the OT?",
+        416: "What are your thoughts on Qui-Gon Jinn in ep 1?"
+
+        #add Luke iconic line next but need photos from OT
+        #add anakin next but need photos from ep 2 and 3
+        #add Han next but need photos from OT
+        #add Leia iconic line
+
+
+        #todo if these do well maybe add more? but realisitically will probably delete some of these already
+
 
     } #maybeee citadel arc with photo if other CW arc w/ photo does well
     #maybe questions if you could change one thing about [character] what would it be?
@@ -837,12 +863,24 @@ def SW_question(event, context):
         397: "None",
         398: "questions/other_BailOrganaRecast/",
         399: "questions/show_Andor/",
-        400: "None",
-        401: "questions/movie_Solo/",
-        402: "questions/show_cw/",
-        403: "",
-        404: "",
-        405: "",
+        400: "questions/show_BOBF/",
+        401: "questions/show_Kenobi/",
+        402: "questions/show_Acolyte/",
+        403: "questions/show_Ahsoka/",
+        404: "questions/show_SkeletonCrew/",
+        405: "questions/char_Yoda(puppet)/",
+        406: "questions/char_ObiWan/",
+        407: "questions/char_Padme(NataliePortman)/",
+        408: "questions/char_Ahsoka(CW)/",
+        409: "questions/char_MaceWindu/",
+        410: "questions/char_PalpatinePrequels/",
+        411: "questions/char_C-3PO/",
+        412: "None",
+        413: "None",
+        414: "None",
+        415: "None",
+        416: "None",
+        417: "None",
     }
 
     bucket_name = 'starwars.photos'
