@@ -241,7 +241,7 @@ def SW_question(event, context):
         212: "Did you enjoy seeing Bill Burr appearing in The Mandalorian",
         213: "what is a star war?",
         214: "Is the Ahsoka show just Rebels Season 5?",
-        215: "What are your opinions on Jod Na Nawood (Jude Law) from Skeleton Crew?",
+        215: "Did you like Jod Na Nawood (Jude Law) from Skeleton Crew?", #todo maybe rewrite or delete
         216: "What are your thoughts on Omega from The Bad Batch?",
         217: "What are your thoughts on Crosshair from The Bad Batch?",
         218: "What are your thoughts on Hunter from The Bad Batch?",
@@ -314,7 +314,7 @@ def SW_question(event, context):
         283: "What are your thoughts on the Umbara episodes in The Clone Wars?",
         284: "Do you want Star Wars Battlefront 3?",
         285: "Did you enjoy seeing Boba Fett in The Clone Wars?",
-        286: "What are your thoughts on the Martez Sisters in The Clone Wars?",
+        286: "Did you enjoy seeing the Martez Sisters in The Clone Wars?",
         287: "Chopper or R2-D2?",
         288: "What are your opinions on Kylo Ren?",
         289: "What are your opinions on Jawas?",
@@ -322,7 +322,7 @@ def SW_question(event, context):
         291: "What are your opinions on Porgs in The Last Jedi?",
         292: "Blue Lightsaber or Green Lightsaber?",
         293: "What color lightsaber are you?",
-        294: "",
+        294: "Did The Book of Boba Fett live up to your expectations?",
         295: "Tweet like you're in the Star Wars universe.",
         296: "Do you want to see more from the High Republic era?",
         297: "Battle of Jakku or Battle of Endor?",
@@ -348,7 +348,7 @@ def SW_question(event, context):
         317: "What are your opinions on Mandalore?",
         318: "What is your favorite quote from Obi-Wan Kenobi?",
         319: "What are your opinions on Umbara?",
-        320: "What are your opinions on Kessel?",
+        320: "Did you like seeing Kessel in the Solo movie?", #todo maybe rewrite or delete
         321: "What are your opinions on Felucia?",
         322: "What is your favorite quote from Darth Vader?",
         323: "What are your opinions on Utapau?",
@@ -444,7 +444,11 @@ def SW_question(event, context):
         413: "What are your thoughts on Han Solo in the OT?",
         414: "What are your thoughts on Luke in the OT?",
         415: "What are your thoughts on Leia in the OT?",
-        416: "What are your thoughts on Qui-Gon Jinn in ep 1?"
+        416: "What are your thoughts on Qui-Gon Jinn in ep 1?",
+        417: "Did Mandalorian Season 3 live up to your expectations?",
+        418: "If you could change one thing about Ahsoka Tano, what would it be?",
+        419: "If you could change one thing about Rey, what would it be?",
+        420: "If you could change one thing about Count Dooku, what would it be?",
 
         #add Luke iconic line next but need photos from OT
 
@@ -758,7 +762,7 @@ def SW_question(event, context):
         291: "questions/other_Porgs/",
         292: "None",
         293: "None",
-        294: "None",
+        294: "questions/show_BOBF/",
         295: "None",
         296: "None",
         297: "None",
@@ -882,6 +886,9 @@ def SW_question(event, context):
         415: "None",
         416: "None",
         417: "None",
+        418: "questions/char_Ahsoka(CW)/",
+        419: "questions/char_Rey/",
+        420: "questions/char_CountDooku/",
     }
 
     bucket_name = 'starwars.photos'
