@@ -345,7 +345,7 @@ def SW_question(event, context):
         314: "What are your opinions on Jedha?",
         315: "What are your opinions on Dathomir?",
         316: "What are your opinions on Starkiller Base?",
-        317: "What are your opinions on Mandalore?",
+        317: "Do you want to see more of Mandalore in the future?",
         318: "What is your favorite quote from Obi-Wan Kenobi?",
         319: "What are your opinions on Umbara?",
         320: "Did you like seeing Kessel in the Solo movie?", #todo maybe rewrite or delete
@@ -434,7 +434,7 @@ def SW_question(event, context):
         403: "Do you want a season 2 of Ahsoka?",
         404: "Do you want a season 2 of Skeleton Crew?",
         405: "What is the most iconic line from Yoda?",
-        406: "What is the most iconic line from Obi-Wan Kenobi?",
+        406: "What is the most iconic line from Obi-Wan Kenobi?", # todo i have an favorite quote from obi wan, can't have both
         407: "What is the most iconic line from Padme?",
         408: "What is the most iconic line from Ahsoka Tano?",
         409: "What is the most iconic line from Mace Windu?",
