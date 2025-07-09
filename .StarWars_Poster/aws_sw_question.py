@@ -249,7 +249,7 @@ def SW_question(event, context):
         220: "What are your thoughts on Wrecker from The Bad Batch?",
         221: "Did the Obi-Wan Kenobi show live up to your expectations?",
         222: "What are your thoughts on the Bad Batch as a whole?",
-        223: "What are your thoughts on the Bad Batch's portrayal of Order 66?",
+        223: "Did you enjoy the Bad Batch's portrayal of Order 66?", #todo maybe delete
         224: "What is the most iconic line from Darth Vader?",
         225: "Did the Acolyte show live up to your expectations?",
         226: "Did you like Leia's portrayal in the Kenobi Show?",
@@ -328,7 +328,7 @@ def SW_question(event, context):
         297: "Battle of Jakku or Battle of Endor?",
         298: "Battle of Geonosis or Battle of Naboo?",
         299: "What are your opinions on Crait?",
-        300: "What are your opinions on Geonois?",
+        300: "Would you want to live on Geonois?", #todo maybe delete
         301: "What are your opinions on Kamino?",
         302: "What are your opinions on Mustafar?",
         303: "What are your opinions on Scarif?",
@@ -447,6 +447,7 @@ def SW_question(event, context):
         416: "What are your thoughts on Qui-Gon Jinn in ep 1?"
 
         #add Luke iconic line next but need photos from OT
+
         #add anakin next but need photos from ep 2 and 3
         #add Han next but need photos from OT
         #add Leia iconic line
