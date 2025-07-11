@@ -156,7 +156,7 @@ def lotr_question(event, context):
         121: "What are your opinions on The Shire?",
         122: "What are your opinions on Rivendell?",
         123: "What are your opinions on Mirkwood Forest?",
-        124: "What are your opinions on Lothlórien?",
+        124: "Would you want to live in Lothlorien?",
         125: "What are your opinions on Isengard?", #todo maybe delete
         126: "What are your opinions on Gondor?",
         127: "What are your opinions on Mordor?",
@@ -178,7 +178,7 @@ def lotr_question(event, context):
         143: "What are your opinions on The War of the Rohirrim as a movie?",
         144: "Are you happy with how Amazon handled Rings of Power?",
         145: "Which new character introduced in Rings of Power has become your favorite?",
-        146: "What are your opinions on Galadriel in Rings of Power?",  # todo stopped here
+        146: "What are your opinions on Galadriel in Rings of Power?",  # todo add image maybe
         147: "What are your opinions on Sauron in Rings of Power?",
         148: "What are your opinions on Elrond in Rings of Power?",
         149: "Which would be a better title: The Magic Ring or Lord of the Rings?",
@@ -218,7 +218,7 @@ def lotr_question(event, context):
         181: "What are your opinions on Boromir's death scene?",
         182: "Where in Middle-Earth would you want to live?",
         # 183: "What are your opinions on the LOTR fandom?",
-        183: "",
+        183: "Post your favorite LOTR memes below👇",
         184: "What are your opinions on the LOTR video games?",
         185: "What LOTR board games do you enjoy?", #todo maybe delete
         186: "Which LOTR Lego sets do you own?",
@@ -276,7 +276,7 @@ def lotr_question(event, context):
         236: "Did Rings of Power live up to your expectations?",
         237: "Did The Hobbit movies live up to your expectations?",
         238: "Have you seen the 1978 animated LOTR movie?",
-        239: "Did the War of the Rohirrim movie live up to your expectations?",
+        239: "Did the War of the Rohirrim movie live up to your expectations?", #todo add pic
         240: "If you could change one thing about Rings of Power, what would it be?",
         241: "If you could change one thing about The War of the Rohirrim, what would it be?",
         242: "If you could change one thing about An Unexpected Journey movie, what would it be?",

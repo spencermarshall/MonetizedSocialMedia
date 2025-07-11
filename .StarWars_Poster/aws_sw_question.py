@@ -345,7 +345,7 @@ def SW_question(event, context):
         314: "What are your opinions on Jedha?",
         315: "What are your opinions on Dathomir?",
         316: "What are your opinions on Starkiller Base?",
-        317: "Do you want to see more of Mandalore in the future?",
+        317: "Do you want to see more of Mandalore in the future?", #todo maybe delete
         318: "What is your favorite quote from Obi-Wan Kenobi?",
         319: "What are your opinions on Umbara?",
         320: "Did you like seeing Kessel in the Solo movie?", #todo maybe rewrite or delete
