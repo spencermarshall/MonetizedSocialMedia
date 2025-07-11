@@ -5,7 +5,7 @@ import os         # to read environment variables
 import json       # to parse and write JSON
 
 # Number of recent images to avoid repeating
-MAX_RECENT = 90
+MAX_RECENT = 120
 
 def SW_art(event, context):
     # 1️⃣ Load Twitter credentials

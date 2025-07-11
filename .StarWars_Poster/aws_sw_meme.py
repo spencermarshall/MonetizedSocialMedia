@@ -9,6 +9,29 @@ MAX_RECENT = 30
 
 
 def SW_meme_post(event, context):
+    # Check if we should invoke SW_art instead of posting a meme
+    if random.random() < 0.5:
+        # Initialize Lambda client
+        lambda_client = boto3.client('lambda')
+
+        # Invoke the SW_art Lambda function
+        try:
+            response = lambda_client.invoke(
+                FunctionName='arn:aws:lambda:us-east-1:975050204241:function:SW_art',
+                InvocationType='RequestResponse',  # Synchronous invocation
+                Payload=json.dumps({})  # Empty payload, adjust if SW_art expects specific input
+            )
+            return {
+                'statusCode': 200,
+                'body': f'Invoked SW_art Lambda function: {response["StatusCode"]}'
+            }
+        except botocore.exceptions.ClientError as e:
+            return {
+                'statusCode': 500,
+                'body': f'Error invoking SW_art: {str(e)}'
+            }
+
+    # Original meme-posting logic continues if random.random() >= 0.5
     # Twitter credentials from environment variables
     API_KEY = os.environ["API_KEY"]
     API_SECRET_KEY = os.environ["API_SECRET_KEY"]
@@ -82,7 +105,6 @@ def SW_meme_post(event, context):
         tweet_text = "🤣"
     elif rand_val < 0.8:
         tweet_text = "LOL"
-
 
     # Download the selected meme to a temporary location
     download_path = f"/tmp/{os.path.basename(random_file)}"
