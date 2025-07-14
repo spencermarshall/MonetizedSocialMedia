@@ -8,25 +8,6 @@ import random
 from datetime import datetime, timedelta
 import time
 
-# Reddit API Credentials
-# REDDIT_CLIENT_ID = os.environ['REDDIT_CLIENT_ID']
-# REDDIT_CLIENT_SECRET = os.environ['REDDIT_CLIENT_SECRET']
-# REDDIT_USER_AGENT = os.environ['REDDIT_USER_AGENT']
-REDDIT_CLIENT_ID = 'USAgnTeY8fqGUtRtJJjNeg'
-REDDIT_CLIENT_SECRET = 'oViJMoCRQxcJo6go_QVYUU5jUuGkvA'
-REDDIT_USER_AGENT = 'data_bot'
-
-# Twitter API Credentials
-# TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
-# TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
-# TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
-# TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
-# TWITTER_BEARER_TOKEN = os.environ['TWITTER_BEARER_TOKEN']
-api_key = 'F2qNzaY8nFfo2xL2jQovqPhFP'
-api_key_secret = 'kDNIb2yTBUyu1vuw8lpodMwQYdSUetdT1H5J68dUsLlA8vHOfT'
-bearer_token = 'AAAAAAAAAAAAAAAAAAAAAOT6vwEAAAAAvWmz9YdCrQgdmBuwQQMLIxuLeXw%3DQH4mvTQ0GvnWWsDetTrR7BDnRxWc6OLfP2ThqBJlwoMAAmNbzt'
-access_token = '1834727038022041601-wWnXmXkoJDQBrXBvrbXwNPZv9W2P87'
-access_token_secret = 'w5x7yOkgbnQGE5s5oMkmoxVYCCXfVR13z6hjc9j3PJrm0'
 
 # Initialize Reddit API
 reddit = praw.Reddit(
@@ -96,7 +77,7 @@ def marvel_download(event, context):
     - Uploads the image to the S3 bucket if it meets the criteria.
     """
     subreddit = reddit.subreddit('marvelmemes')
-    top_posts = subreddit.top(time_filter='week', limit=10)
+    top_posts = subreddit.top(time_filter='week', limit=6)
 
     allowed_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
 
