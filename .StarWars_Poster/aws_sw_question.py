@@ -154,7 +154,7 @@ def SW_question(event, context):
         126: "What’s your opinion on the relationship between Anakin and Padmé?",
         127: "Which Star Wars droid do you think is the most useful?",
         128: "Which Star Wars character do you think had the most tragic backstory?",
-        129: "What are your thoughts on the idea of a Star Wars story told from the perspective of a stormtrooper?",
+        129: "Do you like the idea of a Star Wars story told from the perspective of a stormtrooper?",
         130: "What do you disagree with most Star Wars fans about?",  # maybe generic picture here idk
         131: "Would you want to see a Star Wars story set entirely in the criminal underworld?",
         132: "What are your thoughts on using CGI for Leia in Rogue One?",
@@ -168,7 +168,7 @@ def SW_question(event, context):
         140: "What are your opinions on Anakin's fall to the dark side?",
         141: "Do you think Clones were treated fairly after Order 66?",
         142: "How do you feel about Lando Calrissian’s role in the original trilogy?",
-        143: "If you could make a non-canon story canon, which one would it be?", #maybe delete
+        143: "What is your favorite non-canon Star Wars story?", #maybe delete
         # pictures below here
         144: "What are your opinions on Mace Windu?",
         145: "What are your opinions on Chancellor Valorum?",
@@ -406,7 +406,7 @@ def SW_question(event, context):
         375: "Did you enjoy seeing Count Dooku in the Tales of the Jedi?",
         376: "What are your opinions on Yaddle?",
         377: "If Disney sold Star Wars, who would you want to buy it?",
-        378: "What are your thoughts on Star Wars Legos?",
+        378: "What Star Wars Lego sets do you own?", #maybe reword or delete
         379: "Did you enjoy seeing Bariss Offee in Tales of the Empire?",
         380: "Did you enjoy seeing Asajj Ventress in Tales of the Underworld?",
         381: "Did you enjoy seeing Cad Bane in Tales of the Underworld?", #maybe delete
@@ -444,7 +444,7 @@ def SW_question(event, context):
         413: "What are your thoughts on Han Solo in the OT?",
         414: "What are your thoughts on Luke in the OT?",
         415: "What are your thoughts on Leia in the OT?",
-        416: "What are your thoughts on Qui-Gon Jinn in ep 1?",
+        416: "What are your thoughts on Qui-Gon Jinn?", #todo add image
         417: "Did Mandalorian Season 3 live up to your expectations?",
         418: "If you could change one thing about Ahsoka Tano, what would it be?",
         419: "If you could change one thing about Rey, what would it be?",
