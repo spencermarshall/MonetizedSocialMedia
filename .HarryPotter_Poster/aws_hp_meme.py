@@ -5,12 +5,13 @@ import os
 
 
 def HarryPotter_meme_post(event, context):
+    # Twitter API keys and tokens
 
-    client = tweepy.Client(bearer_token=hp_bearer_token,
-                           consumer_key=hp_api_key, consumer_secret=hp_api_key_secret,
-                           access_token=hp_access_token, access_token_secret=hp_access_token_secret)
+    client = tweepy.Client(bearer_token=bearer_token,
+                           consumer_key=api_key, consumer_secret=api_key_secret,
+                           access_token=access_token, access_token_secret=access_token_secret)
 
-    auth = tweepy.OAuth1UserHandler(hp_api_key, hp_api_key_secret, hp_access_token, hp_access_token_secret)
+    auth = tweepy.OAuth1UserHandler(api_key, api_key_secret, access_token, access_token_secret)
     api = tweepy.API(auth)
 
     # Initialize the S3 client
@@ -29,8 +30,9 @@ def HarryPotter_meme_post(event, context):
             'body': 'No files found in the S3 bucket.'
         }
 
-    # Filter the list to include only .jpg files
-    jpg_files = [file['Key'] for file in response['Contents'] if file['Key'].endswith('.jpg')]
+    # Filter the list to include only .jpg files in the main directory (no subdirectories)
+    jpg_files = [file['Key'] for file in response['Contents'] if
+                 file['Key'].endswith('.jpg') and '/' not in file['Key']]
 
     # If there are no JPG files
     if not jpg_files:
