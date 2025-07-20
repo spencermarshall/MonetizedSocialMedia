@@ -1,67 +1,120 @@
-import praw
+import boto3
+import random
 import tweepy
 import os
-import random
 import json
-import boto3
-import requests
-from datetime import datetime, timedelta
 
-client = tweepy.Client(
-    bearer_token=bearer_token,
-    consumer_key=api_key,
-    consumer_secret=api_key_secret,
-    access_token=access_token,
-    access_token_secret=access_token_secret
-)
+# X credentials stored in env variables
+API_KEY = os.environ["API_KEY"]
+API_SECRET_KEY = os.environ["API_SECRET_KEY"]
+ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
+BEARER_TOKEN = os.environ["BEARER_TOKEN"]
 
-auth = tweepy.OAuth1UserHandler(
-    api_key, api_key_secret,
-    access_token, access_token_secret
-)
-api = tweepy.API(auth)
+# Constant for number of recent files to track
+RECENT_NUM = 40
 
-# --- Initialize S3 client ---
-s3_client = boto3.client('s3')
+# S3 bucket and recent files list path
 BUCKET_NAME = 'elon.media'
+RECENT_FILES_KEY = 'notes/elon.txt'
 
-def elon_musk_daily(event, context):
-    # 1) Generate a “negative” text
-    negative_base = ['No', 'No, Elon Musk did NOT die today','Today was NOT the day Elon Musk died','Nope', 'Last I checked, Elon Musk is still alive', 'Not today', 'Negative', 'Not yet', 'Nah', 'Nay', 'Definitely not']
-    text = random.choice(negative_base)
-    if random.random() < 0.5:
-        text += '!'
+# Initialize tweepy and boto3 clients
+auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+api = tweepy.API(auth)
+client = tweepy.Client(
+    bearer_token=BEARER_TOKEN,
+    consumer_key=API_KEY,
+    consumer_secret=API_SECRET_KEY,
+    access_token=ACCESS_TOKEN,
+    access_token_secret=ACCESS_TOKEN_SECRET
+)
+s3_client = boto3.client('s3')
 
-    # 2) Decide branch: 30% text-only, 70% text+image
-    if random.random() < 0.3:
-        # Text-only tweet
-        client.create_tweet(text=text)
-    else:
-        # Image branch
-        # 2a) List and filter image files in S3
-        resp = s3_client.list_objects_v2(Bucket=BUCKET_NAME)
-        keys = [
-            obj['Key'] for obj in resp.get('Contents', [])
-            if obj['Key'].lower().endswith(('.jpg', '.jpeg', '.png', '.webp', '.gif'))
-        ]
+def get_recent_files():
+    """Retrieve the list of recent files from S3 or return empty list if not found."""
+    try:
+        response = s3_client.get_object(Bucket=BUCKET_NAME, Key=RECENT_FILES_KEY)
+        recent_files = json.loads(response['Body'].read().decode('utf-8'))
+        return recent_files
+    except s3_client.exceptions.NoSuchKey:
+        return []
 
-        if not keys:
-            # Fallback to text-only if no images found
-            print("Couldn't find image")
-            client.create_tweet(text=text)
-        else:
-            # 2b) Pick a random image
-            key = random.choice(keys)
-            local_path = os.path.join('/tmp', os.path.basename(key))
+def update_recent_files(new_file, recent_files):
+    """Add new file to front of recent files list and truncate to RECENT_NUM."""
+    recent_files.insert(0, new_file)
+    if len(recent_files) > RECENT_NUM:
+        recent_files = recent_files[:RECENT_NUM]
+    # Save updated list to S3
+    s3_client.put_object(
+        Bucket=BUCKET_NAME,
+        Key=RECENT_FILES_KEY,
+        Body=json.dumps(recent_files)
+    )
+    return recent_files
 
-            # 2c) Download it
-            s3_client.download_file(BUCKET_NAME, key, local_path)
+def ElonPost(event, context):
+    # 1. List up to 1,000 objects in the bucket
+    response = s3_client.list_objects_v2(Bucket=BUCKET_NAME)
 
-            # 2d) Upload to Twitter and get media_id
-            media = api.media_upload(local_path)
-            media_id = media.media_id
+    if 'Contents' not in response:
+        return {
+            'statusCode': 404,
+            'body': 'No files found in the S3 bucket.'
+        }
 
-            # 2e) Tweet with image
-            client.create_tweet(text=text, media_ids=[media_id])
+    # 2. Filter for root-level image files with allowed extensions
+    allowed_ext = ('.jpg', '.jpeg', '.png', '.webp')
+    image_keys = [
+        obj['Key']
+        for obj in response['Contents']
+        if obj['Key'].lower().endswith(allowed_ext)
+           and '/' not in obj['Key']  # exclude any “folders”
+    ]
 
-    return text
+    if not image_keys:
+        return {
+            'statusCode': 404,
+            'body': 'No matching image files found at the root of the bucket.'
+        }
+
+    # 3. Get recent files list
+    recent_files = get_recent_files()
+
+    # 4. Pick a random file not in recent_files
+    available_keys = [key for key in image_keys if key not in recent_files]
+    if not available_keys:
+        return {
+            'statusCode': 404,
+            'body': 'No available image files (all recent files used).'
+        }
+
+    random_file = random.choice(available_keys)
+
+    # 5. Download from S3 into Lambda’s /tmp
+    download_path = f"/tmp/{os.path.basename(random_file)}"
+    s3_client.download_file(BUCKET_NAME, random_file, download_path)
+
+    tweet_text = "Elon Musk"
+    ran = random.random()
+    if ran < 0.25:
+        tweet_text = "Elon"
+    elif ran < 0.35:
+        tweet_text = "Do you like this picture of Elon Musk?"
+
+    # 6. Upload media and post tweet
+    try:
+        media = api.media_upload(download_path)
+        client.create_tweet(text=tweet_text, media_ids=[media.media_id])
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': f"Failed to post tweet: {str(e)}"
+        }
+
+    # 7. Update recent files list
+    update_recent_files(random_file, recent_files)
+
+    return {
+        'statusCode': 200,
+        'body': f"Tweet posted with media: {random_file}"
+    }
