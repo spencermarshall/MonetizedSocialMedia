@@ -96,9 +96,9 @@ def ElonPost(event, context):
 
     tweet_text = "Elon Musk"
     ran = random.random()
-    if ran < 0.25:
+    if ran < 0.15:
         tweet_text = "Elon"
-    elif ran < 0.35:
+    elif ran < 0.25:
         tweet_text = "Do you like this picture of Elon Musk?"
 
     # 6. Upload media and post tweet
