@@ -97,13 +97,13 @@ def SW_meme_post(event, context):
         tweet_text = "#StarWarsMemes"
     elif rand_val < 0.04:
         tweet_text = "Star Wars Meme"
-    elif rand_val < 0.2:
+    elif rand_val < 0.05:
         tweet_text = "lol"
-    elif rand_val < 0.4:
+    elif rand_val < 0.06:
         tweet_text = "😂"
-    elif rand_val < 0.6:
+    elif rand_val < 0.07:
         tweet_text = "🤣"
-    elif rand_val < 0.8:
+    elif rand_val < 0.08:
         tweet_text = "LOL"
 
     # Download the selected meme to a temporary location

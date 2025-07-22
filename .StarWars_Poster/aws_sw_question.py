@@ -85,7 +85,7 @@ def SW_question(event, context):
         57: "What are your opinions on the new (2017) Star Wars Battlefront 2 game?",
         58: "What are your opinions on the original Star Wars Battlefront 2 game?",
         59: "What are your opinions on the Lego Star Wars games?",
-        60: "What are your opinions on the Skywalker Saga game?",
+        60: "Have you played the Skywalker Saga game?", #i change from opinions it had 28comments, maybe go back idk
         61: "What are your opinions on Jedi Fallen Order?",
         62: "What are your opinions on the Star Wars Squadrons game (2020)?",
         63: "What are your opinions on the Star Wars: Knights Of The Old Republic game?",
@@ -290,7 +290,7 @@ def SW_question(event, context):
         # this performed bad last time , 5 comments, maybe delete
         260: "What are your opinions on Admiral Holdo?", #todo added picture
         261: "Do you enjoy learning about Star Wars Lore?",
-        262: "What are your opinions on Darth Maul's return in The Clone Wars?",
+        262: "Did you like Darth Maul's return in The Clone Wars?",
         263: "Which smaller character deserves more spotlight in Star Wars?", #maybe lesser known instea of smaller
         264: "How has the Expanded Universe (EU) enhanced the main Star Wars narrative for you?",
         265: "What are your opinions on Star Wars: Starfighter coming May 2027?",
@@ -328,15 +328,15 @@ def SW_question(event, context):
         297: "Battle of Jakku or Battle of Endor?",
         298: "Battle of Geonosis or Battle of Naboo?",
         299: "What are your opinions of Crait?",
-        300: "Would you want to live of Geonois?", #todo maybe delete
+        300: "Would you want to live on Geonois?", #todo maybe delete
         301: "What are your opinions of Kamino?",
         302: "What are your opinions of Mustafar?",
         303: "What are your opinions of Scarif?",
         304: "What are your opinions of Exegol?",
         305: "What are your opinions of Hoth?",
         306: "What are your opinions of Tatooine?",
-        307: "What are your opinions of Coruscant?",
-        308: "What are your opinions of Naboo?",
+        307: "Would you want to live on Coruscant?",
+        308: "Would you want to live on Naboo?",
         309: "What are your opinions of the Forest Moon of Endor?",
         310: "What are your opinions of Yavin 4?",
         311: "What are your opinions of Dagobah?",
@@ -377,7 +377,7 @@ def SW_question(event, context):
         346: "What are your opinions on Commander Cody?",
         347: "OPINION: The Han Solo movie was very well done and I would love to see a sequel in some form. What do you think?",
         348: "What are your opinions on Luminara Unduli?",
-        349: "What are your opinions on Barriss Offee?",
+        349: "Do you want to see more of Barriss Offee?",
         350: "What are your opinions on Ahsoka in The Clone Wars?",
         351: "What are your opinions on Asajj Ventress?",
         352: "What are your opinions on Cad Bane?",
@@ -442,8 +442,8 @@ def SW_question(event, context):
         411: "What is the most iconic line from C-3PO?",
         412: "Did you like Hayden Christensen's as Anakin Skywalker?", #todo add image
         413: "What are your thoughts on Han Solo in the OT?",
-        414: "What are your thoughts on Luke in the OT?",
-        415: "What are your thoughts on Leia in the OT?",
+        414: "What are your thoughts on Luke Skywalker?",
+        415: "What are your thoughts on Leia Organa?",
         416: "What are your thoughts on Qui-Gon Jinn?", #todo add image
         417: "Did Mandalorian Season 3 live up to your expectations?",
         418: "If you could change one thing about Ahsoka Tano, what would it be?",
