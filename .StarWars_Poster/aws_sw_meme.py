@@ -10,7 +10,7 @@ MAX_RECENT = 30
 
 def SW_meme_post(event, context):
     # Check if we should invoke SW_art instead of posting a meme
-    if random.random() < 0.5:
+    if random.random() < 0.3:
         # Initialize Lambda client
         lambda_client = boto3.client('lambda')
 

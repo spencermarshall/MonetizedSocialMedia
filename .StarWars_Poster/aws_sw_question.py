@@ -111,9 +111,9 @@ def SW_question(event, context):
         83: "Should Reylo be a thing?",
         84: "Did Mace Windu survive the fall in ROTS?",
         85: "Who is the best Star Wars couple?",
-        86: "Which is your favorite Star Wars Trilogy?",
-        87: "Which is your favorite Star Wars live action TV show?",
-        88: "Which is your favorite Star Wars animated TV show?",
+        86: "What is your favorite Star Wars Trilogy?",
+        87: "What is your least favorite Star Wars live action TV show?", #todo maybe delete
+        88: "What is your favorite Star Wars animated TV show?",
         89: "What are your opinions on Yoda as a Puppet in Ep 1?",
         90: "What are your opinions on Ray Park as Darth Maul",
         91: "What are your thoughts on Qui-Gon Jinn coming back as a Force Ghost in the Kenobi show??",
@@ -126,12 +126,12 @@ def SW_question(event, context):
         98: "What are your opinions on the Plagueis book?",
         99: "Have you read any of the SW novelizations?", #todo maybe delete this one
         100: "Have you read any of the Star Wars comics?",
-        101: "What are your thoughts on the Star Wars novels, from either the EU or Disney",
+        101: "If you could change one thing about Count Dooku, what would it be?",
         102: "What are your opinions on the Star Wars: Galaxy's Edge theme park?",
-        103: "What are your thoughts on the Star Wars Expanded Universe (Legends)?",
+        103: "If you could change one thing about Rey, what would it be?",
         104: "If you could create a new Force power, what would it be?",
         105: "What Star Wars creature would you most want as a pet?",
-        106: "Would you rather join the Jedi Order or the Sith?",
+        106: "Would you rather join the Jedi or the Sith?",
         107: "If you could have any Star Wars weapon, which one would you choose?",
         108: "If you were a bounty hunter in the Star Wars universe, who would you want as a partner?",
         109: "What Star Wars character do you think deserves their own spin-off series?",
@@ -151,7 +151,7 @@ def SW_question(event, context):
         123: "What’s the most emotional moment in Star Wars for you?",
         124: "Which Star Wars character do you think had the most wasted potential?",
         125: "Which Star Wars movie or show has the best soundtrack?",
-        126: "What’s your opinion on the relationship between Anakin and Padmé?",
+        126: "Did you like the relationship between Anakin and Padmé?",
         127: "Which Star Wars droid do you think is the most useful?",
         128: "Which Star Wars character do you think had the most tragic backstory?",
         129: "Do you like the idea of a Star Wars story told from the perspective of a stormtrooper?",
@@ -161,9 +161,9 @@ def SW_question(event, context):
         133: "Would you want to see a Star Wars story told from the perspective of a droid?",
         134: "What are your opinions on the Jedi Council in the prequels?",
         135: "Would you want to see a Star Wars story set during the Old Republic era?",
-        136: "What are your opinions on the portrayal of the Sith in the prequels?",
+        136: "Did you like the Sith in the prequels?",
         137: "What are your thoughts on the concept of the World Between Worlds?",
-        138: "What are your thoughts on the relationship between Obi-Wan Kenobi and Duchess Satine?",
+        138: "Did you like the relationship between Obi-Wan Kenobi and Duchess Satine?",
         139: "Whatever happened to the announced Lando Calrissian TV show staring Donald Glover?",
         140: "What are your opinions on Anakin's fall to the dark side?",
         141: "Do you think Clones were treated fairly after Order 66?",
@@ -198,14 +198,14 @@ def SW_question(event, context):
         169: "What are your thoughts on Qi'ra in the Solo movie?",
         170: "What are your thoughts on Tobias Beckett in the Han Solo movie?",
         171: "What are your thoughts on L3-37 in the Han Solo movie?",
-        172: "OPINION: James Earl Jones signing his voice rights over to Disney to use with AI was a great decision. What do you think?",
+        172: "Did you like James Earl Jones as the voice of Darth Vader?", #todo add image
         173: "Did you like Enfys Nest from the Han Solo Movie?", #todo maybe reword or delete
         174: "Did you like Maul's cameo in the Han Solo Movie?",
         175: "Did you like how Han Solo got his name in the Han Solo Movie?",
         176: "Did you like Han Solo's origin story in the Han Solo Movie?",
         177: "Should we get a sequel to the Han Solo Movie?",
         178: "Did you like how they portrayed Luke Skywalker in the Sequel Trilogy?",
-        179: "Did you like how they portrayed Leia in the Sequel Trilogy?",
+        179: "Did you like Leia in the Sequel Trilogy?", #todo maybe reword or delete
         180: "Did you like how they portrayed Han Solo in the Sequel Trilogy?",
         181: "Did you enjoy seeing R2-D2 and C-3PO in the Sequels?",
         182: "What are your thoughts on Poe Dameron?",
@@ -283,7 +283,7 @@ def SW_question(event, context):
         # maybe get rid of 'in the star wars universe' idk
         254: "If you're stuck in the Star Wars universe for 24 hours, what's the first thing you would do?",
         255: "What will Star Wars look like in 30 years?",
-        256: "What species would you add to the Star Wars Universe?",
+        256: "What are your thoughts on the Star Wars fandom?",
         257: "What role should real world politics have in Star Wars?",
         258: "What fan theories do you like the most?",
         259: "If you could design your own Star Wars planet, what would it look like?",
@@ -292,7 +292,7 @@ def SW_question(event, context):
         261: "Do you enjoy learning about Star Wars Lore?",
         262: "Did you like Darth Maul's return in The Clone Wars?",
         263: "Which smaller character deserves more spotlight in Star Wars?", #maybe lesser known instea of smaller
-        264: "How has the Expanded Universe (EU) enhanced the main Star Wars narrative for you?",
+        264: "Do you like the Expanded Universe (EU)?",
         265: "What are your opinions on Star Wars: Starfighter coming May 2027?",
         266: "What are your opinions on the Clone Wars movie?",
         267: "Which is a better name: Count Dooku or Darth Tyranus",
@@ -342,12 +342,12 @@ def SW_question(event, context):
         311: "What are your opinions of Dagobah?",
         312: "What are your opinions of Bespin?",
         313: "OPINION: The Clone Wars show is my favorite Star Wars content. What do you think?",
-        314: "What are your opinions of Jedha?",
+        314: "Would you want to live on Jedha?",
         315: "What are your opinions of Dathomir?",
         316: "What are your opinions of Starkiller Base?",
         317: "Do you want to see more of Mandalore in the future?", #todo maybe delete
         318: "What is your favorite quote from Obi-Wan Kenobi?",
-        319: "What are your opinions of Umbara?",
+        319: "Would you want to live on Umbara?",
         320: "Did you like seeing Kessel in the Solo movie?", #todo maybe rewrite or delete
         321: "What are your opinions of Felucia?",
         322: "What is your favorite quote from Darth Vader?",
@@ -378,8 +378,8 @@ def SW_question(event, context):
         347: "OPINION: The Han Solo movie was very well done and I would love to see a sequel in some form. What do you think?",
         348: "What are your opinions on Luminara Unduli?",
         349: "Do you want to see more of Barriss Offee?",
-        350: "What are your opinions on Ahsoka in The Clone Wars?",
-        351: "What are your opinions on Asajj Ventress?",
+        350: "Did you like Ahsoka in The Clone Wars?",
+        351: "Do you want to see Asajj Ventress in future projects?", #todo maybe delete
         352: "What are your opinions on Cad Bane?",
         353: "What are your opinions on Nute Gunray?",
         354: "Do you want more of a backstory on Wat Tambor?", #todo maybe delete
@@ -415,7 +415,7 @@ def SW_question(event, context):
         384: "Did you enjoy seeing seeing Ezra Bridger in live action?",
         385: "Did you enjoy seeing seeing Sabine Wren in live action?",
         386: "Did you enjoy seeing Hera Syndulla in live action?",
-        387: "Did you enjoy seeing Zeb in live action?",
+        387: "Do you want to see more of Zeb in future projects?", #todo maybe reword, i already tried "did you enjoy seeing Zeb in live action?" but it got 10 comments
         388: "What animated characters would you want to see in live action?",
         389: "Did the Andor show live up to your expectations?",
         390: "Who is your favorite Smuggler in all of Star Wars?",
@@ -447,8 +447,8 @@ def SW_question(event, context):
         416: "What are your thoughts on Qui-Gon Jinn?", #todo add image
         417: "Did Mandalorian Season 3 live up to your expectations?",
         418: "If you could change one thing about Ahsoka Tano, what would it be?",
-        419: "If you could change one thing about Rey, what would it be?",
-        420: "If you could change one thing about Count Dooku, what would it be?",
+        419: "",
+        420: "",
 
         #add Luke iconic line next but need photos from OT
 
@@ -569,9 +569,9 @@ def SW_question(event, context):
         98: "questions/book_Plagueis/",
         99: "None",
         100: "None",
-        101: "None",
+        101: "questions/char_CountDooku/",
         102: "questions/GalaxyEdge/",
-        103: "questions/other_eu/",
+        103: "questions/char_Rey/",
         104: "None",
         105: "None",
         106: "None",
@@ -887,8 +887,8 @@ def SW_question(event, context):
         416: "None",
         417: "None",
         418: "questions/char_Ahsoka(CW)/",
-        419: "questions/char_Rey/",
-        420: "questions/char_CountDooku/",
+        419: "None",
+        420: "None",
     }
 
     bucket_name = 'starwars.photos'
