@@ -54,10 +54,10 @@ def LOTR_meme_post(event, context):
 
     # 4. Choose your tweet text as before
     ran = random.random()
-    if   ran < 0.01: tweet_text = "#LOTR"
-    elif ran < 0.02:  tweet_text = "#LordOfTheRings"
-    elif ran < 0.03:   tweet_text = "Lord of the Rings"
-    elif ran < 0.04:  tweet_text = "LOTR"
+    if   ran < 0.005: tweet_text = "#LOTR"
+    elif ran < 0.01:  tweet_text = "#LordOfTheRings"
+    elif ran < 0.015:   tweet_text = "Lord of the Rings"
+    elif ran < 0.02:  tweet_text = "LOTR"
     else:             tweet_text = ""
 
     # 5. Download from S3 into Lambda’s /tmp
