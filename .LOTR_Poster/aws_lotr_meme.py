@@ -2,6 +2,10 @@ import boto3  # this is pre-downloaded on aws
 import random
 import tweepy
 import os
+import json
+import botocore.exceptions
+
+MOST_RECENT = 200
 
 # X credentials stored in env variables
 API_KEY            = os.environ["API_KEY"]
@@ -49,8 +53,24 @@ def LOTR_meme_post(event, context):
             'body': 'No matching image files found at the root of the bucket.'
         }
 
-    # 3. Pick one at random
+    # Fetch the recent memes list from S3
+    file_key = 'notes/lotr_meme.txt'
+    try:
+        response = s3_client.get_object(Bucket=bucket_name, Key=file_key)
+        file_content = response['Body'].read().decode('utf-8')
+        recent_files = json.loads(file_content)
+    except s3_client.exceptions.NoSuchKey:
+        recent_files = []
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': f'Error fetching recent files: {str(e)}'
+        }
+
+    # 3. Pick one at random not in the recent list
     random_file = random.choice(image_keys)
+    while random_file in recent_files:
+        random_file = random.choice(image_keys)
 
     # 4. Choose your tweet text as before
     ran = random.random()
@@ -68,8 +88,14 @@ def LOTR_meme_post(event, context):
     media = api.media_upload(download_path)
     client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
+    # Update the recent files list
+    recent_files.insert(0, random_file)
+    if len(recent_files) > MOST_RECENT:
+        recent_files.pop()
+    updated_content = json.dumps(recent_files)
+    s3_client.put_object(Bucket=bucket_name, Key=file_key, Body=updated_content)
+
     return {
         'statusCode': 200,
         'body': f"Tweet posted with media: {random_file}"
     }
-
