@@ -84,7 +84,8 @@ def lotr_question(event, context):
         52: "Which character from The Hobbit deserves more recognition?",
         53: "What is your favorite quote from LOTR?",
         54: "What legacy does LOTR leave?",
-        55: "How does the beauty of Middle-earth enhance its storytelling?",
+        # 55: "How does the beauty of Middle-earth enhance its storytelling?",
+        55: "Did The Rings of Power deserve all the hate?",
         56: "Which character in LOTR inspires you the most?", #todo maybe delete
         57: "What role does fate play in LOTR?",
         58: "How old were you when you first discovered LOTR?",
@@ -225,7 +226,7 @@ def lotr_question(event, context):
         184: "What are your opinions on the LOTR video games?",
         185: "If you're stuck in the LOTR universe for 24 hours, what would you do?",
         186: "Which LOTR Lego sets do you own?",
-        187: "What are your opinions on the Lego LOTR video games?",
+        187: "Have you played any of the Lego LOTR video games?", #todo maybe delete
         188: "What are your opinions on the changes made in the Hobbit movies compared to the book?",
         189: "What are your opinions on the changes made in the LOTR movies compared to the book?",
         190: "What are your opinions on J.R.R. Tolkien?",
@@ -270,8 +271,8 @@ def lotr_question(event, context):
         228: "What’s your favorite LOTR meme?",
         229: "Would you want a LOTR story from the perspective of an orc?",
         230: "What do you disagree with most LOTR fans about?",
-        231: "Would you want a LOTR story from the perspective of an elf?",
-        232: "What will the LOTR universe look like in 50 years?",
+        231: "Would you want a LOTR story from the perspective of an elf?", #todo maybe delete
+        232: "What will the LOTR universe look like in 20 years?",
         # 233: "If you could give one piece of advice to Frodo, what would it be?",
         233: "Did Ian McKellen do a good job portraying Gandalf?",
         234: "Which LOTR quote inspires you in difficult times?",
@@ -311,6 +312,7 @@ def lotr_question(event, context):
         263: "Who is your least favorite character from The Hobbit?",
         264: "Who is your least favorite character from Rings of Power?",
         265: "Should they make a GTA style LOTR game?",
+        266: "Who's your least favorite member of the Fellowship?",
 
         # 272: "Which LOTR character had the most wasted potential?",
 
@@ -386,7 +388,7 @@ def lotr_question(event, context):
         52: "None",
         53: "None",
         54: "None",
-        55: "None",
+        55: "questions/show_RingsOfPower/",
         56: "None",
         57: "None",
         58: "None",

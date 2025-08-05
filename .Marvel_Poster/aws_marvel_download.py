@@ -8,7 +8,10 @@ import random
 from datetime import datetime, timedelta
 import time
 
-
+# Reddit API Credentials
+# REDDIT_CLIENT_ID = os.environ['REDDIT_CLIENT_ID']
+# REDDIT_CLIENT_SECRET = os.environ['REDDIT_CLIENT_SECRET']
+#
 # Initialize Reddit API
 reddit = praw.Reddit(
     client_id=REDDIT_CLIENT_ID,
@@ -77,7 +80,7 @@ def marvel_download(event, context):
     - Uploads the image to the S3 bucket if it meets the criteria.
     """
     subreddit = reddit.subreddit('marvelmemes')
-    top_posts = subreddit.top(time_filter='week', limit=6)
+    top_posts = subreddit.top(time_filter='week', limit=4)
 
     allowed_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
 

@@ -87,7 +87,7 @@ def SW_question(event, context):
         59: "What are your opinions on the Lego Star Wars games?",
         60: "Have you played the Skywalker Saga game?", #i change from opinions it had 28comments, maybe go back idk
         61: "What are your opinions on Jedi Fallen Order?",
-        62: "What are your opinions on the Star Wars Squadrons game (2020)?",
+        62: "Have you ever played the Star Wars Squadrons game (2020)?", #todo maybe go back to "opinion" it had 46 comments and 200 likes and 14k views
         63: "What are your opinions on the Star Wars: Knights Of The Old Republic game?",
         64: "Did you enjoy Jedi Survivor as a SW video game?",
         65: "What are your opinions on Cal Kestis?",
@@ -122,7 +122,7 @@ def SW_question(event, context):
         94: "What are your thoughts on R2-D2?",
         95: "What are your opinions on Ezra Bridger in Rebels",
         96: "What are your opinions on Kanan Jarrus?",
-        97: "Do you enjoy stories in the High Republic Era?",
+        97: "Would you want to join The First Order?",
         98: "What are your opinions on the Plagueis book?",
         99: "Have you read any of the SW novelizations?", #todo maybe delete this one
         100: "Have you read any of the Star Wars comics?",
@@ -146,7 +146,7 @@ def SW_question(event, context):
         118: "Which is your favorite Star Wars comic series?",
         119: "What is your favorite Star Wars planet?",
         120: "If you could spend a day with any Star Wars character, who would it be and why?",
-        121: "If you could rewrite one Star Wars character’s arc, who would it be and what would you change?",
+        121: "If you could rewrite one Star Wars character’s arc, who would it be?",
         122: "What role should politics have in the Star Wars universe?",
         123: "What’s the most emotional moment in Star Wars for you?",
         124: "Which Star Wars character do you think had the most wasted potential?",
@@ -164,7 +164,7 @@ def SW_question(event, context):
         136: "Did you like the Sith in the prequels?",
         137: "What are your thoughts on the concept of the World Between Worlds?",
         138: "Did you like the relationship between Obi-Wan Kenobi and Duchess Satine?",
-        139: "Whatever happened to the announced Lando Calrissian TV show staring Donald Glover?",
+        139: "Do you want a Lando TV show staring Donald Glover?",
         140: "What are your opinions on Anakin's fall to the dark side?",
         141: "Do you think Clones were treated fairly after Order 66?",
         142: "How do you feel about Lando Calrissian’s role in the original trilogy?",
@@ -208,7 +208,7 @@ def SW_question(event, context):
         179: "Did you like Leia in the Sequel Trilogy?", #todo maybe reword or delete
         180: "Did you like how they portrayed Han Solo in the Sequel Trilogy?",
         181: "Did you enjoy seeing R2-D2 and C-3PO in the Sequels?",
-        182: "What are your thoughts on Poe Dameron?",
+        182: "Did you like Poe Dameron?",
         183: "What are your thoughts on Finn?",
         184: "What are your thoughts on Rey?",
         185: "What are your thoughts on Maz Kanata?",
@@ -242,11 +242,11 @@ def SW_question(event, context):
         213: "what is a star war?",
         214: "Is the Ahsoka show just Rebels Season 5?",
         215: "Did you like Jod Na Nawood (Jude Law) from Skeleton Crew?", #todo maybe rewrite or delete
-        216: "What are your thoughts on Omega from The Bad Batch?",
-        217: "What are your thoughts on Crosshair from The Bad Batch?",
+        216: "Do you like Omega from The Bad Batch?",
+        217: "Do you like Crosshair from The Bad Batch?",
         218: "Did you like Hunter from The Bad Batch?", #todo maybe reword or delete
         219: "Did the Ahsoka show live up to your expectations?",
-        220: "What are your thoughts on Wrecker from The Bad Batch?",
+        220: "Do you like Wrecker from The Bad Batch?",
         221: "Did the Obi-Wan Kenobi show live up to your expectations?",
         222: "What are your thoughts on the Bad Batch as a whole?",
         223: "Did you enjoy the Bad Batch's portrayal of Order 66?", #todo maybe delete
@@ -273,7 +273,7 @@ def SW_question(event, context):
         244: "X-Wing or TIE Fighter?",
         245: "Mandalorian or Jedi?",
         246: "Lightsaber or Blaster?",
-        247: "Death Star or Starkiller Base?",
+        247: "Would you rather live on the Death Star or Starkiller Base?",
         248: "Star Wars or Star Trek?",
         249: "Did you enjoy Lando Calrissian's return in Episode 9?",
         250: "What do you think makes a great Star Wars villain, and why?",
@@ -291,7 +291,7 @@ def SW_question(event, context):
         260: "What are your opinions on Admiral Holdo?", #todo added picture
         261: "Do you enjoy learning about Star Wars Lore?",
         262: "Did you like Darth Maul's return in The Clone Wars?",
-        263: "Which smaller character deserves more spotlight in Star Wars?", #maybe lesser known instea of smaller
+        263: "",
         264: "Do you like the Expanded Universe (EU)?",
         265: "What are your opinions on Star Wars: Starfighter coming May 2027?",
         266: "What are your opinions on the Clone Wars movie?",
@@ -304,14 +304,14 @@ def SW_question(event, context):
         273: "Hoth or Tatooine?",
         274: "Coruscant or Naboo?",
         275: "Battle of Endor or Battle of Hoth?",
-        276: "Millennium Falcon or Slave 1?",
+        276: "Would you rather fly the Millennium Falcon or Slave 1?",
         277: "The Ghost or Razor Crest?",
         278: "The Ghost or the Millennium Falcon?",
         279: "Would you want to see more Death Troopers?", #todo add image
-        280: "What are your thoughts on the Mortis episodes in The Clone Wars?",
-        281: "What are your thoughts on the Siege of Mandalore episodes in The Clone Wars?",
-        282: "What are your thoughts on the Bad Batch episodes in The Clone Wars?",
-        283: "What are your thoughts on the Umbara episodes in The Clone Wars?",
+        280: "Did you like the Mortis episodes in The Clone Wars?",
+        281: "Did you like the Siege of Mandalore episodes in The Clone Wars?",
+        282: "Did you like the Bad Batch episodes in The Clone Wars?",
+        283: "Did you like the Umbara episodes in The Clone Wars?",
         284: "Do you want Star Wars Battlefront 3?",
         285: "Did you enjoy seeing Boba Fett in The Clone Wars?",
         286: "Did you enjoy seeing the Martez Sisters in The Clone Wars?",
@@ -325,7 +325,7 @@ def SW_question(event, context):
         294: "Did The Book of Boba Fett live up to your expectations?",
         295: "Tweet like you're in the Star Wars universe.",
         296: "Do you want to see more from the High Republic era?",
-        297: "Battle of Jakku or Battle of Endor?",
+        297: "Battle of Endor or Battle of Yavin?",
         298: "Battle of Geonosis or Battle of Naboo?",
         299: "What are your opinions of Crait?",
         300: "Would you want to live on Geonois?", #todo maybe delete
@@ -383,7 +383,7 @@ def SW_question(event, context):
         352: "What are your opinions on Cad Bane?",
         353: "What are your opinions on Nute Gunray?",
         354: "Do you want more of a backstory on Wat Tambor?", #todo maybe delete
-        355: "What are your opinions on Bo-Katan Kryze in TCW and Rebels?",
+        355: "Do you want to see more Bo-Katan?", #todo maybe delete
         356: "What are your opinions on Sabine Wren in Rebels?",
         357: "What are your opinions on Zeb?",
         358: "What are your opinions on Agent Kallus in Rebels?",
@@ -441,13 +441,13 @@ def SW_question(event, context):
         410: "What is the most iconic line from Sheev Palpatine?",
         411: "What is the most iconic line from C-3PO?",
         412: "Did you like Hayden Christensen's as Anakin Skywalker?", #todo add image
-        413: "What are your thoughts on Han Solo in the OT?",
+        413: "What are your thoughts on Han Solo?",
         414: "What are your thoughts on Luke Skywalker?",
         415: "What are your thoughts on Leia Organa?",
         416: "What are your thoughts on Qui-Gon Jinn?", #todo add image
         417: "Did Mandalorian Season 3 live up to your expectations?",
         418: "If you could change one thing about Ahsoka Tano, what would it be?",
-        419: "",
+        419: "Do you want to see Poe Dameron in future projects?",
         420: "",
 
         #add Luke iconic line next but need photos from OT
@@ -565,7 +565,7 @@ def SW_question(event, context):
         94: "questions/char_R2-D2/",
         95: "questions/char_EzraBridger/",
         96: "questions/char_KananJarrus/",
-        97: "None",
+        97: "questions/other_FirstOrder/",
         98: "questions/book_Plagueis/",
         99: "None",
         100: "None",
@@ -887,7 +887,7 @@ def SW_question(event, context):
         416: "None",
         417: "None",
         418: "questions/char_Ahsoka(CW)/",
-        419: "None",
+        419: "questions/char_PoeDameron/",
         420: "None",
     }
 
