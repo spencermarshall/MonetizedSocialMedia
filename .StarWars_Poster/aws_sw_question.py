@@ -504,6 +504,30 @@ def SW_question(event, context):
         472: "Do you want to see Thrawn in future projects?",
         473: "What is your least favorite Star Wars Force ability?",
         474: "What is your least favorite Star Wars lightsaber duel?",
+        475: "Would you want to be a Jedi during the Prequel era?",
+        476: "Who's your favorite member of the Bad Batch squad?",
+        477: "What is your favorite moment from the Obi-Wan Kenobi series?",
+        478: "What is your favorite moment from the Ahsoka series?",
+        479: "What is your favorite moment from the Andor series?",
+        480: "Did you like Kylo Ren's redemption?",
+        481: "What is your favorite moment from the Mandalorian series?",
+        482: "What is your favorite moment from the Clone Wars series?",
+        483: "Would you rather train as a Sith or a Jedi?",
+        484: "Did you like Thrawn in the Ahsoka series?",
+        485: "Who's your favorite character from Star Wars Rebels?",
+        486: "What is your favorite moment from the Star Wars Rebels series?",
+        487: "Would you want to live on Mandalore?",
+        488: "Who's your favorite Jedi Council member?",
+        489: "Do you want to see more of Iden Versio in future projects?", #todo maybe add more future projects questions if this goes well
+        490: "What is your favorite moment from The Bad Batch series",
+        491: "Who do you want to return as a Force Ghost?",
+        492: "Did you like Luke coming back as a Force Ghost?",
+        493: "What are your opinions on Force Ghosts",
+
+
+
+
+
 
 
         #add Luke iconic line next but need photos from OT
