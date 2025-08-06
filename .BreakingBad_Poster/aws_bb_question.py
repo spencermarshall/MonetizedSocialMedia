@@ -225,6 +225,26 @@ def BB_question(event, context):
         185: "Post your BB memes below",
         186: "Who is the most underrated character in BB?",
         187: "Who is the most underrated character in BCS?",
+        #everything below here is test / demo and new
+        188: "What are your opinions on the RV that Walter and Jesse used?",
+        189: "What’s your take on Gus’s backstory revealed in BCS?",
+        190: "Who had the most tragic backstory in the Breaking Bad universe?",
+        191: "What’s the most underrated episode of Breaking Bad?",
+        192: "Do you think Walter would have lived and recovered if he had never gotten into the meth business?",
+        193: "How do you feel about Walter’s confession tape?",
+        194: "What's your favorite Gus Fring quote?",
+        195: "What’s your favorite Kim Wexler quote?",
+        196: "What’s your take on Skyler’s involvement in the money laundering?",
+        197: "Should there be a spin-off focused on Gus?",
+        198: "What’s your favorite Mike Ehrmantraut quote?",
+        199: "Should Howard have been nicer to Jimmy?",
+        200: "Who is the funniest side character in Breaking Bad?",
+        201: "What’s your favorite Hank Schrader quote?",
+        202: "What’s your favorite Saul Goodman quote?",
+        203: "What’s the most clever scam in Better Call Saul?",
+
+
+
 
 
 
