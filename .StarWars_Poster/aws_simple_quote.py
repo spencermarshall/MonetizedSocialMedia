@@ -4,6 +4,8 @@ import os
 import boto3
 import tweepy
 
+
+
 # --- Tweepy client setup ---
 API_KEY            = os.environ["API_KEY"]
 API_SECRET_KEY     = os.environ["API_SECRET_KEY"]
@@ -100,6 +102,19 @@ def save_history(hist):
     )
 
 def postQuote(event, context):
+    # Added code for 50% chance to call SW_art
+    if random.random() < 0.5:
+        lambda_client = boto3.client('lambda')
+        lambda_client.invoke(
+            FunctionName='arn:aws:lambda:us-east-1:975050204241:function:SW_art',
+            InvocationType='Event'  # Asynchronous invocation to not wait for response
+        )
+        return {
+            "statusCode": 200,
+            "body": json.dumps({"message": "Called SW_art and exiting"})
+        }
+
+
     # 1️⃣ Load last 7 IDs
     recent = load_history()
 
