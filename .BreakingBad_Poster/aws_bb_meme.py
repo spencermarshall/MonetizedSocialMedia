@@ -2,17 +2,14 @@ import boto3  # Pre-downloaded on AWS Lambda
 import random
 import tweepy
 import os
+import json
+import botocore.exceptions
+
+MOST_RECENT = 100
 
 
 def BB_meme_post(event, context):
     # Twitter API keys and tokens
-    bb_client_id = 'cnFHZ0h6LURnVmxqbXVmZW9qWTY6MTpjaQ'
-    bb_client_secret = 'gHpeCROnQ330bUhYj9Yry-dWQj01tlnogUUIHRTd8y6TM_rWVL'
-    bb_api_key = 'm5GPo8zjDkAuWMuZhjTM2ksJu'
-    bb_api_key_secret = 'iBt6OHUdCkq88fvwNVFsnuxL7CAU4avLzemUyU97aP18IWFZmS'
-    bb_access_token = '1837346181229563904-49LOpBdittQOb1hHkrEMRk5mzhVXFU'
-    bb_access_token_secret = 'HsPyF7XRBkfkhXI0sHUBZRKboPWTgtPRCy7fkHfy65bhU'
-    bb_bearer_token = 'AAAAAAAAAAAAAAAAAAAAANbewAEAAAAA2dsHWBhQRdWJwY6OhKfhja6fKOY%3DShBe6NotqhviLUXh3tjd2tZIa0rAkPvK654vNKcP93mV5OPIiq'
 
     client = tweepy.Client(bearer_token=bb_bearer_token,
                            consumer_key=bb_api_key, consumer_secret=bb_api_key_secret,
@@ -51,8 +48,24 @@ def BB_meme_post(event, context):
             'body': 'No JPG files found in the S3 bucket.'
         }
 
-    # Select a random JPG file
+    # Fetch the recent memes list from S3
+    file_key = 'notes/BB_meme.txt'
+    try:
+        response = s3_client.get_object(Bucket=bucket_name, Key=file_key)
+        file_content = response['Body'].read().decode('utf-8')
+        recent_files = json.loads(file_content)
+    except s3_client.exceptions.NoSuchKey:
+        recent_files = []
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': f'Error fetching recent files: {str(e)}'
+        }
+
+    # Select a random JPG file not in the recent list
     random_file = random.choice(jpg_files)
+    while random_file in recent_files:
+        random_file = random.choice(jpg_files)
 
     tweet_text = ""
     ran = random.random()
@@ -68,6 +81,15 @@ def BB_meme_post(event, context):
     # Upload the file to Twitter using Tweepy
     media = api.media_upload(download_path)
     client.create_tweet(text=tweet_text, media_ids=[media.media_id])
+
+    # Update the recent files list
+    recent_files.insert(0, random_file)
+
+    if len(recent_files) > MOST_RECENT:
+        recent_files.pop()
+
+    updated_content = json.dumps(recent_files)
+    s3_client.put_object(Bucket=bucket_name, Key=file_key, Body=updated_content)
 
     return {
         'statusCode': 200,
