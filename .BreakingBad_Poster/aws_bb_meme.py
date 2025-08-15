@@ -5,7 +5,7 @@ import os
 import json
 import botocore.exceptions
 
-MOST_RECENT = 100
+MOST_RECENT = 150
 
 
 def BB_meme_post(event, context):
@@ -71,7 +71,7 @@ def BB_meme_post(event, context):
     ran = random.random()
     if ran < 0.03:
         tweet_text = "Breaking Bad"
-    elif ran < 0.06:
+    elif ran < 0.05:
         tweet_text = "#BreakingBad"
 
     # Download the selected file to a temporary directory
