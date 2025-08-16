@@ -3,6 +3,7 @@ import random     # for picking a random file
 import tweepy     # Twitter/X API client
 import os         # to read environment variables
 import json       # to parse and write JSON
+import botocore.exceptions
 
 # Number of recent images to avoid repeating
 MAX_RECENT = 210
@@ -36,9 +37,17 @@ def SW_art(event, context):
     prefix    = 'art/'
 
     # 4️⃣ Load our “recent” list from S3
-    obj              = s3.get_object(Bucket=bucket, Key=index_key)
-    content          = obj['Body'].read().decode('utf-8')
-    question_indices = json.loads(content)  # e.g. [12, 5, 79, …]
+    try:
+        obj              = s3.get_object(Bucket=bucket, Key=index_key)
+        content          = obj['Body'].read().decode('utf-8')
+        recent_keys = json.loads(content)  # e.g. ['art (12).jpg', 'art (5).jpg', …]
+    except s3.exceptions.NoSuchKey:
+        recent_keys = []
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': f'Error fetching recent files: {str(e)}'
+        }
 
     # 5️⃣ List all JPG keys under art/
     listing = s3.list_objects_v2(Bucket=bucket, Prefix=prefix)
@@ -49,27 +58,22 @@ def SW_art(event, context):
     if not jpgs:
         return {'statusCode': 404, 'body': 'No JPGs found under art/'}
 
-    # 6️⃣ Pick a random file—and ensure its number isn’t in our recent list
-    def extract_num(key):
-        start = key.find('(')
-        end   = key.find(')', start + 1)
-        return int(key[start+1:end])
-
+    # 6️⃣ Pick a random file—and ensure it isn’t in our recent list
     while True:
         chosen = random.choice(jpgs)
-        num = extract_num(chosen)
-        if num not in question_indices:
+        chosen_basename = os.path.basename(chosen)
+        if chosen_basename not in recent_keys:
             break
         # else: we loop and pick again
 
-    # 7️⃣ Now that we have a fresh `num`, push it onto the front…
-    question_indices.insert(0, num)
+    # 7️⃣ Now that we have a fresh `chosen`, push it onto the front…
+    recent_keys.insert(0, chosen_basename)
     #    …and trim to keep at most MAX_RECENT entries
-    while len(question_indices) > MAX_RECENT:
-        question_indices.pop()
+    while len(recent_keys) > MAX_RECENT:
+        recent_keys.pop()
 
     # 8️⃣ Write that updated list back to S3
-    updated = json.dumps(question_indices)
+    updated = json.dumps(recent_keys)
     s3.put_object(Bucket=bucket, Key=index_key, Body=updated)
 
     # 9️⃣ Download the chosen image locally
@@ -80,11 +84,50 @@ def SW_art(event, context):
     media = api.media_upload(local_path)
     client.create_tweet(text="", media_ids=[media.media_id])
 
+
+    scheduler_client = boto3.client('scheduler')
+    try:
+        # Fetch current schedule to get the current minute
+        get_response = scheduler_client.get_schedule(GroupName='default', Name='SW_art')
+        current_schedule = get_response['ScheduleExpression']  # e.g., cron(20 4,8,13,18,23 * * ? *)
+        current_min = int(current_schedule.split(' ')[0].split('(')[1])  # Extract minute from cron
+    except Exception as e:
+        print(f"Error fetching current schedule: {str(e)}")
+        current_min = 20  # Default to 20 if schedule fetch fails
+
+    # Increment minute by random amount (4-9), reset if > 40
+    new_min = current_min + random.randint(4, 9)
+    if new_min > 40:
+        new_min -= 20
+
+    new_expr = f"cron({new_min} 4,8,13,18,23 * * ? *)"
+    try:
+        update_params = {
+            'Name': 'SW_art',
+            'GroupName': 'default',
+            'ScheduleExpression': new_expr,
+            'FlexibleTimeWindow': get_response['FlexibleTimeWindow'],
+            'Target': get_response['Target'],
+            'State': get_response['State']
+        }
+        timezone = get_response.get('ScheduleExpressionTimezone')
+        if timezone is not None:
+            update_params['ScheduleExpressionTimezone'] = timezone
+        description = get_response.get('Description')
+        if description is not None:
+            update_params['Description'] = description
+        kms_key_arn = get_response.get('KmsKeyArn')
+        if kms_key_arn is not None:
+            update_params['KmsKeyArn'] = kms_key_arn
+        scheduler_client.update_schedule(**update_params)
+    except Exception as e:
+        print(f"Error updating schedule: {str(e)}")
+
     # 1️⃣1️⃣ Return success
     return {
         'statusCode': 200,
         'body': (
-            f"Picked fresh image #{num}, kept recent list at {MAX_RECENT} items, "
+            f"Picked fresh image {chosen}, kept recent list at {MAX_RECENT} items, "
             f"and tweeted: {chosen}"
         )
     }
