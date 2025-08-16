@@ -22,7 +22,7 @@ client = tweepy.Client(
 quotes = {
     1: "Hello There",
     2: "If you strike me down, I will become more powerful than you could possibly imagine.",
-    3: "May the force be with you.",
+    3: "May the force be with you.", #keep
     4: "I have a bad feeling about this.",
     5: "It's over Anakin, I have the High Ground.",
     6: "Good soldiers follow orders.",
@@ -37,12 +37,12 @@ quotes = {
     15: "I don't like sand. It's coarse, and rough, and irritating... and it gets everywhere.",
     16: "I'm just a simple man trying to make my way in the universe.",
     17: "These are not the droids you are looking for",
-    18: "That's no moon. That's a space station.",
+    18: "That's no moon. That's a space station.", #keep
     19: "Strike me down, and I shall become more powerful than you can possibly imagine.",
     20: "This is where the fun begins.",
     21: "Gonk",
     22: "I am no Jedi.",
-    23: "I am the Senate.",
+    23: "I am the Senate.", #keep
     24: "I have brought Peace, Freedom, Justice, and Security to my new Empire.",
     25: "A surprise, to be sure, but a welcome one.",
     26: "I'll try spinning, that's a good trick.",
@@ -54,14 +54,14 @@ quotes = {
     32: "I find your lack of faith disturbing.",
     33: "The ability to speak does not make you intelligent.",
     34: "So this is how liberty dies... with thunderous applause.",
-    35: "Only a Sith deals in absolutes.",
-    36: "I sense a plot to destroy the Jedi.",
+    35: "Only a Sith deals in absolutes.", #keep
+    36: "I sense a plot to destroy the Jedi.", #keep
     37: "Let the past die. Kill it, if you have to.",
     38: "Insolence!? We are pirates! We don’t even know what that means.",
     39: "I can bring you in warm, or I can bring you in cold.",
     40: "I have spoken.",
     41: "I'm a Mandalorian. Weapons are part of my religion.",
-    42: "Jabba ruled with fear. I intend to rule with respect.",
+    42: "",
     43: "The mission. The nightmares. They're... finally... over.",
     44: "In my book, experience outranks everything.",
     45: "We're just clones, sir. We're meant to be expendable.",

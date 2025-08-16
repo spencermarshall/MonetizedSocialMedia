@@ -794,7 +794,7 @@ def lotr_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 150:
+        if len(question_indices) > 200:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)
@@ -813,7 +813,7 @@ def lotr_question(event, context):
                 if random.random() < 0.5:
                     replacement = "opinions"
 
-                if random.random() < 0.3:
+                if random.random() < 0.2:
                     replacement = "honest " + replacement
                 pattern = r'\bthoughts\b'
                 question = re.sub(pattern, replacement, question)
@@ -825,7 +825,7 @@ def lotr_question(event, context):
                 if random.random() < 0.5:
                     replacement = "opinions"
 
-                if random.random() < 0.3:
+                if random.random() < 0.2:
                     replacement = "honest " + replacement
                 pattern = r'\bopinions\b'
                 question = re.sub(pattern, replacement, question)
