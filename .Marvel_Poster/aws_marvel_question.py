@@ -104,7 +104,7 @@ def Marvel_question(event, context):
         76: "Black Widow or Scarlet Witch?",
         77: "Thanos or Ultron?",
         78: "Wolverine or Deadpool?",
-        79: "Black Panther or Doctor Strange?",
+        79: "",
         80: "Hulk or She-Hulk?",
         81: "Marvel or DC?",
         82: "Marvel or Star Wars",
@@ -141,7 +141,7 @@ def Marvel_question(event, context):
         112: "Which upcoming MCU Project are you most excited about?",
         113: "Which Marvel character do you think has the best costume?",
         114: "Which Marvel character do you think has the worst costume?",
-        115: "What are your opinions on Kevin Fiege",
+        115: "What are your opinions on Kevin Feige",
         116: "Which MCU character is most underrated?",
         117: "Which MCU character is most overrated?",
         118: "Would you want to see Thanos return in any future projects?",
@@ -199,7 +199,7 @@ def Marvel_question(event, context):
         169: "Thor's hammer or Captain America's shield?", #todo add images starting here and below - i stopped here last on 8.15.2025
         170: "Tesseract or Thor's hammer?",
         171: "Tesseract or Captain America's shield?",
-        172: "Iron man or Spider man?",
+        172: "Iron Man or Spider Man?",
         173: "Did you like the Thunderbolts* (The New Avengers) movie?",
         174: "Wakanda or Asgard?",
         175: "Would you want to live in Asgard?",
@@ -261,19 +261,20 @@ def Marvel_question(event, context):
         231: "On a scale from 1-10, how would you rate the Shang-Chi movie?",
         232: "On a scale from 1-10, how would you rate the Eternals movie?",
         233: "On a scale from 1-10, how would you rate the Black Widow movie?",
-        234: "On a scale from 1-10, how would you rate the original Thor movie?",
-        235: "On a scale from 1-10, how would you rate the original Iron Man movie?",
-        236: "On a scale from 1-10, how would you rate the original Captain America movie?",
+        234: "On a scale from 1-10, how would you rate the Thor movies?",
+        235: "On a scale from 1-10, how would you rate the Iron Man movies?",
+        236: "On a scale from 1-10, how would you rate the Captain America movies?",
         237: "On a scale from 1-10, how would you rate the original Avengers movie?",
-        238: "On a scale from 1-10, how would you rate the original Guardians of the Galaxy movie?",
+        238: "On a scale from 1-10, how would you rate the Guardians of the Galaxy movies?",
         239: "Do you think Scarlet Witch deserves her own movie?",
+        240: "On a scale from 1-10, how would you rate Black Panther: Wakanda Forever?",
 
      } #add question about funny mexican guy from antman movies
 
 
     # s3 bucket files look up
     lookup = {
-        1: "None",
+        1: "questions/other_MoviesORComics/",
         2: "None",
         3: "None",
         4: "None",
@@ -283,7 +284,7 @@ def Marvel_question(event, context):
         8: "None",
         9: "None",
         10: "None",
-        11: "None",
+        11: "questions/other_Comics/",
         12: "None",
         13: "None",
         14: "None",
@@ -348,7 +349,7 @@ def Marvel_question(event, context):
         73: "None",
         74: "questions/char_CaptianAmericaORIronMan/",
         75: "questions/char_ThorORLoki/",
-        76: "None",
+        76: "questions/char_BlackWidowORScarletWitch/",
         77: "questions/char_ThanosORUltron/",
         78: "questions/char_WolverineORDeadpool/",
         79: "None",
@@ -356,8 +357,8 @@ def Marvel_question(event, context):
         81: "questions/other_MarvelORDC/",
         82: "questions/other_MarvelORStarWars/",
         83: "questions/char_Ultron/",
-        84: "None",
-        85: "None",
+        84: "questions/other_MarvelORLOTR/",
+        85: "questions/other_MoviesORComics/",
         86: "questions/char_IronMan/",
         87: "questions/char_CaptainAmerica/",
         88: "questions/char_Thor/",
@@ -374,7 +375,7 @@ def Marvel_question(event, context):
         99: "None",
         100: "None",
         101: "None",
-        102: "None",
+        102: "questions/other_Comics/",
         103: "None",
         104: "None",
         105: "None",
@@ -413,8 +414,8 @@ def Marvel_question(event, context):
         138: "questions/char_WandaANDVision/",
         139: "questions/char_BlackWidowORHawkeye/",
         140: "questions/movie_AntMans/",
-        141: "None",
-        142: "None",
+        141: "questions/other_Comics/",
+        142: "questions/other_Comics/",
         143: "None",
         144: "questions/char_Venom/",
         145: "None",
@@ -441,18 +442,18 @@ def Marvel_question(event, context):
         166: "None",
         167: "questions/movie_InfinityWarOREndgame/",
         168: "questions/other_Mjolnir/",
-        169: "None",
+        169: "questions/other_HammerORShield/",
         170: "None",
         171: "None",
-        172: "None",
+        172: "questions/char_IronManORSpiderMan/",
         173: "questions/movie_Thunderbolts",
-        174: "None",
-        175: "None",
+        174: "questions/other_WakandaORAsgard/",
+        175: "questions/place_Asgard/",
         176: "questions/place_Wakanda/",
         177: "questions/movie_ThorAll/",
-        178: "None",
+        178: "questions/char_TomHollandSpiderMan/",
         179: "questions/char_Hulk/",
-        180: "None",
+        180: "questions/movie_BlackPantherWakandaForever/",
         181: "questions/movie_DrStrangeMultiverse/",
         182: "questions/movie_SchangChi/",
         183: "questions/show_WandaVision/",
@@ -506,13 +507,13 @@ def Marvel_question(event, context):
         231: "questions/movie_SchangChi/",
         232: "questions/movie_Eternals/",
         233: "questions/movie_BlackWidow/",
-        234: "None",
-        235: "None",
-        236: "None",
-        237: "None",
-        238: "None",
+        234: "questions/movie_ThorAll/",
+        235: "questions/movie_IronManAll/",
+        236: "questions/movie_CaptainAmericaAll/",
+        237: "questions/movie_AvengersOG/",
+        238: "questions/movie_GuardiansOfGalaxy/",
         239: "questions/char_ScarletWitch/",
-        240: "None",
+        240: "questions/movie_BlackPantherWakandaForever/",
         241: "None",
         242: "None",
         243: "None",
@@ -573,7 +574,7 @@ def Marvel_question(event, context):
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
-                if random.random() < 0.3:
+                if random.random() < 0.2:
                     replacement = "honest " + replacement
 
                 pattern = r'\bthoughts\b'
@@ -585,7 +586,7 @@ def Marvel_question(event, context):
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
-                if random.random() < 0.3:
+                if random.random() < 0.2:
                     replacement = "honest " + replacement
                 pattern = r'\bopinions\b'
                 question = re.sub(pattern, replacement, question)
