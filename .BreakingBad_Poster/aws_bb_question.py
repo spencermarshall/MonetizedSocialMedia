@@ -28,7 +28,7 @@ def BB_question(event, context):
     questions = {
         1: "What are your opinions on Jesse buying his parents house?",
         # 2: "Who was the most surprising character crossover in BCS?",
-        2: "Other than Saul Goodman, who would deserve a spin-off show?",
+        2: "Other than Saul Goodman, who deserves a spin-off show?",
         3: "How many times have you watched BCS?",
         4: "What are your thoughts on Jesse’s struggle?",
         5: "Who was the real villain of Breaking Bad?",
