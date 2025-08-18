@@ -88,12 +88,8 @@ def LOTRMeme(event, context):
     elif ran < 0.30:
         tweet_text = "#LOTR"
     elif ran < 0.39:
-        tweet_text = "Rings of Power"
-    elif ran < 0.40:
-        tweet_text = "#RingsOfPower"
-    elif ran < 0.49:
         tweet_text = "The Hobbit"
-    elif ran < 0.50:
+    elif ran < 0.40:
         tweet_text = "#TheHobbit"
 
     # 5. Download from S3 into Lambda’s /tmp

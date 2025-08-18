@@ -82,7 +82,14 @@ def AcrossTheGalaxy(event, context):
 
     # 🔟 Upload to Twitter and tweet it
     media = api.media_upload(local_path)
-    client.create_tweet(text="", media_ids=[media.media_id])
+    tweet_text = ""
+
+    ran = random.random()
+    if ran < 0.1:
+        tweet_text = "Star Wars"
+    elif ran < 0.12:
+        tweet_text = "#StarWars"
+    client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
     # 1️⃣1️⃣ Return success
     return {

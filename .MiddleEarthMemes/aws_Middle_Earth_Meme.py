@@ -88,13 +88,10 @@ def MiddleEarthPost(event, context):
     elif ran < 0.30:
         tweet_text = "#LOTR"
     elif ran < 0.39:
-        tweet_text = "Rings of Power"
-    elif ran < 0.40:
-        tweet_text = "#RingsOfPower"
-    elif ran < 0.49:
         tweet_text = "The Hobbit"
-    elif ran < 0.50:
+    elif ran < 0.40:
         tweet_text = "#TheHobbit"
+
 
     # 5. Download from S3 into Lambda’s /tmp
     download_path = f"/tmp/{os.path.basename(random_file)}"
@@ -111,33 +108,6 @@ def MiddleEarthPost(event, context):
     updated_content = json.dumps(recent_files)
     s3_client.put_object(Bucket=bucket_name, Key=file_key, Body=updated_content)
 
-    scheduler_client = boto3.client('scheduler')
-    new_min = random.randint(0, 59)
-
-    # this below should be identical to EventBridge Scheduler Cron Expression, hours are 9 and 17
-    new_expr = f"cron({new_min} 9,17 * * ? *)"
-    try:
-        get_response = scheduler_client.get_schedule(GroupName='default', Name='MiddleEarthMeme')
-        update_params = {
-            'Name': 'MiddleEarthMeme',
-            'GroupName': 'default',
-            'ScheduleExpression': new_expr,
-            'FlexibleTimeWindow': get_response['FlexibleTimeWindow'],
-            'Target': get_response['Target'],
-            'State': get_response['State']
-        }
-        timezone = get_response.get('ScheduleExpressionTimezone')
-        if timezone is not None:
-            update_params['ScheduleExpressionTimezone'] = timezone
-        description = get_response.get('Description')
-        if description is not None:
-            update_params['Description'] = description
-        kms_key_arn = get_response.get('KmsKeyArn')
-        if kms_key_arn is not None:
-            update_params['KmsKeyArn'] = kms_key_arn
-        scheduler_client.update_schedule(**update_params)
-    except Exception as e:
-        print(f"Error updating schedule: {str(e)}")
 
     return {
         'statusCode': 200,
