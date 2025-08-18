@@ -54,7 +54,7 @@ def Marvel_question(event, context):
         26: "What are your opinions on the Avengers: Endgame?",
         27: "What are your opinions on the Tom Holland Spider Man movies?",
         28: "What are your opinions on Tobey Maguire as Spider Man?",
-        29: "What are your opinions on Andrew Garfield as Spider Man?",
+        29: "Did you like Andrew Garfield as Spider Man?",
         30: "What are your opinions on the Hulk?",
         31: "What are your opinions on the Black Widow movie?",
         32: "What are your opinions on the original Black Panther movie?",
@@ -200,7 +200,7 @@ def Marvel_question(event, context):
         170: "Tesseract or Thor's hammer?",
         171: "Tesseract or Captain America's shield?",
         172: "Iron man or Spider man?",
-        173: "WandaVision or Hawkeye show?",
+        173: "Did you like the Thunderbolts* (The New Avengers) movie?",
         174: "Wakanda or Asgard?",
         175: "Would you want to live in Asgard?",
         176: "What are your opinions on Wakanda?",
@@ -266,6 +266,7 @@ def Marvel_question(event, context):
         236: "On a scale from 1-10, how would you rate the original Captain America movie?",
         237: "On a scale from 1-10, how would you rate the original Avengers movie?",
         238: "On a scale from 1-10, how would you rate the original Guardians of the Galaxy movie?",
+        239: "Do you think Scarlet Witch deserves her own movie?",
 
      } #add question about funny mexican guy from antman movies
 
@@ -444,7 +445,7 @@ def Marvel_question(event, context):
         170: "None",
         171: "None",
         172: "None",
-        173: "None",
+        173: "questions/movie_Thunderbolts",
         174: "None",
         175: "None",
         176: "questions/place_Wakanda/",
@@ -510,7 +511,7 @@ def Marvel_question(event, context):
         236: "None",
         237: "None",
         238: "None",
-        239: "None",
+        239: "questions/char_ScarletWitch/",
         240: "None",
         241: "None",
         242: "None",
