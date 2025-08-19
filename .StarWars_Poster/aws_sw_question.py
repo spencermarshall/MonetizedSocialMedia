@@ -261,7 +261,7 @@ questions = {
     233: "What are your thoughts on Darth Jar Jar?",
     234: "Rebellion or Resistance?",
     235: "Canon or Legends?",
-    236: "C-3PO or R2-D2",
+    236: "Do you want to see C-3PO and R2-D2 return in future projects",
     237: "Anakin or Obi-Wan?",
     238: "Darth Vader or Kylo Ren?",
     239: "Darth Maul or Darth Vader?",
@@ -582,7 +582,6 @@ questions = {
     548: "What are your opinions on Yoda?",
     549: "Do you want to see Yoda return in future projects?",
     550: "Did you like how Palpatine returned in The Rise of Skywalker?",
-    551: "Somehow Palpatine returned.",
 
 
 
@@ -1144,7 +1143,7 @@ def SW_question(event, context):
         548: "questions/char_Yoda/",
         549: "questions/char_Yoda/",
         550: "questions/char_PalpatineEp9/",
-        551: "questions/char_PalpatineEp9/",
+
 
 
 
