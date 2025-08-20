@@ -178,7 +178,7 @@ questions = {
     150: "What are your opinions on Jango Fett?",
     151: "What are your thoughts on Count Dooku?",
     152: "What are your opinions on General Grievous?",
-    153: "What are your thoughts on Dexter Jettster?",
+    153: "Do you want to see Dexter Jettster return in future projects?", #if this does bad delete
     154: "What are your opinions on the Kaminoans?",
     155: "Chopper or R2-D2?",
     156: "Did you like Natalie Portman as Padmé Amidala?",
@@ -586,6 +586,7 @@ questions = {
 
 
             #todo next do more favorite quote or iconic line from main characters
+            #todo or next do some what - if's like Obiwan turnign to darkside or something? idk something to get conversation
 }
 def SW_question(event, context):
     #maybe questions if you could change one thing about [character] what would it be?

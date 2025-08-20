@@ -6,7 +6,7 @@ import json       # to parse and write JSON
 import botocore.exceptions
 
 # Number of recent images to avoid repeating
-MAX_RECENT = 210
+MAX_RECENT = 300
 
 def SW_art(event, context):
     # 1️⃣ Load Twitter credentials
@@ -85,43 +85,6 @@ def SW_art(event, context):
     client.create_tweet(text="", media_ids=[media.media_id])
 
 
-    scheduler_client = boto3.client('scheduler')
-    try:
-        # Fetch current schedule to get the current minute
-        get_response = scheduler_client.get_schedule(GroupName='default', Name='SW_art')
-        current_schedule = get_response['ScheduleExpression']  # e.g., cron(20 4,8,13,18,23 * * ? *)
-        current_min = int(current_schedule.split(' ')[0].split('(')[1])  # Extract minute from cron
-    except Exception as e:
-        print(f"Error fetching current schedule: {str(e)}")
-        current_min = 20  # Default to 20 if schedule fetch fails
-
-    # Increment minute by random amount (4-9), reset if > 40
-    new_min = current_min + random.randint(4, 9)
-    if new_min > 40:
-        new_min -= 20
-
-    new_expr = f"cron({new_min} 4,8,13,18,23 * * ? *)"
-    try:
-        update_params = {
-            'Name': 'SW_art',
-            'GroupName': 'default',
-            'ScheduleExpression': new_expr,
-            'FlexibleTimeWindow': get_response['FlexibleTimeWindow'],
-            'Target': get_response['Target'],
-            'State': get_response['State']
-        }
-        timezone = get_response.get('ScheduleExpressionTimezone')
-        if timezone is not None:
-            update_params['ScheduleExpressionTimezone'] = timezone
-        description = get_response.get('Description')
-        if description is not None:
-            update_params['Description'] = description
-        kms_key_arn = get_response.get('KmsKeyArn')
-        if kms_key_arn is not None:
-            update_params['KmsKeyArn'] = kms_key_arn
-        scheduler_client.update_schedule(**update_params)
-    except Exception as e:
-        print(f"Error updating schedule: {str(e)}")
 
     # 1️⃣1️⃣ Return success
     return {
