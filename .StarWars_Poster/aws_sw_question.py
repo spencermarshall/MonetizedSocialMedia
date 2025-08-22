@@ -91,7 +91,7 @@ questions = {
     64: "Did you enjoy Jedi Survivor as a SW video game?",
     65: "Do you want to see Cal Kestis in future projects?",
     66: "What are your opinions on Sith Troopers from Ep9?",
-    67: "What are your opinions on Babu Frik?",
+    67: "Do you want to see more of Babu Frik?",
     68: "What are your thoughts on Darth Revan?",
     69: "What are your opinions on Reva?",
     70: "If you could create your own Star Wars story - set in any era, featuring any characters - what would be its main focus?",
@@ -165,7 +165,7 @@ questions = {
     138: "Do you want to see Obi-Wan Kenobi and Duchess Satine together?", #todo if this doesn't perform well, delete
     139: "Do you want a Lando TV show staring Donald Glover?",
     140: "What are your opinions on Anakin's fall to the dark side?",
-    141: "Do you think Clones were treated fairly after Order 66?",
+    141: "Do you wanna see more about the Clones after Order 66?",
     142: "How do you feel about Lando Calrissian’s role in the original trilogy?",
     143: "What is your favorite non-canon Star Wars story?", #maybe delete
     # pictures below here
@@ -219,7 +219,7 @@ questions = {
     191: "What are your thoughts on Kathleen Kennedy?",
     192: "Did you enjoy the Sequel Trilogy as a whole?",
     193: "Did you enjoy the Sequel Trilogy's ending?",
-    194: "What are your thoughts on Rosario Dawson as Ahsoka Tano?",
+    194: "Did you like Rosario Dawson as Ahsoka Tano?",
     195: "Did you enjoy seeing Ahsoka Tano in The Mandalorian?",
     196: "Did you enjoy seeing Bo-Katan in The Mandalorian?",
     197: "Did you enjoy seeing Boba Fett in The Mandalorian?",
@@ -376,7 +376,7 @@ questions = {
     345: "What are your opinions on Captain Rex?",
     346: "What are your opinions on Commander Cody?",
     347: "OPINION: The Han Solo movie was very well done and I would love to see a sequel in some form. What do you think?",
-    348: "What are your opinions on Luminara Unduli?",
+    348: "Do you want to see Luminara Unduli return in future projects?",
     349: "Do you want to see more of Barriss Offee?",
     350: "Did you like Ahsoka in The Clone Wars?",
     351: "Do you want to see Asajj Ventress in future projects?", #todo maybe delete
