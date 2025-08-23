@@ -4,6 +4,7 @@ import datetime
 import json
 
 ARNS = [
+    "arn:aws:scheduler:us-east-1:975050204241:schedule/default/JediMemes",
     "arn:aws:scheduler:us-east-1:975050204241:schedule/default/Marvel_Meme",
     "arn:aws:scheduler:us-east-1:975050204241:schedule/default/BB_meme",
     "arn:aws:scheduler:us-east-1:975050204241:schedule/default/SW_Question",
