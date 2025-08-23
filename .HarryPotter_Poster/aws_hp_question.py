@@ -28,7 +28,7 @@ def HarryPotter_question(event, context):
     questions = {
         1: "Which Hogwarts House are you?",
         2: "Do you like the house sorting ceremony?",
-        3: "What spell if your favorite?",
+        3: "What spell is your favorite?",
         4: "Which book in the series is your favorite?",
         5: "What are your thoughts on the Gryffindor vs. Slytherin rivalry?",
         6: "Who was the best Defense Against the Dark Arts teacher?",
@@ -81,7 +81,7 @@ def HarryPotter_question(event, context):
         52: "What is your favorite scene in Diagon Alley?",
         53: "Do you like the Deathly Hallows symbol?",
         54: "What are your opinions on The Cursed Child?",
-        55: "Which Hogwarts ghost do you like ths most?",
+        55: "Which Hogwarts ghost do you like the most?",
         56: "Would you ride on the Knight Bus?",
         57: "Which duel is your favorite?",
         58: "What are your thoughts on the Muggle-Wizard divide?",
@@ -237,6 +237,8 @@ def HarryPotter_question(event, context):
         206: "Do you want the new HP show to include more details from the books that were left out of the original movies?",
         207: "What creative liberties do you want the new HP show to take?",
         208: "What are your opinions on the TV show casting of Ginny Weasley?",
+        209: "You can only save one of these characters from their death. Who are you choosing?",
+
 
 }
     # s3 bucket files look up
@@ -449,7 +451,7 @@ def HarryPotter_question(event, context):
         206: "questions/show_HBO-HP-show/",
         207: "questions/show_HBO-HP-show/",
         208: "questions/char_GinnyNew/",
-        209: "None",
+        209: "questions/other_SaveFromDeathMisc/",
         210: "None",
         211: "None",
         212: "None",
