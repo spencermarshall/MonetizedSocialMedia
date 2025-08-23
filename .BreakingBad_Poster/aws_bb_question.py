@@ -155,15 +155,15 @@ def BB_question(event, context):
         118: "What are your thoughts on Nacho?",
         119: "Did you like Hank Schrader as a DEA agent?",
         120: "Did you like Bryan Cranston's portrayl of Walter White?",
-        121: "Did you like Aaron Paul's portrayal of Jesse Pinkman?",
+        121: "Did you like Aaron Paul's as Jesse Pinkman?",
         122: "Did you like Bob Odenkirk as Saul Goodman?", #todo maybe reword or delete
-        123: "Did you like Jonathan Banks' portrayal of Mike Ehrmantraut?",
-        124: "Did you like Giancarlo Esposito's portrayal of Gus Fring?",
+        123: "Did you like Jonathan Banks as Mike Ehrmantraut?",
+        124: "Did you like Giancarlo Esposito as Gus Fring?",
         125: "On a scale of 1-10, how would you rate El Camino?",
-        126: "Did you like Anna Gunn's portrayal of Skyler White?",
-        127: "Did you enjoy Rhea Seehorn's as Kim Wexler?",
+        126: "Did you like Anna Gunn as Skyler White?",
+        127: "Did you enjoy Rhea Seehorn as Kim Wexler?",
         128: "Who is your least favorite character in BB and why is it Skyler?",
-        129: "Did you like Michael McKean's portrayal of Chuck McGill?",
+        129: "Did you like Michael McKean as Chuck McGill?",
         130: "How many times have you watched Breaking Bad?",
         131: "What are your thoughts on Hector Salamanca?",
         132: "What are your thoughts on Mike Ehrmantraut?",
@@ -191,9 +191,9 @@ def BB_question(event, context):
         153: "What are your thoughts on Skinny Pete?",
         154: "What are your thoughts on Badger?",
         155: "What are your thoughts on Combo?",
-        156: "Did you like RJ Mitte's portrayal of Walter White Jr.?",
+        156: "Did you like RJ Mitte as Walter White Jr.?",
         157: "What is your favorite part of El Camino?",
-        158: "Did you like Tony Dalton's portrayal of Lalo Salamanca?",
+        158: "Did you like Tony Dalton as Lalo Salamanca?",
         159: "What is your least favorite part of El Camino?",
         160: "What are your thoughts on the future of the Breaking Bad universe?",
         161: "Should we get another Breaking Bad Spinoff Show?",
@@ -253,6 +253,7 @@ def BB_question(event, context):
         211: "What's your favorite Lalo quote?",
         212: "What’s the most rewatchable episode of Breaking Bad?",
         213: "What’s the most rewatchable episode of Better Call Saul?",
+
 
 
 
