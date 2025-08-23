@@ -5,7 +5,7 @@ import os
 import json
 import botocore.exceptions
 
-MOST_RECENT = 150
+MOST_RECENT = 180
 
 
 def BB_meme_post(event, context):
