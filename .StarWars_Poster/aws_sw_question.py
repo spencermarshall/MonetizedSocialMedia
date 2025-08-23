@@ -353,7 +353,7 @@ questions = {
     323: "What are your opinions of Utapau?",
     324: "What are your opinions of Jakku?",
     325: "What are your opinions of Takodana?",
-    326: "What are your opinions of Ahch-To?",
+    326: "Would you want to live on Ahch-To?",
     327: "Would you want to live on Canto Bight?",
     328: "What are your opinions of Ajan Kloss?",
     329: "If you're in the Star Wars universe, what would your job be?",
@@ -582,6 +582,13 @@ questions = {
     548: "What are your opinions on Yoda?",
     549: "Do you want to see Yoda return in future projects?",
     550: "Did you like how Palpatine returned in The Rise of Skywalker?",
+    551: "Which Vader helmet do you like the most?",
+    552: "Who's lightsaber is your favorite?",
+    553: "This is the way",
+    554: "Which version do you prefer?",
+    555: "Which Jabba was the best?",
+    556: "Is Jim Cummings a good voice for Hondo?",
+
 
 
 
@@ -633,7 +640,7 @@ def SW_question(event, context):
         37: "questions/char_Bendu/",
         38: "None",
         39: "None",
-        40: "None",
+        40: "questions/other_SithLordall/",
         41: "None",
         42: "questions/generic_clones/",
         43: "None",
@@ -1030,7 +1037,7 @@ def SW_question(event, context):
         434: "None",
         435: "None",
         436: "None",
-        437: "None",
+        437: "questions/other_SithLordall/",
         438: "None",
         439: "None",
         440: "None",
@@ -1144,6 +1151,12 @@ def SW_question(event, context):
         548: "questions/char_Yoda/",
         549: "questions/char_Yoda/",
         550: "questions/char_PalpatineEp9/",
+        551: "questions/other_VaderHelmet/",
+        552: "questions/other_CharacterLightsabers/",
+        553: "questions/other_thisisthewaythread/",
+        554: "questions/other_ep6endings/",
+        555: "questions/other_JabbaVersion/",
+        556: "questions/char_Hondo/",
 
 
 

@@ -393,6 +393,7 @@ def lotr_question(event, context):
         324: "What do you love most about LOTR?",
         325: "How has LOTR influenced your life?",
         326: "What feelings do you get from watching LOTR?",
+        #todo on a scale from 1-10 how much do you like LOTR movies and hobbit, and ROP, and War Of Rohirrim, 8 questions total
 
 
 

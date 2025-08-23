@@ -5,7 +5,7 @@ import os
 import json
 import botocore.exceptions
 
-MOST_RECENT = 200
+MOST_RECENT = 300
 
 # X credentials stored in env variables
 API_KEY = os.environ["API_KEY"]
@@ -30,6 +30,9 @@ bucket_name = 'lotr.photos'
 
 
 def MiddleEarthPost(event, context):
+    if random.random() < 0.20:
+        return "skipped this time"
+
     # 1. List up to 1,000 objects in the bucket
     response = s3_client.list_objects_v2(Bucket=bucket_name)
 

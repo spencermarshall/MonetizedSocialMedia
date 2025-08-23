@@ -253,6 +253,8 @@ def BB_question(event, context):
         211: "What's your favorite Lalo quote?",
         212: "What’s the most rewatchable episode of Breaking Bad?",
         213: "What’s the most rewatchable episode of Better Call Saul?",
+        214: "Which Breaking Bad scene hit you the hardest?",
+
 
 
 
