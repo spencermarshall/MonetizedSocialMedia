@@ -59,19 +59,17 @@ quotes = {
     37: "Let the past die. Kill it, if you have to.",
     38: "Insolence!? We are pirates! We don’t even know what that means.",
     39: "I can bring you in warm, or I can bring you in cold.",
-    40: "",
+    40: "What about the droid attack on the wookies?",
     41: "I'm a Mandalorian. Weapons are part of my religion.",
     42: "I have friends everywhere...",
     43: "The mission. The nightmares. They're... finally... over.",
-    44: "In my book, experience outranks everything.",
+    44: "I am a Jedi, like my father before me.",
     45: "We're just clones, sir. We're meant to be expendable.",
     46: "Clones, bred for combat. All part of the plan... THE Plan. The only Plan that matters. Not even I was made aware of its grand design, but I played my part. And do you know what happened to me? I was cast aside. I was forgotten. But I survived, and I can thrive in the chaos that is to come.",
     47: "There is no justice, now law, no order... except for the one that will replace it!",
     48: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.",
     49: "You're a good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
     50: "Do it.",
-    51: "I can't swim.",
-    52: "What about the droid attack on the wookies?",
 }
 
 

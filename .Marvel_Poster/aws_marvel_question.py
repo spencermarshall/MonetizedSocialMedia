@@ -157,7 +157,7 @@ def Marvel_question(event, context):
         127: "If you could have dinner with any Marvel character, who would it be?",
         128: "If you could create your own MCU movie, what would it be about?",
         129: "Who deserves their own movie or series?", #todo maybe delete or comment out idk
-        130: "If you could introduce a new character to the MCU, who would it be and how would they fit in?",
+        130: "If you could introduce a new character to the MCU, who would it be? ",
         131: "What crossover event would you like to see in future Marvel projects?",
         132: "Which Marvel movie do you think is the most rewatchable?",
         133: "Do you like the idea of the multiverse?",
@@ -185,7 +185,7 @@ def Marvel_question(event, context):
         154: "Which surprise cameo in a Marvel project blew your mind the most?",
         155: "Which ‘What If…?’ episode would you develop into a full-length movie?",
         156: "How has your opinion of the MCU changed over time?",
-        157: "Which Marvel villain do you think deserves a redemption arc, and how would you imagine it happen?",
+        157: "Which Marvel villain do you think deserves a redemption arc?",
         158: "If you could explore any untold story from the Marvel universe, what would it be?",
         159: "What’s the most emotional moment in a Marvel movie that still resonates with you?",
         160: "If you could rewrite the ending of any Marvel movie, which one would it be?",
@@ -194,8 +194,8 @@ def Marvel_question(event, context):
         163: "If you could have a Marvel character as your personal trainer, who would it be?",
         164: "Which Marvel character do you think would make the best detective?",
         165: "What’s the most inspiring act of heroism you’ve seen from a Marvel character?",
-        166: "Which Marvel character’s origin story would you most want to see reimagined, and how?",
-        167: "Infinity War or Endgame?",
+        166: "Which Marvel character’s origin story would you most want to see reimagined?",
+        167: "Let’s end this debate. Which Avengers movie is better, Infinity War or Endgame?",
         168: "What are your opinions on Mjolnir?",
         169: "Thor's hammer or Captain America's shield?", #todo add images starting here and below - i stopped here last on 8.15.2025
         170: "Tesseract or Thor's hammer?",

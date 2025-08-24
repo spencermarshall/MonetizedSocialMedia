@@ -220,7 +220,7 @@ questions = {
     192: "Did you enjoy the Sequel Trilogy as a whole?",
     193: "Did you enjoy the Sequel Trilogy's ending?",
     194: "Did you like Rosario Dawson as Ahsoka Tano?",
-    195: "Did you enjoy seeing Ahsoka Tano in The Mandalorian?",
+    195: "Did you enjoy seeing Ahsoka in The Mandalorian?", #maybe delete if does bad
     196: "Did you enjoy seeing Bo-Katan in The Mandalorian?",
     197: "Did you enjoy seeing Boba Fett in The Mandalorian?",
     198: "Did you enjoy seeing Luke Skywalker in The Mandalorian?",
