@@ -8,10 +8,7 @@ import random
 from datetime import datetime, timedelta
 import time
 
-# Reddit API Credentials
-# REDDIT_CLIENT_ID = os.environ['REDDIT_CLIENT_ID']
-# REDDIT_CLIENT_SECRET = os.environ['REDDIT_CLIENT_SECRET']
-#
+
 # Initialize Reddit API
 reddit = praw.Reddit(
     client_id=REDDIT_CLIENT_ID,
@@ -40,7 +37,6 @@ def get_media_count(post):
             # Count the items in the gallery
             return len(post.gallery_data['items'])
         except Exception as e:
-            print(f"Error retrieving gallery data for post {post.id}: {e}")
             return 0
     else:
         # Check if the URL has a valid image/video extension
@@ -64,7 +60,6 @@ def add_to_s3(post):
             filename = f"{post.id}.{ext}"
             # Upload the content to the S3 bucket
             s3.put_object(Bucket="marvel.photos", Key=filename, Body=content)
-            print(f"Uploaded {filename} to S3 bucket 'marvel.photos'")
         else:
             print(f"Failed to download media from {post.url} (status code: {response.status_code})")
     except Exception as e:
@@ -80,19 +75,17 @@ def marvel_download(event, context):
     - Uploads the image to the S3 bucket if it meets the criteria.
     """
     subreddit = reddit.subreddit('marvelmemes')
-    top_posts = subreddit.top(time_filter='week', limit=4)
+    top_posts = subreddit.top(time_filter='week', limit=12)
 
     allowed_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
 
     for idx, post in enumerate(top_posts, start=1):
         # Check if the post is marked as NSFW and skip if so
         if post.over_18:
-            print(f"Skipping post {idx} titled '{post.title}' because it is marked as NSFW.")
             continue
 
         # Check if the URL ends with one of the allowed image extensions
         if post.url.lower().endswith(allowed_extensions):
-            print(f"Post {idx} titled '{post.title}' has a valid image URL.")
             add_to_s3(post)
         else:
             print(
