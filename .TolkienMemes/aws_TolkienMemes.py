@@ -7,7 +7,7 @@ import botocore.exceptions
 
 MOST_RECENT = 200
 
-# X credentials stored in env variables
+# X credentials stored in env varia bles
 API_KEY = os.environ["API_KEY"]
 API_SECRET_KEY = os.environ["API_SECRET_KEY"]
 ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
