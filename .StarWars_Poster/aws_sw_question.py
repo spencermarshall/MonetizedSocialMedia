@@ -220,7 +220,7 @@ questions = {
     192: "Did you enjoy the Sequel Trilogy as a whole?",
     193: "Did you enjoy the Sequel Trilogy's ending?",
     194: "Did you like Rosario Dawson as Ahsoka Tano?",
-    195: "Did you enjoy seeing Ahsoka in The Mandalorian?", #maybe delete if does bad
+    195: "Did you enjoy seeing Ahsoka in The Mandalorian?",
     196: "Did you enjoy seeing Bo-Katan in The Mandalorian?",
     197: "Did you enjoy seeing Boba Fett in The Mandalorian?",
     198: "Did you enjoy seeing Luke Skywalker in The Mandalorian?",
@@ -1188,7 +1188,7 @@ def SW_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 315:
+        if len(question_indices) > 350:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)

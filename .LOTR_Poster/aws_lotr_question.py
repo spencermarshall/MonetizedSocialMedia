@@ -58,8 +58,9 @@ def lotr_question(event, context):
         29: "What do you think is the most iconic scene in LOTR?",
         30: "If you could possess one item from LOTR, what would it be?",
         31: "What is the most memorable piece of wisdom offered by Gandalf?",
-        32: "Do you like how friendship and loyalty are portrayed in LOTR?",
-        33: "Who do you think is the most underrated character in LOTR?",
+        # 32: "Do you like how friendship and loyalty are portrayed in LOTR?",
+        32: "How has LOTR influenced your life?",
+        33: "Who do you think is the most underrated character in LOTR?", #todo maybe delete, 9 comments last time if low again then delete
         34: "What do you think is the most visually stunning location in Middle-earth?",
         35: "What lessons can we learn from LOTR?",
         36: "What is the most significant moment in Middle-earth history?",
@@ -93,7 +94,8 @@ def lotr_question(event, context):
         58: "How old were you when you first discovered LOTR?",
         59: "How has LOTR shaped your imagination?",
         60: "What is your favorite quote from Bilbo Baggins?",  # here has young bilbo picture, maybe not applicable maybe most iconic
-        61: "What part of Tolkien's world-building do you like the most?",
+        # 61: "What part of Tolkien's world-building do you like the most?",
+        61: "What feelings do you get from watching LOTR?",
         62: "What do you ENJOY about Rings of Power?",
         63: "If you could write a new Middle-earth story, what would it be about?",
         64: "What do you think is the most powerful symbol in LOTR?",
@@ -313,7 +315,7 @@ def lotr_question(event, context):
         # 252: "If you could change one thing about Legolas, what would it be?",
         252: "Did Martin Freeman do a good job portraying Bilbo?",
         253: "Did you enjoy Orlando Bloom's portrayal of Legolas?",
-        254: "Did Benedict Cumberbatch do a good job as the voice of Smaug?",
+        254: "IS Benedict Cumberbatch a good voice for Smaug?",
         255: "Did Andy Serkis do a good job portraying Gollum?",
         256: "Did you enjoy Christopher Lee's portrayal of Saruman?",
         # 253: "If you could change one thing about Gimli, what would it be?",
@@ -374,7 +376,8 @@ def lotr_question(event, context):
         303: "LOTR or The Witcher?",
         304: "Tell me your opinion on LOTR which will have everyone react to you like this...",
         305: "LOTR or Dune?",
-        306: "Gollum or Smaug?",
+        # 306: "Gollum or Smaug?",
+        306: "What is your favorite line in the LOTR trilogy?",
         307: "Did Viggo Mortensen do a good job portraying Aragorn?",
         308: "Did Cate Blanchett's do a good job portraying Galadriel?",
         309: "Did Liv Tyler do a good job portraying Arwen?",
@@ -391,8 +394,7 @@ def lotr_question(event, context):
         322: "What are your opinions on Gandalf's resurrection?",
         323: "Lothlórien or Rivendell?",
         324: "What do you love most about LOTR?",
-        325: "How has LOTR influenced your life?",
-        326: "What feelings do you get from watching LOTR?",
+
         #todo on a scale from 1-10 how much do you like LOTR movies and hobbit, and ROP, and War Of Rohirrim, 8 questions total
 
 

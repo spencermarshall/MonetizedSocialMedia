@@ -109,7 +109,7 @@ def Marvel_question(event, context):
         81: "Marvel or DC?",
         82: "Marvel or Star Wars",
         # 83: "Marvel or Harry Potter",
-        83: "Would you want to see Ultron return in any future projects?",
+        83: "Do you want to see Ultron return in any future projects?",
         84: "Marvel or Lord of the Rings",
         85: "Marvel: Movies or Comics?",
         86: "Did you like Iron Man's character development?",
@@ -145,7 +145,7 @@ def Marvel_question(event, context):
         115: "What are your opinions on Kevin Feige",
         116: "Which MCU character is most underrated?",
         117: "Which MCU character is most overrated?",
-        118: "Would you want to see Thanos return in any future projects?",
+        118: "Do you want Thanos to return in any future projects?",
         119: "Which Marvel actor's performance do you dislike most?",
         120: "Do you want to see a sequel to the Eternals movie?",
         121: "Which Marvel character's backstory do you find most compelling?",
@@ -172,7 +172,7 @@ def Marvel_question(event, context):
         142: "Which Marvel character do you think was worst adapted from the comics to the movies?",
         143: "If you could swap lives with a Marvel character for a day, who would it be?",
         # 144: "What do you think of the MCU’s approach to introducing new characters?",
-        144: "Would you want to see Venom return in any future projects?",
+        144: "Do you want Venom to return in any future projects?",
         145: "What is your favorite Marvel fan theory?",
         146: "Do you play any Marvel video games?", #maybe more video game questions
         147: "Do you own any Marvel Lego sets?",
@@ -197,7 +197,7 @@ def Marvel_question(event, context):
         166: "Which Marvel character’s origin story would you most want to see reimagined?",
         167: "Let’s end this debate. Which Avengers movie is better, Infinity War or Endgame?",
         168: "What are your opinions on Mjolnir?",
-        169: "Thor's hammer or Captain America's shield?", #todo add images starting here and below - i stopped here last on 8.15.2025
+        169: "Would you rather have Thor's hammer or Captain America's shield?",
         170: "Tesseract or Thor's hammer?",
         171: "Tesseract or Captain America's shield?",
         172: "Iron Man or Spider Man?",
@@ -207,18 +207,18 @@ def Marvel_question(event, context):
         176: "What are your opinions on Wakanda?",
         177: "Would you want another Thor movie?",
         178: "Do you enjoy Tom Holland as Spider Man?",
-        179: "Would you want to see another Hulk movie?",
+        179: "Do you want another Hulk movie?",
         180: "What are your opinions on Black Panther: Wakanda Forever",
         181: "What are your opinions on the movie 'Doctor Strange in the Multiverse of Madness'",
         182: "Do you want to see another Shang-Chi movie?",
         183: "Do you want to see another season of WandaVision?",
         184: "Do you want to see another season of The Falcon and the Winter Soldier?",
         185: "Do you want to see another season of Loki?",
-        186: "Would you want to see another season of Hawkeye?", #todo look into working for asking for another season
-        187: "Would you want to see another season of 'What If'?", #todo like questions 183-187
-        188: "Would you want to see another season of She-Hulk?",
+        186: "Do you want another season of Hawkeye?", #todo look into working for asking for another season
+        187: "Do you want another season of 'What If'?", #todo like questions 183-187
+        188: "Do you want another season of She-Hulk?",
         189: "Do you want to see another season of Moon Knight?",
-        190: "Would you want to see another season of Ms. Marvel?", #todo maybe delete
+        190: "Do you want another season of Ms. Marvel?", #todo maybe delete
         191: "If you could change one thing about Ms. Marvel show what would it be?",
         192: "If you could change one thing about Moon Knight what would it be?",
         193: "If you could change one thing about She-Hulk what would it be?",
@@ -226,7 +226,7 @@ def Marvel_question(event, context):
         195: "If you could change one thing about the Hawkeye show what would it be?",
         196: "If you could change one thing about the Loki show what would it be?",
         197: "If you could change one thing about the WandaVision show what would it be?", #todo this is a test if this style of questions work, if so add more for all shows and movies
-        198: "Would you want to see another season of Secret Invasion?",
+        198: "Do you want another season of Secret Invasion?",
         199: "If you could change one thing about the Secret Invasion show what would it be?",
         200: "What future projects do you want to see Hawkeye in?",
         201: "If you could change one thing about Black Widow's character what would you change?",
@@ -308,7 +308,7 @@ def Marvel_question(event, context):
         #todo under this is test / demo
         277: "Which MCU fight choreography impressed you most?",
         278: "Which supporting character do you wish had a solo story?",
-        279: "What’s your favorite Marvel-themed merchandise you own?",
+        279: "What’s your favorite Marvel merchandise you own?",
         280: "Which Marvel character’s journey do you find most relatable?",
         281: "What’s the most surprising plot twist you’ve seen in a Marvel movie or show?",
         282: "Which Marvel character would you want as your best friend?",
@@ -320,7 +320,7 @@ def Marvel_question(event, context):
         288: "Which post-credit scene was the best tease?",
         289: "Who’s the best mentor figure in the MCU?",
         290: "Which MCU death hit you the hardest?",
-        291: "What’s your favorite Marvel-themed video game?",
+        291: "What’s your favorite Marvel video game?",
         292: "Which Marvel duo has the best chemistry?",
         293: "Which MCU sidekick deserves more spotlight?",
         294: "Which MCU villain should get an origin movie?",
@@ -329,7 +329,7 @@ def Marvel_question(event, context):
         297: "What are your opinions on the Avengers: Age of Ultron movie?",
         298: "On a scale from 1-10, how would you rate Avengers: Age of Ultron?",
         299: "What are your opinions on the Echo TV show?",
-        300: "Would you want to see another season of Echo?",
+        300: "Do you want to another season of Echo?",
         301: "On a scale from 1-10, how would you rate the Echo TV show?",
         302: "What are your opinions on Luis from the Ant-Man movies?",
         303: "Did you like the humor in the Guardians of the Galaxy movies?",

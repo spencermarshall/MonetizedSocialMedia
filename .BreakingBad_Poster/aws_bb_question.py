@@ -246,14 +246,13 @@ def BB_question(event, context):
         204: "Was Hank the real hero of Breaking Bad?",
         205: "What are your opinions on Hank?",
         206: "Tell me your opinion on Breaking Bad which will have everyone react to you like this...",
-        207: "Giancarlo Esposito Beloved actor of Gus Fring Age 67. Was found alive at His home",
-        208: "Noo... 💔", #mike ehrmantraut fake death
+        207: "Which Breaking Bad scene hit you the hardest?",
+        208: "What’s the most rewatchable episode of Better Call Saul?",
         209: "What is your favorite Howard Hamlin quote?",
         210: "What's your favorite Nacho quote?",
         211: "What's your favorite Lalo quote?",
         212: "What’s the most rewatchable episode of Breaking Bad?",
-        213: "What’s the most rewatchable episode of Better Call Saul?",
-        214: "Which Breaking Bad scene hit you the hardest?",
+
 
 
 
@@ -484,8 +483,8 @@ def BB_question(event, context):
         204: "questions/char_Hank/",
         205: "questions/char_Hank/",
         206: "questions/other_SwordUnpopularOpinion/",
-        207: "questions/other_GusFakeDeath/",
-        208: "questions/other_MikeFakeDeath/",
+        207: "None",
+        208: "None",
         209: "questions/char_HowardHamlin/",
         210: "None",
         211: "questions/char_LaloSalamanca/",

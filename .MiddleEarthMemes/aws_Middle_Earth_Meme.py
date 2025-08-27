@@ -30,8 +30,8 @@ bucket_name = 'lotr.photos'
 
 
 def MiddleEarthPost(event, context):
-    if random.random() < 0.20:
-        return "skipped this time"
+    # if random.random() < 0.20:
+    #     return "skipped this time"
 
     # 1. List up to 1,000 objects in the bucket
     response = s3_client.list_objects_v2(Bucket=bucket_name)

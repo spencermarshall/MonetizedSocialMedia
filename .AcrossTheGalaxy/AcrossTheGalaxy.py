@@ -9,8 +9,8 @@ import botocore.exceptions
 MAX_RECENT = 250
 
 def AcrossTheGalaxy(event, context):
-    if random.random() < 0.20:
-        return "skipped this time"
+    # if random.random() < 0.20:
+    #     return "skipped this time"
     # 1️⃣ Load Twitter credentials
     API_KEY             = os.environ["API_KEY"]
     API_SECRET_KEY      = os.environ["API_SECRET_KEY"]
