@@ -34,7 +34,7 @@ quotes = {
     12: "I am one with the Force, and the Force is with me.",
     13: "This is the way",
     14: "Long live the Empire.",
-    15: "I don't like sand. It's coarse, and rough, and irritating... and it gets everywhere.",
+    15: "I don't like sand. It's coarse, and rough, and irritating... and it gets everywhere.", #keep
     16: "I'm just a simple man trying to make my way in the universe.",
     17: "These are not the droids you are looking for",
     18: "That's no moon. That's a space station.", #keep
