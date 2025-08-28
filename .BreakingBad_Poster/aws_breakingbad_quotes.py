@@ -60,12 +60,12 @@ def post_bb_quote(event, context):
         27: "This whole thing, all of this... It's all about me.",
         28: "I won.",
         29: "This is not Meth...",
-        30: "If you believe that there's a hell, i don't know if you're into that, we're already pretty much going there, right? -Walter White",
+        30: "Let's cook.",
         31: "If you don’t know who i am, then maybe your best course would be to tread lightly.",
         32: "Say my name.",
         33: "TIGHT TIGHT TIGHT",
         34: "I am the one who knocks",
-        35: "Let's cook.",
+
     }
 
     try:
