@@ -413,7 +413,7 @@ def lotr_question(event, context):
         339: "Tweet like you're Gandalf",
         340: "Tweet like you're Gimli",
         341: "Tweet like you're Gollum",
-        342: "Tweet like you're Legolas"
+        342: "Tweet like you're Legolas",
         343: "Tweet like you're Samwise Gamgee",
         344: "Tweet like you're Saruman",
 
