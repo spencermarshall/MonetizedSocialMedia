@@ -1181,7 +1181,7 @@ def SW_question(event, context):
     s3 = boto3.client('s3')
 
     if random.randint(1, 7) == 1:
-        # this sends question to Across The Galaxy 1/7 of the time, Star Wars Daily 6/7 pf the time
+        # this sends question to Across The Galaxy 1/7 of the time, Star Wars Daily 6/7 of the time
         API_KEY =
         API_SECRET_KEY =
         ACCESS_TOKEN =

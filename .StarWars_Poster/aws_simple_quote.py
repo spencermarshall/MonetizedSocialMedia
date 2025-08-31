@@ -48,7 +48,7 @@ quotes = {
     26: "I'll try spinning, that's a good trick.",
     27: "Now this is podracing.",
     28: "In my experience, there's no such thing as luck",
-    29: "Aren't you a little short for a storm trooper?",
+    29: "Aren't you a little short for a storm trooper?", #keep
     30: "Fear is the path to the dark side. Fear leads to anger, anger leads to hate, hate leads to suffering.",
     31: "These are not the droids you're looking for.",
     32: "I find your lack of faith disturbing.",
@@ -64,12 +64,11 @@ quotes = {
     42: "I have friends everywhere...",
     43: "The mission. The nightmares. They're... finally... over.",
     44: "I am a Jedi, like my father before me.",
-    45: "We're just clones, sir. We're meant to be expendable.",
+    45: "We're just clones, sir. We're meant to be expendable.", #keep
     46: "Clones, bred for combat. All part of the plan... THE Plan. The only Plan that matters. Not even I was made aware of its grand design, but I played my part. And do you know what happened to me? I was cast aside. I was forgotten. But I survived, and I can thrive in the chaos that is to come.",
-    47: "There is no justice, now law, no order... except for the one that will replace it!",
+    47: "Do it.",
     48: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.",
     49: "You're a good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
-    50: "Do it.",
 }
 
 
