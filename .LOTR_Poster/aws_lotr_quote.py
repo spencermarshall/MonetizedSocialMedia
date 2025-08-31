@@ -25,7 +25,7 @@ quotes = {
     1: "A wizard is never late, nor is he early, he arrives precisely when he means to.",
     2: "YOU SHALL NOT PASS!",
     3: "When in doubt, follow your nose",
-    4: "What about second breakfast?",
+    4: "What about second breakfast?", #keep
     5: "Fool of a took!",
     6: "For Frodo...",
     7: "I don't know half of you half as well as I should like...",

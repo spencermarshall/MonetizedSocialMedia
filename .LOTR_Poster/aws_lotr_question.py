@@ -67,7 +67,7 @@ def lotr_question(event, context):
         # 51: "Which moment in LOTR shows the greatest wisdom?",
         49: "If you've never read the Silmarillion, why not?",
         50: "If you've never read the Hobbit book, why not?",
-        51: "What are your opinions on a LOTR movie told from the perspective of a villain?",
+        51: "Do you want a LOTR story told from the perspective of a villain?",
         52: "Which character from The Hobbit deserves more recognition?",
         53: "What is your favorite quote from LOTR?",
         54: "What legacy does LOTR leave?",
@@ -339,7 +339,7 @@ def lotr_question(event, context):
         282: "What's your vibe on the dwarves in Middle-earth?",
         283: "Which creature in Middle-earth would you least want to encounter?",
         284: "Which redemption story is greatest in The Hobbit?",
-        285: "If you've never read The Lord of the Rings books, why not?",
+        285: "Which scene in LOTR gave you goosebumps the first time you saw it?",
         286: "Should they make more animated LOTR content?",
         # 287: "What is the biggest moment of despair in The Hobbit?",
         287: "Tweet like you're Tolkien",
@@ -378,7 +378,7 @@ def lotr_question(event, context):
         318: "Did Dominic Monaghan do a good job portraying Merry?",
         321: "Did Richard Armitage do a good job portraying Thorin?",
         322: "What are your opinions on Gandalf's resurrection?",
-        323: "Lothlórien or Rivendell?",
+        323: "Where would you rather live: Lothlórien or Rivendell?",
         324: "What do you love most about LOTR?",
         325: "Tweet like you live in Gondor",
         326: "Tweet like you live in Isengard",
@@ -780,16 +780,13 @@ def lotr_question(event, context):
         352: "None",
         353: "None",
     }
-
-    if random.randint(1,5) == 1:
-        #this sends question to Middle Earth Meems 1/5 of the time, LOTR Daily 4/5 of the time
-        API_KEY = "
-        API_SECRET_KEY =
-        ACCESS_TOKEN =
-        ACCESS_TOKEN_SECRET =
-        BEARER_TOKEN =
+    send = random.randint(1,7)
+    if send == 1:
+        #this sends question to Middle Earth Memes 1/7 of the time, Tolkien Memes 1/7 of the time, LOTR Daily 5/7 of the time
+        #Middle Earth Meme
 
     else:
+        #LOTR Daily
         API_KEY = os.environ["API_KEY"]
         API_SECRET_KEY = os.environ["API_SECRET_KEY"]
         ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
