@@ -83,7 +83,7 @@ questions = {
     74: "What are your opinions on Rey being a Skywalker?",
     75: "Everyone has different opinions on different parts of Star Wars. That is okay. We should not hate each other or be rude because of different points of view. We can have open discussion and conversation, and if we disagree we can do so politely.",
     # todo maybe delete
-    76: "Sith or Jedi?",
+    76: "Tweet like you live on Naboo",
     77: "Should Disney make a new Star Wars trilogy? When would it be set?",
     78: "What are your opinions on Anakin in the prequels? No hate, just genuinely curious.",
     79: "Tweet like you're Han Solo",
@@ -239,7 +239,7 @@ questions = {
     228: "Did you like the Kenobi Show's portrayal of Darth Vader?",
     229: "Did you like the Kenobi Show's portrayal of Owen and Beru Lars?",
     230: "Did you enjoy the Kenobi Show's portrayal of the Inquisitors?",
-    231: "Did you like the Kenobi Show's portrayal of Senator Organa?",
+    231: "Do you want to see Senator Organa return in future projects?",
     232: "Did you like the con-Jedi guy in the Obi-Wan Kenobi show?",
     233: "What are your thoughts on Darth Jar Jar?",
     234: "Rebellion or Resistance?",
@@ -395,7 +395,7 @@ questions = {
     380: "Did you enjoy seeing Asajj Ventress in Tales of the Underworld?",
     381: "Did you enjoy seeing Cad Bane in Tales of the Underworld?",  # maybe delete
     382: "Do you want to see Ahmed Best return in future projects?",
-    383: "Did you enjoy seeing seeing Cad Bane in live action?",
+    383: "Do you want to see Cad Bane return in future projects?",
     384: "Did you enjoy seeing seeing Ezra Bridger in live action?",
     385: "Did you enjoy seeing seeing Sabine Wren in live action?",
     386: "Did you enjoy seeing Hera Syndulla in live action?",
@@ -446,7 +446,7 @@ questions = {
     428: "What is your favorite Star Wars battle?",
     429: "Would you want a Star Wars story about ancient Jedi?",
     430: "Who's your favorite bounty hunter besides Boba Fett?",
-    431: "Did you like the portrayal of the New Republic in Ahsoka?",
+    431: "Tweet like you live on Coruscant",
     432: "What is your favorite Star Wars fan theory?",  # kinda have similar question, idk
     433: "Would you rather wield a double-bladed lightsaber or dual lightsabers?",
     434: "What is your favorite Star Wars quote from a droid?",
@@ -507,7 +507,7 @@ questions = {
     487: "Would you want to live on Mandalore?",
     488: "Who's your favorite Jedi Council member?",
     489: "Do you want to see more of Iden Versio in future projects?",
-    490: "What is your favorite moment from The Bad Batch series",
+    490: "Do you want to see more of Saw Gerrera in future projects?",
     491: "Who do you want to return as a Force Ghost?",
     492: "On a scale from 1-10, how would you rate The Phantom Menace?",
     493: "On a scale from 1-10, how would you rate Attack of the Clones?",
@@ -573,7 +573,7 @@ questions = {
     553: "This is the way",
     554: "Which version do you prefer?",
     555: "Which Jabba was the best?",
-    556: "Is Jim Cummings a good voice for Hondo?",
+    556: "It is never okay to bully/harass an actor or actress because of the character they played.",
     557: "Tweet like you're Ahsoka Tano",
     558: "Tweet like you're Captain Phasma",
     559: "Tweet like you're Count Dooku",
@@ -590,6 +590,25 @@ questions = {
     570: "Tweet like you're Saw Gerrera",
     571: "Tweet like you're Thrawn",
     572: "Tweet like you're Yoda",
+    573: "Tweet like you live on Tatooine",
+    574: "Tweet like you live on Hoth",
+    575: "Tweet like you live on Endor",
+    576: "Tweet like you live on Canto Bight",
+    577: "Tweet like you live on Crait",
+    578: "Tweet like you live on Dagobah",
+    579: "Tweet like you live on Dathomir",
+    580: "Tweet like you live on Geonosis",
+    581: "Tweet like you live on Jakku",
+    582: "Tweet like you live on Kamino",
+    583: "Tweet like you live on Mustafar",
+    584: "Tweet like you live on Kessel",
+    585: "Tweet like you live on Scarif",
+    586: "Tweet like you work in the Death Star",
+    587: "Tweet like you work in Starkiller Base",
+    588: "Tweet like you live on Mandalore",
+    589: "Tweet like you live on Yavin 4",
+
+
 
     # todo next do more favorite quote or iconic line from main characters
     # todo or next do some what - if's like Obiwan turnign to darkside or something? idk something to get conversation
@@ -639,7 +658,7 @@ def SW_question(event, context):
         36: "questions/movie_Solo/",
         37: "questions/char_Bendu/",
         38: "None",
-        39: "None",
+        39: "questions/other_Jedi/",
         40: "questions/other_SithLordall/",
         41: "None",
         42: "questions/generic_clones/",
@@ -676,7 +695,7 @@ def SW_question(event, context):
         73: "questions/char_GeorgeLucas/",
         74: "questions/char_Rey/",
         75: "None",
-        76: "None",
+        76: "questions/planet_Naboo/",
         77: "None",
         78: "None",
         79: "questions/char_HanSolo",
@@ -1031,7 +1050,7 @@ def SW_question(event, context):
         428: "None",
         429: "None",
         430: "None",
-        431: "None",
+        431: "questions/planet_Coruscant/",
         432: "None",
         433: "None",
         434: "None",
@@ -1075,7 +1094,7 @@ def SW_question(event, context):
         472: "questions/char_Thrawn/",
         473: "None",
         474: "None",
-        475: "None",
+        475: "questions/other_Jedi/",
         476: "questions/show_BadBatch/",
         477: "questions/show_ObiWanKenobi/",
         478: "questions/show_Ahsoka/",
@@ -1090,7 +1109,7 @@ def SW_question(event, context):
         487: "questions/planet_Mandalore/",
         488: "None",
         489: "None",
-        490: "None",
+        490: "questions/char_SawGerrera/",
         491: "None",
         492: "questions/movie_ep1/",
         493: "questions/movie_ep2/",
@@ -1156,7 +1175,7 @@ def SW_question(event, context):
         553: "questions/other_thisisthewaythread/",
         554: "questions/other_ep6endings/",
         555: "questions/other_JabbaVersion/",
-        556: "questions/char_Hondo/",
+        556: "None",
         557: "questions/char_Ahsoka(CW)",
         558: "questions/char_CaptainPhasma",
         559: "questions/char_CountDooku",
@@ -1173,8 +1192,25 @@ def SW_question(event, context):
         570: "questions/char_SawGerrera",
         571: "questions/char_Thrawn",
         572: "questions/char_Yoda",
-
+        573: "questions/planet_Tatooine/",
+        574: "questions/planet_Hoth/",
+        575: "questions/planet_Endor/",
+        576: "questions/planet_CantoBight/",
+        577: "questions/planet_Crait/",
+        578: "questions/planet_Dagobah/",
+        579: "questions/planet_Dathomir/",
+        580: "questions/planet_Geonosis/",
+        581: "questions/planet_Jakku/",
+        582: "questions/planet_Kamino/",
+        583: "questions/planet_Mustafar/",
+        584: "questions/planet_Kessel/",
+        585: "questions/planet_Scarif/",
+        586: "None",
+        587: "None",
+        588: "questions/planet_Mandalore/",
+        589: "questions/planet_Yavin4/",
     }
+
 
     bucket_name = 'starwars.photos'
     file_key = 'notes/SW_questions.txt'
@@ -1227,7 +1263,7 @@ def SW_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 350:
+        if len(question_indices) > 400:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)

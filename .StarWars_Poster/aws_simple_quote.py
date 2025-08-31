@@ -100,7 +100,7 @@ def save_history(hist):
 
 def postQuote(event, context):
     # Added code for 50% chance to call SW_art
-    if random.random() < 0.5:
+    if random.random() < 0.0:
         lambda_client = boto3.client('lambda')
         lambda_client.invoke(
             FunctionName='arn:aws:lambda:us-east-1:975050204241:function:SW_art',
