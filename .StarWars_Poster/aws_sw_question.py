@@ -5,25 +5,6 @@ import os
 import json
 import re
 
-# X credentials stored in env variables
-API_KEY = os.environ["API_KEY"]
-API_SECRET_KEY = os.environ["API_SECRET_KEY"]
-ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
-ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
-BEARER_TOKEN = os.environ["BEARER_TOKEN"]
-
-auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-api = tweepy.API(auth)
-
-client = tweepy.Client(
-    bearer_token=BEARER_TOKEN,
-    consumer_key=API_KEY,
-    consumer_secret=API_SECRET_KEY,
-    access_token=ACCESS_TOKEN,
-    access_token_secret=ACCESS_TOKEN_SECRET
-)
-
-
 questions = {
     1: "Rebellion or Empire?",
     2: "Stormtrooper or Clone Trooper?",
@@ -84,9 +65,10 @@ questions = {
     57: "What are your opinions on the new (2017) Star Wars Battlefront 2 game?",
     58: "What are your opinions on the original Star Wars Battlefront 2 game?",
     59: "What are your opinions on the Lego Star Wars games?",
-    60: "Have you played the Skywalker Saga game?", #i change from opinions it had 28comments, maybe go back idk
+    60: "Have you played the Skywalker Saga game?",  # i change from opinions it had 28comments, maybe go back idk
     61: "What are your opinions on Jedi Fallen Order?",
-    62: "Have you ever played the Star Wars Squadrons game (2020)?", #todo maybe go back to "opinion" it had 46 comments and 200 likes and 14k views
+    62: "Have you ever played the Star Wars Squadrons game (2020)?",
+    # todo maybe go back to "opinion" it had 46 comments and 200 likes and 14k views
     63: "What are your opinions on the Star Wars: Knights Of The Old Republic game?",
     64: "Did you enjoy Jedi Survivor as a SW video game?",
     65: "Do you want to see Cal Kestis in future projects?",
@@ -99,7 +81,8 @@ questions = {
     72: "What are your opinions on Dave Filoni?",
     73: "What are your opinions on George Lucas?",
     74: "What are your opinions on Rey being a Skywalker?",
-    75: "Everyone has different opinions on different parts of Star Wars. That is okay. We should not hate each other or be rude because of different points of view. We can have open discussion and conversation, and if we disagree we can do so politely.", #todo maybe delete
+    75: "Everyone has different opinions on different parts of Star Wars. That is okay. We should not hate each other or be rude because of different points of view. We can have open discussion and conversation, and if we disagree we can do so politely.",
+    # todo maybe delete
     76: "Sith or Jedi?",
     77: "Should Disney make a new Star Wars trilogy? When would it be set?",
     78: "What are your opinions on Anakin in the prequels? No hate, just genuinely curious.",
@@ -111,7 +94,7 @@ questions = {
     84: "Did Mace Windu survive the fall in ROTS?",
     85: "Who is the best Star Wars couple?",
     86: "What is your favorite Star Wars Trilogy?",
-    87: "What is your least favorite Star Wars live action TV show?", #todo maybe delete
+    87: "What is your least favorite Star Wars live action TV show?",  # todo maybe delete
     88: "What is your favorite Star Wars animated TV show?",
     89: "Did you like Yoda as a Puppet in Ep 1?",
     90: "Did you like Ray Park as Darth Maul",
@@ -123,7 +106,7 @@ questions = {
     96: "Do you want to see Kanan Jarrus in future projects?",
     97: "Would you want to join The First Order?",
     98: "What are your opinions on the Plagueis book?",
-    99: "Have you read any of the SW novelizations?", #todo maybe delete this one
+    99: "Have you read any of the SW novelizations?",  # todo maybe delete this one
     100: "Have you read any of the Star Wars comics?",
     101: "If you could change one thing about Count Dooku, what would it be?",
     102: "What are your opinions on the Star Wars: Galaxy's Edge theme park?",
@@ -140,7 +123,7 @@ questions = {
     113: "What is your favorite Star Wars species?",
     114: "What is your favorite Star Wars ship?",
     115: "What would have happened if Anakin had never turned to the Dark Side?",
-    116: "Have you read any of the Star Wars books?", #todo maybe delete
+    116: "Have you read any of the Star Wars books?",  # todo maybe delete
     117: "What is your favorite Star Wars book?",
     118: "Which is your favorite Star Wars comic series?",
     119: "What is your favorite Star Wars planet?",
@@ -162,12 +145,12 @@ questions = {
     135: "Would you want to see a Star Wars story set during the Old Republic era?",
     136: "Did you like the Sith in the prequels?",
     137: "What are your thoughts on the concept of the World Between Worlds?",
-    138: "Do you want to see Obi-Wan Kenobi and Duchess Satine together?", #todo if this doesn't perform well, delete
+    138: "Do you want to see Obi-Wan Kenobi and Duchess Satine together?",  # todo if this doesn't perform well, delete
     139: "Do you want a Lando TV show staring Donald Glover?",
     140: "What are your opinions on Anakin's fall to the dark side?",
     141: "Do you wanna see more about the Clones after Order 66?",
     142: "How do you feel about Lando Calrissian’s role in the original trilogy?",
-    143: "What is your favorite non-canon Star Wars story?", #maybe delete
+    143: "What is your favorite non-canon Star Wars story?",  # maybe delete
     # pictures below here
     144: "What are your opinions on Mace Windu?",
     145: "What are your opinions on Chancellor Valorum?",
@@ -178,7 +161,7 @@ questions = {
     150: "What are your opinions on Jango Fett?",
     151: "What are your thoughts on Count Dooku?",
     152: "What are your opinions on General Grievous?",
-    153: "Do you want to see Dexter Jettster return in future projects?", #if this does bad delete
+    153: "Do you want to see Dexter Jettster return in future projects?",  # if this does bad delete
     154: "What are your opinions on the Kaminoans?",
     155: "Chopper or R2-D2?",
     156: "Did you like Natalie Portman as Padmé Amidala?",
@@ -198,13 +181,13 @@ questions = {
     170: "What are your thoughts on Tobias Beckett in the Han Solo movie?",
     171: "Did you like L3-37 in the Han Solo movie?",
     172: "Did you like James Earl Jones as the voice of Darth Vader?",
-    173: "Did you like Enfys Nest from the Han Solo Movie?", #todo maybe reword or delete
+    173: "Did you like Enfys Nest from the Han Solo Movie?",  # todo maybe reword or delete
     174: "Did you like Maul's cameo in the Han Solo Movie?",
     175: "Did you like how Han Solo got his name in the Han Solo Movie?",
     176: "Did you like Han Solo's origin story in the Han Solo Movie?",
     177: "Should we get a sequel to the Han Solo Movie?",
     178: "Did you like how they portrayed Luke Skywalker in the Sequel Trilogy?",
-    179: "Did you like Leia in the Sequel Trilogy?", #todo maybe reword or delete
+    179: "Did you like Leia in the Sequel Trilogy?",  # todo maybe reword or delete
     180: "Did you like how they portrayed Han Solo in the Sequel Trilogy?",
     181: "Did you enjoy seeing R2-D2 and C-3PO in the Sequels?",
     182: "Did you like Poe Dameron?",
@@ -212,7 +195,7 @@ questions = {
     184: "What are your thoughts on Rey?",
     185: "What are your thoughts on Maz Kanata?",
     186: "What are your thoughts on Snoke in the Sequels?",
-    187: "Do you want to see General Hux in future projects?", #maybe delete
+    187: "Do you want to see General Hux in future projects?",  # maybe delete
     188: "What are your thoughts on Iden Versio?",
     189: "What are your thoughts on J. J. Abrams?",
     190: "What are your thoughts on Rian Johnson?",
@@ -240,15 +223,15 @@ questions = {
     212: "Did you enjoy seeing Bill Burr appearing in The Mandalorian",
     213: "what is a star war?",
     214: "Is the Ahsoka show just Rebels Season 5?",
-    215: "Did you like Jod Na Nawood (Jude Law) from Skeleton Crew?", #todo maybe rewrite or delete
+    215: "Did you like Jod Na Nawood (Jude Law) from Skeleton Crew?",  # todo maybe rewrite or delete
     216: "Do you like Omega from The Bad Batch?",
     217: "Do you like Crosshair from The Bad Batch?",
-    218: "Did you like Hunter from The Bad Batch?", #todo maybe reword or delete
+    218: "Did you like Hunter from The Bad Batch?",  # todo maybe reword or delete
     219: "Did the Ahsoka show live up to your expectations?",
     220: "Do you like Wrecker from The Bad Batch?",
     221: "Did the Obi-Wan Kenobi show live up to your expectations?",
     222: "What are your thoughts on the Bad Batch as a whole?",
-    223: "Did you enjoy the Bad Batch's portrayal of Order 66?", #todo maybe delete
+    223: "Did you enjoy the Bad Batch's portrayal of Order 66?",  # todo maybe delete
     224: "What is the most iconic line from Darth Vader?",
     225: "Did the Acolyte show live up to your expectations?",
     226: "Did you like Leia's portrayal in the Kenobi Show?",
@@ -278,7 +261,7 @@ questions = {
     250: "What do you think makes a great Star Wars villain?",
     251: "Would you want a Star Wars story told from the perspective of a smuggler?",
     252: "What role do you think music plays in enhancing the Star Wars experience?",
-    253: "Do you like droid culture?", #todo maybe delete
+    253: "Do you like droid culture?",  # todo maybe delete
     # maybe get rid of 'in the star wars universe' idk
     254: "If you're stuck in the Star Wars universe for 24 hours, what's the first thing you would do?",
     255: "What will Star Wars look like in 30 years?",
@@ -290,7 +273,7 @@ questions = {
     260: "What are your opinions on Admiral Holdo?",
     261: "Do you enjoy learning about Star Wars Lore?",
     262: "Did you like Darth Maul's return in The Clone Wars?",
-    263: "Did you like the Nightsister magic in Ahsoka?", #test
+    263: "Did you like the Nightsister magic in Ahsoka?",  # test
     264: "Do you like the Expanded Universe (EU)?",
     265: "What are your opinions on Star Wars: Starfighter coming May 2027?",
     266: "What are your opinions on the Clone Wars movie?",
@@ -327,7 +310,7 @@ questions = {
     297: "Battle of Endor or Battle of Yavin?",
     298: "Battle of Geonosis or Battle of Naboo?",
     299: "What are your opinions of Crait?",
-    300: "Would you want to live on Geonois?", #todo maybe delete
+    300: "Would you want to live on Geonois?",  # todo maybe delete
     301: "What are your opinions of Kamino?",
     302: "What are your opinions of Mustafar?",
     303: "What are your opinions of Scarif?",
@@ -337,17 +320,18 @@ questions = {
     307: "Would you want to live on Coruscant?",
     308: "Would you want to live on Naboo?",
     309: "What are your opinions of the Forest Moon of Endor?",
-    310: "Is Yavin 4 a good rebel base?", #todo maybe re-word, the generic "what are your opinions on..." didn't do that good
+    310: "Is Yavin 4 a good rebel base?",
+    # todo maybe re-word, the generic "what are your opinions on..." didn't do that good
     311: "What are your opinions of Dagobah?",
     312: "What are your opinions of Bespin?",
     313: "OPINION: The Clone Wars show is my favorite Star Wars content. What do you think?",
     314: "Would you want to live on Jedha?",
     315: "What are your opinions of Dathomir?",
     316: "What are your opinions of Starkiller Base?",
-    317: "Do you want to see more of Mandalore in the future?", #todo maybe delete
+    317: "Do you want to see more of Mandalore in the future?",  # todo maybe delete
     318: "What is your favorite quote from Obi-Wan Kenobi?",
     319: "Would you want to live on Umbara?",
-    320: "Did you like seeing Kessel in the Solo movie?", #todo maybe rewrite or delete
+    320: "Did you like seeing Kessel in the Solo movie?",  # todo maybe rewrite or delete
     321: "What are your opinions of Felucia?",
     322: "What is your favorite quote from Darth Vader?",
     323: "What are your opinions of Utapau?",
@@ -368,7 +352,7 @@ questions = {
     337: "First Order or Galactic Empire?",
     338: "What are your opinions on the First Order?",
     339: "Do you support the Galactic Empire?",
-    340: "Do you support the Rebel Alliance?", #todo maybe change idk
+    340: "Do you support the Rebel Alliance?",  # todo maybe change idk
     341: "What are your opinions on Wedge Antilles?",
     342: "What are your opinions on Grand Admiral Thrawn?",
     343: "What are your opinions on Grand Moff Tarkin?",
@@ -379,11 +363,11 @@ questions = {
     348: "Do you want to see Luminara Unduli return in future projects?",
     349: "Do you want to see more of Barriss Offee?",
     350: "Did you like Ahsoka in The Clone Wars?",
-    351: "Do you want to see Asajj Ventress in future projects?", #todo maybe delete
+    351: "Do you want to see Asajj Ventress in future projects?",  # todo maybe delete
     352: "What are your opinions on Cad Bane?",
     353: "What are your opinions on Nute Gunray?",
-    354: "Do you want more of a backstory on Wat Tambor?", #todo maybe delete
-    355: "Do you want to see more Bo-Katan?", #todo maybe delete
+    354: "Do you want more of a backstory on Wat Tambor?",  # todo maybe delete
+    355: "Do you want to see more Bo-Katan?",  # todo maybe delete
     356: "Did you like Sabine Wren in Rebels?",
     357: "What are your opinions on Zeb?",
     358: "Did you like Agent Kallus in Rebels?",
@@ -406,16 +390,17 @@ questions = {
     375: "Did you enjoy seeing Count Dooku in the Tales of the Jedi?",
     376: "What are your opinions on Yaddle?",
     377: "If Disney sold Star Wars, who would you want to buy it?",
-    378: "What Star Wars Lego sets do you own?", #maybe reword or delete
+    378: "What Star Wars Lego sets do you own?",  # maybe reword or delete
     379: "Did you enjoy seeing Bariss Offee in Tales of the Empire?",
     380: "Did you enjoy seeing Asajj Ventress in Tales of the Underworld?",
-    381: "Did you enjoy seeing Cad Bane in Tales of the Underworld?", #maybe delete
+    381: "Did you enjoy seeing Cad Bane in Tales of the Underworld?",  # maybe delete
     382: "Do you want to see Ahmed Best return in future projects?",
     383: "Did you enjoy seeing seeing Cad Bane in live action?",
     384: "Did you enjoy seeing seeing Ezra Bridger in live action?",
     385: "Did you enjoy seeing seeing Sabine Wren in live action?",
     386: "Did you enjoy seeing Hera Syndulla in live action?",
-    387: "Do you want to see more of Zeb in future projects?", #todo maybe reword, i already tried "did you enjoy seeing Zeb in live action?" but it got 10 comments
+    387: "Do you want to see more of Zeb in future projects?",
+    # todo maybe reword, i already tried "did you enjoy seeing Zeb in live action?" but it got 10 comments
     388: "What animated characters would you want to see in live action?",
     389: "Did the Andor show live up to your expectations?",
     390: "Who is your favorite Smuggler in Star Wars?",
@@ -434,7 +419,8 @@ questions = {
     403: "Do you want a season 2 of Ahsoka?",
     404: "Do you want a season 2 of Skeleton Crew?",
     405: "What is the most iconic line from Yoda?",
-    406: "What is the most iconic line from Obi-Wan Kenobi?", # todo i have an favorite quote from obi wan, can't have both
+    406: "What is the most iconic line from Obi-Wan Kenobi?",
+    # todo i have an favorite quote from obi wan, can't have both
     407: "What is the most iconic line from Padme?",
     408: "What is the most iconic line from Ahsoka Tano?",
     409: "What is the most iconic line from Mace Windu?",
@@ -448,8 +434,8 @@ questions = {
     417: "Did Mandalorian Season 3 live up to your expectations?",
     418: "If you could change one thing about Ahsoka Tano, what would it be?",
     419: "Do you want to see Poe Dameron in future projects?",
-    #everything below here is a test / new
-    420: "Which inquisitor do you want to see more?", #todo maybe delete, or reword
+    # everything below here is a test / new
+    420: "Which inquisitor do you want to see more?",  # todo maybe delete, or reword
     421: "Would you rather be Force-sensitive or a skilled pilot?",
     422: "Who's your favorite character from the Clone Wars era?",
     423: "What are your opinions on the Star Wars: Force Unleashed games?",
@@ -461,7 +447,7 @@ questions = {
     429: "Would you want a Star Wars story about ancient Jedi?",
     430: "Who's your favorite bounty hunter besides Boba Fett?",
     431: "Did you like the portrayal of the New Republic in Ahsoka?",
-    432: "What is your favorite Star Wars fan theory?", #kinda have similar question, idk
+    432: "What is your favorite Star Wars fan theory?",  # kinda have similar question, idk
     433: "Would you rather wield a double-bladed lightsaber or dual lightsabers?",
     434: "What is your favorite Star Wars quote from a droid?",
     435: "Who's your favorite Jedi who survived Order 66?",
@@ -497,7 +483,7 @@ questions = {
     463: "What Star Wars opinion do you have that will have people like this?",
     464: "What is your least favorite Star Wars weapon?",
     465: "What is your least favorite Star Wars battle?",
-    466: "What is your least favorite Star Wars location?", #todo this seems to perform well
+    466: "What is your least favorite Star Wars location?",  # todo this seems to perform well
     467: "Who is your least favorite Star Wars character?",
     468: "What is your least favorite Star Wars movie?",
     469: "What is your least favorite Star Wars TV show?",
@@ -605,18 +591,13 @@ questions = {
     571: "Tweet like you're Thrawn",
     572: "Tweet like you're Yoda",
 
-
-
-
-
-
-
-            #todo next do more favorite quote or iconic line from main characters
-            #todo or next do some what - if's like Obiwan turnign to darkside or something? idk something to get conversation
+    # todo next do more favorite quote or iconic line from main characters
+    # todo or next do some what - if's like Obiwan turnign to darkside or something? idk something to get conversation
 }
-def SW_question(event, context):
-    #maybe questions if you could change one thing about [character] what would it be?
 
+
+def SW_question(event, context):
+    # maybe questions if you could change one thing about [character] what would it be?
 
     # s3 bucket files look up
     lookup = {
@@ -1195,10 +1176,37 @@ def SW_question(event, context):
 
     }
 
-
     bucket_name = 'starwars.photos'
     file_key = 'notes/SW_questions.txt'
     s3 = boto3.client('s3')
+
+    if random.randint(1, 7) == 1:
+        # this sends question to Across The Galaxy 1/7 of the time, Star Wars Daily 6/7 pf the time
+        API_KEY =
+        API_SECRET_KEY =
+        ACCESS_TOKEN =
+        ACCESS_TOKEN_SECRET =
+        BEARER_TOKEN =
+
+    else:
+        API_KEY = os.environ["API_KEY"]
+        API_SECRET_KEY = os.environ["API_SECRET_KEY"]
+        ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+        ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
+        BEARER_TOKEN = os.environ["BEARER_TOKEN"]
+
+    # X credentials stored in env variables
+
+    auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+    api = tweepy.API(auth)
+
+    client = tweepy.Client(
+        bearer_token=BEARER_TOKEN,
+        consumer_key=API_KEY,
+        consumer_secret=API_SECRET_KEY,
+        access_token=ACCESS_TOKEN,
+        access_token_secret=ACCESS_TOKEN_SECRET
+    )
 
     try:
         # Fetch the current file from S3
