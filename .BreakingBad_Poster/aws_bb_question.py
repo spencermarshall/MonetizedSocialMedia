@@ -73,7 +73,7 @@ def BB_question(event, context):
         43: "If Jimmy and Kim had a baby, what would the name be?",
         44: "Who is your least favorite character in Breaking Bad?",
         45: "What is your favorite Walter White quote?",
-        46: "What is your favorite Jesse Pinkman quote?",
+        46: "What is Jesse Pinkman's most iconic line?",
         47: "What is your favorite Saul Goodman quote?",
         48: "What are your opinions on Ted Beneke?",
         # 49: "What’s your take on Jimmy’s legal evolution in BCS?",
@@ -238,7 +238,7 @@ def BB_question(event, context):
         196: "What’s your take on Skyler’s involvement in the money laundering?",
         197: "Should there be a spin-off focused on Gus?",
         198: "What’s your favorite Mike Ehrmantraut quote?",
-        199: "Should Howard have been nicer to Jimmy?",
+        199: "When did you realize Breaking Bad wasn’t just another show?",
         200: "Who is the funniest side character in Breaking Bad?",
         201: "What’s your favorite Hank Schrader quote?",
         202: "What’s your favorite Saul Goodman quote?",
@@ -269,13 +269,69 @@ def BB_question(event, context):
         227: "Tweet like you're Todd",
         228: "What are your opinions on Los Pollos Hermanos",
 
+        #todo everything below this is test or demo
+
+        229: "What are your opinions on the underground lab as a whole?",
+        230: "What’s your take on Jesse’s relationship with Andrea?",
+        231: "Who had the best wardrobe in Breaking Bad?",
+        232: "Should Mike have trusted Walter more?",
+        233: "Who had the best one-liner in Breaking Bad?",
+        234: "Who had the best wardrobe in Better Call Saul?",
+        235: "What’s the most intense chase scene in BCS?",
+        236: "What’s the most intense chase scene in Breaking Bad?",
+        237: "What are your opinions on the superlab construction?",
+        238: "Who is the most loyal character in the Breaking Bad universe?",
+        239: "Was Gus Fring's revenge on the cartel satisfying?",
+        240: "Should there be a spin-off about the Salamanca family?",
+        241: "Tweet like you're Skinny Pete",
+        242: "Tweet like you're Badger",
+        243: "Tweet like you're Combo",
+        244: "Did you like the way Hank discovered Walter's secret?",
+        245: "What are your opinions on the way Walter handled his cancer diagnosis?",
+        246: "Who is the smartest character in BCS?",
+        247: "What’s the most underrated quote from Breaking Bad?",
+        248: "What’s the most underrated quote from Better Call Saul?",
+        249: "Who had the worst luck in the Breaking Bad universe?",
+        250: "Was Lalo the scariest villain in BCS?",
+        251: "Tweet like you're Gale Boetticher",
+        252: "What are your thoughts on the Mesa Verde scam?",
+        253: "What’s the best plot twist in Breaking Bad?",
+        254: "Should Skyler have divorced Walter earlier?",
+        255: "Tweet like you're Hector Salamanca",
+        256: "Was Mike's granddaughter storyline necessary?",
+        257: "What’s the funniest scam Jimmy pulled?",
+        258: "Who had the best death scene in Breaking Bad?",
+        259: "Did you like the way Gus walked out after the explosion?",
+        260: "Should there be a spin-off about Mike's past?",
+        261: "Who is the best sidekick in Breaking Bad?",
+        262: "Tweet like you're Krazy-8",
+        263: "Tweet like you're Steven Gomez",
+        264: "What’s your favorite cold open in Breaking Bad?",
+        265: "What are your opinions on the pink teddy bear?",
+        266: "What’s your favorite cold open in Better Call Saul?",
+        267: "Was Todd the creepiest character?",
+        268: "Did Marie Schrader get a fitting end to her story?",
+        269: "What is the greatest lesson you learned from watching Brekaing Bad?",
+        270: "Is there any character you wish had crossed over between shows but never did?",
+        271: "What's one detail you think most people miss?",
+        272: "What was the most clever scam Jimmy and Kim ever pulled off?",
+        273: "Which character's fashion sense was the best? Which was the worst?",
+        274: "Post an unpopular Breaking Bad universe opinion that is 100% correct.",
+        275: "You have to spend a weekend with one character. Who do you choose and why?",
+        276: "Which show had the better series finale: Breaking Bad or Better Call Saul?",
+        277: "If you could prevent one death in the entire universe, who would it be and why?",
+        278: "What do you think happened to Huell Babineaux after the events of Breaking Bad?",
+        279: "Which character deserved more screen time and why?",
+        280: "What's a small BB detail you only noticed after multiple rewatches.",
+        281: "Did you feel any sympathy for Lydia?",
+        282: "What are your thoughts on Nacho's relationship with his father?",
+
 
         # 181: "What are your opinions on how Money Laundering is portrayed?",
         # 182: "Was it a smart move for them to buy the Car Wash?",
 
         # 188: "What are your opinions on the RV that Walter and Jesse used?",
 
-        # 191: "What are your opinions on the scene where Walter and Jesse first meet?",
         # 192: "Do you think Walter would have lived and recovered if he had never gotten into the meth business?",
 
         # 200: "Did you enjoy Jesse's magnet idea with the evidence room?",
@@ -516,7 +572,56 @@ def BB_question(event, context):
         230: "None",
         231: "None",
         232: "None",
-        233: "None"
+        233: "None",
+        234: "None",
+        235: "None",
+        236: "None",
+        237: "None",
+        238: "None",
+        239: "None",
+        240: "None",
+        241: "questions/char_SkinnyPete/",
+        242: "questions/char_Badger/",
+        243: "questions/char_Combo/",
+        244: "None",
+        245: "None",
+        246: "None",
+        247: "None",
+        248: "None",
+        249: "None",
+        250: "None",
+        251: "questions/char_Gale/",
+        252: "None",
+        253: "None",
+        254: "None",
+        255: "questions/char_HectorSalamanca/",
+        256: "None",
+        257: "None",
+        258: "None",
+        259: "None",
+        260: "None",
+        261: "None",
+        262: "questions/char_Krazy8/",
+        263: "questions/char_StevenGomez/",
+        264: "None",
+        265: "None",
+        266: "None",
+        267: "None",
+        268: "None",
+        269: "None",
+        270: "None",
+        271: "None",
+        272: "None",
+        273: "None",
+        274: "None",
+        275: "None",
+        276: "None",
+        277: "None",
+        278: "None",
+        279: "None",
+        280: "None",
+        281: "None",
+        282: "None",
     }
 
     bucket_name = 'bb.photos'
@@ -541,7 +646,7 @@ def BB_question(event, context):
         path = lookup[index]
 
         question_indices.insert(0, index)
-        if len(question_indices) > 150:
+        if len(question_indices) > 180:
             question_indices.pop()  # Remove the last element
 
         updated_content = json.dumps(question_indices)
@@ -563,6 +668,8 @@ def BB_question(event, context):
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
+                if random.random() < 0.2:
+                    replacement = "honest " + replacement
 
                 pattern = r'\bthoughts\b'
                 question = re.sub(pattern, replacement, question)
@@ -573,7 +680,7 @@ def BB_question(event, context):
                 replacement = "thoughts"
                 if random.random() < 0.5:
                     replacement = "opinions"
-                if random.random() < 0.5:
+                if random.random() < 0.2:
                     replacement = "honest " + replacement
                 pattern = r'\bopinions\b'
                 question = re.sub(pattern, replacement, question)

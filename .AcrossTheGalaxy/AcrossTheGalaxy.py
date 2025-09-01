@@ -87,9 +87,9 @@ def AcrossTheGalaxy(event, context):
     tweet_text = ""
 
     ran = random.random()
-    if ran < 0.36:
+    if ran < 0.30:
         tweet_text = "Star Wars"
-    elif ran < 0.4:
+    elif ran < 0.333:
         tweet_text = "#StarWars"
     client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
