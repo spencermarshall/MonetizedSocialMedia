@@ -6,7 +6,7 @@ import json
 import re
 
 questions = {
-    1: "Rebellion or Empire?",
+    1: "Who do you support: Rebellion or Empire?",
     2: "Stormtrooper or Clone Trooper?",
     3: "Tie Fighter or X-Wing?",
     4: "Prequels or Sequels?",
@@ -152,7 +152,7 @@ questions = {
     142: "How do you feel about Lando Calrissian’s role in the original trilogy?",
     143: "What is your favorite non-canon Star Wars story?",  # maybe delete
     # pictures below here
-    144: "What are your opinions on Mace Windu?",
+    144: "Do you want Mace Windu to return in future projects?",
     145: "What are your opinions on Chancellor Valorum?",
     146: "What are your opinions on Watto?",
     147: "Do you want more of a backstory of Shmi Skywalker?",
@@ -267,7 +267,7 @@ questions = {
     255: "What will Star Wars look like in 30 years?",
     256: "What are your thoughts on the Star Wars fandom?",
     257: "What role should real world politics have in Star Wars?",
-    258: "What fan theories do you like the most?",
+    258: "Tweet like you live on Yavin 4",
     259: "If you could design your own Star Wars planet, what would it look like?",
     # this performed bad last time , 5 comments, maybe delete
     260: "What are your opinions on Admiral Holdo?",
@@ -606,7 +606,7 @@ questions = {
     586: "Tweet like you work in the Death Star",
     587: "Tweet like you work in Starkiller Base",
     588: "Tweet like you live on Mandalore",
-    589: "Tweet like you live on Yavin 4",
+
 
 
 
@@ -877,7 +877,7 @@ def SW_question(event, context):
         255: "None",
         256: "None",
         257: "None",
-        258: "None",
+        258: "questions/planet_Yavin4/",
         259: "None",
         260: "questions/char_AdmiralHoldo/",
         261: "None",
@@ -1208,7 +1208,7 @@ def SW_question(event, context):
         586: "None",
         587: "None",
         588: "questions/planet_Mandalore/",
-        589: "questions/planet_Yavin4/",
+        589: "None",
     }
 
 
