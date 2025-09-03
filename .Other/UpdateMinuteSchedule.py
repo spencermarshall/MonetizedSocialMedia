@@ -24,10 +24,13 @@ ARNS = [
     "arn:aws:scheduler:us-east-1:975050204241:schedule/default/SW_art",
     "arn:aws:scheduler:us-east-1:975050204241:schedule/default/Daily_6pm",
     "arn:aws:scheduler:us-east-1:975050204241:schedule/default/LOTR_meme",
+    "arn:aws:scheduler:us-east-1:975050204241:schedule/default/TolkienMemes_Question",
     "arn:aws:scheduler:us-east-1:975050204241:schedule/default/LOTR_redditmeme_post",
     "arn:aws:scheduler:us-east-1:975050204241:schedule/default/Marvel_Question",
     "arn:aws:scheduler:us-east-1:975050204241:schedule/default/TolkienMemes",
-    "arn:aws:scheduler:us-east-1:975050204241:schedule/default/BreakingBad_redditmeme_post"
+    "arn:aws:scheduler:us-east-1:975050204241:schedule/default/MiddleEarth_Question",
+    "arn:aws:scheduler:us-east-1:975050204241:schedule/default/BreakingBad_redditmeme_post",
+    "arn:aws:scheduler:us-east-1:975050204241:schedule/default/AcrossTheGalaxy_Question"
 ]
 
 # Add your ARNs here as a list of strings, e.g., ['arn:aws:scheduler:us-east-1:123456789012:schedule/default/schedule1', 'arn:aws:scheduler:us-east-1:123456789012:schedule/default/schedule2']

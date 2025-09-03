@@ -372,7 +372,7 @@ questions = {
     357: "What are your opinions on Zeb?",
     358: "Did you like Agent Kallus in Rebels?",
     359: "What are your opinions on John Williams?",
-    360: "Did you like the Grand Inquisitor?",
+    360: "Do you want to see the Grand Inquisitor return in future projects?",
     361: "If you could change one thing about The Phantom Menace what would it be?",
     362: "If you could change one thing about Attack of the Clones what would it be?",
     363: "If you could change one thing about Revenge of the Sith what would it be?",
@@ -401,7 +401,7 @@ questions = {
     386: "Did you enjoy seeing Hera Syndulla in live action?",
     387: "Do you want to see more of Zeb in future projects?",
     # todo maybe reword, i already tried "did you enjoy seeing Zeb in live action?" but it got 10 comments
-    388: "What animated characters would you want to see in live action?",
+    388: "Tweet like you live on Mandalore",
     389: "Did the Andor show live up to your expectations?",
     390: "Who is your favorite Smuggler in Star Wars?",
     391: "Did you like the CGI used for Luke in The Mandalorian?",
@@ -605,7 +605,7 @@ questions = {
     585: "Tweet like you live on Scarif",
     586: "Tweet like you work in the Death Star",
     587: "Tweet like you work in Starkiller Base",
-    588: "Tweet like you live on Mandalore",
+    588: "",
 
 
 
@@ -1007,7 +1007,7 @@ def SW_question(event, context):
         385: "questions/char_SabineWrenLiveAction/",
         386: "questions/char_HeraLiveAction/",
         387: "questions/char_ZebLiveAction/",
-        388: "None",
+        388: "questions/planet_Mandalore/",
         389: "questions/show_Andor/",
         390: "None",
         391: "questions/char_LukeCGI/",
@@ -1207,7 +1207,7 @@ def SW_question(event, context):
         585: "questions/planet_Scarif/",
         586: "None",
         587: "None",
-        588: "questions/planet_Mandalore/",
+        588: "None",
         589: "None",
     }
 
@@ -1216,20 +1216,12 @@ def SW_question(event, context):
     file_key = 'notes/SW_questions.txt'
     s3 = boto3.client('s3')
 
-    if random.randint(1, 7) == 1:
-        # this sends question to Across The Galaxy 1/7 of the time, Star Wars Daily 6/7 of the time
-        API_KEY =
-        API_SECRET_KEY =
-        ACCESS_TOKEN =
-        ACCESS_TOKEN_SECRET =
-        BEARER_TOKEN =
 
-    else:
-        API_KEY = os.environ["API_KEY"]
-        API_SECRET_KEY = os.environ["API_SECRET_KEY"]
-        ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
-        ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
-        BEARER_TOKEN = os.environ["BEARER_TOKEN"]
+    API_KEY = os.environ["API_KEY"]
+    API_SECRET_KEY = os.environ["API_SECRET_KEY"]
+    ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+    ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
+    BEARER_TOKEN = os.environ["BEARER_TOKEN"]
 
     # X credentials stored in env variables
 

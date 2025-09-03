@@ -5,6 +5,7 @@ import os
 import json
 import re
 
+# updated LOTR questions as of 9/1/2025
 
 
 
