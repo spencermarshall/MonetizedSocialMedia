@@ -52,7 +52,7 @@ def Marvel_question(event, context):
         24: "What are your opinions on the Iron Man movies?",
         25: "What are your opinions on Avengers: Infinity War?",
         26: "What are your opinions on Avengers: Endgame?",
-        27: "What are your opinions on the Tom Holland Spider Man movies?",
+        27: "Do you like the Tom Holland Spider Man movies?",
         28: "What are your opinions on Tobey Maguire as Spider Man?",
         29: "Did you like Andrew Garfield as Spider Man?",
         30: "What are your opinions on Hulk?",
@@ -99,11 +99,11 @@ def Marvel_question(event, context):
         71: "What are your opinions on the Venom movies?",
         72: "Why do you like Marvel?",
         73: "On a scale of 1-10, how much do you like Marvel?",
-        74: "Captain America or Iron Man?",
+        74: "Who is cooler: Captain America or Iron Man?",
         75: "Thor or Loki?",
         76: "Black Widow or Scarlet Witch?",
         77: "Thanos or Ultron?",
-        78: "Wolverine or Deadpool?",
+        78: "Who is cooler: Wolverine or Deadpool?",
         79: "If you could change on thing about 'Agatha All Along', what would it be?",
         80: "Hulk or She-Hulk?",
         81: "Marvel or DC?",
@@ -325,7 +325,8 @@ def Marvel_question(event, context):
         293: "Which MCU sidekick deserves more spotlight?",
         294: "Which MCU villain should get an origin movie?",
         295: "Which Marvel villain’s design is the coolest?",
-        296: "Which MCU movie should get a remaster/extended cut?",
+        # 296: "Which MCU movie should get a remaster/extended cut?",
+        296: "What are your opinions on the Sony Spider-Man Universe?",
         297: "What are your opinions on the Avengers: Age of Ultron movie?",
         298: "On a scale from 1-10, how would you rate Avengers: Age of Ultron?",
         299: "What are your opinions on the Echo TV show?",
@@ -345,7 +346,7 @@ def Marvel_question(event, context):
         313: "What are your opinions on the Deadpool & Wolverine movie?",
         314: "On a scale from 1-10, how would you rate Deadpool & Wolverine?",
         315: "Do you like the dynamic between Deadpool and Wolverine?",
-        316: "What are your opinions on the Fantastic Four's dynamic as a team?",
+        316: "Do you like the Fantastic Four's dynamic as a team?", #maybe delete
         317: "Which Fantastic Four member is your favorite?",
         318: "If you could team up two Marvel characters who haven't teamed up yet, who would they be?",
         319: "What are your opinions on the Ant-Man and the Wasp: Quantumania movie?",
@@ -361,7 +362,7 @@ def Marvel_question(event, context):
         329: "On a scale from 1-10, how would you rate Spider-Man: Far From Home?",
         330: "What are your opinions on Mysterio?",
         331: "Did you like Jake Gyllenhaal as Mysterio?",
-        332: "What are your opinions on the Sony Spider-Man Universe?",
+
 
 
 
