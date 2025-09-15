@@ -27,7 +27,7 @@ quotes = {
     5: "It's over Anakin, I have the High Ground.",
     6: "Good soldiers follow orders.",
     # 7: "Execute Order 66", #todo i moved this to main questions
-    7: "",
+    7: "Do it.",
     8: "No, I am your father.",
     9: "Do or do not, there is no try.",
     10: "Help me Obi-Wan Kenobi. You're my only hope.",
@@ -57,8 +57,8 @@ quotes = {
     34: "So this is how liberty dies... with thunderous applause.",
     35: "Only a Sith deals in absolutes.", #keep
     36: "I sense a plot to destroy the Jedi.", #keep
-    37: "",
-    38: "",
+    37: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.", #keep
+    38: "You're a good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
     39: "I can bring you in warm, or I can bring you in cold.",
     40: "What about the droid attack on the wookies?", #keep
     41: "I'm a Mandalorian. Weapons are part of my religion.",
@@ -67,9 +67,7 @@ quotes = {
     44: "I am a Jedi, like my father before me.",
     45: "We're just clones, sir. We're meant to be expendable.", #keep
     46: "Clones, bred for combat. All part of the plan... THE Plan. The only Plan that matters. Not even I was made aware of its grand design, but I played my part. And do you know what happened to me? I was cast aside. I was forgotten. But I survived, and I can thrive in the chaos that is to come.",
-    47: "Do it.",
-    48: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.", #keep
-    49: "You're a good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
+
 }
 
 
