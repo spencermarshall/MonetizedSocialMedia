@@ -31,15 +31,15 @@ def post_bb_quote(event, context):
         )
         return "called meme"
     breaking_bad_quotes = {
-        1: "A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks.",
+        1: "This whole thing, all of this... It's all about me.",
         2: "I am not in danger, Skyler. I am the danger.",
-        3: "I am not in danger, Skyler. I am the danger. A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks.",
+        3: "I am not in danger, Skyler. I am the danger. A guy opens his door and gets shot, and you think that of me? No. I am the one who knocks.",  #keep
         4: "Do you know what would happen if I suddenly decided to stop going into work? A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in. I am not in danger, Skyler. I am the danger.",
         5: "Mr White, he's the devil. You know, he is... he is smarter than you, he is luckier than you. Whatever... whatever you think is supposed to happen... I'm telling you the exact reverse opposite of that is gonna happen, okay?\" -Jesse Pinkman",
         6: "Jesse, we need to cook!",
-        7: "Let's just say, I know a guy who knows a guy, who knows another guy.",
+        7: "I won.",
         8: "You don’t want a criminal lawyer. You want a criminal lawyer",
-        9: "Jesse, you asked me if I was in the meth business or the money business.. Neither. I'm in the empire business.",
+        9: "This is not Meth...", #keep
         10: "This is my own private domicile and I will not be harassed... b****",
         11: "You're the smartest guy I ever met, and you're too stupid to see he made up his mind 10 minutes ago.",
         12: "They're minerals!",
@@ -50,21 +50,15 @@ def post_bb_quote(event, context):
         17: "F*** you! And your eyebrows",
         18: "Do you know how much I make a year? I mean, even if I told you, you wouldn't believe it.",
         19: "I watched Jane die. I was there. And I watched her die. I could have saved her, but I didn't. -Walter White",
-        20: "I'm not in the meth business. I'm in the empire business.",
+        # 20: "I'm not in the meth business. I'm in the empire business.",
+        20: "Let's cook.",
         21: "Don't drink and drive but if you do, call me. -Saul Goodman",
         22: "I do not believe fear to be an effective motivator.",
-        23: "We tried to poison you. We tried to poison you because you are an insane, degenerate piece of filth and you deserve to die. -Walter White",
-        24: "I'm sorry, what were you asking me? Oh, yes, that stupid plastic container I asked you to buy. You see, hydrofluoric acid won't eat through plastic; it will however dissolve metal, rock, glass, ceramic. So there's that. -Walter White",
-        25: "I investigate everyone with whom I do business. What careful man wouldn't?",
+        23: "If you don’t know who i am, then maybe your best course would be to tread lightly.",
+        24: "Say my name.",
+        25: "TIGHT TIGHT TIGHT",
         26: "Yeah b****, Magents!!",
-        27: "This whole thing, all of this... It's all about me.",
-        28: "I won.",
-        29: "This is not Meth...",
-        30: "Let's cook.",
-        31: "If you don’t know who i am, then maybe your best course would be to tread lightly.",
-        32: "Say my name.",
-        33: "TIGHT TIGHT TIGHT",
-        34: "I am the one who knocks",
+
 
     }
 

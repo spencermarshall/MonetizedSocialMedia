@@ -143,7 +143,8 @@ def Marvel_question(event, context):
         113: "Which Marvel character do you think has the best costume?",
         114: "Which Marvel character do you think has the worst costume?",
         115: "What are your opinions on Kevin Feige",
-        116: "Which MCU character is most underrated?",
+        # 116: "Which MCU character is most underrated?",
+        116: "",
         117: "Which MCU character is most overrated?",
         118: "Do you want Thanos to return in any future projects?",
         119: "Which Marvel actor's performance do you dislike most?",
@@ -362,6 +363,7 @@ def Marvel_question(event, context):
         329: "On a scale from 1-10, how would you rate Spider-Man: Far From Home?",
         330: "What are your opinions on Mysterio?",
         331: "Did you like Jake Gyllenhaal as Mysterio?",
+        # 332: "If you're a true MCU fan, name a line from this movie", #todo add image
 
 
 

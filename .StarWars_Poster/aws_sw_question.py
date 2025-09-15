@@ -19,7 +19,7 @@ questions = {
     11: "What are your thoughts on Star Wars Resistance?",
     12: "What are your opinions on Star Wars Rebels?",
     13: "What are your thoughts on the OG Clone Wars show (2003)?",
-    14: "What are your thoughts on The Clone Wars?",
+    14: "Did you like The Clone Wars?",
     15: "What are your thoughts on The Mandalorian TV Show?",
     16: "What are your opinions on the Bad Batch?",
     17: "What are your opinions on Skeleton Crew?",
@@ -62,7 +62,7 @@ questions = {
     54: "What are your opinions on Captain Phasma?",
     55: "What are your opinions on Jar Jar Binks?",
     56: "What are your opinions on the Ewoks?",
-    57: "What are your opinions on the new (2017) Star Wars Battlefront 2 game?",
+    57: "Do you like Star Wars Battlefront 2?", #delete if bad
     58: "What are your opinions on the original Star Wars Battlefront 2 game?",
     59: "What are your opinions on the Lego Star Wars games?",
     60: "Have you played the Skywalker Saga game?",  # i change from opinions it had 28comments, maybe go back idk
@@ -151,7 +151,6 @@ questions = {
     141: "Do you wanna see more about the Clones after Order 66?",
     142: "How do you feel about Lando Calrissian’s role in the original trilogy?",
     143: "What is your favorite non-canon Star Wars story?",  # maybe delete
-    # pictures below here
     144: "Do you want Mace Windu to return in future projects?",
     145: "What are your opinions on Chancellor Valorum?",
     146: "What are your opinions on Watto?",
@@ -181,7 +180,7 @@ questions = {
     170: "What are your thoughts on Tobias Beckett in the Han Solo movie?",
     171: "Did you like L3-37 in the Han Solo movie?",
     172: "Did you like James Earl Jones as the voice of Darth Vader?",
-    173: "Did you like Enfys Nest from the Han Solo Movie?",  # todo maybe reword or delete
+    173: "Do you want to see Enfys Nest return in future projects?",  #delete if bad
     174: "Did you like Maul's cameo in the Han Solo Movie?",
     175: "Did you like how Han Solo got his name in the Han Solo Movie?",
     176: "Did you like Han Solo's origin story in the Han Solo Movie?",
@@ -261,7 +260,7 @@ questions = {
     250: "What do you think makes a great Star Wars villain?",
     251: "Would you want a Star Wars story told from the perspective of a smuggler?",
     252: "What role do you think music plays in enhancing the Star Wars experience?",
-    253: "Do you like droid culture?",  # todo maybe delete
+    253: "I sense a plot to destroy the Jedi", #13 comments, 56 likes Sep 2025
     # maybe get rid of 'in the star wars universe' idk
     254: "If you're stuck in the Star Wars universe for 24 hours, what's the first thing you would do?",
     255: "What will Star Wars look like in 30 years?",
@@ -271,11 +270,11 @@ questions = {
     259: "If you could design your own Star Wars planet, what would it look like?",
     # this performed bad last time , 5 comments, maybe delete
     260: "What are your opinions on Admiral Holdo?",
-    261: "Do you enjoy learning about Star Wars Lore?",
+    261: "Do you like Star Wars Lore?",
     262: "Did you like Darth Maul's return in The Clone Wars?",
     263: "Did you like the Nightsister magic in Ahsoka?",  # test
     264: "Do you like the Expanded Universe (EU)?",
-    265: "What are your opinions on Star Wars: Starfighter coming May 2027?",
+    265: "Are you excited for Star Wars: Starfighter coming May 2027?",
     266: "What are your opinions on the Clone Wars movie?",
     267: "Which is a better name: Count Dooku or Darth Tyranus",
     268: "If you could write the next chapter of Star Wars, what direction would you take?",
@@ -292,7 +291,7 @@ questions = {
     279: "Do you want to see more Death Troopers in future projects?",
     280: "Did you like the Mortis episodes in The Clone Wars?",
     281: "Did you like the Siege of Mandalore episodes in The Clone Wars?",
-    282: "Did you like the Bad Batch episodes in The Clone Wars?",
+    282: "Execute Order 66", #todo add image here
     283: "Did you like the Umbara episodes in The Clone Wars?",
     284: "Do you want Star Wars Battlefront 3?",
     285: "Did you enjoy seeing Boba Fett in The Clone Wars?",
@@ -334,7 +333,7 @@ questions = {
     320: "Did you like seeing Kessel in the Solo movie?",  # todo maybe rewrite or delete
     321: "What are your opinions of Felucia?",
     322: "What is your favorite quote from Darth Vader?",
-    323: "What are your opinions of Utapau?",
+    323: "It's over Anakin, I have the high ground", #todo add image here
     324: "What are your opinions of Jakku?",
     325: "Would you want to live on Takodana?",
     326: "Would you want to live on Ahch-To?",
@@ -358,7 +357,7 @@ questions = {
     343: "What are your opinions on Grand Moff Tarkin?",
     344: "What are your opinions on Admiral Ackbar?",
     345: "What are your opinions on Captain Rex?",
-    346: "What are your opinions on Commander Cody?",
+    346: "Do you like Commander Cody?", #delete if bad
     347: "OPINION: The Han Solo movie was very well done and I would love to see a sequel in some form. What do you think?",
     348: "Do you want to see Luminara Unduli return in future projects?",
     349: "Do you want to see more of Barriss Offee?",
@@ -366,7 +365,7 @@ questions = {
     351: "Do you want to see Asajj Ventress in future projects?",  # todo maybe delete
     352: "What are your opinions on Cad Bane?",
     353: "What are your opinions on Nute Gunray?",
-    354: "Do you want more of a backstory on Wat Tambor?",  # todo maybe delete
+    354: "Which Anakin / Vader is your favorite?", #todo ANAKING VADER ADD IMAGE HERE
     355: "Do you want to see more Bo-Katan?",  # todo maybe delete
     356: "Did you like Sabine Wren in Rebels?",
     357: "What are your opinions on Zeb?",
@@ -593,17 +592,18 @@ questions = {
     573: "Tweet like you live on Tatooine",
     574: "Tweet like you live on Hoth",
     575: "Tweet like you live on Endor",
-    576: "Tweet like you live on Canto Bight",
+    576: "Tweet like you live on Canto Bight", #delete if bad
     577: "Tweet like you live on Crait",
     578: "Tweet like you live on Dagobah",
     579: "Would you want to live on Jakku?",
     580: "Tweet like you live on Geonosis",
     581: "Tweet like you live on Jakku",
-    582: "Tweet like you live on Kamino",
+    582: "Tweet like you live on Kamino", #delete if bad
     583: "Tweet like you live on Mustafar",
-    584: "Tweet like you live on Kessel",
-    585: "Tweet like you live on Scarif",
+    584: "Tweet like you live on Kessel", #delete if bad
+    585: "Tweet like you live on Scarif", #delete if bad
     586: "Tweet like you work on the Death Star",
+    587: "Comment like it's 2014 and The Force Awakens trailer just dropped.",
 
 
 
@@ -900,7 +900,7 @@ def SW_question(event, context):
         279: "questions/char_DeathTroopers/",
         280: "questions/other_MortisArc(CW)/",
         281: "questions/other_SiegeofMandalore(CW)/",
-        282: "questions/other_CloneWarsBadBatch/",
+        282: "None",
         283: "questions/other_CloneWarsUmbara/",
         284: "questions/game_SWBF3/",
         285: "questions/char_BobaFettCloneWars/",
@@ -941,7 +941,7 @@ def SW_question(event, context):
         320: "questions/planet_Kessel/",
         321: "questions/planet_Felucia/",
         322: "questions/char_Vader(Kenobi-show)/",
-        323: "questions/planet_Utapau/",
+        323: "None",
         324: "questions/planet_Jakku/",
         325: "questions/planet_Takodana/",
         326: "questions/planet_Ahch-to/",
@@ -972,7 +972,7 @@ def SW_question(event, context):
         351: "questions/char_AsajjVentress/",
         352: "questions/char_CadBane/",
         353: "questions/char_NuteGunray/",
-        354: "questions/char_WatTambor/",
+        354: "None",
         355: "questions/char_SabineWrenCWRebels/",
         356: "questions/char_SabineWren/",
         357: "questions/char_Zeb/",
@@ -1107,7 +1107,7 @@ def SW_question(event, context):
         486: "questions/show_Rebels/",
         487: "questions/planet_Mandalore/",
         488: "None",
-        489: "None",
+        489: "questions/char_IdenVersio/",
         490: "questions/char_SawGerrera/",
         491: "None",
         492: "questions/movie_ep1/",
@@ -1194,18 +1194,18 @@ def SW_question(event, context):
         573: "questions/planet_Tatooine/",
         574: "questions/planet_Hoth/",
         575: "questions/planet_Endor/",
-        576: "questions/planet_CantoBight/",
+        576: "None",
         577: "questions/planet_Crait/",
         578: "questions/planet_Dagobah/",
         579: "questions/planet_Jakku/",
         580: "questions/planet_Geonosis/",
         581: "questions/planet_Jakku/",
-        582: "questions/planet_Kamino/",
+        582: "None",
         583: "questions/planet_Mustafar/",
-        584: "questions/planet_Kessel/",
-        585: "questions/planet_Scarif/",
+        584: "None",
+        585: "None",
         586: "None",
-        587: "None",
+        587: "questions/movie_ep7",
         588: "None",
         589: "None",
     }

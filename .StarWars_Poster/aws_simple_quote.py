@@ -26,21 +26,22 @@ quotes = {
     4: "I have a bad feeling about this.",
     5: "It's over Anakin, I have the High Ground.",
     6: "Good soldiers follow orders.",
-    7: "Execute Order 66",
+    # 7: "Execute Order 66", #todo i moved this to main questions
+    7: "",
     8: "No, I am your father.",
     9: "Do or do not, there is no try.",
     10: "Help me Obi-Wan Kenobi. You're my only hope.",
-    11: "It's a Trap!",
+    11: "It's a Trap!", #keep
     12: "I am one with the Force, and the Force is with me.",
     13: "This is the way",
     14: "Long live the Empire.",
     15: "I don't like sand. It's coarse, and rough, and irritating... and it gets everywhere.", #keep
-    16: "I'm just a simple man trying to make my way in the universe.",
+    16: "I'm just a simple man trying to make my way in the universe.", #keep
     17: "These are not the droids you are looking for",
     18: "That's no moon. That's a space station.", #keep
     19: "Strike me down, and I shall become more powerful than you can possibly imagine.",
     20: "This is where the fun begins.",
-    21: "Gonk",
+    21: "Gonk", #keep
     22: "I am no Jedi.",
     23: "I am the Senate.", #keep
     24: "I have brought Peace, Freedom, Justice, and Security to my new Empire.",
@@ -56,10 +57,10 @@ quotes = {
     34: "So this is how liberty dies... with thunderous applause.",
     35: "Only a Sith deals in absolutes.", #keep
     36: "I sense a plot to destroy the Jedi.", #keep
-    37: "Let the past die. Kill it, if you have to.",
-    38: "Insolence!? We are pirates! We don’t even know what that means.",
+    37: "",
+    38: "",
     39: "I can bring you in warm, or I can bring you in cold.",
-    40: "What about the droid attack on the wookies?",
+    40: "What about the droid attack on the wookies?", #keep
     41: "I'm a Mandalorian. Weapons are part of my religion.",
     42: "I have friends everywhere...",
     43: "The mission. The nightmares. They're... finally... over.",
@@ -67,7 +68,7 @@ quotes = {
     45: "We're just clones, sir. We're meant to be expendable.", #keep
     46: "Clones, bred for combat. All part of the plan... THE Plan. The only Plan that matters. Not even I was made aware of its grand design, but I played my part. And do you know what happened to me? I was cast aside. I was forgotten. But I survived, and I can thrive in the chaos that is to come.",
     47: "Do it.",
-    48: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.",
+    48: "As a Jedi, we were trained to be keepers of the peace, not soldiers. But all I've been since I was a Padawan is a soldier.", #keep
     49: "You're a good soldier Rex. So is every one of those men down there. They may be willing to die, but I am not the one who is going to kill them.",
 }
 
