@@ -23,25 +23,23 @@ client = tweepy.Client(
 # --- Quote dictionary ---
 quotes = {
     # 1: "A wizard is never late, nor is he early, he arrives precisely when he means to.",
-    1: "",
+    1: "Po-ta-toes! Boil 'em, mash 'em...",
     2: "YOU SHALL NOT PASS!",
     3: "When in doubt, follow your nose",
     4: "What about second breakfast?", #keep
     5: "Fool of a took!",
     6: "For Frodo...", #keep
     # 7: "I don't know half of you half as well as I should like...",
-    7: "",
+    7: "PO-TA-TOES",
     8: "There's some good in this world, Mr. Frodo...",
-    9: "",
+    9: "Never thought I'd die fighting side by side with an elf",
     # 9: "In a hole in the ground there lived a hobbit...",
     10: "In a hole in the ground there lived a hobbit.",
     11: "So you have chosen...death",
     12: "I am no man",
     13: "I am not trying to rob you. I am trying to help you.",
     14: "I can't recall the taste of food...",
-    15: "Po-ta-toes! Boil 'em, mash 'em...",
-    16: "PO-TA-TOES",
-    17: "Never thought I'd die fighting side by side with an elf",
+
 }
 
 # --- S3 config ---
