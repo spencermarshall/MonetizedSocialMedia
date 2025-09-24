@@ -57,7 +57,7 @@ questions = {
     49: "What are your thoughts on Hondo Ohnaka?",
     50: "Jedi or Sith?",
     51: "What are your thoughts on Pong Krell?",
-    52: "Korkie Kryze (Satine's 'Nephew') looks like he could be a Kenobi? Thoughts...?",
+    52: "Is Korkie a Kenobi?",
     53: "What are your opinions on BB-8?",
     54: "What are your opinions on Captain Phasma?",
     55: "What are your opinions on Jar Jar Binks?",
@@ -93,7 +93,7 @@ questions = {
     83: "Should Reylo be a thing?",
     84: "Did Mace Windu survive the fall in ROTS?",
     85: "Who is the best Star Wars couple?",
-    86: "What is your favorite Star Wars Trilogy?",
+    86: "Favorite Star Wars Trilogy?", #maybe delete
     87: "What is your least favorite Star Wars live action TV show?",  # todo maybe delete
     88: "What is your favorite Star Wars animated TV show?",
     89: "Did you like Yoda as a Puppet in Ep 1?",
@@ -135,14 +135,14 @@ questions = {
     125: "Which Star Wars movie or show has the best soundtrack?",
     126: "Did you like the relationship between Anakin and Padmé?",
     127: "Which Star Wars droid do you think is the most useful?",
-    128: "Which Star Wars character do you think had the most tragic backstory?",
+    128: "Who had the most tragic backstory?",
     129: "Do you like the idea of a Star Wars story told from the perspective of a stormtrooper?",
     130: "What do you disagree with most Star Wars fans about?",  # maybe generic picture here idk
-    131: "Would you want to see a Star Wars story set entirely in the criminal underworld?",
+    131: "Would you want a story set entirely in the criminal underworld?",
     132: "What are your thoughts on using CGI for Leia in Rogue One?",
-    133: "Would you want to see a Star Wars story told from the perspective of a droid?",
+    133: "Would you want a story told from the perspective of a droid?",
     134: "What are your opinions on the Jedi Council in the prequels?",
-    135: "Would you want to see a Star Wars story set during the Old Republic era?",
+    135: "Would you want a story set during the Old Republic era?",
     136: "Did you like the Sith in the prequels?",
     137: "What are your thoughts on the concept of the World Between Worlds?",
     138: "Do you want to see Obi-Wan Kenobi and Duchess Satine together?",  # todo if this doesn't perform well, delete
@@ -176,8 +176,8 @@ questions = {
     166: "What are your thoughts of Cassion Andor as a character?",
     167: "Did you enjoy Alden Ehrenreich as Han Solo?",
     168: "Did you like Donald Glover as Lando Calrissian?",
-    169: "What are your thoughts on Qi'ra in the Solo movie?",
-    170: "What are your thoughts on Tobias Beckett in the Han Solo movie?",
+    169: "Do you like Qi'ra in the Solo movie?",
+    170: "Comment like it's 2014 and The Force Awakens trailer just dropped.",
     171: "Did you like L3-37 in the Han Solo movie?",
     172: "Did you like James Earl Jones as the voice of Darth Vader?",
     173: "Do you want to see Enfys Nest return in future projects?",  #delete if bad
@@ -267,7 +267,7 @@ questions = {
     256: "What are your thoughts on the Star Wars fandom?",
     257: "What role should real world politics have in Star Wars?",
     258: "Tweet like you live on Yavin 4",
-    259: "If you could design your own Star Wars planet, what would it look like?",
+    259: "What is Darth Vader saying?",
     # this performed bad last time , 5 comments, maybe delete
     260: "What are your opinions on Admiral Holdo?",
     261: "Do you like Star Wars Lore?",
@@ -324,10 +324,10 @@ questions = {
     311: "What are your opinions of Dagobah?",
     312: "What are your opinions of Bespin?",
     313: "OPINION: The Clone Wars show is my favorite Star Wars content. What do you think?",
-    314: "Would you want to live on Jedha?",
+    314: "Tweet like you work on the Death Star",
     315: "What are your opinions of Dathomir?",
     316: "What are your opinions of Starkiller Base?",
-    317: "Do you want to see more of Mandalore in the future?",  # todo maybe delete
+    317: "Do you like Mandalore?",  # delete if bad
     318: "What is your favorite quote from Obi-Wan Kenobi?",
     319: "Would you want to live on Umbara?",
     320: "Did you like seeing Kessel in the Solo movie?",  # todo maybe rewrite or delete
@@ -360,7 +360,7 @@ questions = {
     346: "Do you like Commander Cody?", #delete if bad
     347: "OPINION: The Han Solo movie was very well done and I would love to see a sequel in some form. What do you think?",
     348: "Do you want to see Luminara Unduli return in future projects?",
-    349: "Do you want to see more of Barriss Offee?",
+    349: "Do you like Barriss Offee?", #delete if bad
     350: "Did you like Ahsoka in The Clone Wars?",
     351: "Do you want to see Asajj Ventress in future projects?",  # todo maybe delete
     352: "What are your opinions on Cad Bane?",
@@ -452,7 +452,7 @@ questions = {
     435: "Who's your favorite Jedi who survived Order 66?",
     436: "What are your thoughts on the concept of gray Jedi?",
     437: "Who's your favorite Sith Lord from Legends?",
-    438: "Did you like the portrayal of clones in Rebels?",
+    438: "Which ship is your favorite?",
     439: "What are your thoughts on the Jedi Code?",
     440: "What is your favorite Star Wars Force ability?",
     441: "What is your favorite Star Wars lightsaber color?",
@@ -504,7 +504,7 @@ questions = {
     485: "Who's your favorite character from Star Wars Rebels?",
     486: "What is your favorite moment from the Star Wars Rebels series?",
     487: "Would you want to live on Mandalore?",
-    488: "Who's your favorite Jedi Council member?",
+    488: "Who's your favorite Jedi Council member?", #todo add pic
     489: "Do you want to see more of Iden Versio in future projects?",
     490: "Do you want to see more of Saw Gerrera in future projects?",
     491: "Who should return as a Force Ghost?", #maybe delete
@@ -602,8 +602,6 @@ questions = {
     583: "Tweet like you live on Mustafar",
     584: "Tweet like you live on Kessel", #delete if bad
     585: "Tweet like you live on Scarif", #delete if bad
-    586: "Tweet like you work on the Death Star",
-    587: "Comment like it's 2014 and The Force Awakens trailer just dropped.",
 
 
 
@@ -788,7 +786,7 @@ def SW_question(event, context):
         167: "questions/char_HanSolo(SoloMovie)/",
         168: "questions/char_Lando(SoloMovie)/",
         169: "questions/char_Qira/",
-        170: "questions/char_TobiasBeckett/",
+        170: "questions/movie_ep7",
         171: "questions/char_L3-37/",
         172: "questions/char_DarthVader",
         173: "questions/char_EnfysNest/",
@@ -877,7 +875,7 @@ def SW_question(event, context):
         256: "None",
         257: "None",
         258: "questions/planet_Yavin4/",
-        259: "None",
+        259: "questions/other_Whatisdarthvadersaying/",
         260: "questions/char_AdmiralHoldo/",
         261: "None",
         262: "questions/char_DarthMaul(CW)/",
@@ -932,7 +930,7 @@ def SW_question(event, context):
         311: "questions/planet_Dagobah/",
         312: "questions/planet_Bespin/",
         313: "None",
-        314: "questions/planet_Jedha/",
+        314: "None",
         315: "questions/planet_Dathomir/",
         316: "questions/planet_StarkillerBase/",
         317: "questions/planet_Mandalore/",
@@ -1056,7 +1054,7 @@ def SW_question(event, context):
         435: "None",
         436: "None",
         437: "questions/other_SithLordall/",
-        438: "None",
+        438: "questions/other_WhichShipisyourfavorite/",
         439: "None",
         440: "None",
         441: "None",
@@ -1106,7 +1104,7 @@ def SW_question(event, context):
         485: "questions/show_Rebels/",
         486: "questions/show_Rebels/",
         487: "questions/planet_Mandalore/",
-        488: "None",
+        488: "questions/other_JediCouncil/",
         489: "questions/char_IdenVersio/",
         490: "questions/char_SawGerrera/",
         491: "None",
@@ -1205,7 +1203,7 @@ def SW_question(event, context):
         584: "None",
         585: "None",
         586: "None",
-        587: "questions/movie_ep7",
+        587: "None",
         588: "None",
         589: "None",
     }
