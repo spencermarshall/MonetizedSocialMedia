@@ -59,7 +59,7 @@ def BB_question(event, context):
         29: "If you could change one thing about Breaking Bad, what would it be?",
         30: "Was Walter White justified in the end for his actions?",
         31: "Do you like the ending Jesse got in El Camino?",
-        32: "Which Breaking Bad character changes the most?",
+        32: "Which Breaking Bad character changes the most?", #delete if bad
         33: "If you could meet one character from Breaking Bad, who would it be?",
         34: "Is Better Call Saul a worthy spin-off?",
         35: "What is the most memorable quote from Breaking Bad?",
@@ -118,16 +118,16 @@ def BB_question(event, context):
         83: "What are your thoughts on Skyler doing the deed with Ted?",
         84: "What are your opinions on Hank's rock collection",
         85: "Are they rocks or minerals?",
-        86: "Was Saul working at the Cinnabon a good idea?",
+        86: "Was Saul working at the Cinnabon a good idea?", #delete if bad
         87: "Do you think Jimmy should have taken the shorter jail time?",
         88: "Should Nacho have survived BCS?", #todo maybe delete or delete the one under this
         # 88: "What are your opinions on Nacho's death in BCS?",
-        89: "You're the smartest guy I ever met, and you're too stupid to see he made up his mind 10 minutes ago.",
+        89: "You're the smartest guy I ever met, and you're too stupid to see he made up his mind 10 minutes ago.", #delete if bad
         90: "What are your opinions on Elliot and Gretchen?",
         91: "What are your opinions on the death of Andrea?",
         92: "Who had the saddest death in all of BB/BCS?",
-        93: "Who's death was most surprising in BB/BCS",
-        94: "If you could change one thing about BCS what would it be?",  # maybe image maybe delete idk
+        93: "Who's death was most surprising in BB/BCS", #delete if bad
+        94: "If you could change one thing about BCS what would it be?",  # todo add image
         95: "What is your favorite Walter White moment?",
         96: "What is the smartest Gus Fring move?",
         97: "What is your favorite Gus Fring moment?",
@@ -232,7 +232,8 @@ def BB_question(event, context):
         190: "What’s the most shocking BB death scene?",
         191: "What’s the most underrated episode of Breaking Bad?",
         192: "Tweet like you're Walter White",
-        193: "How do you feel about Walter’s confession tape?",
+        # 193: "How do you feel about Walter’s confession tape?",
+        193: "What was the most clever scam Jimmy and Kim ever pulled off?",
         194: "What's your favorite Gus Fring quote?",
         195: "What’s your favorite Kim Wexler quote?",
         196: "Which character deserved more screen time?",
@@ -276,7 +277,7 @@ def BB_question(event, context):
         231: "Who had the best wardrobe in Breaking Bad?",
         232: "Should Mike have trusted Walter more?", #todo add image
         233: "Who had the best one-liner in Breaking Bad?",
-        234: "Who had the best wardrobe in Better Call Saul?",
+        234: "Did Marie Schrader get a fitting end to her story?",
         235: "What’s the most intense chase scene in BCS?",
         236: "What’s the most intense chase scene in Breaking Bad?",
         237: "Which scene is the true turning point where Walt became Heisenberg?",
@@ -309,12 +310,7 @@ def BB_question(event, context):
         264: "What’s your favorite cold open in Breaking Bad?",
         265: "What are your opinions on the pink teddy bear?",
         266: "Was Hank's death inevitable?",
-        267: "Was Todd the creepiest character?",
-        268: "Did Marie Schrader get a fitting end to her story?",
-        269: "What is the greatest lesson you learned from watching Brekaing Bad?",
-        270: "Is there any character you wish had crossed over between shows but never did?",
-        271: "What's one detail you think most people miss?",
-        272: "What was the most clever scam Jimmy and Kim ever pulled off?",
+        267: "What is the greatest lesson you learned from watching Brekaing Bad?",
 
 
 

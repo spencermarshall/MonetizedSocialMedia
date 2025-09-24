@@ -118,7 +118,8 @@ def lotr_question(event, context):
         88: "Tweet like you're Saruman",
         89: "What weapon from LOTR is the coolest?",
         90: "If you were in the Fellowship, what role would you play?",
-        91: "What is the most epic moment in The Hobbit?",
+        # 91: "What is the most epic moment in The Hobbit?",
+        91: "Tweet like you're Eowyn",
         92: "What is the most memorable scene from Rings of Power?",
         93: "What are your opinions of Rings of Power?",
         94: "Did you enjoy The Hobbit book?",
@@ -152,7 +153,8 @@ def lotr_question(event, context):
         117: "Which LOTR movie is your favorite?",
         118: "Who is your favorite LOTR character?",
         119: "Which Hobbit movie is your favorite?",
-        120: "What is your favorite LOTR species?",
+        120: "Tweet like you're Boromir",
+        # 120: "What is your favorite LOTR species?",
         # 120: "Who is your favorite Hobbit character?",
         121: "What are your opinions on The Shire?",
         122: "Did you see the War of the Rohirrim? What were your thoughts?",
@@ -216,7 +218,8 @@ def lotr_question(event, context):
         176: "Which scene in LOTR gave you goosebumps the first time you saw it?",
         177: "What's your take on the women in Middle-earth?",
         # 178: "If you've never seen The Hobbit movies, why not?",
-        178: "How do you personally view Sauron's threat?",
+        # 178: "How do you personally view Sauron's threat?",
+        178: "Tweet like you're Elrond", #delete if bad
         179: "What are some LOTR X (Twitter) accounts you'd recommend someone following?",
         180: "What are your opinions on Bilbo Baggins in LOTR?",
         181: "What are your opinions on Boromir's death scene?",
@@ -271,7 +274,8 @@ def lotr_question(event, context):
         223: "Is watching the extended editions of LOTR worth it?",
         # 224: "Which friendship duo is most underrated?",
         224: "What's your take on the LOTR creatures?",
-        225: "Should the eagles have just flown Frodo and The Ring to Mordor?",
+        # 225: "Should the eagles have just flown Frodo and The Ring to Mordor?",
+        225: "Tweet like you're Faramir", #delete if bad
         226: "Should Gandalf have used the eagles more often?",
         227: "Tweet like you're in Middle-earth", #todo 2 comments, need to change something maybe add a few words or add emoji idk
         228: "How has LOTR affected your view on friendship?",
@@ -316,7 +320,8 @@ def lotr_question(event, context):
         261: "Who is your favorite character from Rings of Power?",
         262: "Who is your least favorite character from LOTR?",
         263: "Who is your least favorite character from The Hobbit?",
-        264: "Who is your least favorite character from Rings of Power?", #maybe delete
+        # 264: "Who is your least favorite character from Rings of Power?",
+        264: "Tweet like you're Frodo",
         265: "Should they make a GTA style LOTR game?",
         266: "Who's your least favorite member of the Fellowship?",
         #todo everything under here is a test / demo
@@ -390,11 +395,7 @@ def lotr_question(event, context):
         330: "Tweet like you're Aragorn",
         331: "Tweet like you're Arwen", #delete if bad
         332: "Tweet like you're Bilbo Baggins",
-        333: "Tweet like you're Boromir",
-        334: "Tweet like you're Elrond", #delete if bad
-        335: "Tweet like you're Eowyn",
-        336: "Tweet like you're Faramir", #delete if bad
-        337: "Tweet like you're Frodo",
+
 
 
 
@@ -517,7 +518,7 @@ def lotr_question(event, context):
         88: "questions/char_Saruman/",
         89: "None",
         90: "None",
-        91: "None",
+        91: "questions/char_Eowyn/",
         92: "questions/show_RingsOfPower/",
         93: "questions/show_RingsOfPower/",
         94: "questions/other_HobbitBook/",
@@ -546,7 +547,7 @@ def lotr_question(event, context):
         117: "questions/other_LOTR-Movies/",  # maybe delete this one and show just the 3 movie posters if possible idk
         118: "None",
         119: "questions/other_HobbitMovie/",  # maybe delete this also and just show hobbit movies
-        120: "None",
+        120: "questions/char_Boromir/",
         121: "questions/place_Shire/",
         122: "questions/movie_WarOfTheRohirrim/",
         123: "questions/place_Mirkwood/",
@@ -691,7 +692,7 @@ def lotr_question(event, context):
         261: "None",
         262: "None",
         263: "None",
-        264: "None",
+        264: "questions/char_Frodo/",
         265: "None",
         266: "None",
         267: "questions/char_Theoden/",
@@ -758,11 +759,11 @@ def lotr_question(event, context):
         330: "questions/char_Aragorn/",
         331: "None",
         332: "questions/char_BilboBagginsYOUNG/",
-        333: "questions/char_Boromir/",
+        333: "None",
         334: "None",
-        335: "questions/char_Eowyn/",
+        335: "None",
         336: "None",
-        337: "questions/char_Frodo/",
+        337: "None",
         338: "None",
         339: "None",
         340: "None",
