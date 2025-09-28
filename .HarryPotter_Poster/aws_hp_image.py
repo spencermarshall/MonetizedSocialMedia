@@ -72,7 +72,7 @@ def HarryPotter_image(event, context):
             # Replace "thoughts" with randomly chosen word
             if contains_thoughts:
                 replacement = "thoughts"
-                if random.random() < 0.5:
+                if random.random() < 0.2:
                     replacement = "opinions"
                 pattern = r'\bthoughts\b'
                 question = re.sub(pattern, replacement, question)
@@ -81,7 +81,7 @@ def HarryPotter_image(event, context):
             # Replace "opinions" with randomly chosen word
             if contains_opinions:
                 replacement = "thoughts"
-                if random.random() < 0.5:
+                if random.random() < 0.2:
                     replacement = "opinions"
                 pattern = r'\bopinions\b'
                 question = re.sub(pattern, replacement, question)
