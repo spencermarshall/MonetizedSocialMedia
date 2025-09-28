@@ -886,8 +886,17 @@ def lotr_question(event, context):
         download_path = f"/tmp/{os.path.basename(random_file)}"
         s3.download_file(bucket_name, random_file, download_path)
         media = api.media_upload(download_path)
+
+
+        # 1% chance of subscriber only tweet
+        if random.random() < 0.01:
+            client.create_tweet(text=question, media_ids=[media.media_id], for_super_followers_only=True)
+            return f"tweeted image with question {question} (subscribers only)"
+
         client.create_tweet(text=question, media_ids=[media.media_id])
         return f"tweeted image with question {question}"
+
+
     except Exception as e:
         print(e)
 
