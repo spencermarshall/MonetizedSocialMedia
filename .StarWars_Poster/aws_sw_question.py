@@ -25,7 +25,7 @@ questions = {
     17: "What are your opinions on Skeleton Crew?",
     18: "What are your thoughts on Tales of the Jedi?",
     19: "What are your thoughts on Tales of the Empire?",
-    20: "What are your thoughts on Star Wars Visions?",
+    20: "Which Star Wars character deserved better?",
     21: "What are your opinions on The Acolyte?",
     22: "What are your thoughts on the Ahsoka show?",
     23: "What are your thoughts on the Obi-Wan Kenobi show?",
@@ -85,7 +85,7 @@ questions = {
     # todo maybe delete
     76: "Tweet like you live on Naboo",
     77: "Should Disney make a new Star Wars trilogy? When would it be set?",
-    78: "What are your opinions on Anakin in the prequels? No hate, just genuinely curious.",
+    78: "What are your opinions on Boba Fett", #todo add image
     79: "Tweet like you're Han Solo",
     80: "What are your thoughts on the Star Wars Holiday Special?",
     81: "Which Star Wars ship or vehicle would you most like to pilot?",
@@ -99,7 +99,7 @@ questions = {
     89: "Did you like Yoda as a Puppet in Ep 1?",
     90: "Did you like Ray Park as Darth Maul",
     91: "Did you like Qui-Gon Jinn coming back as a Force Ghost in the Kenobi show??",
-    92: "What are your thoughts on C-3PO's red arm?",
+    92: "Say something nice about her...",
     93: "What are your thoughts on C-3PO?",
     94: "What are your thoughts on R2-D2?",
     95: "Did you like Ezra Bridger in Rebels",
@@ -143,7 +143,7 @@ questions = {
     133: "Would you want a story told from the perspective of a droid?",
     134: "What are your opinions on the Jedi Council in the prequels?",
     135: "Would you want a story set during the Old Republic era?",
-    136: "Did you like the Sith in the prequels?",
+    136: "Say something nice about the Sequels",
     137: "What are your thoughts on the concept of the World Between Worlds?",
     138: "Do you want to see Obi-Wan Kenobi and Duchess Satine together?",  # todo if this doesn't perform well, delete
     139: "Do you want a Lando TV show staring Donald Glover?",
@@ -230,7 +230,7 @@ questions = {
     220: "Do you like Wrecker from The Bad Batch?",
     221: "Did the Obi-Wan Kenobi show live up to your expectations?",
     222: "What are your thoughts on the Bad Batch as a whole?",
-    223: "Did you enjoy the Bad Batch's portrayal of Order 66?",  # todo maybe delete
+    223: "Do you want Billie Lourd to return as Leia?",
     224: "What is the most iconic line from Darth Vader?",
     225: "Did the Acolyte show live up to your expectations?",
     226: "Did you like Leia's portrayal in the Kenobi Show?",
@@ -306,7 +306,7 @@ questions = {
     294: "Did The Book of Boba Fett live up to your expectations?",
     295: "Tweet like you're in the Star Wars universe.",
     296: "Do you want to see more from the High Republic era?",
-    297: "Battle of Endor or Battle of Yavin?",
+    297: "Which is cooler: Battle of Endor or Battle of Yavin?", #11 comments without prefix, maybe delete if bad
     298: "Battle of Geonosis or Battle of Naboo?",
     299: "What are your opinions of Crait?",
     300: "Would you want to live on Geonois?",  # todo maybe delete
@@ -325,7 +325,7 @@ questions = {
     312: "What are your opinions of Bespin?",
     313: "OPINION: The Clone Wars show is my favorite Star Wars content. What do you think?",
     314: "Tweet like you work on the Death Star",
-    315: "What are your opinions of Dathomir?",
+    315: "Would you want to live on Dathomir?", #delete if bad
     316: "What are your opinions of Starkiller Base?",
     317: "Do you like Mandalore?",  # delete if bad
     318: "What is your favorite quote from Obi-Wan Kenobi?",
@@ -338,7 +338,7 @@ questions = {
     325: "Would you want to live on Takodana?",
     326: "Would you want to live on Ahch-To?",
     327: "Would you want to live on Canto Bight?",
-    328: "What are your opinions of Ajan Kloss?",
+    328: "Which hallway scene is your favorite?",
     329: "If you're in the Star Wars universe, what would your job be?",
     330: "How did Palpatine kill these Jedi so easily?",
     331: "Jedi Temple or Sith Temple?",
@@ -360,7 +360,7 @@ questions = {
     346: "Do you like Commander Cody?", #delete if bad
     347: "OPINION: The Han Solo movie was very well done and I would love to see a sequel in some form. What do you think?",
     348: "Do you want to see Luminara Unduli return in future projects?",
-    349: "Do you like Barriss Offee?", #delete if bad
+    349: "What is your biggest Star Wars hot take?",
     350: "Did you like Ahsoka in The Clone Wars?",
     351: "Do you want to see Asajj Ventress in future projects?",  # todo maybe delete
     352: "What are your opinions on Cad Bane?",
@@ -436,7 +436,7 @@ questions = {
     # everything below here is a test / new
     420: "Which inquisitor do you want to see more?",  # todo maybe delete, or reword
     421: "Would you rather be Force-sensitive or a skilled pilot?",
-    422: "Who's your favorite character from the Clone Wars era?",
+    422: "What is the definition of peak Star Wars?",
     423: "What are your opinions on the Star Wars: Force Unleashed games?",
     424: "What is your favorite Star Wars location?",
     425: "What is your favorite Star Wars creature?",
@@ -573,7 +573,7 @@ questions = {
     554: "Which version do you prefer?",
     555: "Which Jabba was the best?",
     556: "It is never okay to bully/harass an actor or actress because of the character they played.",
-    557: "Tweet like you're Ahsoka Tano",
+    557: "Tweet like you're Ahsoka Tano", #delete if bad
     558: "Tweet like you're Captain Phasma",
     559: "Tweet like you're Count Dooku",
     560: "Tweet like you're Darth Maul",
@@ -636,7 +636,7 @@ def SW_question(event, context):
         17: "questions/show_SkeletonCrew/",
         18: "questions/show_TalesOfTheJedi/",
         19: "questions/show_TalesOfTheEmpire/",
-        20: "questions/show_Visions/",
+        20: "None",
         21: "questions/show_Acolyte/",
         22: "questions/show_Ahsoka/",
         23: "questions/show_Kenobi/",
@@ -703,12 +703,12 @@ def SW_question(event, context):
         84: "questions/char_MaceWindu(death)/",
         85: "None",
         86: "None",
-        87: "None",
+        87: "None"
         88: "None",
         89: "questions/char_Yoda(puppet)/",
         90: "questions/char_DarthMaul(ep1)/",
         91: "questions/char_Qui-gonJinn(FORCE_GHOST)/",
-        92: "questions/char_C-3PO(red arm)/",
+        92: "questions/char_Rey/",
         93: "questions/char_C-3PO/",
         94: "questions/char_R2-D2/",
         95: "questions/char_EzraBridger/",
@@ -839,7 +839,7 @@ def SW_question(event, context):
         220: "questions/char_Wrecker/",
         221: "questions/show_Kenobi/",
         222: "questions/other_BadBatch/",
-        223: "questions/other_badbatchOrder66/",
+        223: "questions/char_BillieLourd/",
         224: "questions/char_Vader(Kenobi-show)/",
         225: "questions/show_Acolyte/",
         226: "questions/char_Leia(Kenobi-show)/",
@@ -944,7 +944,7 @@ def SW_question(event, context):
         325: "questions/planet_Takodana/",
         326: "questions/planet_Ahch-to/",
         327: "questions/planet_CantoBight/",
-        328: "questions/planet_AjanKloss/",
+        328: "questions/other_Hallway/",
         329: "None",
         330: "questions/other_4JediKillPalpatine/",
         331: "None",
@@ -965,7 +965,7 @@ def SW_question(event, context):
         346: "questions/char_CommanderCody/",
         347: "questions/movie_Solo",
         348: "questions/char_LuminaraUnduli/",
-        349: "questions/char_BarrissOffee/",
+        349: "None",
         350: "questions/char_Ahsoka(CW)/",
         351: "questions/char_AsajjVentress/",
         352: "questions/char_CadBane/",
@@ -1173,7 +1173,7 @@ def SW_question(event, context):
         554: "questions/other_ep6endings/",
         555: "questions/other_JabbaVersion/",
         556: "None",
-        557: "questions/char_Ahsoka(CW)",
+        557: "None",
         558: "questions/char_CaptainPhasma",
         559: "questions/char_CountDooku",
         560: "questions/char_DarthMaul(CW)",
