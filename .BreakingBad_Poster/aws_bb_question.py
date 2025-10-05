@@ -30,7 +30,7 @@ def BB_question(event, context):
         # 2: "Who was the most surprising character crossover in BCS?",
         2: "Other than Saul Goodman, who deserves a spin-off show?",
         3: "How many times have you watched BCS?",
-        4: "What are your thoughts on Jesse’s struggle?",
+        4: "",
         5: "Who was the real villain of Breaking Bad?",
         6: "Who had the worst fate in Breaking Bad?",
         7: "Which moment shocked you the most in Breaking Bad?",
@@ -108,7 +108,7 @@ def BB_question(event, context):
         75: "Jimmy McGill or Howard Hamlin?",
         76: "I just finished Season 5 of Better Caul Saul and I realized Lalo and Howard haven't met yet, that would be cool if they meet sometime. Thoughts? /s",
         # 77: "What are your opinions on Kim working at Palm Coast Sprinklers?",
-        77: "Should Walter have accepted the money from Elliot and Gretchen?",
+        77: "Should Walter have accepted the money from Elliot and Gretchen?", #todo add separate and new image folder than what is now, s1 scenes only
         78: "Who is the top villain in Breaking Bad?",
         79: "Should Kim have confessed her crimes to the DA?", #todo maybe delete
         80: "Why do you think Saul continued his criminal activities as Gene Takavic?",
@@ -167,8 +167,8 @@ def BB_question(event, context):
         130: "How many times have you watched Breaking Bad?",
         131: "What are your thoughts on Hector Salamanca?",
         132: "What are your thoughts on Mike Ehrmantraut?",
-        133: "What are your thoughts on Jesse Pinkman?",
-        134: "Did you like the Breaking Bad Cameo's in BCS?",
+        133: "Did you like Jesse Pinkman?", #maybe reword to thoughts
+        134: "",
         135: "Did you like when Kim Wexler met Jesse Pinkman?",
         136: "What are your thoughts on Walter White Jr.?",
         137: "What are your thoughts on Steven Gomez?",
@@ -216,7 +216,7 @@ def BB_question(event, context):
         175: "Which Breaking Bad scene made you cry?",
         176: "What affect did Molly have on Walt?", #todo maybe delete idk
         177: "Would you eat at Los Pollos Hermanos?",
-        178: "Did you like the train heist idea?",
+        178: "Did you like the train heist idea?", #todo add image
         179: "What are your opinions on the underground lab as a whole?",
         180: "Which Breaking Bad scene made you laugh the most?",
         181: "Which Breaking Bad scene made you cringe the most?",
@@ -259,7 +259,7 @@ def BB_question(event, context):
         216: "Tweet like you're Hank",
         217: "What are your thoughts on Nacho's relationship with his father?",
         218: "Tweet like you're Jesse",
-        219: "Tweet like you're Kim Wexler",
+        219: "Tweet like you're Kim Wexler", #delete if bad
         220: "Tweet like you're Lalo",
         221: "Tweet like you're Marie",
         222: "Tweet like you're Mike",
@@ -269,10 +269,7 @@ def BB_question(event, context):
         226: "Tweet like you're Ted",
         227: "Tweet like you're Todd",
         228: "What are your opinions on Los Pollos Hermanos",
-
-        #todo everything below this is test or demo
-
-        229: "What are your opinions on the underground lab as a whole?",
+        229: "What are your opinions on the underground lab as a whole?", #todo add image
         230: "What’s your take on Jesse’s relationship with Andrea?",
         231: "Who had the best wardrobe in Breaking Bad?",
         232: "Should Mike have trusted Walter more?", #todo add image
@@ -332,7 +329,7 @@ def BB_question(event, context):
         1: "questions/other_JesseBuyingHouse/",
         2: "None",
         3: "questions/show_BetterCallSaul/",
-        4: "questions/char_Jesse/",
+        4: "None",
         5: "questions/char_SaulGoodman/",
         6: "None",
         7: "questions/show_BreakingBad/",
@@ -547,7 +544,7 @@ def BB_question(event, context):
         216: "questions/char_Hank/",
         217: "None",
         218: "questions/char_Jesse/",
-        219: "questions/char_KimWexler/",
+        219: "None",
         220: "questions/char_LaloSalamanca/",
         221: "questions/char_MarieSchrader/",
         222: "questions/char_MikeE/",
