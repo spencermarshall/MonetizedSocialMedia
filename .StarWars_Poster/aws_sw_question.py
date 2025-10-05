@@ -703,7 +703,7 @@ def SW_question(event, context):
         84: "questions/char_MaceWindu(death)/",
         85: "None",
         86: "None",
-        87: "None"
+        87: "None",
         88: "None",
         89: "questions/char_Yoda(puppet)/",
         90: "questions/char_DarthMaul(ep1)/",
@@ -1323,8 +1323,8 @@ def SW_question(event, context):
         media = api.media_upload(download_path)
         # client.create_tweet(text=question, media_ids=[media.media_id])
 
-        # 1% chance of subscriber only tweet
-        if random.random() < 0.01:
+        # less than 1% chance of being called a subscriber only tweet
+        if random.random() < 0.00555: # 1% a month being called at 6 questions a day
             client.create_tweet(text=question, media_ids=[media.media_id], for_super_followers_only=True)
             return f"tweeted image with question {question} (subscribers only)"
 

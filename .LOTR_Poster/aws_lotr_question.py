@@ -36,7 +36,8 @@ def lotr_question(event, context):
         23: "What are your opinions on Radagast the Brown?",
         24: "What are your opinions on Isildur?",
         25: "What are your opinions on the Balrog?",
-        26: "What do you think is the most iconic scene in The Hobbit?",
+        # 26: "What do you think is the most iconic scene in The Hobbit?",
+        26: "Have you ever played this classic?",
         27: "Frodo or Sam?",
         28: "What do you think is the most significant sacrifice made by a character in LOTR?",
         29: "What do you think is the most iconic scene in LOTR?",
@@ -206,7 +207,7 @@ def lotr_question(event, context):
         168: "Gandalf or Saruman?",
         # 169: "Pippin or Merry?",
         169: "Did you enjoy Sean Astin's portrayal of Sam?",
-        170: "Gimli or Legolas?",
+        170: "Who is your favorite: Gimli or Legolas?",
         171: "LOTR: Books or movies?",
         172: "The Hobbit: Book or movies?",
         173: "If you could spend the day with one character from LOTR, who would it be?",
@@ -335,7 +336,7 @@ def lotr_question(event, context):
         273: "What's your general opinion on the elves?",
         274: "What is your favorite quote from Sauron?",
         275: "What is your favorite quote from Galadriel?",
-        276: "What is your favorite quote from Elrond?",
+        276: "What is your favorite quote from Elrond?", #delete if bad
         277: "What is your favorite quote from Arwen?",
         278: "What is your favorite quote from Éowyn?",
         279: "What is a dark fact about LOTR that is rarely addressed?",
@@ -351,9 +352,10 @@ def lotr_question(event, context):
         # 287: "What is the biggest moment of despair in The Hobbit?",
         287: "Tweet like you're Tolkien",
         288: "What is the biggest moment of triumph in The Hobbit?",
-        289: "What is the biggest moment of loss in The Hobbit?",
+        289: "Should Gandalf have used the eagles more often?",
         290: "Which Hobbit moment of sacrifice is most significant?",
-        291: "Which LOTR moment showed the greatest division?",
+        # 291: "Which LOTR moment showed the greatest division?",
+        291: "Do you prefer LOTR in 4K or the original?",
         # 292: "What are your opinions on Helm's Deep?",
         292: "How has reading LOTR changed you?",
         293: "What are your opinions on Minas Tirith?",
@@ -395,6 +397,19 @@ def lotr_question(event, context):
         330: "Tweet like you're Aragorn",
         331: "Tweet like you're Arwen", #delete if bad
         332: "Tweet like you're Bilbo Baggins",
+        #below is this good questions from @_middleEarth
+        333: "Who's the true villain of Middle-earth?",
+        334: "Who's the most underrated member of the Fellowship?",
+        335: "If you could wield one weapon from LOTR, which would it be?",
+        336: "How far do you think this is?",
+        337: "Should I speak like this?",
+        338: "Name a movie/TV character NOT from LOTR who could resist The One Ring",
+        339: "What's a movie you've watched over 4 times in the last year?",
+        340: "Where in Middle-Earth would you want to live?",
+
+
+
+
 
 
 
@@ -453,7 +468,7 @@ def lotr_question(event, context):
         23: "questions/char_Radagast/",
         24: "questions/char_Isildur/",
         25: "questions/char_Balrog/",
-        26: "None",
+        26: "questions/other_classicVideoGamePlay/",
         27: "questions/char_FrodoORSam/",
         28: "None",
         29: "None",
@@ -719,7 +734,7 @@ def lotr_question(event, context):
         288: "None",
         289: "None",
         290: "None",
-        291: "None",
+        291: "questions/other_4k/",
         292: "None",
         293: "None",
         294: "None",
@@ -762,11 +777,11 @@ def lotr_question(event, context):
         333: "None",
         334: "None",
         335: "None",
-        336: "None",
+        336: "questions/other_mapJourney/",
         337: "None",
-        338: "None",
-        339: "None",
-        340: "None",
+        338: "questions/other_ResistRing/",
+        339: "questions/other_fireLOTRmovies/",
+        340: "questions/other_MiddleEarthRegionLive/",
         341: "None",
         342: "None",
         343: "None",
@@ -875,7 +890,7 @@ def lotr_question(event, context):
         # Check if there are files to choose from
         if not file_keys:
             return {
-                'statusCode': 404,
+                'statusCode': 404
                 'body': 'No files found in the specified directory.'
             }
 
