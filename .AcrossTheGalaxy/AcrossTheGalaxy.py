@@ -6,7 +6,7 @@ import json       # to parse and write JSON
 import botocore.exceptions
 
 # Number of recent images to avoid repeating
-MAX_RECENT = 250
+MAX_RECENT = 300
 
 def AcrossTheGalaxy(event, context):
     # if random.random() < 0.20:
@@ -87,9 +87,9 @@ def AcrossTheGalaxy(event, context):
     tweet_text = ""
 
     ran = random.random()
-    if ran < 0.30:
+    if ran < 0.08:
         tweet_text = "Star Wars"
-    elif ran < 0.333:
+    elif ran < 0.10:
         tweet_text = "#StarWars"
     client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 

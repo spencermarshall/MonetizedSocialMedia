@@ -67,7 +67,7 @@ questions = {
     59: "Do you like the Lego Star Wars games?",
     60: "Have you played the Skywalker Saga game?",  # i change from opinions it had 28comments, maybe go back idk
     61: "What are your opinions on Jedi Fallen Order?",
-    62: "Have you ever played the Star Wars Squadrons game (2020)?",
+    62: "Do you like Star Wars Squadrons game (2020)?",
     # todo maybe go back to "opinion" it had 46 comments and 200 likes and 14k views
     63: "What are your opinions on the Star Wars: Knights Of The Old Republic game?",
     64: "Did you enjoy Jedi Survivor as a SW video game?",
