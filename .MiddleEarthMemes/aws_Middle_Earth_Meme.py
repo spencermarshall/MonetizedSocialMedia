@@ -5,7 +5,7 @@ import os
 import json
 import botocore.exceptions
 
-MOST_RECENT = 350
+MOST_RECENT = 400
 
 # X credentials stored in env variables
 API_KEY = os.environ["API_KEY"]
@@ -78,22 +78,15 @@ def MiddleEarthPost(event, context):
 
     tweet_text = ""
     ran = random.random()
-    if ran < 0.05:
-        tweet_text = "Middle Earth"
-    elif ran < 0.06:
-        tweet_text = "#MiddleEarth"
-    elif ran < 0.11:
-        tweet_text = "Lord of the Rings"
-    elif ran < 0.12:
-        tweet_text = "#LordOfTheRings"
-    elif ran < 0.17:
+    if ran < 0.04:
         tweet_text = "LOTR"
-    elif ran < 0.18:
+    elif ran < 0.05:
         tweet_text = "#LOTR"
-    elif ran < 0.23:
-        tweet_text = "The Hobbit"
-    elif ran < 0.24:
-        tweet_text = "#TheHobbit"
+    elif ran < 0.09:
+        tweet_text = "Lord of the Rings"
+    elif ran < 0.10:
+        tweet_text = "#LordOfTheRings"
+
 
 
     # 5. Download from S3 into Lambda’s /tmp

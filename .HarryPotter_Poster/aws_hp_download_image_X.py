@@ -28,7 +28,7 @@ def X_Download_Image_HP(event, context):
     try:
         tweets = client.search_recent_tweets(
             query=f"from:{X_TARGET_USERNAME} has:media -is:retweet",
-            max_results=31,
+            max_results=6,
             tweet_fields=['created_at', 'public_metrics', 'lang', 'possibly_sensitive', 'text'],
             expansions='author_id,attachments.media_keys',
             media_fields=['url', 'type', 'preview_image_url'],

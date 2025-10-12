@@ -47,10 +47,14 @@ def HarryPotter_meme_post(event, context):
     # random tweet text
     tweet_text = ""
     ran = random.random()
-    if ran < 0.1:
+    if ran < 0.05:
         tweet_text = "Harry Potter"
-    elif ran < 0.2:
+    elif ran < 0.06:
+        tweet_text = "#HarryPotter"
+    elif ran < 0.07:
         tweet_text = "HP"
+    elif ran < 0.08:
+        tweet_text = "#HP"
 
     # Download the selected file to a temporary directory
     download_path = f"/tmp/{os.path.basename(random_file)}"
