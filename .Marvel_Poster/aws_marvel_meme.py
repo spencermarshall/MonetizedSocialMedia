@@ -90,9 +90,9 @@ def Marvel_meme_post(event, context):
         tweet_text = "#MarvelStudios"
     elif ran < 0.03:
         tweet_text = "#MCU"
-    elif ran < 0.04:
-        tweet_text = "Marvel"
     elif ran < 0.05:
+        tweet_text = "Marvel"
+    elif ran < 0.07:
         tweet_text = "MCU"
 
     # 7. Download into Lambda’s temp folder
