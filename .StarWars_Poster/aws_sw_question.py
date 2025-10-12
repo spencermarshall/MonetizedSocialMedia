@@ -64,7 +64,7 @@ questions = {
     56: "What are your opinions on the Ewoks?",
     57: "Do you like Star Wars Battlefront 2?", #delete if bad
     58: "What are your opinions on the original Star Wars Battlefront 2 game?",
-    59: "What are your opinions on the Lego Star Wars games?",
+    59: "Do you like the Lego Star Wars games?",
     60: "Have you played the Skywalker Saga game?",  # i change from opinions it had 28comments, maybe go back idk
     61: "What are your opinions on Jedi Fallen Order?",
     62: "Have you ever played the Star Wars Squadrons game (2020)?",
@@ -145,7 +145,7 @@ questions = {
     135: "Would you want a story set during the Old Republic era?",
     136: "Say something nice about the Sequels",
     137: "What are your thoughts on the concept of the World Between Worlds?",
-    138: "Do you want to see Obi-Wan Kenobi and Duchess Satine together?",  # todo if this doesn't perform well, delete
+    138: "Tweet like you live on Kessel",
     139: "Do you want a Lando TV show staring Donald Glover?",
     140: "What are your opinions on Anakin's fall to the dark side?",
     141: "Do you wanna see more about the Clones after Order 66?",
@@ -329,7 +329,7 @@ questions = {
     316: "What are your opinions of Starkiller Base?",
     317: "Do you like Mandalore?",  # delete if bad
     318: "What is your favorite quote from Obi-Wan Kenobi?",
-    319: "Would you want to live on Umbara?",
+    319: "Tweet like you live on Geonosis",
     320: "Did you like seeing Kessel in the Solo movie?",  # todo maybe rewrite or delete
     321: "What are your opinions of Felucia?",
     322: "What is your favorite quote from Darth Vader?",
@@ -402,7 +402,7 @@ questions = {
     # todo maybe reword, i already tried "did you enjoy seeing Zeb in live action?" but it got 10 comments
     388: "Tweet like you live on Mandalore",
     389: "Did the Andor show live up to your expectations?",
-    390: "Who is your favorite Smuggler in Star Wars?",
+    390: "Tweet like you live on Jakku",
     391: "Did you like the CGI used for Luke in The Mandalorian?",
     392: "Who is your favorite character from the Prequels?",
     393: "Who is your least favorite character from the Prequels?",
@@ -439,7 +439,7 @@ questions = {
     422: "What is the definition of peak Star Wars?",
     423: "What are your opinions on the Star Wars: Force Unleashed games?",
     424: "What is your favorite Star Wars location?",
-    425: "What is your favorite Star Wars creature?",
+    425: "Tweet like you live on Kamino",
     426: "What are your opinions on Force Ghosts?",
     427: "What is your favorite Star Wars vehicle?",
     428: "What is your favorite Star Wars battle?",
@@ -460,11 +460,11 @@ questions = {
     443: "Would you rather train under Yoda or Obi-Wan?",
     444: "Do you like the idea of midi-chlorians?",
     445: "Who was your favorite cameo in The Mandalorian?",
-    446: "What are your thoughts on the Rule of Two?",
+    446: "Tweet like you live on Mustafar",
     447: "Who's your favorite character from Rogue One?",
     448: "What are your opinions on the Tusken Raiders?",
     449: "What are your thoughts on Force healing?",
-    450: "Do you have any May 4th Star Wars Day traditions?",
+    450: "Tweet like you live on Scarif",
     451: "Did you like the Yoda v. Palpatine battle in Ep 3?",
     452: "Did you like the Mustafar Duel in Ep 3?",
     453: "Would you want a series about the Knights of Ren?",
@@ -485,7 +485,7 @@ questions = {
     466: "What is your least favorite Star Wars location?",  # todo this seems to perform well
     467: "Who is your least favorite Star Wars character?",
     468: "What is your least favorite Star Wars movie?",
-    469: "What is your least favorite Star Wars TV show?",
+    469: "Why do you like Star Wars?",
     470: "What is your least favorite Star Wars game?",
     471: "Have you read the Thrawn trilogy?",
     472: "Do you want to see Thrawn in future projects?",
@@ -596,12 +596,9 @@ questions = {
     577: "Tweet like you live on Crait",
     578: "Tweet like you live on Dagobah",
     579: "Would you want to live on Jakku?",
-    580: "Tweet like you live on Geonosis",
-    581: "Tweet like you live on Jakku",
-    582: "Tweet like you live on Kamino", #delete if bad
-    583: "Tweet like you live on Mustafar",
-    584: "Tweet like you live on Kessel", #delete if bad
-    585: "Tweet like you live on Scarif", #delete if bad
+
+
+
 
 
 
@@ -754,7 +751,7 @@ def SW_question(event, context):
         135: "None",
         136: "None",
         137: "questions/other_WorldBetweenWorlds/",
-        138: "questions/other_SatineKenobi/",
+        138: "None",
         139: "questions/show_Lando/",
         140: "None",
         141: "questions/other_ClonesAfterOrder66/",
@@ -935,7 +932,7 @@ def SW_question(event, context):
         316: "questions/planet_StarkillerBase/",
         317: "questions/planet_Mandalore/",
         318: "questions/char_ObiWan/",
-        319: "questions/planet_Umbara/",
+        319: "questions/planet_Geonosis/",
         320: "questions/planet_Kessel/",
         321: "questions/planet_Felucia/",
         322: "questions/char_Vader(Kenobi-show)/",
@@ -1006,7 +1003,7 @@ def SW_question(event, context):
         387: "questions/char_ZebLiveAction/",
         388: "questions/planet_Mandalore/",
         389: "questions/show_Andor/",
-        390: "None",
+        390: "questions/planet_Jakku/",
         391: "questions/char_LukeCGI/",
         392: "None",
         393: "None",
@@ -1062,7 +1059,7 @@ def SW_question(event, context):
         443: "None",
         444: "None",
         445: "None",
-        446: "None",
+        446: "questions/planet_Mustafar/",
         447: "questions/movie_RogueOne",
         448: "questions/char_TuskenRaiders(Mandalorian)/",
         449: "None",
@@ -1196,10 +1193,10 @@ def SW_question(event, context):
         577: "questions/planet_Crait/",
         578: "questions/planet_Dagobah/",
         579: "questions/planet_Jakku/",
-        580: "questions/planet_Geonosis/",
-        581: "questions/planet_Jakku/",
+        580: "None",
+        581: "None",
         582: "None",
-        583: "questions/planet_Mustafar/",
+        583: "None",
         584: "None",
         585: "None",
         586: "None",
