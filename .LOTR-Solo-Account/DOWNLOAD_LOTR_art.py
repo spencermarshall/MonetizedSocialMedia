@@ -4,9 +4,9 @@ import requests
 import boto3
 import os
 
-X_TARGET_USERNAME = '_middleEarth'
+X_TARGET_USERNAME = 'nimgaladh'
 BUCKET_NAME = 'lotr.photos'
-FOLDER_NAME = 'middle_earth_images'
+FOLDER_NAME = 'art'
 
 API_KEY = os.environ["API_KEY"]
 API_SECRET_KEY = os.environ["API_SECRET_KEY"]
@@ -25,7 +25,7 @@ client = tweepy.Client(
 s3 = boto3.client('s3')
 
 
-def MiddleEarthDownload(event, context):
+def LOTR_ArtDownload(event, context):
     tweets = None
     try:
         tweets = client.search_recent_tweets(
