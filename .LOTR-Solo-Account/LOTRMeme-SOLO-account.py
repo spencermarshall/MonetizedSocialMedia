@@ -1,4 +1,4 @@
-import boto3  # this is pre-downloaded on aws
+import boto3
 import random
 import tweepy
 import os
@@ -8,14 +8,14 @@ import botocore.exceptions
 MOST_RECENT = 200
 
 # X credentials stored in env variables
-API_KEY = os.environ["API_KEY"]
-API_SECRET_KEY = os.environ["API_SECRET_KEY"]
-ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
-ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
-BEARER_TOKEN = os.environ["BEARER_TOKEN"]
+API_KEY            = os.environ["API_KEY"]
+API_SECRET_KEY     = os.environ["API_SECRET_KEY"]
+ACCESS_TOKEN       = os.environ["ACCESS_TOKEN"]
+ACCESS_TOKEN_SECRET= os.environ["ACCESS_TOKEN_SECRET"]
+BEARER_TOKEN       = os.environ["BEARER_TOKEN"]
 
 auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-api = tweepy.API(auth)
+api  = tweepy.API(auth)
 
 client = tweepy.Client(
     bearer_token=BEARER_TOKEN,
@@ -25,33 +25,34 @@ client = tweepy.Client(
     access_token_secret=ACCESS_TOKEN_SECRET
 )
 
-s3_client = boto3.client('s3')
+s3_client  = boto3.client('s3')
 bucket_name = 'lotr.photos'
-
+folder_name = 'middle_earth_images/'
 
 def LOTRMeme(event, context):
     # 1. List up to 1,000 objects in the bucket
-    response = s3_client.list_objects_v2(Bucket=bucket_name)
+    response = s3_client.list_objects_v2(Bucket=bucket_name, Prefix=folder_name)
 
     if 'Contents' not in response:
         return {
             'statusCode': 404,
-            'body': 'No files found in the S3 bucket.'
+            'body': 'No files found in the S3 bucket folder.'
         }
 
-    # 2. Filter for root-level image files with our allowed extensions
+    # 2. Filter for image files in the middle_earth_images folder with allowed extensions
     allowed_ext = ('.jpg', '.jpeg', '.png', '.webp')
     image_keys = [
         obj['Key']
         for obj in response['Contents']
         if obj['Key'].lower().endswith(allowed_ext)
-           and '/' not in obj['Key']  # exclude any “folders”
+           and obj['Key'].startswith(folder_name)
+           and obj['Key'] != folder_name  # exclude the folder itself
     ]
 
     if not image_keys:
         return {
             'statusCode': 404,
-            'body': 'No matching image files found at the root of the bucket.'
+            'body': 'No matching image files found in the middle_earth_images folder.'
         }
 
     # Fetch the recent memes list from S3
@@ -75,22 +76,10 @@ def LOTRMeme(event, context):
 
     tweet_text = ""
     ran = random.random()
-    if ran < 0.09:
-        tweet_text = "Middle Earth"
-    elif ran < 0.10:
-        tweet_text = "#MiddleEarth"
-    elif ran < 0.19:
-        tweet_text = "Lord of the Rings"
-    elif ran < 0.20:
-        tweet_text = "#LordOfTheRings"
-    elif ran < 0.29:
-        tweet_text = "LOTR"
-    elif ran < 0.30:
-        tweet_text = "#LOTR"
-    elif ran < 0.39:
-        tweet_text = "The Hobbit"
-    elif ran < 0.40:
-        tweet_text = "#TheHobbit"
+    if ran < 0.05:   tweet_text = "Lord of the Rings"
+    elif ran < 0.06:  tweet_text = "#LordOfTheRings"
+    elif ran < 0.11: tweet_text = "LOTR"
+    elif ran < 0.12: tweet_text = "#LOTR"
 
     # 5. Download from S3 into Lambda’s /tmp
     download_path = f"/tmp/{os.path.basename(random_file)}"
