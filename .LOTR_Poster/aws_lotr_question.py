@@ -20,7 +20,7 @@ def lotr_question(event, context):
         8: "Did you like Saruman?", #todo delete if bad
         9: "What are your opinions on Sauron?",
         # 10: "What are your opinions on Galadriel?",
-        10: "How does Tolkien's writing resonate with you?",
+        10: "What are you currently reading?",
         11: "What are your opinions on Elrond?",
         12: "What are your opinions on Arwen?",
         13: "What are your opinions on Éowyn?",
@@ -48,7 +48,7 @@ def lotr_question(event, context):
         33: "Who do you think is the most underrated character in LOTR?", #todo maybe delete, 9 comments last time if low again then delete
         34: "Which battle is more epic: Helm’s Deep or Pelennor Fields?",
         35: "What lessons can we learn from LOTR?",
-        36: "What is the most significant moment in Middle-earth history?",
+        36: "be honest, how many books are on your TBR pile rn?", #test
         37: "Which character from LOTR deserves more recognition?",
         38: "What's the biggest plot difference between the LOTR books and films?",
         39: "If you could change the ending of any movie, what would you change?", #todo maybe delete
@@ -62,7 +62,7 @@ def lotr_question(event, context):
         45: "What do you think is the most powerful piece of music in LOTR?",
         46: "What do you think is the most significant relationship in LOTR?",
         47: "What thoughts do you have on evil in LOTR?",
-        48: "What's your general feeling toward the orcs?",
+        48: "Do you prefer short books or long books?", #test
         # 49: "Which moment in LOTR shows the greatest betrayal?",
         # 50: "Which LOTR moment shows the greatest courage?",
         # 51: "Which moment in LOTR shows the greatest wisdom?",
@@ -86,7 +86,7 @@ def lotr_question(event, context):
         64: "What do you think is the most powerful symbol in LOTR?",
         65: "Who is the Lord of the Rings?",
         66: "What do you think is the most powerful aspect of Tolkien’s storytelling?",
-        67: "What do you think is the biggest act of heroism in LOTR?",
+        67: "Who's the most underrated member of the Fellowship?",
         # 68: "What do you think is the biggest moment of hope in LOTR?",
         68: "Should they stop making new LOTR content?",
         # 69: "What is the biggest moment of despair in LOTR?",
@@ -160,7 +160,7 @@ def lotr_question(event, context):
         120: "Tweet like you're Boromir",
         # 120: "What is your favorite LOTR species?",
         # 120: "Who is your favorite Hobbit character?",
-        121: "What are your opinions on The Shire?",
+        121: "Do you like The Shire?", #delete if bad
         122: "Did you see the War of the Rohirrim? What were your thoughts?",
         123: "What are your opinions on Mirkwood Forest?",
         124: "Tweet like you live on Lothlorien?",
@@ -193,7 +193,7 @@ def lotr_question(event, context):
         151: "Which location shown in Rings of Power would you most love to visit?",
         152: "Tweet like you're Thorin",
         153: "What is your least favorite episode of Rings of Power?",
-        154: "What are your opinions on the Rings of Power soundtrack?",
+        154: "Who's the true villain of Middle-earth?",
         155: "Did you enjoy the Rings of Power cinematography?", #todo maybe delete
         156: "If you could change one thing about Rings of Power, what would it be?",
         157: "Name a LOTR location you wouldn't want to visit",
@@ -226,7 +226,7 @@ def lotr_question(event, context):
         178: "Tweet like you're Elrond", #delete if bad
         179: "What are some LOTR X (Twitter) accounts you'd recommend someone following?",
         180: "What are your opinions on Bilbo Baggins in LOTR?",
-        181: "What are your opinions on Boromir's death scene?",
+        181: "Did you cry during Boromir's death scene?",
         182: "Where in Middle-Earth would you want to live?",
         # 183: "What are your opinions on the LOTR fandom?",
         183: "Tweet like you're Gollum",
@@ -244,13 +244,13 @@ def lotr_question(event, context):
         194: "Genuine question. Why is the Hobbit trilogy so disliked by so many people? I love it.",
         195: "Did you like Tauriel being in The Hobbit movies but not the book?",
         196: "Did you like Azog being in The Hobbit movies but not the book?",
-        197: "Did you like Saruman being in The Hobbit movies but not the book?",
+        197: "If you could wield one weapon from LOTR, which would it be?",
         198: "Do you want more animated LOTR content?",
         199: "Did you like the Eagles’ rescue at the end of Return of the King?",
         # 200: "Did you like the ending of The Hobbit?",
         200: "What do you love about the storytelling in LOTR?",
         201: "Did you enjoy the ending of LOTR?",
-        202: "Which LOTR novel did you enjoy you most?",
+        202: "What are you currently writing?", #test
         # 203: "What do you think about Bilbo’s character arc from The Hobbit to LOTR?",
         203: "Did Elijah Wood do a good job portraying Frodo?",
         204: "Rohan or Gondor?",
@@ -274,7 +274,7 @@ def lotr_question(event, context):
         219: "What thoughts come to mind when you think of the Fellowship?",
         220: "Which Middle-earth food or drink would you most want to try?",
         221: "What’s your favorite LOTR quote that inspires you?",
-        222: "Which character's backstory deserves its own spin-off?",
+        222: "What movie scene gives you the chills no matter how many times you watch it?",
         223: "Is watching the extended editions of LOTR worth it?",
         # 224: "Which friendship duo is most underrated?",
         224: "What's your take on the LOTR creatures?",
@@ -288,7 +288,7 @@ def lotr_question(event, context):
         231: "What's your opinion on LOTR world-building?",
         232: "What will the LOTR universe look like in 20 years?", #todo maybe delete
         # 233: "If you could give one piece of advice to Frodo, what would it be?",
-        233: "Did Ian McKellen do a good job portraying Gandalf?",
+        233: "Did Ian McKellen do a good job portraying Gandalf?", #todo add image
         234: "Which LOTR quote inspires you in difficult times?",
         235: "Did you like the middle management orc arguing with Saruman about realistic factory output?",
         236: "Did Rings of Power live up to your expectations?",
@@ -392,7 +392,7 @@ def lotr_question(event, context):
         322: "Did you like Gandalf's resurrection?",
         323: "Where would you rather live: Lothlórien or Rivendell?",
         324: "What do you love most about LOTR?",
-        325: "Tweet like you live in Gondor",
+        325: "Tweet like you live in Gondor", #delete if bad
         326: "Tweet like you live in Isengard",
         327: "Tweet like you live in Mirkwood",
         328: "Tweet like you live in Mordor",
@@ -400,12 +400,8 @@ def lotr_question(event, context):
         330: "Tweet like you're Aragorn",
         331: "Tweet like you're Arwen", #delete if bad
         332: "Tweet like you're Bilbo Baggins",
-        #below is this good questions from @_middleEarth
-        333: "Who's the true villain of Middle-earth?",
-        334: "Who's the most underrated member of the Fellowship?",
-        335: "If you could wield one weapon from LOTR, which would it be?",
 
-        # 337: "Should I speak like this?",
+
 
 
 
@@ -647,7 +643,7 @@ def lotr_question(event, context):
         199: "questions/other_EagleRescue/",
         200: "None",
         201: "None",
-        202: "questions/other_LOTR-Books/",
+        202: "None",
         203: "questions/char_Frodo/",
         204: "None",
         205: "None",
