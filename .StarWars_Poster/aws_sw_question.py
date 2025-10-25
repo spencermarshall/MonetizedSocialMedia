@@ -1,4 +1,4 @@
-"import random
+import random
 import boto3
 import tweepy
 import os
@@ -1329,4 +1329,3 @@ def SW_question(event, context):
 
     except Exception as e:
         print(e)
-"
