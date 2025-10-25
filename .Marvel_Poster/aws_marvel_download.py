@@ -75,7 +75,7 @@ def marvel_download(event, context):
     - Uploads the image to the S3 bucket if it meets the criteria.
     """
     subreddit = reddit.subreddit('marvelmemes')
-    top_posts = subreddit.top(time_filter='week', limit=7)
+    top_posts = subreddit.top(time_filter='week', limit=3)
 
     allowed_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
 
