@@ -1,4 +1,4 @@
-import random
+"import random
 import boto3
 import tweepy
 import os
@@ -42,11 +42,12 @@ questions = {
     34: "What are your opinions on The Rise of Skywalker?",
     35: "What are your opinions on Rogue One?",
     36: "What are your opinions on the Han Solo movie?",
-    37: "What are your opinions on Bendu?",
+    37: "Do you like Bendu?", #delete if bad
     38: "Who's your favorite Mandalorian?",
     39: "Who's your favorite Jedi?",
     40: "Who's your favorite Sith?",
-    41: "Who's your favorite Bounty Hunter?",
+    # 41: "Who's your favorite Bounty Hunter?",
+    41: "Tweet like you're Saw Gerrera",
     42: "Who's your favorite Clone Trooper?",
     43: "Who's your favorite Droid?",
     44: "The ending of Rogue One was super good but I'm sad we have to wait until 1977 for a sequel.",
@@ -82,7 +83,6 @@ questions = {
     73: "What are your opinions on George Lucas?",
     74: "What are your opinions on Rey being a Skywalker?",
     75: "Everyone has different opinions on different parts of Star Wars. That is okay. We should not hate each other or be rude because of different points of view. We can have open discussion and conversation, and if we disagree we can do so politely.",
-    # todo maybe delete
     76: "Tweet like you live on Naboo",
     77: "Should Disney make a new Star Wars trilogy? When would it be set?",
     78: "What are your opinions on Boba Fett", #todo add image
@@ -125,7 +125,7 @@ questions = {
     115: "What would have happened if Anakin had never turned to the Dark Side?",
     116: "Have you read any of the Star Wars books?",  # todo maybe delete
     117: "What is your favorite Star Wars book?",
-    118: "Which is your favorite Star Wars comic series?",
+    118: "Would you recommend this show to someone?",
     119: "What is your favorite Star Wars planet?",
     120: "If you could spend a day with any Star Wars character who would it be?",
     121: "If you could rewrite one Star Wars character’s arc, who would it be?",
@@ -153,7 +153,7 @@ questions = {
     143: "What is your favorite non-canon Star Wars story?",  # maybe delete
     144: "Do you want Mace Windu to return in future projects?",
     145: "What are your opinions on Chancellor Valorum?",
-    146: "What are your opinions on Watto?",
+    146: "Tweet like you're Palpatine",
     147: "Do you want more of a backstory of Shmi Skywalker?",
     148: "Did you like Jake Lloyd as Anakin Skywalker?",
     149: "Tweet like you're Obi-Wan Kenobi",
@@ -207,7 +207,7 @@ questions = {
     197: "Did you enjoy seeing Boba Fett in The Mandalorian?",
     198: "Did you enjoy seeing Luke Skywalker in The Mandalorian?",
     199: "What are your thoughts on Grogu (Baby Yoda) in The Mandalorian?",
-    200: "What are your thoughts on Moff Gideon?",
+    200: "Do you like Moff Gideon?", #delete if bad
     201: "What are your thoughts on Cara Dune?",
     202: "What are your thoughts on Greef Karga?",
     203: "Did you like Dave Filoni showing up in The Mandalorian?",
@@ -220,7 +220,7 @@ questions = {
     210: "What are your thoughts on Bib Fortuna?",
     211: "What are your thoughts on The Armorer?",
     212: "Did you enjoy seeing Bill Burr appearing in The Mandalorian",
-    213: "what is a star war?",
+    213: "Tweet like you're Mace Windu",
     214: "Is the Ahsoka show just Rebels Season 5?",
     215: "Did you like Jod Na Nawood (Jude Law) from Skeleton Crew?",  # todo maybe rewrite or delete
     216: "Do you like Omega from The Bad Batch?",
@@ -258,13 +258,14 @@ questions = {
     248: "Star Wars or Star Trek?",
     249: "Did you enjoy Lando Calrissian's return in Episode 9?",
     250: "What do you think makes a great Star Wars villain?",
-    251: "Would you want a Star Wars story told from the perspective of a smuggler?",
+    # 251: "Would you want a Star Wars story told from the perspective of a smuggler?",
+    251: "Tweet like you're Rey",
     252: "What role do you think music plays in enhancing the Star Wars experience?",
     253: "I sense a plot to destroy the Jedi", #13 comments, 56 likes Sep 2025
     # maybe get rid of 'in the star wars universe' idk
     254: "If you're stuck in the Star Wars universe for 24 hours, what's the first thing you would do?",
     255: "What will Star Wars look like in 30 years?",
-    256: "What are your thoughts on the Star Wars fandom?",
+    256: "Do you like the Star Wars fandom?", #delete if bad
     257: "What role should real world politics have in Star Wars?",
     258: "Tweet like you live on Yavin 4",
     259: "What is Darth Vader saying?",
@@ -273,7 +274,8 @@ questions = {
     261: "Do you like Star Wars Lore?",
     262: "Did you like Darth Maul's return in The Clone Wars?",
     263: "Did you like the Nightsister magic in Ahsoka?",  # test
-    264: "Do you like the Expanded Universe (EU)?",
+    # 264: "Do you like the Expanded Universe (EU)?",
+    264: "Do Star Wars YouTubers actually like Star Wars?",
     265: "Are you excited for Star Wars: Starfighter coming May 2027?",
     266: "What are your opinions on the Clone Wars movie?",
     267: "Which is a better name: Count Dooku or Darth Tyranus",
@@ -292,7 +294,7 @@ questions = {
     280: "Did you like the Mortis episodes in The Clone Wars?",
     281: "Did you like the Siege of Mandalore episodes in The Clone Wars?",
     282: "Execute Order 66", #todo add image here
-    283: "Did you like the Umbara episodes in The Clone Wars?",
+    283: "Tweet like you're Thrawn",
     284: "Do you want Star Wars Battlefront 3?",
     285: "Did you enjoy seeing Boba Fett in The Clone Wars?",
     286: "Did you enjoy seeing the Martez Sisters in The Clone Wars?",
@@ -309,7 +311,7 @@ questions = {
     297: "Which is cooler: Battle of Endor or Battle of Yavin?", #11 comments without prefix, maybe delete if bad
     298: "Battle of Geonosis or Battle of Naboo?",
     299: "What are your opinions of Crait?",
-    300: "Would you want to live on Geonois?",  # todo maybe delete
+    300: "Tweet like you're Yoda",
     301: "What are your opinions of Kamino?",
     302: "What are your opinions of Mustafar?",
     303: "What are your opinions of Scarif?",
@@ -318,8 +320,8 @@ questions = {
     306: "What are your opinions of Tatooine?",
     307: "Would you want to live on Coruscant?",
     308: "Would you want to live on Naboo?",
-    309: "What are your opinions of the Forest Moon of Endor?",
-    310: "Is Yavin 4 a good rebel base?",
+    309: "Do you like the Forest Moon of Endor?",
+    310: "Tweet like you live on Tatooine",
     # todo maybe re-word, the generic "what are your opinions on..." didn't do that good
     311: "What are your opinions of Dagobah?",
     312: "What are your opinions of Bespin?",
@@ -330,7 +332,7 @@ questions = {
     317: "Do you like Mandalore?",  # delete if bad
     318: "What is your favorite quote from Obi-Wan Kenobi?",
     319: "Tweet like you live on Geonosis",
-    320: "Did you like seeing Kessel in the Solo movie?",  # todo maybe rewrite or delete
+    320: "Tweet like you live on Hoth",
     321: "What are your opinions of Felucia?",
     322: "What is your favorite quote from Darth Vader?",
     323: "It's over Anakin, I have the high ground", #todo add image here
@@ -339,7 +341,8 @@ questions = {
     326: "Would you want to live on Ahch-To?",
     327: "Would you want to live on Canto Bight?",
     328: "Which hallway scene is your favorite?",
-    329: "If you're in the Star Wars universe, what would your job be?",
+    # 329: "If you're in the Star Wars universe, what would your job be?",
+    329: "Tweet like you live on Endor",
     330: "How did Palpatine kill these Jedi so easily?",
     331: "Jedi Temple or Sith Temple?",
     # 332: "Astromech or Protocol Droid?",
@@ -354,7 +357,7 @@ questions = {
     340: "Do you support the Rebel Alliance?",  # todo maybe change idk
     341: "What are your opinions on Wedge Antilles?",
     342: "What are your opinions on Grand Admiral Thrawn?",
-    343: "What are your opinions on Grand Moff Tarkin?",
+    343: "Do you like Grand Moff Tarkin?", #delete if bad
     344: "What are your opinions on Admiral Ackbar?",
     345: "What are your opinions on Captain Rex?",
     346: "Do you like Commander Cody?", #delete if bad
@@ -369,7 +372,7 @@ questions = {
     355: "Do you want to see more Bo-Katan?",  # todo maybe delete
     356: "Did you like Sabine Wren in Rebels?",
     357: "What are your opinions on Zeb?",
-    358: "Did you like Agent Kallus in Rebels?",
+    358: "Tweet like you live on Canto Bight",
     359: "What are your opinions on John Williams?",
     360: "Do you want to see the Grand Inquisitor return in future projects?",
     361: "If you could change one thing about The Phantom Menace what would it be?",
@@ -386,7 +389,7 @@ questions = {
     372: "What is your Star Wars Unpopular Opinion?",
     373: "Palpatine did nothing wrong. Change my mind.",
     374: "Should they make a GTA style Star Wars video game?",
-    375: "Did you enjoy seeing Count Dooku in the Tales of the Jedi?",
+    375: "Tweet like you live on Crait",
     376: "What are your opinions on Yaddle?",
     377: "If Disney sold Star Wars, who would you want to buy it?",
     378: "What Star Wars Lego sets do you own?",  # maybe reword or delete
@@ -434,13 +437,14 @@ questions = {
     418: "If you could change one thing about Ahsoka Tano, what would it be?",
     419: "Do you want to see Poe Dameron in future projects?",
     # everything below here is a test / new
-    420: "Which inquisitor do you want to see more?",  # todo maybe delete, or reword
+    420: "Is this worth watching?",
     421: "Would you rather be Force-sensitive or a skilled pilot?",
     422: "What is the definition of peak Star Wars?",
     423: "What are your opinions on the Star Wars: Force Unleashed games?",
     424: "What is your favorite Star Wars location?",
     425: "Tweet like you live on Kamino",
-    426: "What are your opinions on Force Ghosts?",
+    # 426: "What are your opinions on Force Ghosts?",
+    426: "Is this worth watching?",
     427: "What is your favorite Star Wars vehicle?",
     428: "What is your favorite Star Wars battle?",
     429: "Would you want a Star Wars story about ancient Jedi?",
@@ -448,7 +452,8 @@ questions = {
     431: "Tweet like you live on Coruscant",
     432: "Tweet like you work in Starkiller Base",
     433: "Would you rather wield a double-bladed lightsaber or dual lightsabers?",
-    434: "What is your favorite Star Wars quote from a droid?",
+    # 434: "What is your favorite Star Wars quote from a droid?",
+    434: "Tweet like you live on Dagobah",
     435: "Who's your favorite Jedi who survived Order 66?",
     436: "What are your thoughts on the concept of gray Jedi?",
     437: "Who's your favorite Sith Lord from Legends?",
@@ -469,7 +474,7 @@ questions = {
     452: "Did you like the Mustafar Duel in Ep 3?",
     453: "Would you want a series about the Knights of Ren?",
     454: "What are your thoughts on Rose Tico?",
-    455: "Would you ever want to yield the Darksaber?",
+    455: "Do you want to yield the Darksaber?", #delete if bad
     456: "What are your opinions on the ending of Rogue One?",
     457: "What are your opinions on the ending of The Rise of Skywalker?",
     458: "What are your opinions on Luke's training of Rey?",
@@ -480,7 +485,8 @@ questions = {
     462: "Do you want to see Cara Dune return in future projects?",
     # 463: "What is your least favorite ",
     463: "What Star Wars opinion do you have that will have people like this?",
-    464: "What is your least favorite Star Wars weapon?",
+    # 464: "What is your least favorite Star Wars weapon?",
+    464: "Would you want to live on Jakku?",
     465: "What is your least favorite Star Wars battle?",
     466: "What is your least favorite Star Wars location?",  # todo this seems to perform well
     467: "Who is your least favorite Star Wars character?",
@@ -583,19 +589,10 @@ questions = {
     564: "Tweet like you're Lando Calrissian",
     565: "Tweet like you're Leia Organa",
     566: "Tweet like you're Luke Skywalker",
-    567: "Tweet like you're Mace Windu",
-    568: "Tweet like you're Palpatine",
-    569: "Tweet like you're Rey",
-    570: "Tweet like you're Saw Gerrera",
-    571: "Tweet like you're Thrawn",
-    572: "Tweet like you're Yoda",
-    573: "Tweet like you live on Tatooine",
-    574: "Tweet like you live on Hoth",
-    575: "Tweet like you live on Endor",
-    576: "Tweet like you live on Canto Bight", #delete if bad
-    577: "Tweet like you live on Crait",
-    578: "Tweet like you live on Dagobah",
-    579: "Would you want to live on Jakku?",
+
+
+
+
 
 
 
@@ -654,7 +651,7 @@ def SW_question(event, context):
         38: "None",
         39: "questions/other_Jedi/",
         40: "questions/other_SithLordall/",
-        41: "None",
+        41: "questions/char_SawGerrera",
         42: "questions/generic_clones/",
         43: "None",
         44: "None",
@@ -731,7 +728,7 @@ def SW_question(event, context):
         115: "questions/other_AnakinNeverTurned/",
         116: "questions/other_books/",
         117: "questions/other_books/",
-        118: "None",
+        118: "questions/show_CloneWars/",
         119: "None",
         120: "None",
         121: "None",
@@ -759,7 +756,7 @@ def SW_question(event, context):
         143: "None",
         144: "questions/char_MaceWindu/",
         145: "questions/char_Valorum/",
-        146: "questions/char_Watto/",
+        146: "questions/char_PalpatinePrequels",
         147: "questions/char_ShmiSkywalker/",
         148: "questions/char_Anakin(ep1)/",
         149: "questions/char_ObiWan",
@@ -826,7 +823,7 @@ def SW_question(event, context):
         210: "questions/char_BibFortuna/",
         211: "questions/char_Armorer/",
         212: "questions/char_BillBurr/",
-        213: "None",
+        213: "questions/char_MaceWindu",
         214: "questions/show_Ahsoka/",
         215: "questions/char_JudeLaw/",
         216: "questions/char_Omega/",
@@ -864,7 +861,7 @@ def SW_question(event, context):
         248: "questions/other_StarWars-StarTrek/",
         249: "questions/char_LandoCalrissianEP9/",
         250: "None",
-        251: "None",
+        251: "questions/char_Rey",
         252: "questions/char_JohnWilliams/",
         253: "None",
         254: "None",
@@ -896,7 +893,7 @@ def SW_question(event, context):
         280: "questions/other_MortisArc(CW)/",
         281: "questions/other_SiegeofMandalore(CW)/",
         282: "None",
-        283: "questions/other_CloneWarsUmbara/",
+        283: "questions/char_Thrawn",
         284: "questions/game_SWBF3/",
         285: "questions/char_BobaFettCloneWars/",
         286: "questions/other_MartezSisters/",
@@ -913,7 +910,7 @@ def SW_question(event, context):
         297: "None",
         298: "None",
         299: "questions/planet_Crait/",
-        300: "questions/planet_Geonosis/",
+        300: "questions/char_Yoda",
         301: "questions/planet_Kamino/",
         302: "questions/planet_Mustafar/",
         303: "questions/planet_Scarif/",
@@ -923,7 +920,7 @@ def SW_question(event, context):
         307: "questions/planet_Coruscant/",
         308: "questions/planet_Naboo/",
         309: "questions/planet_Endor/",
-        310: "questions/planet_Yavin4/",
+        310: "questions/planet_Tatooine/",
         311: "questions/planet_Dagobah/",
         312: "questions/planet_Bespin/",
         313: "None",
@@ -933,7 +930,7 @@ def SW_question(event, context):
         317: "questions/planet_Mandalore/",
         318: "questions/char_ObiWan/",
         319: "questions/planet_Geonosis/",
-        320: "questions/planet_Kessel/",
+        320: "questions/planet_Hoth/",
         321: "questions/planet_Felucia/",
         322: "questions/char_Vader(Kenobi-show)/",
         323: "None",
@@ -942,7 +939,7 @@ def SW_question(event, context):
         326: "questions/planet_Ahch-to/",
         327: "questions/planet_CantoBight/",
         328: "questions/other_Hallway/",
-        329: "None",
+        329: "questions/planet_Endor/",
         330: "questions/other_4JediKillPalpatine/",
         331: "None",
         332: "questions/char_DirectorKrennic/",
@@ -971,7 +968,7 @@ def SW_question(event, context):
         355: "questions/char_SabineWrenCWRebels/",
         356: "questions/char_SabineWren/",
         357: "questions/char_Zeb/",
-        358: "questions/char_AgentKallus/",
+        358: "None",
         359: "questions/char_JohnWilliams/",
         360: "questions/char_GrandInquisitor/",
         361: "questions/movie_ep1/",
@@ -988,7 +985,7 @@ def SW_question(event, context):
         372: "None",
         373: "questions/char_PalpatinePrequels/",
         374: "None",
-        375: "questions/char_CountDookuTalesOfJedi/",
+        375: "questions/planet_Crait/",
         376: "questions/char_Yaddle/",
         377: "None",
         378: "questions/other_Lego/",
@@ -1033,13 +1030,13 @@ def SW_question(event, context):
         417: "None",
         418: "questions/char_Ahsoka(CW)/",
         419: "questions/char_PoeDameron/",
-        420: "None",
+        420: "questions/show_Acolyte/",
         421: "None",
         422: "None",
         423: "None",
         424: "None",
         425: "None",
-        426: "None",
+        426: "questions/show_Ahsoka/",
         427: "None",
         428: "None",
         429: "None",
@@ -1047,7 +1044,7 @@ def SW_question(event, context):
         431: "questions/planet_Coruscant/",
         432: "None",
         433: "None",
-        434: "None",
+        434: "questions/planet_Dagobah/",
         435: "None",
         436: "None",
         437: "questions/other_SithLordall/",
@@ -1077,7 +1074,7 @@ def SW_question(event, context):
         461: "questions/char_Rey/",
         462: "questions/char_CaraDune/",
         463: "questions/other_unpopularOpinion/",
-        464: "None",
+        464: "questions/planet_Jakku/",
         465: "None",
         466: "None",
         467: "None",
@@ -1180,19 +1177,19 @@ def SW_question(event, context):
         564: "questions/char_LandoCalrissian",
         565: "questions/char_Leia",
         566: "questions/char_Luke",
-        567: "questions/char_MaceWindu",
-        568: "questions/char_PalpatinePrequels",
-        569: "questions/char_Rey",
-        570: "questions/char_SawGerrera",
-        571: "questions/char_Thrawn",
-        572: "questions/char_Yoda",
-        573: "questions/planet_Tatooine/",
-        574: "questions/planet_Hoth/",
-        575: "questions/planet_Endor/",
+        567: "None",
+        568: "None",
+        569: "None",
+        570: "None",
+        571: "None",
+        572: "None",
+        573: "None",
+        574: "None",
+        575: "None",
         576: "None",
-        577: "questions/planet_Crait/",
-        578: "questions/planet_Dagobah/",
-        579: "questions/planet_Jakku/",
+        577: "None",
+        578: "None",
+        579: "None",
         580: "None",
         581: "None",
         582: "None",
@@ -1332,3 +1329,4 @@ def SW_question(event, context):
 
     except Exception as e:
         print(e)
+"
