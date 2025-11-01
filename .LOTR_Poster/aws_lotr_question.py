@@ -402,20 +402,6 @@ def lotr_question(event, context):
         332: "Tweet like you're Bilbo Baggins",
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         #todo on a scale from 1-10 how much do you like LOTR movies and hobbit, and ROP, and War Of Rohirrim, 8 questions total
 
 

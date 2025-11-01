@@ -10,6 +10,11 @@ import time
 # Reddit API Credentials
 # REDDIT_CLIENT_ID = os.environ['REDDIT_CLIENT_ID']
 # REDDIT_CLIENT_SECRET = os.environ['REDDIT_CLIENT_SECRET']
+# REDDIT_USER_AGENT = os.environ['REDDIT_USER_AGENT']
+REDDIT_CLIENT_ID = 'USAgnTeY8fqGUtRtJJjNeg'
+REDDIT_CLIENT_SECRET = 'oViJMoCRQxcJo6go_QVYUU5jUuGkvA'
+REDDIT_USER_AGENT = 'data_bot'
+
 
 # Initialize Reddit API
 reddit = praw.Reddit(
@@ -17,12 +22,26 @@ reddit = praw.Reddit(
     client_secret=REDDIT_CLIENT_SECRET,
     user_agent=REDDIT_USER_AGENT
 )
-client = tweepy.Client(bearer_token=bearer_token,
-                           consumer_key=api_key, consumer_secret=api_key_secret,
-                           access_token=access_token, access_token_secret=access_token_secret)
 
-auth = tweepy.OAuth1UserHandler(api_key, api_key_secret, access_token, access_token_secret)
+
+# X credentials stored in env variables
+API_KEY = os.environ["API_KEY"]
+API_SECRET_KEY = os.environ["API_SECRET_KEY"]
+ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
+BEARER_TOKEN = os.environ["BEARER_TOKEN"]
+
+auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
+
+client = tweepy.Client(
+    bearer_token=BEARER_TOKEN,
+    consumer_key=API_KEY,
+    consumer_secret=API_SECRET_KEY,
+    access_token=ACCESS_TOKEN,
+    access_token_secret=ACCESS_TOKEN_SECRET
+)
+
 
 
 
@@ -32,7 +51,7 @@ def fetch_top_post_with_media():
     subreddit = reddit.subreddit('marvelmemes')
     recent_posts = subreddit.new(limit=30)  # Fetch recent posts to cover at least 6 hours
     now = time.time()
-    six_hours_ago = now - (6 * 3600)  # Calculate timestamp for 6 hours ago
+    six_hours_ago = now - (24 * 3600)  # Calculate timestamp for 6 hours ago
 
     # Filter posts: within 6 hours, not NSFW, not stickied, and has valid media
     eligible_posts = [
@@ -74,7 +93,7 @@ def lambda_handler(event, context):
 
             tweet_text = f"{text}"
             print(f"Posting to Twitter: {tweet_text}")
-            client.create_tweet(text="", media_ids=[media.media_id])
+            client.create_tweet(text=text, media_ids=[media.media_id])
             print(f"Successfully posted: {post.title}")
         except tweepy.errors.TweepyException as e:
             print("An error occurred while posting to Twitter.")
