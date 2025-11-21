@@ -84,16 +84,17 @@ def Marvel_meme_post(event, context):
     # 6. Optionally add a hashtag
     tweet_text = ""
     ran = random.random()
-    if ran < 0.01:
+    if ran < 0.1:
         tweet_text = "#Marvel"
-    elif ran < 0.02:
+    elif ran < 0.2:
         tweet_text = "#MarvelStudios"
-    elif ran < 0.03:
+    elif ran < 0.3:
         tweet_text = "#MCU"
-    elif ran < 0.05:
+    elif ran < 0.5:
         tweet_text = "Marvel"
-    elif ran < 0.07:
+    elif ran < 0.7:
         tweet_text = "MCU"
+
 
     # 7. Download into Lambda’s temp folder
     download_path = f"/tmp/{os.path.basename(random_file)}"

@@ -1,45 +1,46 @@
-import boto3      # AWS SDK for Python, to talk to S3
-import random     # for picking a random file
-import tweepy     # Twitter/X API client
-import os         # to read environment variables
-import json       # to parse and write JSON
+import boto3  # AWS SDK for Python, to talk to S3
+import random  # for picking a random file
+import tweepy  # Twitter/X API client
+import os  # to read environment variables
+import json  # to parse and write JSON
 import botocore.exceptions
 
 # Number of recent images to avoid repeating
 MAX_RECENT = 300
 
+
 def SW_art(event, context):
     # 1️⃣ Load Twitter credentials
-    API_KEY             = os.environ["API_KEY"]
-    API_SECRET_KEY      = os.environ["API_SECRET_KEY"]
-    ACCESS_TOKEN        = os.environ["ACCESS_TOKEN"]
+    API_KEY = os.environ["API_KEY"]
+    API_SECRET_KEY = os.environ["API_SECRET_KEY"]
+    ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
     ACCESS_TOKEN_SECRET = os.environ["ACCESS_TOKEN_SECRET"]
-    BEARER_TOKEN        = os.environ["BEARER_TOKEN"]
+    BEARER_TOKEN = os.environ["BEARER_TOKEN"]
 
     # 2️⃣ Init Tweepy
-    auth   = tweepy.OAuth1UserHandler(
-                API_KEY, API_SECRET_KEY,
-                ACCESS_TOKEN, ACCESS_TOKEN_SECRET
-             )
-    api    = tweepy.API(auth)
+    auth = tweepy.OAuth1UserHandler(
+        API_KEY, API_SECRET_KEY,
+        ACCESS_TOKEN, ACCESS_TOKEN_SECRET
+    )
+    api = tweepy.API(auth)
     client = tweepy.Client(
-                bearer_token=BEARER_TOKEN,
-                consumer_key=API_KEY,
-                consumer_secret=API_SECRET_KEY,
-                access_token=ACCESS_TOKEN,
-                access_token_secret=ACCESS_TOKEN_SECRET
-             )
+        bearer_token=BEARER_TOKEN,
+        consumer_key=API_KEY,
+        consumer_secret=API_SECRET_KEY,
+        access_token=ACCESS_TOKEN,
+        access_token_secret=ACCESS_TOKEN_SECRET
+    )
 
     # 3️⃣ Init S3 info
-    s3        = boto3.client('s3')
-    bucket    = 'starwars.photos'
+    s3 = boto3.client('s3')
+    bucket = 'starwars.photos'
     index_key = 'notes/SW_art.txt'
-    prefix    = 'art/'
+    prefix = 'art/'
 
     # 4️⃣ Load our “recent” list from S3
     try:
-        obj              = s3.get_object(Bucket=bucket, Key=index_key)
-        content          = obj['Body'].read().decode('utf-8')
+        obj = s3.get_object(Bucket=bucket, Key=index_key)
+        content = obj['Body'].read().decode('utf-8')
         recent_keys = json.loads(content)  # e.g. ['art (12).jpg', 'art (5).jpg', …]
     except s3.exceptions.NoSuchKey:
         recent_keys = []
@@ -51,7 +52,7 @@ def SW_art(event, context):
 
     # 5️⃣ List all JPG keys under art/
     listing = s3.list_objects_v2(Bucket=bucket, Prefix=prefix)
-    jpgs    = [
+    jpgs = [
         o['Key'] for o in listing.get('Contents', [])
         if o['Key'].lower().endswith('.jpg')
     ]
@@ -82,9 +83,12 @@ def SW_art(event, context):
 
     # 🔟 Upload to Twitter and tweet it
     media = api.media_upload(local_path)
+
+    # less than 1% chance of being called a subscriber only tweet
+    if random.random() < 0.05:  # 1% a month being called at 6 questions a day
+        client.create_tweet(text="", media_ids=[media.media_id], for_super_followers_only=True)
+        return f"tweeted image for (subscribers only)"
     client.create_tweet(text="", media_ids=[media.media_id])
-
-
 
     # 1️⃣1️⃣ Return success
     return {
