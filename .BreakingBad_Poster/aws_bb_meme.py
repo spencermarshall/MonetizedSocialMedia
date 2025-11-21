@@ -80,6 +80,11 @@ def BB_meme_post(event, context):
 
     # Upload the file to Twitter using Tweepy
     media = api.media_upload(download_path)
+
+    # less than 1% chance of being called a subscriber only tweet
+    if random.random() < 0.06:  # 1% a month being called at 6 questions a day
+        client.create_tweet(text="", media_ids=[media.media_id], for_super_followers_only=True)
+        return f"tweeted image for (subscribers only)"
     client.create_tweet(text=tweet_text, media_ids=[media.media_id])
 
     # Update the recent files list
