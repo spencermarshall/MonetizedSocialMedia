@@ -76,10 +76,10 @@ def LOTRMeme(event, context):
 
     tweet_text = ""
     ran = random.random()
-    if ran < 0.05:   tweet_text = "Lord of the Rings"
-    elif ran < 0.06:  tweet_text = "#LordOfTheRings"
-    elif ran < 0.11: tweet_text = "LOTR"
-    elif ran < 0.12: tweet_text = "#LOTR"
+    if ran < 0.15:   tweet_text = "Lord of the Rings"
+    elif ran < 0.175:  tweet_text = "#LordOfTheRings"
+    elif ran < 0.325: tweet_text = "LOTR"
+    elif ran < 0.35: tweet_text = "#LOTR"
 
     # 5. Download from S3 into Lambda’s /tmp
     download_path = f"/tmp/{os.path.basename(random_file)}"

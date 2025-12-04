@@ -5,7 +5,7 @@ import os
 import json
 import botocore.exceptions
 
-MOST_RECENT = 200
+MOST_RECENT = 400
 
 # X credentials stored in env variables
 API_KEY = os.environ["API_KEY"]
@@ -76,17 +76,17 @@ def HobbitMeme(event, context):
     tweet_text = ""
     ran = random.random()
 
-    if ran < 0.05:
+    if ran < 0.10:
         tweet_text = "Lord of the Rings"
-    elif ran < 0.06:
-        tweet_text = "#LordOfTheRings"
-    elif ran < 0.11:
-        tweet_text = "LOTR"
     elif ran < 0.12:
+        tweet_text = "#LordOfTheRings"
+    elif ran < 0.22:
+        tweet_text = "LOTR"
+    elif ran < 0.24:
         tweet_text = "#LOTR"
-    elif ran < 0.17:
+    elif ran < 0.34:
         tweet_text = "The Hobbit"
-    elif ran < 0.18:
+    elif ran < 0.36:
         tweet_text = "#TheHobbit"
 
 
