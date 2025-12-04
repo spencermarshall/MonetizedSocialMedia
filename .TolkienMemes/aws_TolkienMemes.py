@@ -75,13 +75,13 @@ def TolkienMeme(event, context):
 
     tweet_text = ""
     ran = random.random()
-    if ran < 0.04:
+    if ran < 0.10:
         tweet_text = "LOTR"
-    elif ran < 0.05:
+    elif ran < 0.125:
         tweet_text = "#LOTR"
-    elif ran < 0.09:
+    elif ran < 0.225:
         tweet_text = "Lord of the Rings"
-    elif ran < 0.10:
+    elif ran < 0.25:
         tweet_text = "#LordOfTheRings"
 
 
