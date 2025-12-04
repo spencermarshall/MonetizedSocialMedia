@@ -6,10 +6,13 @@ import json  # to parse and write JSON
 import botocore.exceptions
 
 # Number of recent images to avoid repeating
-MAX_RECENT = 300
+MAX_RECENT = 400
 
 
 def SW_art(event, context):
+    if random.random() < 0.1:
+        return {'statusCode': 200, 'body': 'No tweet this time.'}
+
     # 1️⃣ Load Twitter credentials
     API_KEY = os.environ["API_KEY"]
     API_SECRET_KEY = os.environ["API_SECRET_KEY"]
@@ -85,7 +88,7 @@ def SW_art(event, context):
     media = api.media_upload(local_path)
 
     # less than 1% chance of being called a subscriber only tweet
-    if random.random() < 0.05:  # 5% for subscribers, 4 or 5 times a month
+    if random.random() < 0.05:  # 1% a month being called at 6 questions a day
         client.create_tweet(text="", media_ids=[media.media_id], for_super_followers_only=True)
         return f"tweeted image for (subscribers only)"
     client.create_tweet(text="", media_ids=[media.media_id])
